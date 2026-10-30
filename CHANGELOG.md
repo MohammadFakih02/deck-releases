@@ -6,6 +6,7 @@ All notable changes to Deck. Setups for each version are on the [Releases](https
 
 ### Changed
 - **Downloads and updates** come from a new public home, [deck-releases](https://github.com/MohammadFakih02/deck-releases): updates, the shared death-screen library, and bug, idea and death-screen reports all go there. The source code is now private. A copy older than this one won't find updates by itself, so install this version once from there
+- **Publishing:** releases reach the public repo through `tools/publish-release.py`
 
 ## 3.1.0 — 2026-10-30
 
