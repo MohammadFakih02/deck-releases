@@ -2,11 +2,42 @@
 
 All notable changes to Deck. Setups for each version are on the [Releases](https://github.com/MohammadFakih02/deck-releases/releases) page.
 
+## 3.2.0 — 2026-11-01
+
+The death counter rebuilt, and installing Deck made simple.
+
+### Changed
+- **Installing, updating and removing Deck are one short flow in one window.** The setup says what it will do and has one button: Install, Update, Reinstall or Replace. Installing over an existing Deck updates it in place, with no "uninstall first?" page and no "Deck is running" box. Updates from inside Deck stay hidden, and the file-in-use errors are gone
+- **Uninstalling leaves nothing behind:** tasks, shortcuts, firewall rules, the PawnIO driver if Deck installed it, logs and browser data all go. A tick box also deletes your settings, profiles and death history
+- **Death counter, games Deck doesn't know:** they aren't watched until you count a death in one, mark something on its page or pick "Every game", since not every game has anything to count
+- **Death counter, how it decides:** a game's own words in the place it shows them count at once, and the common words need two reads. It's ready again as soon as the banner has gone, so games that restart fast don't lose deaths
+- **Death counter, boss fights:** a fight opens from the bar, even before its name can be read ("Unnamed boss"). A bar that empties shows "Defeated?" and the win is written after 2 minutes, or at once on a victory banner. Another boss arriving in that time is the same fight's next phase, so Radagon and the Elden Beast are one fight
+- **Death counter, revives:** in a boss fight, a revive (Sekiro) no longer counts as a death. Deck sees the same boss's bar still dropping after the death screen and takes the count back. Only the real death counts
+- **Death counter, boss names:** a read close to a name on the game's boss list takes that name. A boss that isn't on the list, such as a modded one, is still detected from its bar and name
+
+### Added
+- **Built-in game profiles:** where the boss bar, boss name, player UI and death screen are for a list of soulslikes, including Dark Souls 1 to 3, Sekiro, Elden Ring, Nightreign, Lies of P, Phantom Blade Zero and Black Myth: Wukong, worked out from gameplay footage. Parts that couldn't be confirmed are left out. None of this has been checked in the real games yet. Black Myth: Wukong shows a different quote at each death and only three are known, so some deaths there need counting by hand
+- **Set up a game:** a card for each game with its steps (your own bars and items, the boss's bar and name, the death screen, the kill screen). Each is optional and shows what Deck reads in the box you draw. Bosses with two bars (health and posture) are handled
+- **A popup for a death Deck reads in a game it's still learning.** It takes no focus, and left alone the death stays counted. It offers "Not a death" and "Set up this game"
+- **Fights to check:** the History tab lists recent fights Deck wasn't sure of, each one click to settle
+- **OCR pack (optional):** Settings on the Deaths page can download about 24 MB of better text reading. It reads more boss names, and Sekiro's death screen, which Windows' own reading can't. Lies of P's death screen still needs teaching once. It stays through updates, and turning it off or uninstalling Deck removes it
+- **Screen shapes:** built-in positions follow the game's window on ultrawide and 16:10 screens
+- **Daily backups** of each game's death history, kept for 14 days, and a "Leave this line out" fix in History that deletes nothing
+
+### Fixed
+- **Game detection:** osu! and osu! lazer count as games, and so does a game in a borderless window that nothing listed, when its own folder shows it's a game: Unity, Unreal, Godot, a game store's or anti-cheat's files
+- **Playing now:** a game stays "Playing now" while you alt-tab or look at Deck, and Game mode starts by itself even if you switch away right after launching. It no longer says "Playing now" after a game closed while Game mode stayed on
+- **Gaming:** game names sit on a soft fade over the cover instead of a dark box
+
+### Added
+- **Death counter:** death screens in Spanish, French, German, Italian, Portuguese and Polish are read with no setup
+
 ## 3.1.1 — 2026-10-31
 
 ### Changed
 - **Downloads and updates** come from a new public home, [deck-releases](https://github.com/MohammadFakih02/deck-releases): updates, the shared death-screen library, and bug, idea and death-screen reports all go there. The source code is now private. A copy older than this one won't find updates by itself, so install this version once from there
 - **Publishing:** releases reach the public repo through `tools/publish-release.py`
+- **Local installs:** a release setup can now replace a copy installed with `install.ps1`
 
 ## 3.1.0 — 2026-10-30
 

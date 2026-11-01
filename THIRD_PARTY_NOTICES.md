@@ -13,6 +13,8 @@ Deck's own code is under the [MIT licence](LICENSE). It ships or uses the follow
 | WinUtil by Chris Titus Tech: tweak recipes (registry values with their original values) | `src-tauri/tweaks/tweaks.json` (made by `tools/tweaks/build.py` at a pinned commit) | MIT | https://github.com/ChrisTitusTech/winutil |
 | pull-microsoft-store by sht2017: the request flow for Microsoft's update service (FE3) used by Get Store apps | `src-tauri/src/tweaks/storedl.rs` (Deck's own Rust, same protocol) | MIT | https://github.com/sht2017/pull-microsoft-store |
 | Microsoft Root Certificate Authority 2011 and Microsoft ECC Product Root CA 2018 (public root certificates, the same Windows trusts) | `src-tauri/tweaks/certs/`, used only for Microsoft's update service | Public certificates | https://www.microsoft.com/pkiops/docs/repository.htm |
+| ONNX Runtime 1.31 (`onnxruntime.dll`) | the optional OCR pack, downloaded only when turned on; never in the setup | MIT | https://github.com/microsoft/onnxruntime |
+| PP-OCRv6 tiny models (`det.onnx`, `rec.onnx`, `keys.txt`), converted by RapidOCR | the optional OCR pack | Apache-2.0 | https://github.com/PaddlePaddle/PaddleOCR, https://github.com/RapidAI/RapidOCR |
 | Tauri and the Rust crates in `src-tauri/Cargo.lock` | linked into `Deck.exe` | MIT / Apache-2.0 and others (see each crate) | https://crates.io |
 
 The PawnIO driver and modules are unmodified copies of the upstream signed binaries; their source code is available at the links above. Deck talks to the driver only through its documented IOCTL interface.
