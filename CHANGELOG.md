@@ -2,6 +2,14 @@
 
 All notable changes to Deck. Setups for each version are on the [Releases](https://github.com/MohammadFakih02/deck-releases/releases) page.
 
+## 3.2.1 — 2026-11-01
+
+Phantom Blade Zero's death counter, fixed.
+
+### Fixed
+- **Phantom Blade Zero: deaths weren't counted** unless the optional OCR pack was on. The place Deck looked for "DEAD" was too small for the word in English and German.
+- **Phantom Blade Zero: the Iron Fiend and Jade Dancer fight wasn't seen.** Deck now finds the two bars side by side, follows the fight when one of them falls, and counts it as one fight with one win. Their names and the Chief Disciple's second phase are on its boss list.
+
 ## 3.2.0 — 2026-11-01
 
 The death counter rebuilt, and installing Deck made simple.
