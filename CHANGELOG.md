@@ -2,7 +2,20 @@
 
 All notable changes to Deck. Setups for each version are on the [Releases](https://github.com/MohammadFakih02/deck-releases/releases) page.
 
-## 3.2.1 — 2026-11-01
+## 3.2.2 — 2026-11-02
+
+Death counter fixes from a friend's Phantom Blade Zero run, a download button for the OCR pack, and new controller shapes.
+
+### Added
+- **OCR pack: a Download button, progress and a confirmation.** Turning the OCR toggle on shows a Download button with its size. The download shows a progress bar with how much is done, then "Downloaded. The OCR pack is on.". If it fails, the page says so and offers Try again.
+- **Controller overlay: real DualSense and Xbox Series shapes.** A PlayStation 5 pad is drawn as a DualSense, with its wide touchpad, light bar and mute light. An Xbox pad has its own body, a round d-pad, the Xbox button with its logo, and shoulders and triggers in the right places. A DualShock 4 still gets the DualShock 4 shape. The shapes are lit from above, so buttons look domed instead of flat.
+
+### Fixed
+- **The death counter's pill shows in every game Deck has a profile for,** even before a death is counted.
+- **A boss bar outside a fight no longer starts one.** A fight needs a coloured bar and, in games with a boss list, a name from that list. Scenes that only look like a boss bar stopped showing "Fighting" and a "0/1" count.
+- **A beaten boss counts as a kill straight away,** when its bar empties and stays empty. Before, it waited about two minutes for the game's phase timer. If the boss comes back, the kill is taken back.
+- **Boss names from the game's list only.** A garbled read is no longer kept as a boss name in a game that has a list.
+- **Bars that jump around** (Elden Ring, Dark Souls 1, Sekiro, Lies of P) open their fights more often. No kill that was counted before is lost.
 
 Phantom Blade Zero's death counter, fixed.
 
