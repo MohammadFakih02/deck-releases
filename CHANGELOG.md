@@ -2,6 +2,19 @@
 
 All notable changes to Deck. Setups for each version are on the [Releases](https://github.com/MohammadFakih02/deck-releases/releases) page.
 
+## 3.2.3 — 2026-11-02
+
+### Added
+- **Turn speakers and mics on or off.** The Sound and mic page has an on/off list for playback devices and for microphones, the same as Windows' Enable and Disable. Devices that are off stay in the list so you can turn them back on, and the page says how many are off.
+- **A new icon for Deck:** a deck of cards seen from the side, green cards under a blue top card. It's in the taskbar, the tray, the Start menu, the setup, the phone remote, the sidebar and the corner pop-ups. After updating, Deck asks Windows once to refresh its icon cache, so pinned and Start menu icons change too.
+
+### Changed
+- **Panels can fit their content.** While arranging a page, "Fit every panel" makes every panel as tall as what's in it and closes the gaps, and a panel you've resized has a Fit button on its bar. A fitted panel keeps fitting as its content changes.
+- **The sidebar title** shows Deck's icon next to a cleaner "Deck".
+
+### Fixed
+- **Editing a panel no longer jumps the page.** Opening an editor, saving, rearranging Home and live redraws all keep your scroll position, on Home and every page with panels. Choose PC readings now opens in its own panel instead of at the top of Home.
+
 ## 3.2.2 — 2026-11-02
 
 Death counter fixes from a friend's Phantom Blade Zero run, a download button for the OCR pack, and new controller shapes.
