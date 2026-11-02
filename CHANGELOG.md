@@ -2,6 +2,25 @@
 
 All notable changes to Deck. Setups for each version are on the [Releases](https://github.com/MohammadFakih02/deck-releases/releases) page.
 
+## 3.3.1 — 2026-11-02
+
+### Changed
+- **The game bar never scrolls.** When its widgets are taller than the screen, its text gets smaller until they fit. The preview on Play > Game bar is now a small copy of your screen, so it shows exactly how the bar will fit, and it no longer scrolls on its own: the page has one scroll, and changing a setting no longer makes it jump.
+- **Opacity fades only the backgrounds.** Below 100 % the screen behind shows through Deck's surfaces (frosted), while text, colours and readings stay at full strength; before, the whole panel faded and looked washed out.
+- **Clearer PC sound on the phone.** The sound is fitted to the phone's rate with a smooth curve instead of straight lines between samples, which dulled the highs, and Auto picks uncompressed sound from 3 Mb/s (it was 8).
+- **Fewer cut-outs with the phone as the speaker.** Without pictures to keep in step with, it uses the phone's playback mode and a bigger cushion.
+
+### Added
+- **Phone as speaker with the screen off.** "Screen can turn off" in the phone's Speaker and mic card: the phone may sleep while it plays, like a music app, with controls on the lock screen.
+
+### Fixed
+- **Deck stuck open over a game.** Opened over a game it never had the focus, so clicking elsewhere didn't close it; now a click outside Deck or switching to another program does.
+- **Recording a keyboard shortcut over a game.** "Press the keys" now asks for the keyboard, so the keys arrive. This also lets you set the game bar's key, which is what opens it in games played with mouse and keyboard.
+- **The game bar's size at other text sizes.** Below 100 % the bar ran past the bottom of the screen and hid its hint line; above, it stopped short. A floating card now also grows when a widget is added while it's open.
+- **Deck opening in the bottom right corner on some laptops.** When Windows changes the window's size as it appears (a screen with other scaling), Deck puts it back.
+- **Workspace Sync "peer no longer has that chunk".** Browser caches and WebView profiles inside a project (`EBWebView`, `GPUCache`, `Code Cache` and the like) aren't synced any more; each PC makes its own. A file that keeps changing while it's copied is tried again at the next sync instead of marking the sync as having problems.
+- **Sidebar labels.** A hint such as "No limits" next to Tune uses the free space instead of being cut at a fixed width.
+
 ## 3.3.0 — 2026-11-02
 
 ### Added
