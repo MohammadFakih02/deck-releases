@@ -2,17 +2,34 @@
 
 All notable changes to Deck. Setups for each version are on the [Releases](https://github.com/MohammadFakih02/deck-releases/releases) page.
 
-## 3.2.3 — 2026-11-02
+## 3.3.0 — 2026-11-02
 
 ### Added
+- **Game bar: a panel over your game for quick switches.** Turn it on in Play > Game bar (it's off until you do), then hold Select + Start on the controller (or L3 + R3, or Select + L3), press your own key, use the tray menu or tap Game bar in the phone remote. The game stays in front: the bar doesn't take the focus, so games don't minimise or tab out. Use it with the controller (it opens with its first button picked; D-pad or stick to move, A to press, B to close, LB/RB to jump) or the mouse; a click outside closes it.
+  - **Death counter without leaving the game:** +1 death, undo ("that wasn't a death"), and for the current fight Won, Not a boss and Gave up, each with "Undo that fix"; "Teach in Deck" opens the death counter's Games page.
+  - **Controls:** one-press tiles for the controller overlay, moving the controller overlay, the death counter, the readings overlay, your mic, Boost, the frame limiter and keeping the PC awake.
+  - **Controller overlay:** show or hide it, move and resize it, controller or keyboard and mouse, size and opacity.
+  - **More widgets:** Now playing, Volume, Microphone, Sound output, Readings (FPS, temperatures, loads, memory, power, clock speed), Frame limit, Profiles (pick which CPU and GPU profiles appear) and Clock.
+  - **Make it yours:** add, hide, remove and reorder widgets (drag them or use the arrows), one of each; set each one's width (1 to 3 columns), size and title and what it shows. Full-height panel or floating card (top, middle or bottom), left or right, width, columns, text size, frosted glass (Windows blurs the game behind it), opacity and accent; the combo and how long to hold it, a shortcut, closing by itself, and an option to take the keyboard. All with a live preview: click a widget in it to edit it.
+- **Edit phone layouts in Deck.** Phone → Keyboard layouts has Edit and New layout: the layout opens on a drawing of the phone held sideways, where you drag buttons to move them, drag a corner to size them, and set their keys, kind, colour, size and opacity on the side. Undo, Cancel and Save are on top; saving sends it to every connected phone.
+- **Move the phone controller's sticks and buttons.** Phone → Controller layout opens the on-screen controller on the same drawing: drag any stick, button or the d-pad where your thumbs want it and size it. Every phone uses it when held sideways; "Put every part back" undoes it all.
+- **See the themes before you pick one.** Settings opens with Appearance: every theme is drawn as a small Deck window in its own colours, and each accent shows its name.
 - **Turn speakers and mics on or off.** The Sound and mic page has an on/off list for playback devices and for microphones, the same as Windows' Enable and Disable. Devices that are off stay in the list so you can turn them back on, and the page says how many are off.
-- **A new icon for Deck:** a deck of cards seen from the side, green cards under a blue top card. It's in the taskbar, the tray, the Start menu, the setup, the phone remote, the sidebar and the corner pop-ups. After updating, Deck asks Windows once to refresh its icon cache, so pinned and Start menu icons change too.
+- **A new icon for Deck:** a deck of cards seen from the side, green cards under a blue top card, with no background tile. It's in the taskbar, the tray, the Start menu, the setup, the phone remote, the sidebar and the corner pop-ups. After updating, Deck asks Windows once to refresh its icon cache, so pinned and Start menu icons change too.
 
 ### Changed
+- **Disk space looks and works more like a file explorer.** The folder list, the file types and the map sit in one panel. One click on the map selects that file or folder and opens the folders above it in the list, scrolled to it; a bar under the list shows its path and size with Show in Explorer, Open and Recycle. Double-click opens a folder or shows a file. The map draws sharper, with shaded tiles, folder names with their sizes, and outlines for what you point at and what is picked.
+- **Sliders and colours apply while you drag.** Controller overlay size and opacity, the death counter's size and opacity, mic level and boost, vibrance, brightness, contrast and monitor settings, and the overlay's margins, zoom, opacity, graph sizes and colours change as you move them instead of when you let go.
+- **The phone QR code is bigger** and sits centred with its caption under it.
 - **Panels can fit their content.** While arranging a page, "Fit every panel" makes every panel as tall as what's in it and closes the gaps, and a panel you've resized has a Fit button on its bar. A fitted panel keeps fitting as its content changes.
 - **The sidebar title** shows Deck's icon next to a cleaner "Deck".
+- **The phone remote has Deck's look:** the same colours, fonts and icon, section titles with each group's colour, squarer buttons and sliders, and bigger readings. The fonts come from Deck, so the page still works without the internet.
 
 ### Fixed
+- **Opening Deck over a game no longer tabs you out.** When a game is in front, the shortcut opens Deck without taking the focus, so the game doesn't minimise; click a text box when you want to type. The shortcut again, the close button or a click outside closes it.
+- **The Start menu shows the new icon.** After this update Deck asks the Start menu to read its shortcuts again, so the old icon there goes too.
+- **Media keys work while Deck is in front.** Play/pause, next, previous and the volume keys reached Deck's window and stopped there; they now go to your music app as usual.
+- Colour swatches and theme previews that set their colours through style variables showed no colour (this also kept the fan icon spinning at one speed).
 - **Editing a panel no longer jumps the page.** Opening an editor, saving, rearranging Home and live redraws all keep your scroll position, on Home and every page with panels. Choose PC readings now opens in its own panel instead of at the top of Home.
 
 ## 3.2.2 — 2026-11-02
