@@ -59,7 +59,7 @@ Hardware control (fans, lighting, CPU power limits, GPU tuning), most Windows tw
 | **Fans, Lighting, Cooler display** | Super I/O fan control (Nuvoton, ITE) with curves, fixed speeds and presets; MSI Mystic Light and Kingston Fury RGB, with an animated fan-by-fan preview of each effect; USB LCD coolers. Fans always go back to the BIOS when Deck quits, and a small watchdog gives them back if Deck is ended from Task Manager. |
 | **Sensors** | 5-minute graphs for temperature, load, power, fans and frametimes (average, 1% and 0.1% lows); every reading with min / max / average; heat alerts; CSV logging. |
 | **Drives** | The health of every HDD and SSD (S.M.A.R.T.): temperature, hours, data written, wear and warning signs, with history and optional alerts. |
-| **This PC** | What Deck found in the PC and what it can control, and a support report (copy or save) that answers "what is this machine and what did Deck find" without personal data. |
+| **This PC** | What Deck found in the PC (processor generation, built-in or card graphics, laptop maker) and, in plain words, what it can and can't control there yet, and a support report (copy or save) that answers "what is this machine and what did Deck find" without personal data. |
 
 ### Windows
 
@@ -92,7 +92,7 @@ Settings has General, Search and About with Updates. Home tiles are in Edit Home
 - **Puts things back:** Gaming, tweaks, PC to PC setups and the phone speaker/mic undo what they changed, and after a crash Deck puts back what it had muted or switched.
 - **Never in your way while gaming:** updates, Windows tweaks, app removal and hardware changes wait until no game is in front.
 - **Looks after itself:** updates from GitHub (checked against their SHA-256), starts again after a crash or a graphics driver update, and the support report on This PC is one click away.
-- **Fits any PC or laptop:** a low-spec mode for older PCs, and nothing tied to one brand of board.
+- **Fits any PC, laptop or handheld:** a low-spec mode for older PCs, touch-friendly controls on touchscreens and handhelds (ROG Ally, Legion Go, MSI Claw, Steam Deck and others), and nothing tied to one brand of board.
 
 <table>
 <tr>

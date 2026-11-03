@@ -2,6 +2,61 @@
 
 All notable changes to Deck. Setups for each version are on the [Releases](https://github.com/MohammadFakih02/deck-releases/releases) page.
 
+## 3.5.0 — 2026-11-03
+
+### Added
+- **Handheld gaming PCs:** Deck recognises the ROG Ally, Legion Go, MSI Claw, Steam Deck, AYANEO, OneXPlayer, Zotac Zone and GPD Win, and This PC says what works there. On any touchscreen, buttons that only appeared under the mouse are always shown, and small buttons, switches and "?" are easier to tap. The power limit (TDP) and fan modes of the makers' own apps aren't in Deck yet.
+- **The support report says more about what went wrong:** how the previous run ended (quit cleanly, closed by an update, or ended without quitting, with what the watchdog recorded), which background jobs crashed or stopped, and this run's problems by area with the first and the latest ones, before the log's last lines.
+- **This PC says what Deck can do on this machine:** the processor and its generation, each graphics adapter (built-in or card), the laptop's maker, and in plain words what works, what partly works and what isn't in Deck yet. The support report carries the details, including which maker controls the laptop has, so support for more machines can be added.
+
+### Changed
+- **Charts have their own colours:** CPU and download are blue, GPU and upload magenta, memory cyan and VRAM violet, the same on Home, Sensors, Network and the CPU and GPU pages. The GPU no longer shares the "all good" green, nor VRAM the warning amber, and download is no longer a different colour on each page.
+- **Chips read normally:** game names, profile names and other labels in chips keep their own capitals instead of being shown in small capitals ("GPU: AB Profile 5", not "GPU AB PROFILE 5").
+- **Status colours follow the theme:** green, amber and red tints on chips, warnings and hints use the theme's own status colours, so they match in Graphite and Nord.
+- **The clock on Home** keeps your timers and "Staying awake" when the tile is short (the calendar goes first), and centres what's left.
+- **Opacity fades one layer.** The panel's background is the only thing that fades; buttons, switches, readings and text stay solid, instead of each item having its own see-through background on top of another.
+- **The core clock and the other speed settings are a panel on the CPU page**, not a fold you had to find.
+- **Folds stand out:** "Advanced" and the other folds are bordered bars with a bold title and an arrow, everywhere (also on the footer pages and Tweaks' "More presets").
+- **"Back to GPU" and "Back to CPU" are real buttons**, and the close button shows the same in every mode.
+- **The death counter's "+N more deaths" opens 10 at a time.**
+- **Games without a death profile start with the death counter off** until you turn it on, count a death or teach a screen.
+- **Pages say each thing once and line up:** Deaths shows this session's numbers in a card like the records under it; the Overlay page's reading groups are small labels under the list's heading; Controller's keys say "16 of 27 shown" once and its Test tab names the battery; Lighting's preview no longer repeats the effect's description; Disk space no longer repeats the drive's size and free space under the summary; the Startup apps panel says what its switch does instead of the app's name again; every card heading is the same colour, with or without an icon; Phone's folds open with the same arrow as everywhere else.
+- **The GPU editor's half-width panels** keep each setting's name and "?" on one line, with the slider under them.
+- **Long names** in Processes end with "…" (the full name is in the panel), the "End app" button no longer repeats the app's name, and a long profile name on CPU and GPU stops at two lines.
+- **Help for Lighting's effect and game sound and the cooler display's colour speed**, like the other hardware settings.
+- **"Jump to" on Windows and Screen tools** stops with the section's heading in view, not under the top edge.
+- **Missing readings on Drives** ("Not reported") are small grey text, not a large number split over two lines.
+- **Display's picture sliders line up** whatever value each one shows.
+- **Tune's tools** (icon picker, existing plans, Afterburner import, card measuring) open under the panel you used, not at the top of the page.
+
+### Fixed
+- **Deck cut off in the bottom right corner with Windows animations off.** With "Animation effects" turned off in Windows (Settings > Accessibility > Visual effects), the quick panel opened with its corner in the middle of the screen and ran off the edge. It's centred again.
+- **Problems that used to leave no trace are logged:** a background job whose loop ends, the fan chip or the GPU fan curve failing and working again, a fan curve left without a temperature (handed to the BIOS meanwhile), a page that couldn't load or draw, and errors in the game bar and snap-zones windows. Repeats are counted instead of written each time.
+- **A crash hands the fans and the GPU back before anything is written to the log.**
+- **A page whose data can't be read no longer says "Loading…" forever.** CPU, GPU, Fans, Lighting, Cooler display, Sensors and the other pages say what went wrong and offer Try again; a page that still draws (Deaths, PC to PC and others) shows the same message above it instead of looking empty or switched off. Drives no longer blames admin rights when reading the drives failed.
+- **Closing the GPU editor after "Try it"** tells you if the card couldn't be put back, instead of leaving the tested settings on quietly.
+- **The GPU editor no longer reads the card every second while Deck is hidden** (say, while you play).
+- **"chrome is open"** on Clean up reads "Chrome is open"; the Processes panel says "File not scanned yet" instead of "Not checked yet"; Cooler display no longer shows a lone "–" under the preview when no display is connected.
+- **Scrolling a readings table no longer jumps back to the top.** Sensors' readings and the other pages with live numbers (CPU, GPU, Fans, Overlay) keep each inner list where you scrolled it when the numbers update.
+- **Clicks on the game bar, Deck or a notification no longer reach the game** in games that read the mouse directly (osu! and many shooters): while you point at them they take the focus, and the game gets it back when you move away. "Keep clicks off the game" on the Game bar page turns this off.
+- **"Move controller overlay" in the game bar** closes the bar so you can move it.
+- **Frosted glass in the game bar** shows the game blurred behind it again, instead of grey or black.
+- **Switches overlapping their labels** in settings rows.
+- **The overlay drawn several times over** in the League of Legends client and other launchers (Steam, Epic, Battle.net, EA app, Ubisoft Connect, GOG Galaxy, Xbox app, Overwolf and more): RivaTuner leaves them alone. Restart a client that was already open.
+- **Games in folders with letters outside English** (é, ü, Arabic, Chinese...) weren't found from Windows' list of games or installed programs.
+- **The game bar and notifications on laptops with screen scaling** are put back if Windows moves them as they appear, as Deck's panel already was.
+- **The page no longer jumps** when a sheet or editor closes and hands the focus back.
+- **A dropdown kept its glow** after you picked from it with the mouse.
+- **Background jobs restart after an error.** If one of Deck's watchers crashes (closing Deck over a game, the hot corner, Gaming, Power's timers and plans, saving settings, the overlay's readings, the game bar's controller combo and others), it starts again by itself after a few seconds, instead of stopping until Deck restarts.
+- **A damaged data file is kept, not overwritten.** If the death counter's game list, notes or taught screens, the play-time history, the GPU's measured curves or Afterburner's imported data can't be read, Deck sets the file aside and logs it instead of starting empty and saving over it. The measured curves are also saved safely now, so a crash mid-save can't cut them off.
+- **This PC no longer waits forever on a PC whose WMI is broken:** the machine check gives WMI 8 seconds.
+- **The hot corner with several monitors** only opens Deck at an outer corner of the desktop, not where the mouse passes from one monitor to the next.
+- **A pinned Deck whose monitor was unplugged** comes back on the monitor the mouse is on instead of off-screen.
+- **AMD processors:** the CPU page no longer offers Intel's power limits there (they did nothing); Saver and Performance still set Windows' power mode.
+- **Windows installed on another drive:** Epic and Riot games, and Windhawk in PC to PC, are found where Windows keeps them, not only on C:.
+- **Network's game list** was cut off at the bottom, and its "relay servers" note was shown twice.
+- **Small screens:** the Game bar page stacks its preview under the settings sooner, and the overlay's preset cards and long process names stay inside their boxes.
+
 ## 3.3.1 — 2026-11-02
 
 ### Changed
