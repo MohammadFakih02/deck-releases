@@ -2,6 +2,16 @@
 
 All notable changes to Deck. Setups for each version are on the [Releases](https://github.com/MohammadFakih02/deck-releases/releases) page.
 
+## 3.5.1 — 2026-11-04
+
+### Changed
+- **The Xbox pad in the controller overlay is redrawn:** a cleaner shape, a dark plate between the bumpers with a light on it and a lit Xbox button, soft rings round the controls, a chunky d-pad, A, B, X and Y ringed in their own colours, and taller triggers. On the white theme the sticks and d-pad sit in dark collars.
+- **You can see which way a stick is pushed:** a bright arc on the ring round the stick points the way it's going, the knob shows a lit dot, and the knob travels further on the Xbox and DualSense pads. At rest none of it shows.
+- **The PlayStation pads are tidied up:** the sticks are a little smaller, and the D-pad and face buttons have more room.
+
+### Fixed
+- **Overlaps in the controller overlay:** the DS4's stick rings ran off the shell, sat off-centre on their sticks and crowded the D-pad and face buttons; the DualSense's light bars touched the touchpad and the square button nearly touched a light bar; its bumper tips floated off the shell; the PS button now lines up with the sticks.
+
 ## 3.5.0 — 2026-11-03
 
 ### Added
