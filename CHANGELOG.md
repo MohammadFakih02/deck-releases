@@ -2,6 +2,14 @@
 
 All notable changes to Deck. Setups for each version are on the [Releases](https://github.com/MohammadFakih02/deck-releases/releases) page.
 
+## 3.5.2 — 2026-11-04
+
+### Added
+- **Phone remote:** app icons for the mixer (`/appicon`, only for apps playing sound now), a picture sent from the phone can also go on the PC's clipboard, the state carries the PC's Tailscale address so a phone remembers it before leaving home, and its memory in GB.
+
+### Fixed
+- **Phone remote:** a media player that's slow to answer no longer stops the phone's live state until it does. Actions run on the side, and one that takes over 5 s says so.
+
 ## 3.5.1 — 2026-11-04
 
 ### Changed
