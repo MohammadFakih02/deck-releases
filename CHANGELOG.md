@@ -2,6 +2,33 @@
 
 All notable changes to Deck. Setups for each version are on the [Releases](https://github.com/MohammadFakih02/deck-releases/releases) page.
 
+## 3.6.3 — 2026-11-05
+
+### Fixed
+- **"When a song ends and the next one starts" now holds.** A song that ended by itself could count as a skip, so the card showed with that setting off. It happened whenever another program had a media entry (Riot Client keeps a paused one), when the next song's length arrived before its name, and when the next song passed through "paused" on its way to playing.
+- **A launcher is no longer taken for a song.** A media entry that only gives the program's own name, as Riot Client's does, is ignored, so it can't open the music flyout.
+
+## 3.6.2 — 2026-11-05
+
+### Added
+- **Volume and music as one card:** "One card" under Show volume with it puts a thin volume bar under the song instead of opening a second flyout. You can drag it, scroll on the card, or click the speaker to mute. With nothing playing, volume shows by itself.
+- **The player's own volume on the music flyout (off by default):** a small slider under the buttons, for just the app that's playing. It's that app's level in Windows' volume mixer, so the slider inside the app doesn't move.
+
+### Fixed
+- **Changing the position or the arrangement moves flyouts already on screen.** A card already open stayed where it was while the other went to the new place, and the two could overlap. Both now work out their places the same way, and a change takes effect at once instead of up to a second later.
+- **The volume flyout changes colour when the song changes,** not at the next pause or volume change. It now follows the song while it's open.
+- **Flyouts now show over games that use all of the graphics card.** They opened but stayed invisible, and only one already on screen when you tabbed in could be seen. Over a game they're now drawn without the web engine, and they don't cost frames while they're open: Warframe went from 187 to 179 fps with one up (a web card forced through cost 55 fps and caused stutter).
+- **Flyouts show over Deck's own window** as they do over any other program.
+- **"Show in folder" opens the right folder with the file selected.** Any path with a space opened Documents instead, which included every file received from the phone (`Downloads\From phone`). A file that has since gone opens the nearest folder still there.
+- **Caps Lock and the other short flyouts** no longer sit in a place kept for the music flyout when it isn't there, and they're smaller: two short words no longer fill a wide card.
+- **Boss names that animate or are thin are recognised.** Warframe's Jackal read differently each time and never opened a fight. What the reads agree on now counts, even if they aren't one after the other.
+- **A fight is no longer renamed to something one bad read made up.**
+- **The death counter no longer keeps a processor core busy** while a game fills the graphics card (up to 97% of one core, now about 9% typically with the same fight). The counter's own cost in frames couldn't be measured in Warframe: 171 fps with it on, 168 with it off.
+
+### Changed
+- **The volume flyout matches the music flyout:** white on the colour of the song's cover.
+- **A song's picture and colour are kept for 10 minutes,** one song at a time, so the card has the right ones as soon as it opens.
+
 ## 3.6.0 — 2026-11-05
 
 ### Added
