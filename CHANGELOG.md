@@ -2,6 +2,23 @@
 
 All notable changes to Deck. Setups for each version are on the [Releases](https://github.com/MohammadFakih02/deck-releases/releases) page.
 
+## 3.6.0 — 2026-11-05
+
+### Added
+- **Flyouts (Desktop > Flyouts, all off by default):** small cards that never take the focus, for music, volume, microphone, sound device, lock keys, brightness, airplane mode and charger, each with its own time on screen. They follow what Windows reports, so a change from any key or program counts, and they stack instead of overlapping. The volume one can be dragged, scrolled and muted. Deck can also hide Windows' own volume pop-up, off by default.
+- **Choose when the music flyout shows:** when you skip, when a song ends and the next one starts, or both. They're told apart by how close the song was to its end, so a skip in the last few seconds counts as ending.
+- **Volume and music can open together:** one above or below the other, whichever one changed. Separate unless you ask.
+- **Music flyout:** a card coloured from the cover when the song changes, however you skipped: keyboard, player, phone or controller. It opens as soon as the new name is in, about a second or less after a skip, never showing the old song as the new one, and the cover follows a moment later. It has previous, play/pause, next and seeking. It never takes the focus, and over games and fullscreen windows clicks pass through it, or choose Overlay text to put no window over the game at all. It stays out of the way during presentations, Do not disturb, and while the player or Deck is in front. In true exclusive fullscreen, where no window can be drawn, the song also appears in the Overlay if that's on.
+- **Apps built on a web engine now show their real name** as the source of what's playing, instead of "Web app".
+
+### Fixed
+- **Missing artwork on Home and in the game bar:** a song whose picture arrived just after its name stayed without one until the next song.
+- **A hung media player can't hold up Deck's media controls:** Windows media calls now give up after 1.5 seconds.
+- **Two apps built on a web engine playing at once:** Deck's controls now reach the one that is playing, instead of whichever Windows lists first.
+- **Accented letters in the in-game overlay** (é, ñ) now show instead of "?".
+- **A dialog over a game could hide Deck's panel.**
+- **The hot corner and other full-screen checks took the desktop for a full-screen app** on some setups.
+
 ## 3.5.2 — 2026-11-04
 
 ### Added
