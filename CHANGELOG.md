@@ -2,6 +2,30 @@
 
 All notable changes to Deck. Setups for each version are on the [Releases](https://github.com/MohammadFakih02/deck-releases/releases) page.
 
+## 3.6.4 — 2026-11-06
+
+### Added
+- **Choose which apps count as music:** Desktop > Flyouts lists the media apps Windows has right now, each with Auto, Always or Never.
+- **Show music card from the tray:** see the current song without opening a page. Show uses the player's actual playing or paused state, or a labelled sample when no song is available, and respects the fullscreen setting.
+- **Song end tolerance:** an Advanced control in Music allows for players that crossfade or finish early. Existing settings keep the four-second default.
+- **Media keys always reach the player (off by default):** Windows gives play, next, previous and stop to the window in front first, and a frozen one keeps them. With this on, Deck sends them straight to the player. Other programs that use those keys won't get them.
+
+### Fixed
+- **The music card reacts to a skip at once.** Pressing next or previous now opens the card straight away saying "Skipping" or "Going back", and it names the song as soon as the player does.
+- **Small flyouts keep their coloured icon.** Caps Lock and other small cards had a near-black circle in place of your accent colour.
+- **Media keys work with Deck in front.** Play/pause, next, previous and stop stopped at Deck's window and never reached your music app.
+- **Music rules match their description.** Recognised music apps need no artist or duration; other apps need an artist and at least 45 seconds, or an unknown duration. Browsers are a fallback when no qualifying non-browser session is available, including paused songs. Always and Never remain explicit overrides.
+- **Launchers and apps set to Never are gone from the rest of Deck too,** including Home and the game bar.
+- **Song names no longer wait for artwork.** Pictures load separately, reject late results for another song, and hold back a previous song's cover while the player updates it. Late artist metadata does not announce the same song twice.
+- **Resume and playback changes requested through Deck respond without the pause debounce.** Unsolicited pauses retain the guard against a player's skip flicker.
+- **Skip and song-end preferences also apply while a card is already open.** Known skips from Deck's controls take priority near the end; short read gaps advance the previous playing position, and known seeks reject a briefly stale timeline.
+- **Flyout delivery and closing are ordered.** Old snapshots, acknowledgements and queued window operations cannot replace a newer opening. Display time starts after the page responds; missing later draw acknowledgements also recover the window.
+- **Cards switch to native drawing when a game or fullscreen window comes forward.** Show follows the same game policy. Native fades can reverse without flashing and respect Windows animation effects and Low spec.
+- **Volume controls handle captured drags, cancellation, fast writes and failures.** A short interaction lease keeps a drag alive outside the card. Master output and player volume have distinct labels; ambiguous player mixer matches are hidden. Controls target exact Windows media sessions even when apps share an identity.
+- **App choices and hardware availability refresh while Flyouts is open.** Missing readings preserve their baselines, unknown battery charge is no longer shown as 100%, and unavailable previews are labelled samples. Microphone feedback says Muted or Unmuted.
+- **Placement adapts to work-area, monitor and DPI changes.** Cards scale to fit small work areas, keep paired cards together, and avoid Deck notifications when room exists. Secondary text has measured contrast on supported card tints.
+- **Disabled flyout workers wait for events instead of checking settings every 400 ms.** Artwork reads, media control calls and player-volume requests stay off the UI runtime's active work.
+
 ## 3.6.3 — 2026-11-05
 
 ### Fixed
