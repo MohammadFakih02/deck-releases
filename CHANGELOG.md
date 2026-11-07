@@ -2,6 +2,41 @@
 
 All notable changes to Deck. Setups for each version are on the [Releases](https://github.com/MohammadFakih02/deck-releases/releases) page.
 
+## 3.7.0 — 2026-11-07
+
+A safety release: fans, power actions, undo and the phone connection, checked piece by piece.
+
+### Added
+- **"Are you sure?" before power actions:** shut down, restart, sleep, hibernate and sign out now ask first, from Deck, the quick panel, search and the phone page. Plans ask when you set them, naming the action and when it runs.
+- **Allow power commands from phones:** a new switch on the Phone page, on by default. Off, phones can still lock the PC and turn its screen off.
+- **Upload limits:** optional limits on the Phone page for each file and for the From phone folder.
+- **Display changes go back by themselves:** a new resolution, refresh rate or rotation returns to the old one unless you press Keep, even if the page closes.
+- **QR codes carry the PC's certificate fingerprint:** a phone app that reads it is protected from its first connection. Older apps and the phone page ignore it.
+
+### Changed
+- **GPU fan safety:** a fixed speed or a fan curve now gives way to 100% at 85 °C or when the temperature can't be read, until the card is back at 80 °C. Zero-RPM stays as it was while the card is cool and its temperature is known.
+- **Custom CPU power limits can't exceed the limits the board started with.** Existing higher values are held at that limit.
+- **The PC's speakers come back sooner** after a phone stops playing: at once on Stop, and in 2 seconds rather than 5 if the phone just disappears.
+- **Recall's switch now says what it does:** turning it off deletes existing snapshots, which Undo can't bring back. It moved to Advanced.
+- Several tweak descriptions were corrected to say what the tweak really does, and one policy now only shows on the Windows editions it works on.
+
+### Fixed
+- **Case fans:** a fan stopped by a curve no longer stays stopped when all temperature readings disappear, and old board readings no longer count once the chip stops answering.
+- **A cancelled shutdown could come back** after a restart, and a plan replaced within the same second could be mixed up with the old one.
+- **Sleeping during a shutdown countdown** could shut the PC down on waking. A missed countdown is now cancelled with a notice.
+- **`shutdown in 1d` and `shutdown in -1m`** were both read as 60 seconds. Search now refuses what it doesn't fully understand.
+- **Game profiles:** a game ending at the wrong moment could get its profile back after closing, two games with the same file name no longer share a rule, and a crash or power cut during a game now restores the card's earlier settings. GPU changes also check they reach the same card on PCs with two.
+- **Uninstall:** CPU power plans and the minimum-clock lock are now put back. Removing Deck no longer leaves a cap or floor behind with nothing guarding it.
+- **Tweak undo:** a tweak now stops before changing anything if it can't save what it needs for Undo. DNS Undo covers IPv6 and still works after you change network adapter, and stopping a service is checked.
+- **App removal can't preselect shared folders** or services another app owns, and a registry backup must exist before anything is deleted.
+- **Clean up:** the Rust build cache only removes real build output, even when its folder setting points somewhere unusual. Installers moved to the Recycle Bin no longer count as freed space.
+- **Clipboard:** exclusions are checked while holding the clipboard, unreadable markers count as excluded, and very large items are skipped.
+- **Store apps:** a downloaded package is rechecked and held until it's installed.
+- **PC to PC:** resuming a transfer now needs the same PC that was approved.
+- **Support reports** no longer include file paths.
+- **Phones:** resetting the pairing code now disconnects phones that were already connected, and upload temp files can't overwrite each other.
+- **Setup:** updating from a very old per-user install no longer runs a file from that folder with admin rights.
+
 ## 3.6.4 — 2026-11-06
 
 ### Added
