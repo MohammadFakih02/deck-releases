@@ -2,6 +2,160 @@
 
 All notable changes to Deck. Setups for each version are on the [Releases](https://github.com/MohammadFakih02/deck-releases/releases) page.
 
+## 4.0.0 — 2026-11-10
+
+The biggest Deck update so far: a target-FPS power saver, a Startup optimizer, a drive speed test, crash reports and backups, per-game PC settings, sound outputs per app, display schedules, launcher actions, fan calibration and alert rules, and a long list of fixes. Everything new that changes hardware, runs in games or sends anything over the network is off until you turn it on. It also includes 3.7.5, which was never released on its own.
+
+Not in this version: the Android app isn't attached to this release yet, so the Phone page's QR code works again once it is. Not built on purpose: anything that reads a game through RivaTuner beyond what Deck already did, a paste stack (it needs keyboard injection), HowLongToBeat, chat bots, sending alerts by email (ntfy and Discord work), translations.
+
+### Added
+- **User guide online:** a full manual for every page and setting, with recommended setups, an FAQ and troubleshooting, published with each release. Open it from Settings › About or by searching "guide" in Deck.
+- **Page tours:** the first time you open a page, a few short steps light up its main parts with a sentence each (Next, Back, Skip, or Skip all tours). The ✦ button next to search plays a page's tour again; Settings › General turns first-visit tours off or starts them over.
+- **Why did my FPS drop?** (Gaming > Sessions, and a game bar widget): after a stutter or dip it shows the moment ("12 s ago · 144 → 61 FPS") and the likely cause with the readings behind it: GPU power limit or heat, full video memory, one CPU thread maxed, a busy background app, heavy disk or download activity, or "No clear cause". Session reports keep their drops. It only uses readings Deck already takes, and nothing runs when no game is open.
+- **Game bar, one-click essentials:** the default bar now has mic mute, overlay on/off, CPU and GPU profiles, frame limits, sound output, Free memory, volume and music. For the first three games a small hint names the shortcut that opens it (never takes focus; can be turned off). Saved custom layouts are kept: "Back to the default widgets" gets the new set.
+- **Mouse lighting effects:** Static, Breathing, Colour cycle, Strobe and Off with brightness and speed, run by the mouse itself on supported Logitech mice.
+- **Startup findings you can act on:** ranked by measured delay, with short advice per item and "Turn off at sign-in" for your own apps. Windows, security and driver components are marked Keep.
+- **Windows:** pick an app and a snap zone and its windows open straight into that zone; "Remember windows for each set of monitors" puts your windows back when a set of monitors returns (a dock, a TV). Both off by default.
+- **Network:** data used by each app (today, 7 and 30 days), connection quality over time (router and internet delay, jitter, lost replies, kept 30 days), and a "Lag while busy" test graded A to F.
+- **Apps:** "Update your apps" updates the apps winget has newer versions of, one by one with a result each; before uninstalling a Visual C++, .NET or DirectX runtime Deck says which installed apps use it.
+- **Tweaks:** save your tweaks to a file and open one on another PC (you tick what to apply; each keeps its Undo); after a Windows update the notice says which settings Windows put back.
+- **Clipboard:** "Paste as plain text" for chosen apps puts the plain version of formatted text at the top of the history (Deck sends no keys).
+- **PC to PC:** the accept card shows what is inside an offer (biggest files, types, a warning for programs); a PC without enough free space refuses up front; optional "Send to PC" in Explorer's right-click menu.
+- **Sound:** choose which output each app plays on; save output profiles (default output, calls output, each app's output and volume) and apply them in one click with Undo; optional rules that switch output when a headset or dock connects or an app starts, and optional memory of each app's volume (both off by default); **Check mic for 5 seconds** shows peak, noise floor and clipping (nothing is recorded to disk).
+- **Display:** a per-monitor schedule for brightness and warmth through the day, optional dimming when idle, night colour, an input switch that offers only the inputs the monitor lists, and full-screen test patterns (Esc closes). Brightness and colour go back exactly when Deck quits or after a crash; Undo puts back the input.
+- **Launcher:** quicklinks (a web address with `{query}`), custom commands (a program, its arguments and a time limit) and chained actions (sound output, CPU/GPU profile, power plan, open app). Commands and chains show exactly what will run and ask the first time and after any edit.
+- **Clipboard:** "Change it" previews a text item as formatted JSON, comma-separated lines, without link tracking, or with private details hidden (the original stays); "Copy text from this image" reads text from a history image; optional "Wipe codes and keys after a minute"; **snippets** with `{date}`, `{time}`, `{clipboard}` placeholders, pasted from the launcher.
+- **Wake a PC:** PCs Deck has seen on your home network that are off or asleep now show a Wake button (Wake-on-LAN).
+- **Processes:** a one-line "what is this" for common Windows and desktop programs.
+- **Startup apps** show how many seconds an app slowed the last Windows starts, from Windows' own measurements.
+- **Shut down when an app finishes its work:** waits until the app has been busy, then until it stays under a CPU percentage for the minutes you set, or closes.
+- **Rest your eyes every 20 minutes** (off by default): a 20-20-20 reminder that waits while a game or video is in front.
+- **Fans:** run a fan on the highest, lowest or average of two curves, or make it follow another fan; an "Ignore short spikes" preset; **quiet hours** that cap curve-driven fans at night unless the PC gets warm; **Rehearse a curve** plots what a fan would do (climb, short spike, lost sensor, cool-down) without touching the fans; **Calibrate a fan** measures its speed at each step and its stop and start points, then warns later if it turns slower than before.
+- **Sensor alert rules** on any reading ("above or below X for N seconds", several tests together) that can show a notification, send a message out, flash the lights red or switch a CPU or GPU profile.
+- **Notifications out:** send alerts, drive warnings, shutdown-plan warnings and "Deck closed unexpectedly" to an ntfy topic or a Discord webhook (off by default, each kind opt-in, with a test button).
+- **Sensor history:** a day, a week or a month of CPU and GPU temperature, load and power. All readings now explains where each reading comes from, what it means and how fresh it is.
+- **CPU:** the live panel shows what the profile asks for against the clock the CPU runs at, and names what is holding it back.
+- **Lighting:** optional red flash on heat alerts or when the death counter counts a death, an optional colour per CPU/GPU profile, and OpenRGB devices can follow Deck's lighting through OpenRGB's SDK server (off by default).
+- **Weekly health card** on This PC: the last seven days of temperatures, drive checks, free space, sensor alerts and crashes, with links to the details.
+- **Cooler display:** optional short messages for important events (shutdown soon, timer done, downloads and PC to PC transfers finished, alerts, heat).
+- **Target FPS power saver** (Gaming, per game, off by default): set a target such as 60, 90, 120 or 144 FPS, and while that game is in front Deck lowers the GPU power limit and the CPU's long-term power limit step by step as long as the game stays comfortably above the target, and raises them again when it drops below. It never goes below safe floors. The original limits come back when you leave the game, alt-tab, change a profile, the PC gets hot, Deck quits, or after a crash. It only lowers a limit the hardware actually runs into (a GPU-bound game gets a lower GPU limit; the CPU limit stays), and the page shows the FPS now next to the limits. Needs an NVIDIA GPU and RivaTuner's frame-rate reading (Deck adds nothing to the game). Tested with Unigine Heaven held at one spot, target 100 FPS: the GPU went from 240 W to 100 W while the game stayed at about 168 FPS, and closing it or switching away put back exactly 240 W and 130 W. **Simulate** shows what it would do on sample traces without touching the hardware. The game is recognised from the window in front, so RivaTuner briefly reporting another program (or a reading that is a moment late) no longer hands the limits back and starts over; the log says why each hand-back happened. It reacts within one to two seconds, starts from the limits that held the target last time for that game, may raise the GPU above its profile (up to the card's maximum) when the game needs it, and stops going lower when the frames get uneven (the slowest 1 % of the last three seconds), even if the average is fine. Optional per game: "Go below the lowest power limit" also holds the core clock lower, down to the Minimum mode "Measure this card" found. Picking a profile yourself turns Target FPS off for that game until it restarts.
+- **Startup optimizer** (Clean > Startup optimizer): how long your last Windows starts took (firmware, Windows, sign-in), a history of the last ten, what slowed them down by Windows' own measurements, and advice for each cause. Safe fixes (Explorer's startup delay, Fast Startup, delayed start for optional updater services) are opt-in, each with an exact Undo and an Undo all.
+- **PC settings per game:** a game can switch the fan preset, lighting effect, display mode, HDR, digital vibrance and sound output while it runs; everything goes back when it closes, when Deck quits, and after a crash.
+- **Playtime:** Gaming and Home show total and weekly hours per game and the last session.
+- **Session report** after a game closes: time played, highest temperatures, energy used and deaths.
+- **Energy and cost:** Home and Gaming show energy used today and this month, with an optional price per kWh.
+- **Profile stability log** (optional): warns when a CPU or GPU profile was active during repeated game crashes or driver resets.
+- **Death counter:** text files for OBS, and attempt splits per session with the profiles and temperatures at the time.
+- **Controller:** a low-battery warning over games (optional), a stick drift check with a suggested dead zone, and battery history with hours left.
+- **Game bar:** new Fan preset widget.
+- **Crash reports:** if Deck closes unexpectedly it saves a crash report on your PC and tells you. Nothing is sent anywhere, and crash files only join a support report if you choose.
+- **Back up and restore Deck** from Settings, with optional weekly backups to a folder you choose. Secrets stay out unless you add a password, which encrypts the backup. You review a backup before restoring it, and the current settings are saved first.
+- **Go back to the previous version** from Settings > About, follow **beta releases**, and see **what is new** once after each update.
+- **Active changes** (tray and Home) lists everything Deck is holding right now, with a Release button for each.
+- **Deck's storage** in Settings shows how much space each part of Deck uses, with a cap and a Clear button for the artwork cache.
+- **Settings > Diagnostics** turns on detailed logging for one area; Deck records its own and WebView2's memory use every hour.
+- A short **introduction** at the top of Settings on first run (Show introduction brings it back).
+- **Drive speed test** on the Drives page: sequential and random 4K, read and write (SEQ1M Q8T1/Q1T1, RND4K Q32T1/Q1T1), with history per drive. The test file bypasses the cache and is deleted even if Deck closes mid-test.
+- **Drives:** TBW life estimate, temperature history with an alert, and a verified-copy plan for drives that start failing (copies your files to another drive and checks every one).
+- **Disk space:** find duplicate files (recycle them, or replace them with a hardlink; the replaced copy goes to the Recycle Bin), see what grew since the last scan, build a "make room for N GB" plan, and see what deleting a selection would really free.
+- **Anti-cheat friendly:** when FACEIT is running, Deck hands the fans back to the BIOS and stops using its hardware driver, says why, and resumes when FACEIT closes. If Windows blocks the driver, Deck says so instead of showing missing fans.
+- **One hardware owner per PC:** if a second Windows user also runs Deck, only one controls the fans and lights; the other says so and takes over when it quits.
+- **Keep awake** lists what else is keeping the PC awake.
+- **Sensors: "Slow readings during games"** (on by default) reads drive counters and idle fan chips every 3 seconds while a game is in front; manual fan curves keep their one-second timing.
+- **Get the Android app by QR code:** the Phone page has a "Don't have the Android app yet?" section. Scanning its code downloads the newest app from the public release page.
+- **Low delay for the phone as speaker:** a new switch plays at about 120 ms instead of 300, at any sound quality. Weak Wi-Fi may cause small gaps.
+- **Test my mouse:** the Lighting page's Mouse card now always shows, with a button that tells whether Deck supports your mouse and a report to copy and send so support can be added. It only reads what Windows knows; nothing is sent to the mouse. `Deck.exe --mouse-probe` prints the same report.
+- **Logitech mouse lighting:** the Lighting page gets a Mouse card, shown only when a Logitech mouse answers, with Off, a solid colour and a brightness slider. Each zone's result is shown, and G HUB or another RGB program running is noted. Deck sets it only when you press a button.
+- **Ask on the PC before a phone powers it off:** a new Phone page switch (off by default). With it on, a phone's shutdown, restart, sleep, hibernate or scheduled power-off waits for Allow on a notification on the PC. No answer in 30 seconds, a closed notification, or a new phone key means it does not happen, and the phone is told it is waiting. Lock and screen off are not asked.
+
+### Changed
+- **One Settings page for everything.** Settings now has parts listed on the left (General, Appearance, Search, Games, Death counter, CPU and GPU, Desktop, Notifications, Connections, Data & recovery, About) and a **Find a setting** box. The Settings tabs of CPU, GPU, Deaths, Clipboard, PC to PC and Workspace Sync, and the loose settings on other pages (Gaming options and crash records, controller battery, phone power and upload limits, drive health warnings, Store app auto-install), moved there. Pages that are settings in themselves (Overlay, Game bar, Flyouts, Fans, Lighting) stay, linked from their part.
+- **Gaming › Games, redone:** Game mode is one slim bar on top, your games are a compact list on the left (with the default profile at the top), and the picked game fills the right with its picture, figures and settings. Games without a picture show a plain gamepad instead of a broken file icon.
+- **CPU and GPU charts** (CPU › Cores, GPU › Readings) have numbers on both axes, fill their panel, and can show the clock, temperature, load or power.
+- **Much less text everywhere.** Every title, description and "?" help in the app was rewritten to a length budget: a setting's line says what it does in one sentence, and the detail sits behind the "?". Over 400 long passages were cut; nothing that warns about hardware or data was dropped.
+- **More tabs, shorter pages:** CPU, GPU and Fans, Network, Sound and mic, Windows, Phone, Settings, Screen tools, Apps, Flyouts and the Game bar are split into tabs, and each page reopens on the tab you used last. The Games tab in Gaming is grouped into Performance, Power, While playing and PC settings.
+- **Session reports** are grouped by day with length, average FPS and 1 % low, newest first with Show more.
+- **Controller page:** one keyboard with all keys instead of "Keys to show" plus "More keys".
+- **Sensors:** "Where these readings come from" explains each source once and is readable; rows no longer get cut off, and columns line up.
+- **Drives and Network** have tidier spacing; missing values show as small hints instead of big text. The search box and buttons at the top of each page match the rest of the app.
+- **Workspace Sync** when off is a short pitch with one button; the details are in a fold.
+- **GPU page, easier to read:** the profile editor opens with a strip that says what each section does (Power, Speed, Memory, Fan; changed ones are highlighted, a click jumps there), shows the four sections side by side in two rows, and puts the voltage curve and fan curve full width underneath, so nothing hides far down the page. Built-in modes is one fold under Your profiles, as on the CPU page, with all eight modes in it (the four everyday ones first) instead of a second "All modes" fold inside it.
+- **CPU, GPU and Startup optimizer:** the page buttons sit in a row under the title, so the top bar keeps only search, pin and close like every other page.
+- Damaged saved files are kept aside and the last good copy is loaded; background workers that crash restart themselves and are listed in This PC.
+- Deck checks an update's digital signature when it has one, in addition to its checksum.
+- A settings file written by a newer Deck is left untouched; this version loads defaults and won't save over it.
+- High-contrast themes, reduced motion and Windows' text size setting are respected.
+- Clean up lists NVIDIA, AMD and DirectX shader caches separately, Steam's shader cache per game, and game crash dumps per game.
+- Deck leaves a sleeping laptop NVIDIA GPU asleep and the GPU page shows "GPU asleep".
+- On ARM64 Windows the hardware pages are hidden with the reason; on Windows N the music features say the Media Feature Pack is missing.
+- Errors from Windows are explained in plain words with a next step.
+- Tweaks refuse to turn off services that Windows Update, the Store, Defender and licensing need.
+- Undo in Tweaks asks before it overwrites a setting you changed after Deck applied it.
+- Shortcuts another app has taken are marked, and Deck registers them again after sleep.
+- Fan control and input polling keep their timing when Windows puts Deck in Efficiency mode.
+- File search says when some folders could not be read or the file limit was reached.
+- The phone-controller driver message points at ViGEmBus's final release and explains its retired updater.
+- The hand cursor is only on real buttons and links, not on whole rows and cards.
+- The log now says what asked for each skip (media key, Deck, the phone remote, a shortcut), so an unexpected card can be traced.
+- **The phone link is encrypted only and signed per request (method and query included).** This needs the matching Android app version; older apps must update, and the old browser page stops working until reloaded from the PC. The phone port no longer serves anything over plain HTTP (only a short page that moves the browser to https), pairing links are always `https://` with the PC's fingerprint, and without a certificate the phone connection doesn't start and the Phone page says why.
+
+### Fixed
+- Game pictures no longer flicker or sit empty while a page refreshes, and games Deck found by their program (such as "Roblox Game Client" or "osu!(lazer)") now get their artwork. A game with no picture shows its program's icon.
+- Switching a game bar widget off no longer makes it vanish from the list and from Add; it stays in the list, dimmed, until you remove it.
+- A video playing under the pointer on a video site (a muted preview) no longer shows as now playing: a browser only counts once it makes sound. The song already shown keeps showing if you mute it.
+- Play time no longer shows "2 h 44.7833 min".
+- A stray "null" no longer shows on the Controller page without a controller.
+- The Fans page no longer says fans aren't available for a moment at start-up; hardware pages show a quiet loading line instead.
+- "Test my mouse" no longer jumps to the top of the page.
+- The game bar preview grows back after switching from Floating card to Full height.
+- **The overlay no longer freezes or shows twice.** RivaTuner also drew it inside NVIDIA's own overlay window (the "Press Alt+Z" pop-up and its notifications), which lies over the game and only redraws now and then: a frozen copy covered the live overlay, or the two showed on top of each other, and turning the overlay off and on didn't help. Deck now keeps NVIDIA's, AMD's and Xbox Game Bar's overlay windows out of RivaTuner, as it already did for launchers. An overlay window already open when Deck updates keeps the old copy until it restarts (or the PC does).
+- Home shows play time as "26 min" or "1 h 5 min" instead of "26.35 min" and "0.44 h", and the energy figures are one short line under PC readings instead of rows squeezed into the tile.
+- The GPU page no longer warns that the power limit differs from the profile when the profile asks for less than the card's minimum (41% of 240 W asks for 98 W; the card runs at its lowest, 100 W).
+- With a GPU profile on, Deck checked Windows' event log for driver resets every 5 seconds (a short program start each time, games included); it now looks at most every 30 seconds.
+- **Deck's window could stay empty** after an update that changed the order Deck's page parts load in (a Gaming setting read before it existed). Each page's first tab is now defined in one place.
+- **Installing or updating could stop with "Deck couldn't create its scheduled tasks"** on PCs where Windows elevates admins without asking (3.7.5). The check of Deck's folder asked Windows for more access to the signed-in user's token than Windows gives; it now asks only for what the check needs.
+- Fans, Lighting, Drives and This PC no longer stop drawing when one of their readings is missing.
+- The Clean up tab no longer makes the window stutter once a second when the Recycle Bin holds many files.
+- An invalid reading (not a number) can no longer crash the game ping test, the network speed test, the GPU curve editor, the overlay's top list or fan curve sorting.
+- A drive that first becomes readable already unhealthy now warns.
+- **Drive health:** Deck no longer wakes sleeping hard drives to read their health; USB drive warnings wait for a second bad reading and say they may be wrong; a drive going from unknown to caution or bad now warns.
+- **Sensor recording** no longer starts over at 50 MB: it moves to a new numbered file and keeps the five latest.
+- A stuck Windows management query can no longer hang the machine probe; the support report names what was skipped.
+- Deck follows a moved or renamed Downloads folder (PC to PC inbox, file search, clean-up).
+- Two different screenshots with the same edges are no longer treated as one clipboard entry.
+- Files VirusTotal had not seen are looked up again after a week.
+- The calculator reads `max(1,234)` as two numbers.
+- Opening a workspace puts each window of the same app in its own saved place.
+- The session summary's FPS per watt only uses moments where both were measured.
+- Saving Deck's files rides out a virus scanner holding the file for a moment.
+- **Building from source:** running the tests no longer opens a "Windows cannot find" box with an error sound.
+- **Music card when a song changes by itself:** the moment a player stops while loading the next song no longer opens a Paused card. A pause in a new song's first two seconds shows only if it holds.
+- **Mouse lights can be turned back on:** after Off, the button becomes Turn on, and moving the brightness slider lights the mouse again.
+- **VB-CABLE setup:** it could not start from its protected folder; Deck now starts the checked setup with its own admin rights, or says why it can't.
+- **Uninstalling:** Deck no longer offers leftovers while an uninstaller that relaunched itself from Temp is still running.
+- **Screen view:** a small picture on a fast connection no longer loses H.264 because the bitrate went over the encoder's limit.
+- **Phone power approvals:** Allow on PC can't be reused or answer a newer request, and is refused while a phone has control of the PC. A plan's "Do now" follows the same rules.
+- **Received setups and zips:** extraction counts the real unpacked size, runs without admin rights, and a snapshot's undo only restores the listed settings.
+- **Uninstalling a program no longer runs a user-written uninstaller with admin rights.** An uninstaller listed only for your account, or one in a folder a normal program could change, is started as you; if it can't be started that way Deck says so instead of running it elevated.
+- **A zip received with Install is unpacked without admin rights,** into a fresh folder that is kept only if it worked. Zips with too many files, too much data, paths leading outside the folder or symbolic links are refused with the reason.
+- **Applying a received setup leaves Windhawk off by default** and warns that mods run as code inside other programs. Its files are copied to an admin-only folder before they are checked and used, and the result says whether mods were applied.
+- **Getting VB-CABLE** unpacks and checks the setup in a folder only administrators can enter, and the signer's name must match exactly.
+- **Getting VB-CABLE no longer loads PowerShell modules from your user folders** while Deck runs as administrator. It uses Windows' own PowerShell and only the system modules.
+- **The built-in PawnIO driver file name can't be changed to a path,** and the file is compared in full and not written through a link.
+- **Making a new phone key now stops downloads and uploads already running.** A large download kept sending, and an upload could still finish and appear in the inbox; half-sent uploads are removed too.
+- **The old phone key no longer stays in plain text in settings backups.** The backup and any damaged-file copy are sealed, and if Windows can't seal a secret, settings, PC to PC, Workspace Sync and file check results are left as they were, and the phone certificate isn't made, instead of being saved in plain text.
+- **Turning the phone remote off now disconnects phones already connected.** They could keep controlling the PC until they left.
+- **Setups from another PC stay within what they're meant to change.** A received setup could write other registry values, including programs that start with Windows. It's now limited to its own list, and winget ids from another PC can't be read as options.
+- **Workspace Sync:** a damaged settings file is set aside rather than replaced by a new key, and two more settings that can run commands now wait for approval.
+- **PC to PC:** a damaged settings file or device key is kept aside rather than overwritten.
+- **Failed actions now say so** across the app, rather than doing nothing, and buttons no longer stay stuck after a failure.
+- **Search:** pasting thousands of brackets can't crash Deck.
+- **Screen on your phone** follows a resolution change or a screen being unplugged while streaming.
+- **Fans:** if the fan thread fails while Deck is closing, fans are still handed back to the BIOS.
+- **Kingston Fury RGB:** a stick that stops answering is retried every 30 seconds rather than on every frame.
+- **Phone page:** only http and https links open from the shared list, and messages no longer claim success when the phone wasn't connected.
+- **Startup apps:** one very long entry no longer hides the ones after it.
+
 ## 3.7.0 — 2026-11-07
 
 A safety release: fans, power actions, undo and the phone connection, checked piece by piece.

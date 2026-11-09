@@ -26,6 +26,10 @@ Hardware control (fans, lighting, CPU power limits, GPU tuning), most Windows tw
 
 **Needs:** Windows 10 or 11 (64-bit). Optional: [RivaTuner Statistics Server](https://www.guru3d.com/download/rtss-rivatuner-statistics-server-download/) for the in-game overlay (Deck can install it), an NVIDIA card for GPU tuning, [VB-CABLE](https://vb-audio.com/Cable/) (free) for the phone as a microphone (Deck fetches VB-Audio's own setup for you).
 
+## User guide
+
+The [Deck user guide](docs/guide/README.md) explains every page and setting, what to pick, and answers common questions ([FAQ](docs/guide/faq.md), [Troubleshooting](docs/guide/troubleshooting.md)).
+
 ## What's inside
 
 ### Everyday
@@ -34,7 +38,7 @@ Hardware control (fans, lighting, CPU power limits, GPU tuning), most Windows tw
 |---|---|
 | **Home** | The game you're playing or played last on top, with its artwork, time played, sessions and profile chips, +1/Undo for games with a death counter, and a **Not a game** button if Deck picks up the wrong program. Then clock and calendar, now playing, PC cards (usage, clock, power and temperature for CPU, GPU, memory, VRAM or network; pick them with the tile's settings icon), one-click CPU/GPU profiles, sound mixer, pinned and frequent apps, quick actions, clipboard, timers and network. Drag tiles anywhere, resize them, hide them and bring them back. |
 | **Search** | Start-menu and Store apps, files (Deck's own index), every Deck page, setting and tweak, a calculator, unit / currency / number-base conversion, games, clipboard and the web. Understands `timer 10m`, `sleep in 30m`, `awake 2h`, `kill discord`. |
-| **Clipboard** | Text, Images and Files tabs, pins, search across a tab or all history, a selected-item inspector and "paste as"; skips password managers. History, image, paste and retention settings live in its Settings tab. |
+| **Clipboard** | Text, Images and Files tabs, pins, search across a tab or all history, a selected-item inspector and "paste as"; skips password managers. History, image, paste and retention settings are in Settings › Desktop. |
 | **Flyouts** | Optional cards that never take the focus: music (name first, cover later; controls and seek), volume, microphone, sound device, lock keys, brightness, airplane mode and charger. Volume can pair with music or share its card. Choose skips, song endings or both, with advanced end tolerance and per-app music rules. Show the current song from the tray. Each kind has its own switch and duration; all off by default. Native, noninteractive cards over games. |
 | **Sound and mic** | Default output, master and per-app volume, media sessions; every microphone with level, boost, mute, a test meter, which mic apps and calls use, and Listen to this device; rename devices. |
 | **Power & time** | **Keep awake** (shows Windows' own sleep and screen-off times; "until downloads finish"), **Timers & breaks** (timer creation above paired stopwatch and break reminders), **Shut down when…** a time comes, an app closes, downloads finish (browser, Steam or any download), the CPU, graphics card or disk goes idle, the network goes quiet, media stops or you're away, optionally followed by "then when the PC is idle", with a warning you can cancel. Every threshold, the warning, keeping the PC awake while waiting, waiting while you play and closing apps that hold it up are your choice. Shut down, restart, sleep, hibernate and sign out ask for confirmation first; plans ask when you start them, showing the action and when it will run. A time missed while the PC slept is skipped, not run on wake. |
@@ -84,7 +88,7 @@ Hardware control (fans, lighting, CPU power limits, GPU tuning), most Windows tw
 | **Remote desktop** | See and control the PC from your phone or another computer with RustDesk (free); Deck installs and sets it up. |
 | **Workspace Sync** | Keeps workspace sessions, memory, settings and MCP servers the same on your PCs, and can copy project folders and install programs another PC has. Incoming settings that could run something new wait for review. Off until you turn it on. |
 
-Settings has General, Search and About with Updates. Home tiles are in Edit Home, clipboard history preferences are on Clipboard, and shared profile preferences are on CPU and GPU. Phone keeps connection, sharing, screen and audio controls together, with longer setup opening inline.
+Settings holds every preference in one place, in parts listed on the left (General, Appearance, Search, Games, Death counter, CPU and GPU, Desktop, Notifications, Connections, Data & recovery, About), with a box to find a setting. Home tiles are in Edit Home. Phone keeps connection, sharing, screen and audio controls together, with longer setup opening inline.
 
 ### Quality of life
 
@@ -123,6 +127,7 @@ Deck uses no input hooks and never injects into games. Keys use `RegisterHotKey`
 - **Fans:** Nuvoton NCT668x / NCT679x and ITE Super I/O chips (most MSI, ASUS, Gigabyte and ASRock boards), HP laptop fans. Chips that haven't been verified are monitor-only.
 - **GPU tuning:** NVIDIA (NVML + NvAPI). AMD and Intel GPUs show sensors only.
 - **CPU tuning:** any CPU for power-plan profiles; power limits and the clock lock on Intel; turbo ratios on unlocked Intel CPUs.
+- **Mouse lighting:** Logitech mice with colour-effect lighting (off or one colour).
 - Pages hide themselves when the PC has nothing for them.
 
 > **Use hardware tuning and Advanced tweaks at your own risk.** Overclocking, undervolting and changing fan behaviour can make a PC unstable or run hot, and some Windows tweaks turn off features you may miss. Deck has guards (crash guard, heat guard, fans released to the BIOS on quit, exact undo and a restore point for tweaks) but can't protect against every setting.

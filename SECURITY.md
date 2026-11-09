@@ -134,12 +134,12 @@ These are not security boundaries, but they protect the PC when something goes w
   - Control pauses while a game is in front, unless the phone's own "Control in games" switch is on (off by default).
 
   Treat the phone key as an admin credential while Control is on.
-- **The phone link at home is plain HTTP unless you open the https page.** The key itself is never
-  sent, and requests can't be replayed. But on plain HTTP anyone on the same Wi-Fi can read what the
-  page shows (media titles, file names, the screen view, the speaker's sound). The https page (same
-  port, needed for the mic) is encrypted with a certificate Deck makes for this PC (key sealed with
-  DPAPI, `phonetls.rs`); it is self-signed, so the phone warns once and can't tell a stranger's
-  certificate apart on that first visit. Use Tailscale (encrypted) on networks you don't trust.
+- **The phone link is encrypted, with a certificate Deck makes itself.** The phone port answers
+  only TLS; anything else gets a fixed page that moves the browser to https. The key itself is never
+  sent, and requests (method, path and query) are signed and can't be replayed. The certificate is
+  self-signed for this PC (key sealed with DPAPI, `phonetls.rs`). The pairing link and QR carry its
+  fingerprint and the Android app only talks to a certificate that matches, but a browser can't check
+  it: it warns once, and on that first visit can't tell a stranger's certificate apart.
 - **Tweaks change Windows with admin rights.** They are fixed recipes from `tweaks.json`, never
   scripts from the internet, and each change keeps its exact before-value; the journal is sealed (see
   above). An undo list written by a Deck without admin rights isn't sealed, so the next admin start
