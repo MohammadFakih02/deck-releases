@@ -57,6 +57,8 @@ How to undo anything: press **Back to stock** at the top of the page. Your profi
 
 ## The Profiles tab
 
+**Starter profiles.** On a fresh install with no profiles of your own, Deck adds three ordinary, editable profiles once: **Gaming**, **Everyday** and **Quiet**, copies of built-in modes (for the GPU, the first of Fastest/Normal, Efficient/Normal and Quiet/Saver/Low power that your card has, never the same mode twice). Edit, rename or delete them like any profile; deleting them doesn't bring them back.
+
 **Applied profile.** The profile that is on now, with its **Saved power target** (percent of stock) and **Saved core offset**, an **Edit profile** button and its shortcut key. If no profile is active it says **Stock**.
 
 **Warning banners** you may see on this tab:

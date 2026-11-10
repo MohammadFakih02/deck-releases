@@ -2,6 +2,17 @@
 
 All notable changes to Deck. Setups for each version are on the [Releases](https://github.com/MohammadFakih02/deck-releases/releases) page.
 
+## 4.0.2 — 2026-11-10
+
+### Added
+- **Starter profiles:** a fresh install with no profiles of your own gets three editable CPU and GPU profiles once (Gaming, Everyday, Quiet), copied from the built-in modes this PC has.
+- **Support report:** new parts list the makers' control and lighting apps, the firmware's ACPI devices and every HID device with its IDs and report sizes (read from Windows only, no serial numbers), so laptop fans and keyboard lighting can be added.
+
+### Changed
+- **Active changes** is now a Home tile, hidden by default: turn it on in Edit Home and place and size it like any other tile. The tray's Active changes opens the list in a window, even while the tile is hidden.
+- **Fans and Lighting** no longer vanish or sit empty on PCs Deck can't control yet (most laptops): they say "not supported on this PC yet", why, and offer **Copy report**.
+- **Edit Home and Customize** have a **Cancel** button next to Done: it puts back every change made since editing began (positions, sizes, which tiles show, a Reset layout).
+
 ## 4.0.0 — 2026-11-10
 
 The biggest Deck update so far: a target-FPS power saver, a Startup optimizer, a drive speed test, crash reports and backups, per-game PC settings, sound outputs per app, display schedules, launcher actions, fan calibration and alert rules, and a long list of fixes. Everything new that changes hardware, runs in games or sends anything over the network is off until you turn it on. It also includes 3.7.5, which was never released on its own.

@@ -24,6 +24,8 @@ Related pages: [GPU](gpu.md) (graphics card profiles, which work the same way), 
 
 ## How CPU profiles work
 
+**Starter profiles.** On a fresh install with no profiles of your own, Deck adds three ordinary, editable profiles once: **Gaming**, **Everyday** and **Quiet**, copies of built-in modes (of Performance, Balanced and Quiet). Edit, rename or delete them like any profile; deleting them doesn't bring them back.
+
 A CPU profile has two halves.
 
 **The Windows power plan half.** Deck creates and manages a normal Windows power plan for each profile (named "Deck · <profile name>"). It holds:

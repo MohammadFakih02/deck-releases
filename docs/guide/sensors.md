@@ -73,7 +73,7 @@ Rows that are missing a reading show a dash, not a wrong number. A reading that 
 
 Live graphs updated every second. The status line says "Last 5 minutes, refreshed every second".
 
-The **Customize** button at the top moves, resizes, hides and shows the panels on this page (press **Done** when finished). Deck remembers your layout.
+The **Customize** button at the top moves, resizes, hides and shows the panels on this page (press **Done** to keep the changes, or **Cancel** to undo them). Deck remembers your layout.
 
 | Panel | What it shows |
 |---|---|

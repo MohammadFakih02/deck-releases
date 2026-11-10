@@ -5,7 +5,7 @@ Two pages in the **Tune** group cover the lights on your PC:
 - **Lighting** controls the RGB lights of your motherboard and RAM, ARGB strips and fans on the board's headers, a supported mouse, and other devices through OpenRGB. One effect, one place, instead of a program per brand.
 - **Cooler display** drives the little lit display on a supported CPU cooler: temperatures, a clock, text, your own painted design, animations or a music meter.
 
-Both are optional hardware. A page only appears when Deck can use something for it (the Lighting page is always there, because OpenRGB can control devices without a supported board).
+Both are optional hardware. A page only appears when Deck can use something for it (the Lighting page is always there, because OpenRGB can control devices without a supported board). When Deck finds no lights it can control (no Mystic Light board, no Kingston Fury RAM, no supported Logitech mouse, and no OpenRGB devices), the page starts with **Lighting isn't supported on this PC yet** and a **Copy report** button: laptop keyboard lighting, for example, isn't in Deck yet, and the report tells us what your PC has.
 
 **Where to find them:** sidebar > **Tune** > **Lighting**, and **Tune** > **Cooler display** (only when a supported cooler display is connected).
 

@@ -116,7 +116,7 @@ The Deck icon sits in the notification area at the bottom right. If you cannot s
 | **Clipboard history** | Opens the Clipboard page. |
 | **Pick a colour from the screen**, **Copy text from the screen** | Start the screen tools directly. |
 | **Keep the PC awake** | A check item for keep awake "until I turn it off". See [Power](power.md). |
-| **Active changes** | Opens Home with the Active changes list. |
+| **Active changes** | Opens Home and shows the Active changes list in a window (whether or not its tile is on Home). |
 | **Settings** | Opens Settings. |
 | **Quit Deck** | Quits Deck completely. |
 
@@ -209,13 +209,13 @@ Press **Edit Home** (top right of Home). While editing:
 - Below the board, **All Home tiles** lists every tile with a switch to show or hide it, a width (Narrow, Medium, Wide, Full width) and **Move up / Move down**.
 - **Fit every panel** shrinks every tile to its content and pulls the others up into the space.
 - **Put everything back** (with a "Reset layout?" check) restores the default positions, widths and visibility. Your other settings are untouched.
-- Press **Done** to finish. If you hide every tile, Home says so, and Edit Home brings some back.
+- Press **Done** to keep the changes, or **Cancel** to undo everything changed since editing began (positions, sizes, which tiles show, even a Reset layout). If you hide every tile, Home says so, and Edit Home brings some back.
 
 Your layout is saved with your settings, so a [backup](settings.md#backups) includes it.
 
 ## Active changes
 
-At the top of Home is a collapsed panel called **Active changes**. It lists temporary changes Deck is holding right now, when each one ends, and the previous value it will restore. **Release** ends a change early and puts the previous value back. When nothing is active it says "Deck has no active changes to release." You can open it from the tray (**Active changes**) too.
+**Active changes** is a Home tile that is hidden by default: turn it on in **Edit Home** (and place and size it like any other tile). It lists temporary changes Deck is holding right now, when each one ends, and the previous value it will restore. **Release** ends a change early and puts the previous value back. When nothing is active it says "Deck has no active changes to release." The tray's **Active changes** opens the same list in a window, even while the tile is hidden.
 
 ## Recommended setup
 

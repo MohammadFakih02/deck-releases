@@ -247,7 +247,7 @@ Always **Apply**, then watch the temperatures on [Sensors](sensors.md) for a whi
 
 ## Troubleshooting
 
-**The Fans page isn't in the sidebar.** The PC has no fans Deck can see. Laptops usually control their fans themselves. (Without administrator rights the page is there but only shows **Set up**.)
+**The Fans page says "Fan control isn't supported on this PC yet".** Deck found no fan controller it knows: on a laptop the fans are run by the maker's embedded controller, which Deck can't talk to yet; on a desktop the board's fan chip isn't one Deck knows. The fans keep working as the maker or BIOS set them. **Copy report** on that card copies the support report: send it to us so support can be added. (Without administrator rights the page only shows **Set up**.)
 
 **The page says "No motherboard fan readings were found."** The chip answered but reported no fan headers. Check [This PC](this-pc.md) for what Deck found.
 
