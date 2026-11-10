@@ -2,6 +2,20 @@
 
 All notable changes to Deck. Setups for each version are on the [Releases](https://github.com/MohammadFakih02/deck-releases/releases) page.
 
+## 4.0.3 — 2026-11-10
+
+### Fixed
+- **Updates work again.** Since 4.0.0, a Deck installed in Program Files downloaded an update to 100% and then stopped with "The setup could not be retained": the small record kept for Go back was refused in Deck's own protected updates folder. Copies on 4.0.0 or 4.0.2 can't update themselves to this version, so install 4.0.3 once from the release page; updates work by themselves after that. Old setups in that folder are cleaned up again too.
+- **Media flyout volume (with "Volume with music" set to one card):** the level shows whole percents while you drag (it showed numbers like 40.963855421686745%), and it no longer jumps back to the old level in the middle of a drag.
+- **USB drives can be ejected again while Deck runs.** Deck kept every disk open for its drive temperature and speed readings, so Windows said "This device is currently in use". It now opens a disk only for each reading and closes it at once, and finds disks plugged in or removed while it runs (every 30 s).
+
+### Changed
+- **Sensors › All readings:** the device list and the details scroll separately, each within the window, so every device in the list can be reached while the details stay put.
+- Releases can be published by either maintainer (the publish step no longer needs one particular GitHub account), and from a maintainer's PC when the automatic build service is unavailable.
+
+### Added
+- **Android app on the release page:** every release now attaches the app as `Deck.apk` with its checksum, so the Phone page's "Get the Android app" QR code works. It is signed with Deck's own release key: if you installed an earlier test copy of the app, uninstall it once first (Android refuses an update signed with a different key), then pair again.
+
 ## 4.0.2 — 2026-11-10
 
 ### Added
