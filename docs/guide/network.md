@@ -1,14 +1,16 @@
+Where to find it: PC status › Network
+
 # Network
 
 The **Network** page shows what your connection is doing right now and helps you find out why it is slow or laggy. It has a live speed graph, your addresses, a speed test, a "does a download make my games lag?" test, a ping monitor, an optional record of connection quality over time, an optional count of the data each app uses, and a ping check against game servers.
 
-Find it under **Watch > Network** in the sidebar. The page has four tabs: **Overview**, **Tests**, **Data per app** and **Game servers**.
+Find it under **PC status > Network** in the sidebar. The page has four tabs: **Overview**, **Tests**, **Data per app** and **Game servers**.
 
 ![The Network page](../screenshots/network.png)
 
 > Deck only measures your connection and sends ordinary pings and test downloads. It does not touch any game, inject into any game or read any game's memory, so none of this affects anti-cheat.
 
-Speeds are shown in megabits per second (Mb/s) by default. If you prefer megabytes per second (MB/s, where 8 megabits equal 1 megabyte), change **Network speed** under **Settings > Performance and units**. The graph, the speed test and the per-app figures all follow that setting.
+Speeds are shown in megabits per second (Mb/s) by default. If you prefer megabytes per second (MB/s, where 8 megabits equal 1 megabyte), change **Network speed** under **Settings › Appearance** (Performance and units). The graph, the speed test and the per-app figures all follow that setting.
 
 ---
 

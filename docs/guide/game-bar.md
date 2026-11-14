@@ -1,12 +1,14 @@
+Where to find it: Gaming › Game bar
+
 # Game bar
 
 The game bar is a panel that slides over your game with one-click controls: mute the microphone, switch audio output, change CPU or GPU profile, pick a frame limit, skip a song, free memory, count a death and more. You can change common settings without leaving the game and without opening Deck's main window.
 
 It is **off until you turn it on**. You then open it with a controller combination, a keyboard shortcut, Deck's tray menu or the phone remote.
 
-**Where to find it:** sidebar > **Play** > **Game bar**. The page has three tabs, **Widgets**, **Layout & look** and **Opening**, beside a live preview of the bar.
+The page has three tabs, **Widgets**, **Layout & look** and **Opening**, beside a live preview of the bar.
 
-Related pages: [Gaming](gaming.md), [Overlay](overlay.md), [Death counter](death-counter.md), [Controller](controller.md), [Phone](phone.md).
+Related pages: [Game profiles](gaming.md), [Performance overlay](overlay.md), [Death counter](death-counter.md), [Controller](controller.md), [Phone](phone.md).
 
 ## Contents
 
@@ -103,11 +105,11 @@ Switch between speakers, headphones and other sound outputs. The current one is 
 
 ### Free memory
 
-Moves idle memory from programs aside and clears Windows' standby cache, using Deck's existing memory clean (the same one as **Free memory now** on [Gaming](gaming.md#the-apps-to-close-tab)). Runs once per press and reports the amount freed. Apps stay open, but they may briefly pause while loading data back into memory. Try it when memory is nearly full; Windows normally manages memory on its own.
+Moves idle memory from programs aside and clears Windows' standby cache, using Deck's existing memory clean (the same one as **Free memory now** on [Game profiles](gaming.md#the-apps-to-close-tab)). Runs once per press and reports the amount freed. Apps stay open, but they may briefly pause while loading data back into memory. Try it when memory is nearly full; Windows normally manages memory on its own.
 
 ### Readings
 
-Check frame rate, temperatures and load at a glance. Option: **Shown**, in the order you pick them: FPS, CPU temp, GPU temp, GPU load, CPU load, Memory, CPU power, CPU clock. The FPS reading needs RivaTuner measuring the game (see [Overlay](overlay.md)). A reading the PC does not have shows "-".
+Check frame rate, temperatures and load at a glance. Option: **Shown**, in the order you pick them: FPS, CPU temp, GPU temp, GPU load, CPU load, Memory, CPU power, CPU clock. The FPS reading needs RivaTuner measuring the game (see [Performance overlay](overlay.md)). A reading the PC does not have shows "-".
 
 ### Frame limit
 
@@ -130,7 +132,7 @@ Keep your most-used switches together. Options: **On / Off under each** (a state
 - **Death counter**: turn the [death counter](death-counter.md) on or off.
 - **Readings overlay**: turn the [overlay](overlay.md) on or off.
 - **Microphone**: mute or unmute.
-- **Boost**: start or stop [Game mode](gaming.md#game-mode).
+- **Boost**: start or stop [Deck game mode](gaming.md#game-mode).
 - **Frame limiter**: turn the RivaTuner limiter on or off (shows the limit).
 - **Keep awake**: keep the PC and screen awake (see [Power](power.md)).
 
@@ -138,7 +140,7 @@ By default Controls shows the microphone and readings overlay.
 
 ### Death counter
 
-Count deaths and correct the last fight. Shows the game's total and name, a **+1 death** button and an undo button, then (if a fight is open) the boss and the tries so far. Options: **Current fight**, **+1 and Undo**, **Fixes: won, not a boss, gave up** (three buttons for correcting what Deck detected, with an **Undo that fix** that shows for a few seconds), and **Teach in Deck** (closes the bar and opens the death counter so you can teach it this game's screens). If the counter is off, the widget says so and offers **Turn it on**. See [Death counter](death-counter.md).
+Count deaths and correct the last fight. Shows the game's total and name, a **+1 death** button and an undo button, then (if a fight is open) the boss and the tries so far. Options: **Current fight**, **+1 and Undo**, **Fixes: won, not a boss, gave up** (three buttons for correcting what Deck detected, with an **Undo that fix** that shows for a few seconds), and **Teach in Deck** (closes the bar and opens the death counter so you can teach it this game's screens). If the counter is off, the widget says so and offers **Turn it on**; if Deck cannot read the counter at all, it says "Death counter readings are unavailable" and offers nothing. See [Death counter](death-counter.md).
 
 ### Controller overlay
 
@@ -146,7 +148,7 @@ Show, move or resize the controller overlay. Options: **Move and resize** (the b
 
 ### FPS drops
 
-See why your FPS just dropped: the likely cause of each dip, from [Why did my FPS drop?](gaming.md#why-did-my-fps-drop). Option: **Drops listed** (1 to 6, default 3). Needs RivaTuner measuring the game. With no drops it shows "No drops in this game so far".
+See why your FPS just dropped: the likely cause of each dip, from [Why did my FPS drop?](gaming.md#why-did-my-fps-drop). Option: **Drops listed** (1 to 6, default 3). Needs RivaTuner measuring the game. Each row says how long ago the dip was (counted from the dip, in seconds). With no drops it shows "No drops in this game so far".
 
 ### Clock
 
@@ -226,7 +228,7 @@ The preview on the right is a small copy of your screen with the bar drawn as it
 
 **Is the game bar safe with anti-cheat?** Deck never injects into games. The bar is an ordinary window on top of the game, and the controller is read passively (the game still receives every press, including the opening combination). The bar does not read or write the game's memory.
 
-**What is different from Windows' Game Bar?** It is Deck's own panel, with controls for Deck's features (profiles, frame limiter, death counter, controller overlay, Game mode) and your own layout. Deck keeps Windows' Game Bar's own windows out of RivaTuner's hooks, but does not replace it.
+**What is different from Windows' Game Bar?** It is Deck's own panel, with controls for Deck's features (profiles, frame limiter, death counter, controller overlay, Deck game mode) and your own layout. Deck keeps Windows' Game Bar's own windows out of RivaTuner's hooks, but does not replace it.
 
 **Can I use the bar without a controller?** Yes: use the keyboard shortcut, the tray menu, the phone, or **Open it now**.
 

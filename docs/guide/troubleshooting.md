@@ -1,6 +1,14 @@
+Where to find it: Settings › About
+
 # Troubleshooting
 
 Problems by symptom, with the steps to try and links to the page that explains more. Each page also ends with its own Troubleshooting section for problems specific to it. If nothing here helps, jump to [Getting the log and a support report](#getting-the-log-and-a-support-report).
+
+## Deck is still starting
+
+Deck shows this message if its background part is slow to answer. It keeps trying with increasing delays and opens by itself when the connection is ready. **Try again** skips the next waiting period.
+
+Script errors are shown as a plain message; the full details are kept in Deck's log.
 
 ## Contents
 
@@ -19,39 +27,39 @@ Problems by symptom, with the steps to try and links to the page that explains m
 
 ## A page or setting says "not available", "Needs admin" or is greyed out
 
-Work out which of three causes you have. [This PC](this-pc.md) answers it in plain words: its "What Deck can do here" table says whether your hardware or Deck is the limit.
+Work out which of three causes you have. [This PC](this-pc.md) answers it in plain words: its "What Deck can control here" list says whether your hardware or Deck is the limit.
 
-1. **Deck is not running with administrator rights.** Signs: the CPU card on Home says **Needs admin**, a hardware page shows a **One-time set up** card or a **Set up** button, drive health says "No drives could be read", Tweaks say "Needs Deck's admin rights". Fix: press **Set up** (one Windows prompt). If you installed with the setup this was done for you; if it keeps coming back, reinstall with the setup. Check on This PC that **Admin rights** shows Deck runs with them. See [Getting started](getting-started.md#the-one-time-set-up).
+1. **Deck is not running with administrator rights.** Signs: the CPU card on Home says **Needs admin**, a hardware page shows a **One-time set up** card or a **Set up** button, drive health says "No drives could be read", Windows tweaks say "Needs Deck's admin rights". Fix: press **Set up** (one Windows prompt). If you installed with the setup this was done for you; if it keeps coming back, reinstall with the setup. Check on This PC that **Admin rights** shows Deck runs with them. See [Getting started](getting-started.md#the-one-time-set-up).
 2. **Your hardware does not offer it.** Examples: GPU profiles need a supported NVIDIA card; Highest speed needs Volta or newer and Memory speed needs Ampere or newer; fan control needs a supported fan chip; lighting needs a supported controller; power limits and the clock lock are Intel features. Choices appear only if the PC has the device. This is not a fault.
 3. **Something else is in the way.** A game in front blocks changes to Windows settings, updates, app removal and calibration ("a game is in front": leave the game and try again). Another program (Afterburner, a maker's fan or RGB tool) can be fighting Deck. A "hardware held" toast means Deck found its fan, CPU or GPU settings files edited behind its back; press **Apply them** only if you made the change ([CPU](cpu.md#faq)).
 
-Specific pages: [Tweaks](tweaks.md#troubleshooting), [Gaming](gaming.md#troubleshooting) (greyed-out choices), [Drives](drives.md#troubleshooting), [Fans](fans.md#troubleshooting), [CPU](cpu.md#troubleshooting).
+Specific pages: [Windows tweaks](tweaks.md#troubleshooting), [Game profiles](gaming.md#troubleshooting) (greyed-out choices), [Drive health](drives.md#troubleshooting), [Fans](fans.md#troubleshooting), [CPU](cpu.md#troubleshooting).
 
 ## A page is missing from the sidebar
 
-Hardware pages hide themselves when your PC has nothing Deck can use for them: CPU, GPU, Fans, Lighting, Cooler display and Sensors. Workspace Sync only shows while it is on, unless you tick **Show Workspace Sync** (Settings > General > Sidebar) ([Settings](settings.md#sidebar)). Without admin rights the Fans page shows only **Set up**.
+Hardware pages hide themselves when your PC has nothing Deck can use for them: CPU, GPU, Fans, Lighting, Cooler display and Sensors. Project sync only shows while it is on, unless you tick **Show Project sync** (Settings › General > Sidebar) ([Settings](settings.md#sidebar)). Without admin rights the Fans page shows only **Set up**.
 
 - Open [This PC](this-pc.md) to see what Deck found.
-- Pages you hid or reordered yourself: Settings > General > Sidebar > **Reset order** puts the order back.
+- Pages you hid or reordered yourself: Settings › General > Sidebar > **Reset order** puts the order back.
 - The GPU page appears only for an NVIDIA card with Deck's access; AMD and Intel graphics get [Sensors](sensors.md) but no tuning page ([GPU](gpu.md#troubleshooting)).
 
 ## The overlay is not showing, or is frozen or doubled
 
 There are three overlay-like things; find yours.
 
-**The in-game overlay (readings, drawn by RivaTuner)** - [Overlay](overlay.md#troubleshooting)
+**The in-game overlay (readings, drawn by RivaTuner)** - [Performance overlay](overlay.md#troubleshooting)
 1. Check the strip at the top of the page: the switch is on and RivaTuner is running. Use Deck's own **Open RivaTuner** button, because RivaTuner draws its window properly only when it opens it itself.
 2. Play in borderless or windowed mode. Some games (some anti-cheat protected games, some launchers) cannot be hooked by RivaTuner, and then nothing can be drawn there; the overlay's other features still work.
 3. Shown twice or frozen: NVIDIA, AMD and Xbox Game Bar overlay windows are kept out of RivaTuner's hooks, but a window that was already open keeps its old copy until it restarts. Restart the game or launcher, or the PC.
 4. "No reading" on some lines: that sensor is not provided by the PC right now. FPS and frametime empty: RivaTuner has to be measuring that game.
-5. Using Afterburner as well: turn off *Share readings like Afterburner* and use only one overlay.
-6. Want RivaTuner back as it was: Behaviour > RivaTuner > **Put RivaTuner's look back**.
+5. Using Afterburner as well: turn off *Share readings with other tools* and use only one overlay.
+6. Want RivaTuner back as it was: Behaviour > RivaTuner > **Restore RivaTuner's own look**.
 
 **The controller overlay** - [Controller](controller.md#troubleshooting)
 Check the main switch, the monitor and that **Hide without a controller** is not hiding it; use borderless or windowed mode (overlays hide in exclusive fullscreen). "Waiting for a controller": connect it by USB or Bluetooth and press a button.
 
-**Flyouts and the death counter on screen** - [Flyouts](flyouts.md#troubleshooting), [Deaths](death-counter.md#troubleshooting)
-Exclusive fullscreen hides windows. Use borderless or windowed mode; for flyouts you can set **Over games and fullscreen** to **Overlay text** with the Overlay on.
+**Music & volume pop-ups and the death counter on screen** - [Music & volume pop-ups](flyouts.md#troubleshooting), [Death counter](death-counter.md#troubleshooting)
+Exclusive fullscreen hides windows. Use borderless or windowed mode; for flyouts you can set **Over games and fullscreen** to **Overlay text** with the Performance overlay on.
 
 ## Fans are not controlled
 
@@ -74,7 +82,7 @@ Page: [GPU](gpu.md#troubleshooting).
 - **"GPU asleep":** the card is powered down, common on laptops with switchable graphics. It wakes when a program uses it.
 - **Settings gone after a restart:** GPU settings reset on every restart. Choose a profile under **Apply a profile at start**. An overclocked profile is skipped after an unexpected restart ("Started at stock"); press **Apply anyway** only if you think the restart had another cause.
 - **Afterburner and Deck disagree:** Afterburner's startup profile, hotkeys or fan control override Deck. Use **Stop Afterburner from tuning...** or close Afterburner.
-- **In Gaming:** GPU profiles and *Target FPS* need an NVIDIA card; Target FPS also needs the game in front, a fresh FPS reading from RivaTuner, admin rights and no other tuning program ([Gaming](gaming.md#troubleshooting)).
+- **In Gaming:** GPU profiles and *Target FPS* need an NVIDIA card; Target FPS also needs the game in front, a fresh FPS reading from RivaTuner, admin rights and no other tuning program ([Game profiles](gaming.md#troubleshooting)).
 
 ## The phone cannot connect
 
@@ -101,7 +109,7 @@ Page: [Game bar](game-bar.md#troubleshooting).
 
 ## The death counter is not counting
 
-Page: [Deaths](death-counter.md#troubleshooting).
+Page: [Death counter](death-counter.md#troubleshooting).
 
 1. **Death counter** and **Watch for death screens** are on, and the game is in borderless or windowed mode.
 2. A game Deck does not know is not watched until you count a death in it (**+1 death**, the tray, or choose **Watch in > Every game**).
@@ -116,11 +124,11 @@ Deck does this without reading the game's memory, so it is safe with anti-cheat.
 
 Deck is light when idle, and features cost something only while they are on. Try, in this order:
 
-1. **Low-spec mode** (Settings > Appearance): no animations, live readings every 3 seconds ([Settings](settings.md#performance-and-units)).
-2. Turn off what you do not use: **Watch for death screens** ([Deaths](death-counter.md)) stops the screen watcher entirely; the controller overlay does nothing when off ([Controller](controller.md#faq)); screen and audio streaming on [Phone](phone.md) cost CPU while a phone is connected, so lower the picture size and fps.
-3. In [Sensors](sensors.md), turn on **Slow readings during games**, and turn off **Log every sensor to a CSV file** when you are not investigating.
+1. **Low-spec mode** (Settings › Appearance): no animations, live readings every 3 seconds ([Settings](settings.md#performance-and-units)).
+2. Turn off what you do not use: **Watch for death screens** ([Death counter](death-counter.md)) stops the screen watcher entirely; the controller overlay does nothing when off ([Controller](controller.md#faq)); screen and audio streaming on [Phone](phone.md) cost CPU while a phone is connected, so lower the picture size and fps.
+3. In [Sensors](sensors.md), turn on **Read less often during games**, and turn off **Log every sensor to a CSV file** when you are not investigating.
 4. [Network](network.md): **Connection quality** and **Data per app** run in the background only if you turned them on.
-5. [Overlay](overlay.md): a shorter update interval does a little more work than a longer one.
+5. [Performance overlay](overlay.md): a shorter update interval does a little more work than a longer one.
 6. [Processes](processes.md): file safety checks use disk and CPU while they run; press **Stop**.
 7. Reduce the folders in **Local file search** ([Settings](settings.md#local-file-search)); the first index build is the heavy part.
 8. In the support report, "Background workers" and "Deck memory" show whether something is stuck (see below).
@@ -131,7 +139,7 @@ Deck is light when idle, and features cost something only while they are on. Try
 2. **Open it from the Start menu.** Hot corner not working: it needs Quick panel mode and an outer corner of the whole desktop ([Home](home.md#troubleshooting)).
 3. **It started and left again after crashes.** After three endings within ten minutes Deck stops restarting itself ([Settings](settings.md#start-again-after-a-crash)). Start it from the Start menu; it comes up in a safe state (fans on the BIOS, no overclock).
 4. **"Deck couldn't create its scheduled tasks" or admin start is off.** Reinstall with the setup (it installs over the old copy and keeps settings). Set up refuses to create the tasks for a copy in a folder a normal program could change; install to `C:\Program Files\Deck`.
-5. **Settings damaged.** A damaged settings file is set aside and recovered, never silently reset. To start over: back up first, quit Deck, then move `%APPDATA%\Deck\settings.json` away. Deck starts with defaults ([Settings](settings.md#troubleshooting)).
+5. **Settings damaged, or "Settings could not be saved".** A damaged settings file is set aside and recovered, never silently reset, and a settings file Deck cannot read is left alone instead of being overwritten. If Deck cannot write its settings folder (read-only, full, locked by another program) a notification says **Settings could not be saved** and stays up; Deck retries every few seconds, up to once a minute, and the notification clears by itself once a save works. Keep Deck open until it does, because a change made since the last good save is only in memory. To start over: back up first, quit Deck, then move `%APPDATA%\Deck\settings.json` away. Deck starts with defaults ([Settings](settings.md#troubleshooting)).
 6. **A restore did not apply.** A restore applies at the next start; quit Deck from the tray (not just close) and open it again. "Settings need a newer version": update Deck first.
 7. **Blocked by SmartScreen when installing:** click **More info**, then **Run anyway** ([Getting started](getting-started.md#installing)).
 8. Get a support report if you can open Deck at all (below).
@@ -143,8 +151,8 @@ What Deck does by itself, and what to check:
 - **Fans and GPU fan** are handed back to the BIOS and driver within seconds, even if Deck was killed from Task Manager ([Fans](fans.md#what-happens-if-deck-crashes-or-quits)).
 - **Deck starts again hidden** (**Start again after a crash**). It waits for a graphics driver installer to finish first.
 - **Overclocks are held back.** After an unexpected PC restart, a CPU overclock or an overclocked GPU profile is not applied ("Started at stock"). Re-apply by hand once you are sure the PC is stable ([CPU](cpu.md#troubleshooting), [GPU](gpu.md#troubleshooting)).
-- **Game mode, sound and phone changes** that Deck made (power plan, muted or switched devices, the phone speaker or mic) are put back at the next start; Target FPS limits are restored from a record written before the first change ([Gaming](gaming.md#faq), [Phone](phone.md#faq)).
-- **Tweaks:** the before-value is saved before each step, so Undo still works afterwards ([Tweaks](tweaks.md#faq)).
+- **Deck game mode, sound and phone changes** that Deck made (power plan, muted or switched devices, the phone speaker or mic) are put back at the next start; Target FPS limits are restored from a record written before the first change ([Game profiles](gaming.md#faq), [Phone](phone.md#faq)).
+- **Windows tweaks:** the before-value is saved before each step, so Undo still works afterwards ([Windows tweaks](tweaks.md#faq)).
 - **Timers and a shutdown plan** only run while Deck runs; a plan set before a restart is dropped ([Power](power.md#troubleshooting)).
 - **Hardware held:** if a toast says Deck's hardware settings were edited outside Deck, nothing is applied until you press **Apply them**.
 - **Check the reports:** the support report's "Runs" section says how the previous run ended (quit cleanly, closed by an update, or ended without quitting) and "Problems this run" lists the warnings and errors. If Deck keeps crashing, include crash files in the report when you ask for help.
@@ -153,7 +161,7 @@ What Deck does by itself, and what to check:
 
 ### The support report
 
-1. Open [This PC](this-pc.md) and scroll to **Support report** (or Settings > About > **Support report**).
+1. Open **Settings › About** and find **Support report** (see [Settings](settings.md#support-report)).
 2. **Copy report** puts it on the clipboard to paste into a chat or an issue. **Save report** writes it to a file in Deck's data folder and shows it in Explorer.
 3. Tick **Include crash files (may contain private data)** only if asked or if Deck has crashed. Copying adds the crash text to the end with personal details blanked out; saving makes one zip.
 4. For lighting problems, answer **Add the test** when Save report offers the 15-second lights test (the lights cycle red, green and blue).
@@ -166,7 +174,7 @@ The log is `%LOCALAPPDATA%\Deck\logs\deck.log` (2 MB per file, four older files 
 
 ### More detail for one problem
 
-Settings > About > **Diagnostics** > **Log levels**: set the one area involved (gpu, hw, cpu, update, backup, remote, worker.supervisor, ui, memory) to **Debug**, reproduce the problem, then take the support report, and set the area back to **Normal** ([Settings](settings.md#diagnostics)).
+Settings › About > **Diagnostics** > **Log levels**: set the one area involved (gpu, hw, cpu, update, backup, remote, worker.supervisor, ui, memory) to **Debug**, reproduce the problem, then take the support report, and set the area back to **Normal** ([Settings](settings.md#diagnostics)).
 
 ### Where to ask
 

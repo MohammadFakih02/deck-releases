@@ -1,10 +1,12 @@
+Where to find it: Hardware › CPU
+
 # CPU
 
 The CPU page lets you switch your processor between "quiet and cool" and "everything on" with one click. Each choice is a **CPU profile**: a real Windows power plan plus a few extras Deck applies itself (power limits, a minimum clock, an optional overclock, and a way to stop Windows Game Mode lifting your limits). The page also shows what the CPU is actually doing: clock, temperature, load, power, the power limit in force and every core.
 
-**Where to find it:** sidebar > **Tune** > **CPU**. The page has four tabs: **Profiles**, **Power & limits**, **Cores** and **Settings**. Deck remembers the tab you used last.
+The page has three tabs: **Profiles**, **Power & limits** and **Cores**. Deck remembers the tab you used last.
 
-Related pages: [GPU](gpu.md) (graphics card profiles, which work the same way), [Fans](fans.md), [Gaming](gaming.md) (pick a CPU profile per game), [Sensors](sensors.md) (every reading, graphs and history), [Power](power.md).
+Related pages: [GPU](gpu.md) (graphics card profiles, which work the same way), [Fans](fans.md), [Game profiles](gaming.md) (pick a CPU profile per game), [Sensors](sensors.md) (every reading, graphs and history), [Power](power.md).
 
 ## Contents
 
@@ -24,7 +26,7 @@ Related pages: [GPU](gpu.md) (graphics card profiles, which work the same way), 
 
 ## How CPU profiles work
 
-**Starter profiles.** On a fresh install with no profiles of your own, Deck adds three ordinary, editable profiles once: **Gaming**, **Everyday** and **Quiet**, copies of built-in modes (of Performance, Balanced and Quiet). Edit, rename or delete them like any profile; deleting them doesn't bring them back.
+**Starter profiles.** On a fresh install with no profiles of your own, Deck adds three ordinary, editable profiles once: **Game profiles**, **Everyday** and **Quiet**, copies of built-in modes (of Performance, Balanced and Quiet). Edit, rename or delete them like any profile; deleting them doesn't bring them back.
 
 A CPU profile has two halves.
 
@@ -68,13 +70,15 @@ Deck reads some CPU values through a small signed hardware driver (PawnIO) that 
 
 ## The Profiles tab
 
-This is the first tab. From top to bottom:
+This is the first tab. The built-in modes come first, because one click on a mode is all most people need. From top to bottom:
+
+**Built-in modes.** Open by default, each with a short line about speed, noise, heat and power use. **Balanced** is the clearest place to start. Clicking a mode switches to it at once. See [Built-in modes](#built-in-modes).
 
 **Applied profile.** The profile that is on now, with the values it asks for: the requested clock cap (P-core cap on a CPU with two kinds of core) and the requested sustained power (**Motherboard**, **15 W** for Saver, or your custom watts). **Edit profile** opens its editor, and its shortcut key shows beside it. If no profile matches the active plan, it says "Windows power plan".
 
 **A warning banner** appears when the CPU power limit measured on the CPU differs from what the profile asked for ("The CPU power limit differs from the profile: asked 65 W, measured 125 W"). **Re-apply profile** sends it again. A short difference right after a switch is normal.
 
-**Your profiles.** One card per profile. A card shows its name, a one-line summary, its shortcut key, small icons if it has a desktop or Start menu shortcut, and these chips:
+**Your profiles.** Below the modes. One card per profile; the list starts folded when you have none, and stays open when you have saved profiles. A card shows its name, a one-line summary, its shortcut key, small icons if it has a desktop or Start menu shortcut, and these chips:
 
 | Chip | Meaning |
 |---|---|
@@ -89,18 +93,18 @@ Click a card to switch to it. The pencil edits it. The **...** menu has:
 - **Duplicate profile**
 - **Delete profile and shortcuts**: asks for confirmation and offers **Also delete the Windows power plan**. Leave it off to keep the plan in Windows.
 
-**Built-in modes** sit in a fold under your profiles (see below).
+**New profile** and **Import Windows power plans** sit with your profiles.
 
 **Page buttons:**
 
 | Button | What it does |
 |---|---|
 | **New profile** | Asks for a name and creates a profile that starts as a copy of the active Windows power plan, then opens its editor. |
-| **Use my existing plans** (with a **?**) | Lists power plans already on this PC (made by you or a tool such as ThrottleStop) and turns the ticked ones into Deck profiles. Windows' own plans (Balanced, High performance, Power saver, Ultimate Performance) are never ticked for you. The plans are not changed or copied, so old shortcuts to them keep working. Plans that are already profiles are greyed out. |
+| **Import Windows power plans** (with a **?**) | Lists power plans already on this PC (made by you or a tool such as ThrottleStop) and turns the ticked ones into Deck profiles. Windows' own plans (Balanced, High performance, Power saver, Ultimate Performance) are never ticked for you. The plans are not changed or copied, so old shortcuts to them keep working. Plans that are already profiles are greyed out. |
 
 ## Built-in modes
 
-Five ready-made profiles, the same on every PC. Open the **Built-in modes** fold on the Profiles tab. One click switches; the **...** menu has **Copy to my profiles to change it**, which makes an editable copy and opens it.
+Five ready-made profiles, the same on every PC. The **Built-in modes** panel is at the top of the Profiles tab, open. One click switches; the **...** menu has **Copy to my profiles to change it**, which makes an editable copy and opens it.
 
 | Mode | What it sets | Use it for |
 |---|---|---|
@@ -115,12 +119,14 @@ Good to know:
 - Each mode gets its own Windows plan the first time you use it ("Deck · Saver" and so on).
 - Deck writes their settings at every start, so they cannot be edited or deleted; Deck refuses a delete. You can still give a mode a shortcut key and desktop / Start menu shortcuts.
 - Modes appear everywhere profiles do: the tray, the phone remote, Gaming, and plugged in / on battery switching.
-- The button with the eye icon on the **Built-in modes** header folds all modes away (**Hide modes** / **Show modes**). They then sit behind one "Modes" row in profile pickers. The CPU and GPU pages remember this separately.
+- The button with the eye icon on the **Built-in modes** header folds all modes away (**Hide built-in modes** / **Show built-in modes**). They then sit behind one "Modes" row in profile pickers. The CPU and GPU pages remember this separately.
 - The power limits in Saver, Ultra saver and Performance need an Intel CPU with admin rights. On others the mode still applies the plan values and Windows' power mode, and a note says what could not be done.
 
 ## The profile editor
 
 Click the pencil on a card or **Edit profile**. The editor opens in place of the page with a **Back to CPU** button and three tabs: **Profile**, **Speed & power** and **Advanced**. A yellow **Unsaved** chip shows when you have changes. **Nothing reaches the CPU until you press Save** (it applies at once if the profile is the active one). **Discard** drops your changes; **Close** appears when there are none.
+
+**Back to CPU** leaves at once when nothing has changed. With unsaved edits it asks **Discard your changes?** Choose **Keep editing** to keep the draft, or **Discard changes** to leave without saving. Escape counts as Keep editing. The same question appears if you leave another way with unsaved edits: the sidebar, a page tab, a search result, or opening another profile's editor. Keep editing leaves the page, the tab and the draft exactly as they were.
 
 ### Profile tab
 
@@ -240,7 +246,7 @@ Every way runs the same code, so they all do the same thing:
 - the profile's shortcut key
 - desktop and Start menu shortcuts
 - the [phone remote](phone.md)
-- [Gaming](gaming.md), per game (and back when the game closes)
+- [Game profiles](gaming.md), per game (and back when the game closes)
 - plugged in / on battery switching
 
 ## What Deck changes on your PC, and how to undo it
@@ -261,7 +267,7 @@ If the PC restarted without Deck quitting while the turbo overclock was on, the 
 
 ## Recommended setups
 
-**Most people (desktop):** Use **Balanced** day to day. Switch to **Quiet** when you want the PC calm, **Performance** for heavy work. Set **Gaming** (see [Gaming](gaming.md)) to switch profile per game.
+**Most people (desktop):** Use **Balanced** day to day. Switch to **Quiet** when you want the PC calm, **Performance** for heavy work. Set **Game profiles** (see [Game profiles](gaming.md)) to switch profile per game.
 
 **Gamers:** Make a profile with a P-core cap a little under top turbo and **Hold the cap in games** on, then check the **In-game clock check** to see it held. Games usually lose almost nothing and the CPU runs much cooler. If a game stutters while the CPU ramps up, try a **Clock floor** at a moderate clock. Leave the overclock off unless you know your CPU and cooling.
 
@@ -301,9 +307,9 @@ If the PC restarted without Deck quitting while the turbo overclock was on, the 
 
 **What does "hardware held" mean?** If another program edits Deck's fan, CPU or GPU settings files, Deck refuses to act on them: the fans stay on the BIOS, no overclock is applied and profiles do not switch by themselves until you click **Apply them** in the toast. Apply only if you made the change. This protects you from software that tries to borrow Deck's admin rights.
 
-**Do profiles work together with Gaming?** Yes. In [Gaming](gaming.md) you can pick a CPU profile per game; Deck switches when the game starts and goes back when it ends. Plugged in / on battery switching does not interfere while a game session has set the profile.
+**Do profiles work together with Gaming?** Yes. In [Game profiles](gaming.md) you can pick a CPU profile per game; Deck switches when the game starts and goes back when it ends. Plugged in / on battery switching does not interfere while a game session has set the profile.
 
-**Can I use ThrottleStop or my vendor's tool alongside it?** Deck does not fight over plans: it reads existing plans (**Use my existing plans**) and notices when you or another tool change the active plan. Two programs writing power limits at once will fight, though, because Deck re-asserts its limits. Use one at a time.
+**Can I use ThrottleStop or my vendor's tool alongside it?** Deck does not fight over plans: it reads existing plans (**Import Windows power plans**) and notices when you or another tool change the active plan. Two programs writing power limits at once will fight, though, because Deck re-asserts its limits. Use one at a time.
 
 **What gets deleted if I delete a profile?** The profile, its shortcuts, and optionally its Windows plan. Nothing else.
 

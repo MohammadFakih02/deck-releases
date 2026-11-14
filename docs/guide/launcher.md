@@ -1,10 +1,12 @@
+Where to find it: Settings › Search
+
 # Launcher and search
 
 Deck's search box is a launcher. Open Deck, type, and press Enter. It finds apps, games, Deck's own pages and actions, files, clipboard items and snippets, answers sums and conversions, runs short commands, and runs your own saved links, commands and action chains.
 
 You can use it from any page: the search box sits at the top of Deck. How you open Deck (hot corner, tray icon, Start menu, an optional keyboard shortcut) is in [Settings](settings.md).
 
-There is no page called "Launcher". The things you can set up for it live in **Settings > Search** (web provider, saved actions, folders to search) and **Clipboard > Settings** (snippets).
+There is no page called "Launcher". The things you can set up for it live in **Settings › Search** (web provider, saved actions, folders to search) and **Settings › Desktop** (snippets).
 
 ---
 
@@ -20,6 +22,21 @@ Start typing. Results appear straight away in groups. The best match is selected
 
 Hover and click also work. Apps and files have a small folder button, "Show in folder". Right-click an app for its menu.
 
+### How matching works
+
+Search is forgiving about how you type:
+
+- Capitals and accents do not matter: `Clípboárd` finds Clipboard.
+- Words can come in any order, and you can type part of a word (`calib` finds Calibrate & extras).
+- Simple plurals match (`profiles` and `profile`).
+- In a word of five letters or more, one wrong, missing, extra or swapped letter is forgiven: `tempezature` still finds Sensors. Words of one to three letters are never guessed at.
+
+Deck results are ordered by how close the match is: the exact name first, then names that start with what you typed, then words inside a name, then other text and the `?` help. A page or tab beats a control with the same words, and **CPU** and **GPU** come before diagnostics that mention them. Eight Deck results show at first; **More Deck results** shows the rest. A saved quicklink or command whose keyword is exactly the first word you typed comes before ordinary name matches.
+
+When nothing matches, the list says "No matches" and offers up to three nearby page or tab names, with the web search below them.
+
+If a result leads to a setting that is hidden by your current options (for example a control that only shows when another switch is on), Deck opens the owning page and says why the row is not shown instead of landing nowhere. Clearing the search with Escape brings back the page you were on and its scroll position.
+
 ### What is searched
 
 | Group | What it holds |
@@ -27,13 +44,13 @@ Hover and click also work. Apps and files have a small folder button, "Show in f
 | **Calculator** and **Conversion** | An answer shown on top. Enter copies it. |
 | **Do it** | Commands such as timers (below). |
 | **Apps** | Start-menu apps and Store apps. Apps you open often rise to the top. |
-| **Deck** | Every Deck page (sidebar pages), tools and actions: colour picker, copy text from the screen, ruler, keep awake, dark/light mode, lock, sleep, restart, shut down, clean up, speed test, switching sound output to a named device, opening a saved workspace, every Windows tweak by name, and so on. Power actions ask you to confirm. |
+| **Deck** | Every Deck page, **every tab of a page and every setting**, plus tools and actions. Choosing a tab or setting opens the exact place and lights the row for a moment; the result says where it is (area › page › tab). Old names still work: "Overlay" finds **Performance overlay**, "Flyouts" finds **Music & volume pop-ups**. Hidden pages (see [Settings › Features](settings.md#features)) are found only by their full name and lead to Features. Actions include: colour picker, copy text from the screen, ruler, keep awake, dark/light mode, lock, sleep, restart, shut down, clean up, speed test, switching sound output to a named device, opening a saved workspace, every Windows tweak by name, and so on. Power actions ask you to confirm. |
 | **Games** | Installed Steam and Epic games. Opens through the store's launcher. |
 | **Files** | Files and folders from Deck's own file index (see below). Enter opens; the folder button shows it in Explorer. Needs at least 2 letters. |
 | **Quicklink**, **Custom command**, **Chained actions** | Your saved actions (see below). |
 | **Snippets** | Your saved texts, found by name or keyword. |
 | **Clipboard** | Text from your clipboard history, from 3 letters. Enter pastes (or copies, see [Clipboard](clipboard.md)). |
-| **Web** | "Search the web for ..." using the provider chosen in Settings > Search. |
+| **Web** | "Search the web for ..." using the provider chosen in Settings › Search. |
 
 ### Calculator
 
@@ -62,7 +79,7 @@ Enter copies the result.
 
 ### Local file search
 
-Deck builds a small file-name index so files can be found from the search box (it does not read file contents). Controls are in **Settings > Search > Local file search**:
+Deck builds a small file-name index so files can be found from the search box (it does not read file contents). Controls are in **Settings › Search > Local file search**:
 
 | Setting | What it does | Default |
 |---|---|---|
@@ -73,7 +90,7 @@ Program folders, `node_modules`, `.git`, build output and AppData are skipped. I
 
 ---
 
-## Settings > Search
+## Settings › Search
 
 ### Web search
 
@@ -85,7 +102,7 @@ Program folders, `node_modules`, `.git`, build output and AppData are skipped. I
 
 ## Quicklinks, custom commands and chains
 
-Under **Settings > Search** there is a panel called **Quicklinks, custom commands and chained actions**. Each one has a name and a **keyword** (no spaces, up to 32 characters; each keyword must be unique; up to 100 saved actions). Type the keyword in the search box, followed by any extra text, and the action shows in the results. Typing part of the name also finds it.
+Under **Settings › Search** there is a panel called **Quicklinks, custom commands and chained actions**. Each one has a name and a **keyword** (no spaces, up to 32 characters; each keyword must be unique; up to 100 saved actions). Type the keyword in the search box, followed by any extra text, and the action shows in the results. Typing part of the name also finds it.
 
 Choosing a saved action first shows a **preview** of exactly what it will do, then asks you to press **Run**. Quicklinks run straight after you confirm. For commands and chains, the first time you run one the box says "First use this session: review every action before running." Deck remembers that you reviewed that exact action; if you edit it, it asks again. When it finishes, a Results box lists every step as done, failed or skipped.
 
@@ -115,7 +132,7 @@ Runs up to 16 steps in order. If one step fails, the rest are skipped ("Not run 
 
 | Step | Does |
 |---|---|
-| **Switch sound output** | Makes an output device the default. Use **Undo sound changes** on [Sound and mic](sound.md) to go back. |
+| **Switch sound output** | Makes an output device the default. Use **Undo sound changes** on [Sound & mic](sound.md) to go back. |
 | **CPU profile** | Applies one of your CPU profiles. See [CPU](cpu.md). |
 | **GPU profile** | Applies one of your GPU profiles. See [GPU](gpu.md). |
 | **Power plan** | Switches the Windows power plan. |

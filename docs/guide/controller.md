@@ -1,8 +1,10 @@
+Where to find it: Gaming › Controller
+
 # Controller
 
 The Controller page shows your controller (or your keyboard and mouse) on screen over your games, tracks the battery of every controller, and has a live test view with a stick drift check.
 
-**Where to find it:** sidebar > **Play** > **Controller**. Four tabs: **On screen**, **Keys**, **Battery** and **Test**.
+Four tabs: **On screen**, **Keys**, **Battery** and **Test**.
 
 **Safety and anti-cheat.** The overlay is an ordinary click-through window that never takes focus. Controllers are read the way games read them (through SDL, with XInput as a fallback), so Deck only listens: your game still receives every button. In keyboard and mouse mode Deck uses Windows Raw Input, which is receive-only: nothing is blocked or changed, and it is registered only while that mode is on. Deck never injects into a game or reads its memory.
 
@@ -20,6 +22,8 @@ At the top is the main switch, **Show the controller overlay**, with a status li
 The tray menu has the same switches under **Controller overlay**: **Show overlay**, **Move / resize**, **Controller**, **Keyboard & mouse**, **Demo input** and **Settings...**.
 
 A preview picture on the right shows the overlay exactly as drawn with your settings.
+
+On screen keeps Look and Position beside the preview, with Per game and Behaviour underneath it. The six Corner choices form a map of the screen's top and bottom edges.
 
 ### Look
 
@@ -68,25 +72,19 @@ Size and Opacity apply while you drag the slider.
 Keyboard and mouse mode draws the keys you choose, lit while pressed.
 
 - **Show on screen > Input:** switch between **Controller** and **Keyboard & mouse** (you can pick keys before switching).
-- **Keys to show:** a drawing of the keyboard. Click a key to show or hide it. The counter shows how many are shown ("16 of 71 shown", for example). **All keys** shows every key (function, letters, numbers, punctuation, arrows); **Starting set** returns to the 16 keys most games use (1, 2, 3, 4, Tab, Q, W, E, R, Shift, A, S, D, F, Ctrl, Space); **None** clears them.
+- **Keys to show:** a drawing of the keyboard. Click a key to show or hide it. The counter shows how many are shown ("16 of 71 shown", for example). **All keys** shows every key (function, letters, numbers, punctuation, arrows); **Starting set** returns to the 16 keys most games use (1, 2, 3, 4, Tab, Q, W, E, R, Shift, A, S, D, F, Ctrl, Space); **Clear keys** clears them.
 - **Show the mouse:** buttons, scrolling and movement beside the keys (on by default). Input is read with Windows Raw Input, which only listens.
-- **Switch to keyboard & mouse** appears when the overlay is still showing your controller.
+- The overlay's input mode is chosen in **On screen > Show**. This tab only shows the current mode, with a **Change in On screen** button.
 
 ## Battery tab
 
-Every controller that reports a battery appears here, lowest first.
+Every controller that reports a battery appears here, lowest first. Headsets, mice and keyboards are in the [Devices](devices.md) part of Settings.
 
 - The first controller is shown large with its percentage (with "Charging" when plugged in), where the reading came from, and an estimate of the hours left. The estimate needs 30 minutes of use and a 5% drop while connected. **Battery history** lists past readings.
 - **Other controllers** lists the rest, each with its own reading.
-- A warning appears when a battery is at 15% or lower and not charging.
+- A warning appears when a battery reaches its warning level (15% unless you changed it) and isn't charging.
 
-The battery settings live in **Settings › Games** (*Controller battery*):
-
-| Setting | What it does | Default |
-|---|---|---|
-| **A tray icon per controller** | One tray icon per controller with the percentage inside, green while charging, red when low. Clicking one opens the Controller page. | On |
-| **Warn when a battery gets low** | A warning once per charge, at 15%. | On |
-| **Show the warning over games** | Shows the warning on its own card over the game. Shown while low-battery warnings are on. | Off |
+Tray icons, warning levels and names are set in **Settings › Device batteries**, per device. **Settings › Games** has a link to it.
 
 Deck reads batteries from several sources every two seconds (GameSir vendor data, PlayStation reports, Windows' gaming input, Bluetooth battery data and XInput), combines them per controller and drops a controller that stops answering. It works with GameSir, PlayStation, Xbox and other pads Windows knows, without any vendor software. If both the tray icons and the overlay are off, battery reading is off too.
 
@@ -118,7 +116,7 @@ The phone as a controller, and the phone's keyboard and controller layouts, are 
 
 **Time left says it needs 30 minutes.** The estimate needs 30 minutes of use and a 5% drop while connected.
 
-**The tray icon doesn't show.** Turn on **A tray icon per controller** (Settings › Games); a controller must have reported a battery.
+**The tray icon doesn't show.** Turn on **Tray icon** for the controller in Settings › Device batteries; a controller must have reported a battery.
 
 **The overlay shows in my recording / doesn't show.** Change **Hide from screenshots and recordings**.
 
@@ -132,6 +130,6 @@ The phone as a controller, and the phone's keyboard and controller layouts, are 
 
 **Does it cost frames?** It redraws at up to 60 times a second while visible, less when idle, and only a few times a second while hidden with no controller. When off it does nothing.
 
-**Can I use it for the death counter?** The controller combo for counting deaths is a separate setting in [Deaths](death-counter.md) (hold View with D-pad Down).
+**Can I use it for the death counter?** The controller combo for counting deaths is a separate setting in [Death counter](death-counter.md) (hold View with D-pad Down).
 
-**See also:** [Overlay](overlay.md), [Game bar](game-bar.md), [Deaths](death-counter.md), [Phone](phone.md).
+**See also:** [Performance overlay](overlay.md), [Game bar](game-bar.md), [Death counter](death-counter.md), [Phone](phone.md).

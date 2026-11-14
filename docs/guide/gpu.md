@@ -1,14 +1,16 @@
+Where to find it: Hardware › GPU
+
 # GPU
 
 The GPU page tunes an **NVIDIA** graphics card with saved **GPU profiles**, the way an MSI Afterburner slot does: a power limit, clock settings or a full voltage/frequency curve, memory speed and a fan setting, switched with one click or a key. It also ships ready-made **built-in modes** worked out from your own card, shows live readings, and can import your Afterburner profiles so you can stop using Afterburner.
 
-**Where to find it:** sidebar > **Tune** > **GPU**. The page has three tabs: **Profiles**, **Readings** and **Settings**. Deck remembers the tab you used last.
+The page has two tabs: **Profiles** and **Readings**. Deck remembers the tab you used last.
 
 ![The GPU page](../screenshots/gpu.png)
 
 *(The screenshot may differ a little from the current layout, which has the tabs described below.)*
 
-Related pages: [CPU](cpu.md) (profiles that work the same way), [Fans](fans.md) (case and CPU fans), [Gaming](gaming.md) (pick a GPU profile per game), [Overlay](overlay.md), [Sensors](sensors.md).
+Related pages: [CPU](cpu.md) (profiles that work the same way), [Fans](fans.md) (case and CPU fans), [Game profiles](gaming.md) (pick a GPU profile per game), [Performance overlay](overlay.md), [Sensors](sensors.md).
 
 ## Contents
 
@@ -21,7 +23,7 @@ Related pages: [CPU](cpu.md) (profiles that work the same way), [Fans](fans.md) 
 - [The voltage/frequency curve editor](#the-voltagefrequency-curve-editor)
 - [The Readings tab](#the-readings-tab)
 - [Settings for GPU profiles](#settings-for-gpu-profiles)
-- [Back to stock](#back-to-stock)
+- [Restore factory GPU settings](#restore-factory-gpu-settings)
 - [MSI Afterburner: import and coexisting](#msi-afterburner-import-and-coexisting)
 - [Crash guard and automatic re-applying](#crash-guard-and-automatic-re-applying)
 - [Switching profiles without opening the page](#switching-profiles-without-opening-the-page)
@@ -49,15 +51,15 @@ Deck helps:
 
 - The editor always shows a banner: **Safe settings: nothing here runs the card faster than it was made to** or **Overclock: can crash games or the PC. After a crash Deck starts at stock.**
 - The first time you create an overclock, Deck stops you with "This is an overclock" and asks you to confirm (**I understand**) or it undoes your change.
-- **Try it** puts settings on the card without saving them; **Cancel** restores the card.
+- **Apply temporarily** puts settings on the card without saving them. **Cancel** closes an unchanged editor; **Discard changes** drops unsaved edits. While a test is on the card, **Cancel and restore settings** puts back what was there before the test.
 - The **crash guard** (see below) starts the card at stock if the PC restarted while an overclock was on.
 - Settings reset when the PC restarts. A restart always returns the card to stock unless Deck applies a profile at start.
 
-How to undo anything: press **Back to stock** at the top of the page. Your profiles are kept.
+How to undo anything: press **Restore factory GPU settings** in Applied profile. Your profiles are kept.
 
 ## The Profiles tab
 
-**Starter profiles.** On a fresh install with no profiles of your own, Deck adds three ordinary, editable profiles once: **Gaming**, **Everyday** and **Quiet**, copies of built-in modes (for the GPU, the first of Fastest/Normal, Efficient/Normal and Quiet/Saver/Low power that your card has, never the same mode twice). Edit, rename or delete them like any profile; deleting them doesn't bring them back.
+**Starter profiles.** On a fresh install with no profiles of your own, Deck adds three ordinary, editable profiles once: **Game profiles**, **Everyday** and **Quiet**, copies of built-in modes (for the GPU, the first of Fastest/Normal, Efficient/Normal and Quiet/Saver/Low power that your card has, never the same mode twice). Edit, rename or delete them like any profile; deleting them doesn't bring them back.
 
 **Applied profile.** The profile that is on now, with its **Saved power target** (percent of stock) and **Saved core offset**, an **Edit profile** button and its shortcut key. If no profile is active it says **Stock**.
 
@@ -69,15 +71,15 @@ How to undo anything: press **Back to stock** at the top of the page. Your profi
 | **Started at stock.** | The PC restarted unexpectedly during an overclock, so Deck did not re-apply it. **Apply anyway** puts it on once you are sure it's stable. |
 | **The GPU power limit differs from the profile** | The measured limit does not match what the profile asked for (a short difference just after a switch is normal). **Re-apply profile** sends it again. |
 
-**Your profiles.** A card per profile with its name, a summary line (for example "PL 85% - +120 core - curve"), shortcut key, shortcut icons, and chips: **On**, **OC** (the profile overclocks, so it is not re-applied automatically after an unexpected restart) and **Taken by another app** (another program already uses the shortcut key). Click a card to put the profile on the card. The pencil edits. The **...** menu has **Edit profile**, **Duplicate profile** and **Delete profile and shortcuts**.
+**Your profiles.** A card per profile with its name, a summary line (for example "85% power · +120 MHz · custom curve"), shortcut key, shortcut icons, and chips: **On**, **Overclock** (the profile overclocks, so it is not re-applied automatically after an unexpected restart) and **Taken by another app** (another program already uses the shortcut key). Click a card to put the profile on the card. The pencil edits. The **...** menu has **Edit profile**, **Duplicate profile** and **Delete profile and shortcuts**.
 
-**Page buttons:** **New profile** opens the editor, and **Back to stock** (with a **?**). If Afterburner is installed, **Import from Afterburner** appears too.
+**Page buttons:** **New profile** opens the editor, and **Restore factory GPU settings** (with a **?**). If Afterburner is installed, **Import from Afterburner** appears too.
 
 Under your profiles, a line says "GPU fan settings belong to each profile", with a button to the [Fans](fans.md) page for case and CPU fans.
 
 ## Built-in modes
 
-Open the **Built-in modes (n)** fold on the Profiles tab. Modes are ready-made profiles that Deck works out from **your card's own limits**, so another card gets different numbers. One click puts a mode on the card, just like a profile. They can't be edited: use **...** > **Copy to my profiles** to make an editable copy, or **Shortcut key and shortcuts...** to give a mode a shortcut. Four everyday modes (Normal, Quiet, Efficient, Saver) are listed first; the rest are under them.
+The **Built-in modes** panel is at the top of the Profiles tab and is open. **Normal** is the clearest place to start, and each mode has a short line about speed, noise, heat and power use. Your own profiles sit below it, folded while you have none. Modes are ready-made profiles that Deck works out from **your card's own limits**, so another card gets different numbers. One click puts a mode on the card, just like a profile. They can't be edited: use **...** > **Copy to my profiles** to make an editable copy, or **Shortcut key and shortcuts...** to give a mode a shortcut. Four everyday modes (Normal, Quiet, Efficient, Saver) are listed first; the rest are under them.
 
 | Mode | What it does | Risk |
 |---|---|---|
@@ -112,16 +114,18 @@ Modes set the fan to **Card decides**.
 
 Click **New profile**, a profile's pencil, or **Edit profile**. The editor opens in place with **Back to GPU** and three tabs: **Profile**, **Tuning & curve** and **Fan**. (A built-in mode opens with **Profile** and **Mode settings**, which only lists what it sets.)
 
-The strip at the top, **On the card now**, shows power, core clock, memory clock, temperature, fan and load, updated every second, so you can see what a change does. If the card is idle it hints "Light load now: start a game to see what it does under load."
+The strip at the top, **Measured on the card now**, shows power, core clock, memory clock, temperature, fan and load, updated every second, so you can see what a change does. If the card is idle it hints "Light load now: start a game to see what it does under load."
+
+The status at the bottom distinguishes **No changes yet**, **Unsaved changes** and settings being tried on the card. It also reports partial failures and edits made since the last temporary apply; those later edits wait until you save or apply temporarily again.
 
 Buttons at the bottom:
 
 | Button | What it does |
 |---|---|
-| **Try it** (**?**) | Puts the settings on the card now without saving. Test in a game; Deck can stay in the background. |
-| **Cancel** | Closes the editor and restores the card to what it was (the active profile or stock). |
-| **Save** | Saves the profile. If it is the active one it is applied. |
-| **Back to GPU** | Same as Cancel. |
+| **Apply temporarily** (**?**) | Puts the settings on the card now without saving. Test in a game; Deck can stay in the background. |
+| **Cancel** / **Discard changes** | Closes the editor and drops your edits. If a test is on the card it reads **Cancel and restore settings** and puts back what was there (the active profile or stock). It says **Cancel** until you edit something. |
+| **Save** | Saves the profile. If it is the active one it is applied. After trying a different profile, the button reads **Save profile and restore settings**: it saves that profile and restores the card's previous settings. |
+| **Back to GPU** | With no edits it leaves at once. With unsaved edits it asks **Discard your changes?**: **Keep editing** (or Escape) returns to the editor, **Discard changes** leaves. If a test is on the card, the card is put back to the saved profile (or stock) before the page changes; if that fails the editor stays open and says so. Leaving through the sidebar, a page tab or a search result asks the same question. |
 
 ### Profile tab
 
@@ -208,7 +212,7 @@ Colours: **grey** is the stock curve, **blue** is yours, **red** is your **Highe
 
 Click the graph first so the keys reach it. **Shortcuts** shows this list in the app.
 
-**Curve tools** (a button above the graph; nothing applies until you press Try it or Save):
+**Curve tools** (a button above the graph; nothing applies until you press Apply temporarily or Save):
 
 - **Undervolt: keep [MHz] from [mV] up** with **Apply to the curve**: from that voltage up, the curve runs at the clock you give. This is the quickest undervolt (Afterburner's flat-line trick). A common start is your normal game clock at 850 to 900 mV. If a game crashes, raise the voltage or lower the clock.
 - **Flatten from that voltage**: keeps the clock the curve already has at that voltage, from there up.
@@ -233,9 +237,9 @@ These live in **Settings › CPU and GPU**.
 
 The same part holds the settings CPU and GPU profiles share: profile keyboard shortcuts, the notice when a profile switches, and **Repair** for shortcuts (see [CPU](cpu.md#settings-for-cpu-profiles)).
 
-## Back to stock
+## Restore factory GPU settings
 
-The **Back to stock** button (top of the page, with a **?**) puts the card back to NVIDIA's defaults: power limit, clocks, voltage curve and fan. It applies at once and keeps your profiles. Use it when something feels unstable or to compare against normal behaviour. Locked clocks are let go too.
+The **Restore factory GPU settings** button (in Applied profile, with a **?**) puts the card back to NVIDIA's defaults: power limit, clocks, voltage curve and fan. It applies at once and keeps your profiles. Use it when something feels unstable or to compare against normal behaviour. Locked clocks are let go too.
 
 ## MSI Afterburner: import and coexisting
 
@@ -244,13 +248,13 @@ The **Back to stock** button (top of the page, with a **?**) puts the card back 
 - the profiles and curves (they match Afterburner's point for point)
 - the Ctrl+Alt hotkeys
 - optionally the **startup profile**, so Deck applies it when it starts ("Apply the startup profile when Deck starts, like Afterburner")
-- optionally the **overlay items** (what Afterburner showed in RivaTuner's overlay; see [Overlay](overlay.md))
+- optionally the **overlay items** (what Afterburner showed in RivaTuner's overlay; see [Performance overlay](overlay.md))
 
 It only adds profiles to Deck. Afterburner's own files are not changed.
 
 **Stop Afterburner from tuning...** (on the banner that appears while Afterburner could override Deck): asks for confirmation, **backs up** Afterburner's settings, then clears its startup profile, hotkeys and fan control so it no longer applies anything. A message shows the backup folder and an **Undo** button that puts Afterburner's settings back.
 
-**You can uninstall Afterburner** once you have imported what you need. If its uninstaller offers to remove **RivaTuner Statistics Server** too, say **no**: the in-game overlay uses it. Afterwards turn on **Deck overlay** and **Start RTSS with Deck** on the [Overlay](overlay.md) page.
+**You can uninstall Afterburner** once you have imported what you need. If its uninstaller offers to remove **RivaTuner Statistics Server** too, say **no**: the in-game overlay uses it. Afterwards turn on **Deck overlay** and **Start RTSS with Deck** on the [Performance overlay](overlay.md) page.
 
 Do not run Afterburner's startup profile or fan control together with Deck's: two programs setting the same card will fight.
 
@@ -260,7 +264,7 @@ Do not run Afterburner's startup profile or fan control together with Deck's: tw
 - **After a driver reset** puts the card back to stock, Deck re-applies the profile once.
 - **After the PC wakes from sleep** Deck re-applies the profile about five seconds later (like Afterburner's "restore after suspended mode").
 - **Fan settings** are re-sent every ten seconds.
-- **Clock locks** are let go when Deck quits, on **Back to stock** and after a crash.
+- **Clock locks** are let go when Deck quits, on **Restore factory GPU settings** and after a crash.
 - **One apply at a time**: switching quickly never runs two applies together.
 - When a profile is applied, Deck first holds the core, then sets power limit, temperature limit, curve and memory lock, and only then the profile's own core lock or the release, so a half-applied profile never runs unlocked.
 - Switching profiles in a game is safe: no driver resets.
@@ -268,15 +272,15 @@ Do not run Afterburner's startup profile or fan control together with Deck's: tw
 
 ## Switching profiles without opening the page
 
-Profile cards, the tray's **GPU profile** submenu (modes under **Modes**), the profile's shortcut key, desktop and Start menu shortcuts, the [phone remote](phone.md), Home's GPU drop-down and [Gaming](gaming.md) (per game) all run the same switching code.
+Profile cards, the tray's **GPU profile** submenu (modes under **Modes**), the profile's shortcut key, desktop and Start menu shortcuts, the [phone remote](phone.md), Home's GPU drop-down and [Game profiles](gaming.md) (per game) all run the same switching code.
 
 ## Recommended setups
 
 **Most people:** apply **Efficient** or **Saver** for everyday gaming (try **Measure this card** once). Efficient gives most frames for far less power; Saver goes a step further. Use **Normal** when you want the card as sold, **Quiet** when you want less noise.
 
-**A simple undervolt:** use the voltage curve. Pick your usual game clock and a voltage around 850 to 900 mV, use **Undervolt: keep [MHz] from [mV] up**, press **Try it**, play for a while, and **Save** if it is stable. If a game crashes, raise the voltage or lower the clock.
+**A simple undervolt:** use the voltage curve. Pick your usual game clock and a voltage around 850 to 900 mV, use **Undervolt: keep [MHz] from [mV] up**, press **Apply temporarily**, play for a while, and **Save** if it is stable. If a game crashes, raise the voltage or lower the clock.
 
-**A small overclock:** add a core offset in 15 to 30 MHz steps with **Try it**, then add a memory offset the same way, watching FPS and heat on [Sensors](sensors.md). Take a step back from the first unstable value.
+**A small overclock:** add a core offset in 15 to 30 MHz steps with **Apply temporarily**, then add a memory offset the same way, watching FPS and heat on [Sensors](sensors.md). Take a step back from the first unstable value.
 
 **Quiet at the desktop:** a fan curve that stays low at idle temperatures, or **Quiet**.
 
@@ -288,7 +292,7 @@ Profile cards, the tray's **GPU profile** submenu (modes under **Modes**), the p
 
 **The page says "GPU asleep. Readings resume when Windows wakes it."** The NVIDIA card is powered down, which is common on laptops with switchable graphics. It wakes when a program uses it.
 
-**"Finding graphics hardware..." stays on screen.** Wait a few seconds after start-up. If it stays, open the support report on [This PC](this-pc.md).
+**"Finding graphics hardware..." stays on screen.** Wait a few seconds after start-up. If it stays, save a support report in [Settings › About](settings.md#support-report).
 
 **Some controls are missing in the editor.** The card or driver doesn't offer them: for example Highest speed needs Volta or newer, Memory speed needs Ampere or newer, and some laptop cards have no power-limit range.
 
@@ -302,7 +306,7 @@ Profile cards, the tray's **GPU profile** submenu (modes under **Modes**), the p
 
 **Afterburner and Deck disagree.** Afterburner's startup profile, hotkeys or fan control are overriding Deck. Use **Stop Afterburner from tuning...** or close Afterburner.
 
-**My game crashes after an undervolt.** Raise the voltage or lower the clock of the flat part. Use **Try it** before saving.
+**My game crashes after an undervolt.** Raise the voltage or lower the clock of the flat part. Use **Apply temporarily** before saving.
 
 ## FAQ
 
@@ -310,11 +314,11 @@ Profile cards, the tray's **GPU profile** submenu (modes under **Modes**), the p
 
 **Can this damage my card?** Power limits, temperature limits, speed caps, memory slowing and fan curves stay inside what the card and driver allow. Deck never goes past NVIDIA's own safety limits, and the fan safety rule gives the fan 100 % when hot or when the temperature can't be read. An overclock is the same risk as in Afterburner: instability, not usually damage.
 
-**What does Deck do when it quits or crashes?** The driver takes the fan back when Deck quits, panics, signs out or is killed from outside (a small watchdog process gives the GPU fan back to the driver within seconds). Locked clocks are let go when Deck quits. Offsets, power limit and curve you applied stay on the card until the PC restarts or you press **Back to stock**.
+**What does Deck do when it quits or crashes?** The driver takes the fan back when Deck quits, panics, signs out or is killed from outside (a small watchdog process gives the GPU fan back to the driver within seconds). Locked clocks are let go when Deck quits. Offsets, power limit and curve you applied stay on the card until the PC restarts or you press **Restore factory GPU settings**.
 
 **Do profiles survive a driver update?** The profiles are saved by Deck. After a graphics driver update Deck comes back by itself, and re-applies the profile once if the driver reset put the card back to stock. Run **Measure this card** again, because voltage tables can change.
 
-**Can I use a profile only for some games?** Yes: in [Gaming](gaming.md) pick a GPU profile for each game. It is applied when the game starts and put back when it closes.
+**Can I use a profile only for some games?** Yes: in [Game profiles](gaming.md) pick a GPU profile for each game. It is applied when the game starts and put back when it closes.
 
 **What does "hardware held" mean?** If another program edits Deck's fan, CPU or GPU settings files, Deck does not act on them: fans stay on the BIOS, no overclock is applied and profiles do not switch by themselves until you click **Apply them** in the toast. Apply only if you made the change.
 

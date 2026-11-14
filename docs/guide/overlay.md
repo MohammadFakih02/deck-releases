@@ -1,12 +1,14 @@
-# Overlay (in-game readings)
+Where to find it: Gaming › Performance overlay
+
+# Performance overlay (in-game readings)
 
 The overlay puts live readings over your game: FPS, frame time, GPU and CPU temperature and load, clocks, power, memory and more, in a corner of the screen. It is the same idea as the MSI Afterburner overlay, and it can copy Afterburner's look. Deck decides what the overlay says and how it looks; **RivaTuner Statistics Server** (RTSS) is the program that actually draws it inside the game.
 
-**Where to find it:** sidebar > **Play** > **Overlay**.
 
-![The Overlay page](../screenshots/overlay.png)
 
-Related pages: [Gaming](gaming.md) (per-game profiles and session reports that use RivaTuner's FPS), [Game bar](game-bar.md) (its *Readings* and *Frame limit* widgets), [Sensors](sensors.md) (the full list of readings and the frametime chart).
+![The Performance overlay page](../screenshots/overlay.png)
+
+Related pages: [Game profiles](gaming.md) (per-game profiles and session reports that use RivaTuner's FPS), [Game bar](game-bar.md) (its *Readings* and *Frame limit* widgets), [Sensors](sensors.md) (the full list of readings and the frametime chart).
 
 ## Contents
 
@@ -32,10 +34,10 @@ Related pages: [Gaming](gaming.md) (per-game profiles and session reports that u
 
 What this means in practice:
 
-- **You need RivaTuner installed and running.** Deck can install it for you from the Overlay page (it uses Windows' package manager, `winget`, which downloads Guru3D's own package). If `winget` is missing, get RivaTuner from guru3d.com.
-- **FPS-related features in Deck depend on RivaTuner**: the FPS and lows in [session reports](gaming.md#session-reports), the live figures in Game mode, [Why did my FPS drop?](gaming.md#why-did-my-fps-drop) and [Target FPS](gaming.md#target-fps-power-saver). For these, RivaTuner must be measuring the game; the overlay itself can be off.
+- **You need RivaTuner installed and running.** Deck can install it for you from the Performance overlay page (it uses Windows' package manager, `winget`, which downloads Guru3D's own package). If `winget` is missing, get RivaTuner from guru3d.com.
+- **FPS-related features in Deck depend on RivaTuner**: the FPS and lows in [session reports](gaming.md#session-reports), the live figures in Deck game mode, [Why did my FPS drop?](gaming.md#why-did-my-fps-drop) and [Target FPS](gaming.md#target-fps-power-saver). For these, RivaTuner must be measuring the game; the overlay itself can be off.
 - The overlay shows on every PC. It does not depend on which CPU or graphics card you have: readings the PC does not have are marked **No reading** and skipped.
-- Deck publishes the same readings in the way MSI Afterburner does, so RivaTuner's own tools (its Overlay Editor, stream widgets) can still read them (see *Share readings like Afterburner* under [RivaTuner](#rivatuner)).
+- Deck publishes the same readings in the way MSI Afterburner does, so RivaTuner's own tools (its Performance overlay Editor, stream widgets) can still read them (see *Share readings with other tools* under [RivaTuner](#rivatuner)).
 
 ## Is it safe with anti-cheat?
 
@@ -47,10 +49,12 @@ If a particular game's anti-cheat blocks RivaTuner itself, the overlay will not 
 
 The strip at the top of the page is the overlay's main switch and RivaTuner's status.
 
-- **Overlay on / Overlay off** switch. Off by default. Turn it on to see your readings over games. The line under it says what is happening:
+- **Performance overlay on / Performance overlay off** switch. Off by default. Turn it on to see your readings over games. The line under it says what is happening:
   - "RivaTuner draws the overlay. Deck installs and sets it up in about a minute." (RivaTuner is not installed; use **Install RivaTuner**)
   - "RivaTuner isn't running, so nothing is drawn." (use **Start RivaTuner**)
-  - "RivaTuner is drawing it · new readings every 1 s" (all is well; the interval is your *Update every* setting)
+  - "Turned on, but RivaTuner isn't running, so nothing is drawn." (the saved overlay switch is on, but RivaTuner must be started)
+  - "Shows over a game when one starts · new readings every 1 s" (RivaTuner is running, with no game readings yet)
+  - "RivaTuner is drawing it over your game · new readings every 1 s" (game readings are available; the interval is your *Update every* setting)
 - **Install RivaTuner** installs RivaTuner and starts it ("this takes about a minute").
 - **Start RivaTuner** starts it when it is installed but not running.
 
@@ -59,6 +63,8 @@ If you use a keyboard shortcut to hide or show the overlay, that is set in [Beha
 ## The preview
 
 On the right a live preview shows your overlay at your screen's proportions. It is built from the same lines Deck sends to RivaTuner, using your real readings, so it matches what the game shows (spacing may differ slightly, and the preview font approximates yours). Click a corner of the preview to move the overlay there. A tall overlay is shrunk to fit the little preview; the real one is drawn at full size. It also shows the game's FPS and name when a game is running ("No game running" otherwise).
+
+The four corner buttons above the picture form a 2×2 screen map. The preview note distinguishes live game readings, PC readings while no game is running, and an appearance-only preview when RivaTuner is stopped or missing. When the picture is shrunk, it gives the scale percentage. Look and Behaviour also explain when RivaTuner has not created its profiles yet, so Deck cannot save the look or frame limit.
 
 ## Items tab
 
@@ -76,7 +82,7 @@ Each reading you have added appears in a list, grouped under its section. Use th
 | **Remove** (bin) | Takes the selected readings off the overlay. |
 | **Select all / none**, clear (x) | Selection helpers. |
 
-Readings tagged **From frames** are counted from every frame over the time set under *Average and lows cover* in [Behaviour](#behaviour-tab). Readings tagged **No reading** are not available on this PC right now (for example a sensor your hardware lacks) and are skipped until they appear.
+Readings tagged **From frames** are counted from every frame over the time set under *Average over the last* in [Behaviour](#behaviour-tab). Readings tagged **No reading** are not available on this PC right now (for example a sensor your hardware lacks) and are skipped until they appear.
 
 At the bottom, **Add readings** lists everything you have not added, by section, as chips you click to add.
 
@@ -170,15 +176,18 @@ Seven ready-made colour sets: **Classic**, **By part**, **Ice**, **Neon**, **Mat
 ### In-game controls
 
 - **Show or hide overlay**: a keyboard shortcut. See [Hotkeys](#hotkeys).
-- **Frame limit**: RivaTuner's frame limiter, with its own key. See [Frame limiter](#frame-limiter).
+
+### Frame limit
+
+RivaTuner's frame limiter, with its own key. It works on its own, whether or not the overlay is shown. See [Frame limiter](#frame-limiter).
 
 ### Readings
 
 | Setting | What it does | Default |
 |---|---|---|
 | **Update every** | How often Deck sends new readings: ¼ s, ½ s, 1 s or 2 s. ¼ s feels live; 1 s is easier to read and costs a little less. RivaTuner fills in framerate and frametime itself, at its own pace. | 1 s |
-| **Average and lows cover** | How far back the average, lowest, highest and the 1% and 0.1% lows look: 30 s, 1 min, 2 min or 5 min. Short shows the current scene; long suits comparing settings. The figures start over when you switch game. | 1 min |
-| **Start the figures over** | A key (and a **Now** button) that clears the average, lows, lowest, highest and the graph and counts again from that moment. Use it at the start of a match or benchmark run to keep loading screens out of the numbers. | No key |
+| **Average over the last** | How far back the average, lowest, highest and the 1% and 0.1% lows look: 30 s, 1 min, 2 min or 5 min. Short shows the current scene; long suits comparing settings. The figures start over when you switch game. | 1 min |
+| **Reset averages** | A key (and a **Now** button) that clears Deck's average, lows, lowest and highest frame rates and counts again from that moment. RivaTuner's own frametime graph keeps running. Use it at the start of a match or benchmark run to keep loading screens out of the numbers. | No key |
 
 ### RivaTuner
 
@@ -187,9 +196,9 @@ Seven ready-made colour sets: **Classic**, **By part**, **Ice**, **Neon**, **Mat
 | **Use this look in every game** | A game with its own RivaTuner profile ignores the global look. This also writes the look into each game profile RivaTuner has. Your originals are kept in RivaTuner's `Profiles\Deck backup` folder. | On |
 | **Start RivaTuner with Deck** | Starts RivaTuner whenever Deck starts. | Off |
 | **Hide RivaTuner's tray icon** | RivaTuner keeps running but its taskbar-corner icon is removed and kept away. Turn the switch off and the icon comes back at once. | Off |
-| **Share readings like Afterburner** | Publishes the readings the way MSI Afterburner does, so RivaTuner's Overlay Editor, stream widgets and similar tools keep working. Turn it off if Afterburner itself is running so the two do not fight. | On |
+| **Share readings with other tools** | Publishes the readings the way MSI Afterburner does, so RivaTuner's Performance overlay Editor, stream widgets and similar tools keep working. Turn it off if Afterburner itself is running so the two do not fight. | On |
 | **Open RivaTuner** | Opens RivaTuner's own window. It restarts RivaTuner to do this, so a running game's overlay blinks for a moment. | n/a |
-| **Put RivaTuner's look back** | Restores RivaTuner's profiles to how they were before Deck changed them, from the backup. | n/a |
+| **Restore RivaTuner's own look** | Restores RivaTuner's profiles to how they were before Deck changed them, from the backup. | n/a |
 
 If the page says "Start RivaTuner once first so it creates its profiles", open RivaTuner once from its own icon so it can create them, then return.
 
@@ -209,13 +218,13 @@ A graph of every frame's draw time, drawn by RivaTuner itself as in MSI Afterbur
 
 ## Frame limiter
 
-RivaTuner can hold every game to a maximum frame rate. In Behaviour > In-game controls, **Frame limit** shows:
+RivaTuner can hold every game to a maximum frame rate. In Behaviour > Frame limit you find:
 
-- the limit in FPS (0 means no limit),
-- a switch to turn the limiter on and off now,
-- a key that turns it on and off in games.
+- **Limit to**: the limit in FPS (0 means no limit), with an On/Off switch,
+- a sentence explaining the current global limit, whether its number is kept while off, or why it cannot take effect,
+- **Turn the limit on or off**: a key that toggles it in games.
 
-This is the **global** limiter RivaTuner applies to every game while it is on. To cap one game, set that game's limit on [Gaming](gaming.md#performance) instead (on NVIDIA cards it is kept by the driver). The [Game bar](game-bar.md)'s *Frame limit* widget sets this same global limit and turns it on in one press.
+This is RivaTuner's **global** limit, used by games without their own RivaTuner limit. A per-game RivaTuner limit replaces it; an NVIDIA driver limit also applies, with the lower cap winning. Turning this switch off does not remove those other limits. To cap one game, set that game's limit on [Game profiles](gaming.md#performance) instead (on NVIDIA cards it is kept by the driver). The [Game bar](game-bar.md)'s *Frame limit* widget sets this same global limit and turns it on in one press.
 
 A cap just under your monitor's refresh rate (for example 141 for a 144 Hz display) keeps variable refresh smooth, and less heat, noise and power result when a game would otherwise run far above your screen. The limit applies at once, also in running games; RivaTuner needs to be running.
 
@@ -227,7 +236,7 @@ There are three optional keys, all empty by default. Click the key box, press th
 |---|---|
 | **Show or hide overlay** | Flips RivaTuner's on-screen display switch the moment you press it, also in busy games. |
 | **Frame limit key** | Turns the RivaTuner frame limiter on and off. |
-| **Start the figures over** | Restarts the average, lows and graph. |
+| **Reset averages** | Restarts the average, lows, lowest and highest. |
 
 Keys are registered with Windows' standard hotkey call, the same way any program does it. Deck uses no keyboard hook and sends nothing to the game.
 
@@ -235,7 +244,7 @@ Keys are registered with Windows' standard hotkey call, the same way any program
 
 - **First time:** turn the overlay on, let Deck install RivaTuner if needed, then start from *Compact row*.
 - **Just curious about FPS:** use *Just the framerate*, or *FPS and lows* if you care about stutter.
-- **Troubleshooting stutter:** use the *Gaming* preset with the frametime graph on, *Colour by load and heat* on, and *Start the figures over* on a key.
+- **Troubleshooting stutter:** use the *Gaming* preset with the frametime graph on, *Colour by load and heat* on, and *Reset averages* on a key.
 - **Always-on FPS for session reports:** keep RivaTuner running (*Start RivaTuner with Deck*) and the overlay off. Reports and Target FPS only need RivaTuner measuring.
 - **Laptops and small screens:** use a smaller size, *One line* layout, and *Shrink to fit the screen*.
 - **4K or TV:** raise *Size* to 3 or 4 and use the *Dark box* so the text stays readable.
@@ -250,17 +259,17 @@ Keys are registered with Windows' standard hotkey call, the same way any program
 
 **FPS and frametime are empty.** RivaTuner has to be measuring that game. Games it cannot hook have no FPS. The overlay's other readings still work.
 
-**Average FPS / lows look wrong after alt-tabbing or a loading screen.** Use *Start the figures over*. The figures also restart when you switch game.
+**Average FPS / lows look wrong after alt-tabbing or a loading screen.** Use *Reset averages*. The figures also restart when you switch game.
 
 **The game's own overlay look differs from my settings.** A game with its own RivaTuner profile ignores the global look. Turn on *Use this look in every game*.
 
 **Long overlays are cut off.** RivaTuner has a limited text field. With RivaTuner 7.3.5 and newer Deck uses the larger one; on older versions whole lines at the end are left off. Updating RivaTuner or removing readings fixes it.
 
-**I use MSI Afterburner too.** Turn off *Share readings like Afterburner* so the two do not fight over the readings, and use only one overlay.
+**I use MSI Afterburner too.** Turn off *Share readings with other tools* so the two do not fight over the readings, and use only one overlay.
 
 **Open RivaTuner shows a black window.** Use Deck's **Open RivaTuner** button: RivaTuner draws its window properly only when it opens it itself.
 
-**I want RivaTuner back as it was.** Behaviour > RivaTuner > **Put RivaTuner's look back** restores the profiles Deck changed.
+**I want RivaTuner back as it was.** Behaviour > RivaTuner > **Restore RivaTuner's own look** restores the profiles Deck changed.
 
 ## FAQ
 
@@ -272,6 +281,6 @@ Keys are registered with Windows' standard hotkey call, the same way any program
 
 **Does it work on AMD or Intel graphics?** Yes. The overlay itself works on any PC that RivaTuner supports. Individual readings appear when the hardware provides them.
 
-**Why do I need RivaTuner for the game bar's frame limit and for FPS in reports?** RivaTuner is the program that measures frame times and applies the global limiter. On NVIDIA cards, the per-game frame limit on the Gaming page does not need it (the driver keeps it).
+**Why do I need RivaTuner for the game bar's frame limit and for FPS in reports?** RivaTuner is the program that measures frame times and applies the global limiter. On NVIDIA cards, the per-game frame limit on the Game profiles page does not need it (the driver keeps it).
 
-**Does Deck change RivaTuner's other settings?** Deck writes its look and the global framerate limit into RivaTuner's profiles, hides its game-launcher hooks, and can hide its tray icon. It keeps backups of the profiles it rewrites, and **Put RivaTuner's look back** restores them.
+**Does Deck change RivaTuner's other settings?** Deck writes its look and the global framerate limit into RivaTuner's profiles, hides its game-launcher hooks, and can hide its tray icon. It keeps backups of the profiles it rewrites, and **Restore RivaTuner's own look** restores them.

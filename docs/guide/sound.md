@@ -1,8 +1,10 @@
-# Sound and mic
+Where to find it: Desktop › Sound & mic
 
-The **Sound and mic** page controls where your sound plays, how loud everything is, which apps use which speakers, and how your microphones are set up. It also holds automatic switching: output profiles, rules that react to a headset being plugged in or an app starting, and a microphone check before calls.
+# Sound & mic
 
-Find it under **Desktop > Sound and mic**. It has three tabs: **Playback**, **Microphones** and **Outputs & rules**. Deck reopens on the tab you used last.
+The **Sound & mic** page controls where your sound plays, how loud everything is, which apps use which speakers, and how your microphones are set up. It also holds automatic switching: output profiles, rules that react to a headset being plugged in or an app starting, and a microphone check before calls.
+
+Find it under **Desktop > Sound & mic**. It has three tabs: **Playback**, **Microphones** and **Outputs & rules**. Deck reopens on the tab you used last.
 
 Everything on this page uses Windows' own audio controls (the same ones the Windows volume mixer and Sound settings use). Deck does not install an audio driver, does not hook into games and does not read their memory, so it is safe with anti-cheat.
 
@@ -33,7 +35,7 @@ One row per app that is making sound right now, with its own slider, mute button
 
 ### Playing
 
-When an app reports a song or video through Windows' media controls, a card shows the title, artist, app and state with **Previous**, **Play / Pause** and **Next** buttons. The buttons are greyed out when the app does not support that action. The pop-up music card is a separate feature; see [Flyouts](flyouts.md).
+When an app reports a song or video through Windows' media controls, a card shows the title, artist, app and state with **Previous**, **Play / Pause** and **Next** buttons. The buttons are greyed out when the app does not support that action. The pop-up music card is a separate feature; see [Music & volume pop-ups](flyouts.md).
 
 ---
 

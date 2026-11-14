@@ -2,6 +2,150 @@
 
 All notable changes to Deck. Setups for each version are on the [Releases](https://github.com/MohammadFakih02/deck-releases/releases) page.
 
+## 4.5.0 — 2026-11-14
+
+### Clearer controls and steadier pages
+- **Deck recovers while starting:** when its background part is slow or unavailable, a plain message appears and Deck retries with increasing delays, opening by itself when it answers.
+- **Script errors use plain words** with the full details kept in the log. Missing readings show a dash, and an incomplete timer no longer shows NaN in the sidebar.
+- **Switches say On or Off** beside the control; rows that already spell out the state keep their own wording. Empty tick boxes and off switches have stronger outlines across all eight themes.
+- **Page titles stay on one line:** the search row moves underneath when needed, and hovering a shortened title shows its full name.
+- **Keyboard focus is easier to follow** on navigation, profile cards, app rows and preview choices. Scrolled pages keep their place when readings refresh or controls redraw.
+
+### Search
+- **Search finds every control, not only the pages you have already opened.** Capitals and accents do not matter ("Clípboárd" finds Clipboard), words can be in any order, simple plurals match, and one wrong, missing or swapped letter is forgiven in words of five letters or more ("tempezature" finds Sensors). Short words are never guessed at.
+- **Better order:** the strongest page or tab match leads individual controls. **Fan** and **fans** lead to Fans, **HDR** to Display, **theme** to Settings > Appearance, and **uninstall** to Apps > Installed. Other matches keep their order and variety. Eight Deck results show first, with a **More Deck results** row.
+- **Landing is exact:** a result for a setting opens its page and tab, opens any fold around it, scrolls to it and marks it for a moment. If the setting is not shown with your current options, Deck says so instead of landing nowhere.
+- **Nothing found** now says so and offers up to three nearby page or tab names beside the web search.
+- **Typing quickly is steadier:** only the newest search runs, an old answer can no longer replace a newer one, and Enter runs the row you see. Saved quicklink keywords beat ordinary name matches, and an app and a Deck page are ranked by the same rule. The finder inside Settings uses the same matching.
+
+### Gaming
+- **Performance overlay:** corner choices form a screen-shaped map. The status and preview explain whether RivaTuner is drawing over a game, waiting for one or stopped, and when the preview is smaller than the real overlay. **Frame limit** has its own section under Behaviour, with the current global limit and a clearer explanation of per-game limits.
+- **Controller › On screen** fits more settings beside the preview, with corner choices arranged like the screen's edges.
+- **Death counter › Games** folds learned death and victory pictures behind a count and the last-learned time.
+- **Game bar:** each preview widget is one keyboard choice, with a visible focus ring.
+
+### Hardware and PC status
+- **Shorter CPU and GPU pages:** compact built-in modes and applied-profile rows show more at once. Requested settings are clearly separate from measured readings.
+- **Profile editors:** Back to CPU asks before dropping unsaved edits. The GPU editor distinguishes unsaved edits, settings being tried, later edits and partial failures; its cancel button says what it will discard or restore.
+- **Missing readings and devices** have clearer explanations and next steps, including read-only fans, cooler display connections and a retry when This PC cannot read the parts list.
+- **Fans › Fan speeds is rearranged:** every fan is a tile of the same size with one line each: its name, its RPM and the control signal it is sending ("25% signal", a signal and not a measured speed). A tile names its mode only when it differs from the **All fans** choice. A fan reading 0 is dimmed and says "No reading". Columns are chosen so the last row is never a single tile.
+- **Lighting:** the preview is now above the settings, so a change shows without scrolling back.
+- **Fans, Lighting and Cooler display wording:** the help says **Apply hardware changes** where it said "Apply", and the fan preview is called "Preview a curve" (button **Run preview**).
+
+### Switches, sliders and editors now tell the truth
+These came out of reading every page's code and clicking through the installed app.
+- **A switch that could not make its change goes back** to where it was and says why, instead of staying flipped. A second click while the first change is still being made is ignored. This covers Sound & mic, Windows rules, Network history, the Send-to menu, Phone, the Death counter's per-game switch, the Performance overlay's RivaTuner tray switch and Windows tweaks.
+- **A setting that fails to save leaves the page showing the real value.**
+- **Settings saves are retried.** If Deck cannot write its settings, a notification says **Settings could not be saved** and Deck keeps trying (after 2, 4 ... up to 60 seconds) until the folder is writable. A settings file Deck cannot read is no longer replaced by defaults.
+- **The CPU and GPU editors ask before dropping edits** whichever way you leave: Back, the sidebar, a page tab, a search result, or opening another profile's editor. **Keep editing** and Escape leave everything as it was. The GPU editor puts the card back to the saved profile first if a test is on it.
+- **Sliders:** letting go outside the window no longer leaves the page waiting. Home volume sliders send fewer writes while you drag and end on the exact value. Display **Brightness** and **Contrast** end on the value you released, and go back to the monitor's real value when it refuses.
+- **Free-space figures agree.** Disk space, Drive health and This PC show the same decimal GB for the same drive (This PC used to divide by 1024 and call it GB, so it read about 7% lower). Disk space says when the scan was made and shows the current free space beside it; This PC's weekly Disk space tile says when it was checked, and no longer calls the lowest-free drive "the fullest".
+- **Notifications never drop the shutdown warning.** When more than four are showing, the oldest other one goes, not the shutdown or sleep warning with its Cancel button.
+- **Failures you could not see are now shown:** starting a Clean up scan, ending a locked process that Windows refuses, copying to a refused clipboard, adding a ping address or host when the setting cannot be saved, a failed Apps to close or Built-in apps list (with **Try again**), a failed Sensors history read (with **Try again**).
+
+### Page fixes
+- **Death counter:** the automatic-counting line says counting is off when it is off for that game; **Confirm boss** reads "Confirm boss: <name>". Every Death counter setting has a **?**.
+- **Game bar:** the **Drops** widget shows how long ago a dip was, not a huge number; letting go of a slider outside the bar no longer stops it refreshing or closing; the **Deaths** widget says when the counter cannot be read instead of offering to turn it on; every widget has a **?**.
+- **Game profiles:** **Why did my FPS drop?** says it covers the current or last session; **Apps to close** loads once per visit and has **Refresh** and **Try again**.
+- **Performance overlay:** opening **Start from a preset** no longer throws the page down.
+- **Clipboard:** the arrow keys, Delete and Enter work after you click an item, and act on the item that has focus.
+- **Disk space:** recycling a folder you have open drops it from the tree, the type list and the bar. **Build a space plan** asks for a number instead of sending nothing.
+- **Clean up:** the **Show N with nothing to clean** button's spoken name matches its words and keeps focus when the count changes.
+- **Display:** a scale the monitor refuses puts the list back; an emptied schedule time box is ignored.
+- **Apps and Windows tweaks:** the filter and sort groups have their own names for screen readers; the Windows tweaks filter is "Show which tweaks".
+- **Fans:** Calibrate no longer redraws another page while it measures, and an empty fan list no longer breaks the extras tab.
+- **Network:** **Lag while busy** no longer piles up redraws; App updates without winget says so once.
+- **Settings:** Features › Desktop › **Review window rules** opens the rules tab; the Settings tour finds its step; **Check every** in Project sync reads "1 minute".
+- **Help:** 21 **?** marks were added (every Game bar widget, Virtual display, nine Death counter settings) and 68 existing ones were corrected against the code (button names, defaults, limits, what turning something off does).
+
+### Maintenance, Settings and Power & time
+- **Clean up** folds long groups of measured-empty rows behind a Show button, keeping selected and unmeasured rows visible. The review describes only the selected kinds of clean-up.
+- **Disk space:** the folder explorer comes before Disk tools.
+- **Apps:** row details wrap, missing uninstall options have an explanation, and selecting an app keeps keyboard focus. The filter says it searches this list by name or publisher, and the details explain when a filter hides your selection.
+- **Startup apps and Startup optimizer** distinguish an empty list, no search matches and a failed reading, with clearer startup-state wording and an **Analyse** button.
+- **Settings › Features** uses columns and shorter related links; pages hidden with their whole area say **Hidden with area**. Connections uses columns in wider windows.
+- **Timers and shutdown plans** show the clock time they are waiting for, including the day when needed, and explain what Cancel stops.
+
+### Under the hood
+- **Quieter logs:** a CPU custom power-limit clamp warns once for the same requested and held limits; Target FPS reports a missing reading once per episode. Music pop-up timing details are logged only on activity or when a stage is slow.
+- **Better game detection:** settings and editor front ends, including a wallpaper program's settings window, and known wallpaper renderers no longer start game sessions automatically.
+- **Steadier window placement:** a correctly maximised window is no longer moved back because its outer frame extends past the monitor.
+- **Less background work:** Tailscale state is checked at most every five minutes while Deck's main window is hidden or Tailscale is not running. PC to PC skips peer discovery while switched off.
+- **Lighter while hidden:** with the music pop-up on and no song loaded, Deck no longer watches the skip keys and checks for a player every 5 seconds instead of every second. Pages stop asking for updates while the window is hidden and refresh when it opens. A switched-off game bar, hot corner, battery list or plain-copy helper does almost nothing, and the shares file is saved only when it changes.
+- **Hardware and files fail loudly, not quietly:** switching a CPU or GPU profile from the page returns the real outcome, including a profile that was saved but could not be applied; an unreadable GPU crash mark holds a risky profile instead of being treated as missing; snippet and sound-profile saves report a failed write and change nothing in memory, and a device preference with one invalid field is rejected whole instead of half-applied; Deck's stores no longer write an empty file when serialising fails; caches that could be cut short are written atomically.
+- **Commands stay off the UI thread:** audio, display, startup, network and search commands run on blocking threads; process waits for Windows tasks, setup snapshots and icon refreshes have time limits.
+- **Bad input cannot crash Deck:** damaged NTFS file-table records, non-ASCII curve and registry text, oversized numbers (timers, ids, ports, DWORD values), a bitmap with an impossible height and a malformed installer code are rejected with an explanation.
+- **Busy flags clear after a failure:** a failed index, Clean up scan, speed test, lag check or calibration launch no longer leaves the feature stuck busy.
+- **Testing tools and developer guide:** `tools/testing/check-wiring.mjs` (UI calls against Rust commands, setting keys, events and ids, with its own tests), `tools/testing/check-search.mjs` with its `search-*.mjs` helpers and the generated `ui/search-index.js` (regenerate with `--write-index`), `docs/DEVELOPING.md` and `docs/TESTING-CHECKLIST.md`.
+
+## 4.1.0 — 2026-11-12
+
+- **Tidier app list (Maintenance › Apps):** Uninstall, Review removal and the folder button sit on one line at the right, in the same place on every row; the install date is no longer cut off, and an unknown date is left out instead of saying "Unknown".
+- **Windows tweaks use switches:** a setting that is simply on or off is a switch, like the rest of Deck. The On | Off buttons with "Off" filled in looked like a switch turned on.
+- **What Deck changed says what changed:** each row shows **Now** and **Before** in plain words ("Ads and news in Edge — Now: Off, Before: On"; "Fan speeds — Now: Deck sets them, Before: the motherboard") with its area above it, instead of "From" and "Ends" notes.
+- **A tidier top bar:** the "Deck is changing N things" button sits on the search row instead of a line of its own, so Edit Home and the other buttons line up, and the search box is longer on every page. **Settings › Appearance › Show what Deck is changing** hides it (What Deck changed stays in the tray menu).
+- **Quieter page row:** the row of pages in a group lost its box; the open page is filled in and the group name is grey with a dot in the group's colour.
+- **Search waits for you:** opening Deck no longer focuses the search box; clicking it or typing still starts a search.
+- **Clearer controls:** sticky panels cover the content beneath them, option toggles have a filled selection, and page section tabs keep their underline.
+- **Change counts explain their scope:** the top-bar tooltip lists the areas it counts, and Windows tweaks says its count covers Windows settings.
+- **This PC:** storage sizes match Windows, C: comes first, peak times show local hours and minutes, unavailable controls use neutral chips, and the weekly tiles line up.
+
+### Every page, checked
+Every page and tab was read top to bottom, scrolled, and fixed where it was wrong, cut off or unclear:
+- **Gaming:** the overlay preview's buttons have names and no longer cover the readings; Game bar sliders show their range; empty shortcut boxes say Set shortcut; death counter and session numbers line up.
+- **Hardware:** CPU, GPU and fan profile summaries read in plain words ("41% power · fans 30%", "No speed limit"); GPU modes are listed slowest to fastest; lighting status lines are plain sentences.
+- **PC status:** sizes on Disk space, Clean up and drive pages use the same units as Windows; a nearly full drive says so; latency tests say Testing… while they run; Deck itself is labelled in Processes.
+- **Desktop:** microphone, clipboard and flyout buttons have text labels, duplicate media sessions are gone, the sliders line up.
+- **Maintenance and Power & time:** the force-close switch says unsaved work is lost; update tabs share one Check for updates; uninstalling Deck, runtimes or drivers warns more clearly; apps without an icon get a letter.
+- **Home, Phone and PC to PC:** the pairing card shows once above the tabs, the PC to PC switch sits in it, the transfer log is behind Show log.
+- **Settings:** plain labels for opacity and appearance, the death counter settings in one column, clearer Store update wording.
+- **Windows tweaks:** the category list scrolls on its own and keeps the selected one in view; settings that are partly on show Mixed; long options fit on one line and say which is Windows' default; Unpin all and turning Recall off ask first; a changed setting says what it was before; fewer, clearer tags.
+
+### Easier to find your way
+- **Plain names for everything.** The sidebar groups are now Gaming, Hardware, PC status, Desktop, Maintenance and Power & time, and pages say what they are: Game profiles, Performance overlay, Death counter, Drive health, Arrange windows, Sound & mic, Music & volume pop-ups, Windows tweaks, Project sync. The old names still work in search, and your own order of groups and pages is kept.
+- **Every page says what it is for** in one sentence under its title.
+- **A group opens its first page**, every time, and the row of pages above it is labelled "Pages in Gaming" (or whichever group you are in).
+- **CPU and GPU start with the one-click modes**, each with a line on what you get (quieter, cooler, faster). Your own profiles are below them.
+- **Deck game mode is honest when it has nothing to do:** it says no changes are selected and offers Choose changes, instead of reporting itself as on.
+- **Fans and Lighting:** Quieter fans is on the Speeds tab, and Lighting opens with Colour. Labels use plain words (the technical name is in the ? help), and buttons say what they do: Apply hardware changes, Discard pending changes.
+- **Search finds everything:** every tab and every setting is a result, with the place it leads to (for example Network › Tests, or Settings › Device batteries), and opening one takes you to the exact row, highlighted. Technical terms and the old page names work too. The finder inside Settings finds settings the same way.
+- **Show only what you use:** Settings › Features hides whole areas or single pages from the sidebar, search, Home and the tray menu. Hiding never stops or changes anything; each row says what keeps running and where its switch is. Show everything brings it all back.
+- **A shorter tray menu,** with the common actions first.
+- **What Deck changed:** when Deck is changing something on your PC, a chip in the top bar says so ("Deck is changing 3 things"). It opens the list with Put back for each change and Put everything back. The list says which kinds of change it does not cover yet.
+- **"I want my PC to be…" on Home:** Quieter, Faster in games or Use less power. Each shows exactly what it would change before you apply it, and can be put back. (New installs get it when the PC has CPU or GPU modes; add it to an existing Home in Edit Home.)
+- **One name for each thing, and words that say what happens:** Deck game mode (no longer also called Boost), Put back for restoring what was there before, Discard for dropping unsaved edits. About 45 settings gained a line that says what they do, and buttons name what they act on ("Apply selected tweaks", "Stop scan").
+- **Settings is in the same order as the sidebar,** with Features near the top; Devices is now called Device batteries.
+- **Fixed:** the top bar wrapped the window's close button onto a line of its own and kept an empty row when Deck changes nothing; the suggested CPU and GPU mode (Balanced, Normal) was painted like the selected one; a page's own tab row was announced to screen readers as "Pages in <group>".
+- **The guide has a new first page, Find your way around,** and every guide page starts with where to find the thing it describes.
+
+### This PC, rebuilt
+- **Your PC at a glance:** a spec sheet with the board or laptop model, processor, graphics with its driver version, memory with the speed it runs at, storage, every display with its resolution and refresh rate, Windows with its build, the BIOS with its date, and how long since the last restart. **Copy specs** puts it on the clipboard as plain text.
+- **Free speed it points out:** memory running below its rated speed (turn on XMP or EXPO) and a monitor running below its highest refresh rate (with Open Display) get an amber line.
+- **This week as five tiles** (Temperatures, Drives, Disk space, Sensor alerts, Deck) instead of a list of sentences, each with Fine, Check or Act now, opening its page when clicked. Times are your local time.
+- **One list of what Deck can control here** (Works, Partly, Read only, Not available) instead of two tables with different words.
+- **The support report moved to Settings › About**, next to Diagnostics.
+
+### New start
+- **A new start for new installs:** Deck opens on Home with a short introduction (what Deck is, how to open it again) and a First steps list for this PC. Both can be dismissed for good. Tours no longer start by themselves; they are on each page's tour button.
+- **A simpler Home** for new installs: Sound, Pinned & frequent apps, PC readings and Power & timers, with music and the current game only when there is something to show. Your existing Home is untouched; Edit Home offers Try simpler Home, and Cancel puts yours back.
+
+### Added
+- **Logitech batteries:** wireless Logitech mice, keyboards and headsets on a Unifying, Bolt or Lightspeed receiver (or connected directly) now show their battery in Settings › Device batteries and the tray. Deck only sends read requests, about every 5 minutes per device, and a device that doesn't answer is hidden and asked less and less often.
+- **Device readers are gentler:** a headset, mouse or receiver whose connection fails is no longer written to every 2 seconds; it is left alone for 5 minutes and then for longer. A headset reply is only taken when it echoes the request, so a volume knob or another program's traffic is never read as a battery level. A Logitech battery status of "charged" no longer counts as charging.
+- **More batteries:** a connected Bluetooth LE device that gives Windows no battery level is now asked for the standard Battery Service level (about every 5 minutes, never the typing and pointing part), and devices with a standard HID battery report (uninterruptible power supplies, some headsets) show up too, ranked below every other source.
+- **Razer mouse batteries:** Razer wireless mice (DeathAdder, Viper, Basilisk, Naga, Cobra, Lancehead, Mamba, Pro Click) now show their battery and charging state, read about every 5 minutes with the two read requests Razer's own software uses. A call that doesn't return in time is cut off and that mouse is left alone until Deck restarts.
+- **Headset batteries:** wireless headsets on their USB dongle (SteelSeries Arctis 7, Pro and Nova 7, Corsair Void and HS, HyperX Cloud Alpha Wireless) now show their battery, read about every 5 minutes with the one request the maker's own software uses. A headset that is switched off disappears from the tray. A Logitech mouse or keyboard switched on after a long time off now appears within about 5 minutes (it could take up to 30).
+- **Settings › Device batteries:** one place for the battery of your controllers, headsets, mice and keyboards (with Colour by level, the icon is green while charging and red when low). Choose the tray icon style and which kinds of device get an icon; for each device set its name, tray icon, warning level (Never to 50%) and whether the warning shows over games; forget devices that are away; copy a device report (without names, addresses or serial numbers) when a device shows no battery. The Controller battery switches in Settings › Games became a link to it. Copying the report never freezes Deck, and the keyboard focus stays on the control you changed.
+- **Device batteries (in progress):** the controller battery code now covers any device kind; Bluetooth headsets, mice and keyboards that report a battery are now read, like controllers, and only while connected (the Controller page's battery switches keep working). Each device can have its own tray icon, with a symbol for its kind (controller, headset, mouse, keyboard); clicking a controller's icon opens the Controller page, any other opens Settings.
+
+### Changed
+- **Deck quits faster**, and so installs and updates finish sooner: it no longer waits up to a second for its fan and sensor readings to finish before handing the fans back to the BIOS, and the setup checks every tenth of a second whether Deck has closed.
+- **Deck starts a little faster:** the list of drives is read just after the start instead of during it (it could also wake a sleeping hard disk).
+- **No more short freezes of the window and tray** when Tailscale is installed: reading its address ran on the thread that draws them.
+
+### Fixed
+- **Virtual display turns on again after a restart.** A virtual display that was off when the PC restarted couldn't be turned on any more: Windows doesn't load a turned-off virtual device after a restart, and turning it on stopped with "The device is not connected". Deck now sees this and makes the device again from the driver that is already installed (nothing is downloaded; one admin prompt when Deck runs without admin rights).
+
 ## 4.0.3 — 2026-11-10
 
 ### Fixed

@@ -1,8 +1,10 @@
+Where to find it: Desktop › Clipboard
+
 # Clipboard
 
 The **Clipboard** page keeps a history of what you copy (text, images and files), lets you search it, pin the things you want to keep, paste an old item back, change text before you paste it, and store snippets you type often.
 
-Find it under **Desktop > Clipboard**. The tabs are **Text**, **Images**, **Files**, **Pinned** and **Settings**. Windows' own Win+V history keeps working; Deck's history is separate.
+Find it under **Desktop > Clipboard**. The tabs are **Text**, **Images**, **Files** and **Pinned**. Windows' own Win+V history keeps working; Deck's history is separate.
 
 Deck does not send your clipboard anywhere. The history is stored on this PC only. Items that a password manager marks as private are never stored (see [Privacy](#privacy)).
 
@@ -22,7 +24,7 @@ The list shows 120 items at a time; scroll to the end, or press **Show N more**,
 
 ### Searching
 
-The **Search clipboard history** box filters by text, file names and the app the item came from. **Search scope** chooses **This tab** (default) or **All history**.
+The **Search clipboard history** box filters by text, file names and the app the item came from. Tick **Search all tabs** to include every kind of item; leave it unticked to search only the current tab.
 
 ### Selecting, pasting and keyboard
 
@@ -30,8 +32,10 @@ The **Search clipboard history** box filters by text, file names and the app the
 |---|---|
 | One click | Selects the item and shows it on the right. |
 | Double-click or Enter | Pastes the item into the app you were using, or just copies it, depending on the **On double-click or Enter** setting. |
-| Arrow keys | Move the selection. |
+| Arrow keys | Move the selection. They keep working after you click an item. |
 | Delete | Removes the selected item. |
+
+If you Tab to a different item than the selected one, Enter and Delete leave it alone; Enter on the focused item selects it first.
 
 The keys work as long as you are not typing in a box.
 
@@ -43,7 +47,7 @@ The keys work as long as you are not typing in a box.
 | Pin (pin icon) | Pinned items are kept, are not counted towards the history limit, and are never wiped. |
 | Send to phone | Sends the text (or a single copied file) to your connected phone. See [Phone](phone.md). |
 | Delete (bin) | Removes the item. |
-| Preview | Text shows in full up to the first 20,000 characters; copy and paste still use all of it. Images show larger with their size. Files list their names and open in Explorer when clicked. |
+| Preview | Text shows in full up to the first 20,000 characters; copy and paste still use all of it. Images show larger with their size. Files list their names and full paths, with **Show in folder** for each file. |
 | Counts | Characters, words and lines for text. |
 
 ### Paste as
@@ -76,7 +80,7 @@ For an image item, **Copy text from this image** reads the text in the picture u
 
 ### Clear history
 
-**Clear history** (bottom right) deletes everything except pinned items, after asking.
+**Clear all history (keeps pinned)** deletes unpinned items from every tab, after asking. It is hidden on Pinned.
 
 ---
 
@@ -120,7 +124,7 @@ A list of apps (for example a code editor, a terminal, a notes app). When one of
 - The history is stored on this PC (in `clipboard\history.json` in Deck's data folder, with images as files next to it).
 - Copies that carry the standard Windows "do not keep this" flags are skipped. Password managers set these flags, so their copies never reach the history.
 - Deck does not read the clipboard of other users and does not upload it. It only leaves the PC if you press **Send to phone** (to your own connected phone).
-- Use **Clear history**, pins, **Wipe codes and keys after a minute** and **Keep images** to control what stays.
+- Use **Clear all history (keeps pinned)**, pins, **Wipe codes and keys after a minute** and **Keep images** to control what stays.
 
 ## Recommended setup
 
@@ -131,7 +135,7 @@ A list of apps (for example a code editor, a terminal, a notes app). When one of
 
 ## Troubleshooting
 
-**Something I copied is missing.** It may have come from a password manager (never kept), exceeded 1,000,000 bytes, been wiped as a likely secret, or fallen off the end of the history limit. Check the **All history** scope.
+**Something I copied is missing.** It may have come from a password manager (never kept), exceeded 1,000,000 bytes, been wiped as a likely secret, or fallen off the end of the history limit. Tick **Search all tabs**.
 
 **Double-click pastes into the wrong window.** Pasting goes to the window that was in front before Deck opened. If that is unreliable, set **On double-click or Enter** to **Copy only** and press Ctrl+V yourself.
 

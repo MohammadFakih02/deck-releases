@@ -1,9 +1,11 @@
+Where to find it: Maintenance › Startup apps
+
 # Startup apps and the Startup optimizer
 
 Two pages help with a slow sign-in and a crowded start:
 
-- **Startup apps** (Clean > Startup apps) lists every program that starts with Windows and lets you switch each one off or on.
-- **Startup optimizer** (Clean > Startup optimizer) measures how long Windows took to start, ranks what slowed it down, and offers a few safe fixes, each of which can be undone.
+- **Startup apps** (Maintenance > Startup apps) lists every program that starts with Windows and lets you switch each one off or on.
+- **Startup optimizer** (Maintenance > Startup optimizer) measures how long Windows took to start, ranks what slowed it down, and offers a few safe fixes, each of which can be undone.
 
 Neither page deletes anything. Switching a startup app off stops it launching at sign-in; the app stays installed and you can still open it yourself.
 
@@ -11,7 +13,7 @@ Neither page deletes anything. Switching a startup app off stops it launching at
 
 # Part 1: Startup apps
 
-Find it under **Clean > Startup apps**. The page title line says "What starts with Windows."
+Find it under **Maintenance > Startup apps**. The page title line says "What starts with Windows."
 
 ## The list
 
@@ -55,14 +57,14 @@ Select an app to see:
 
 - A switch, and "Starts with Windows" or "Off at startup".
 - **Source**.
-- **Launch command**: the exact command Windows runs. **Copy launch command** copies it.
+- **Program**: the exact command Windows runs. **Copy program command** copies it.
 - **Slowed the last start by**: about how many seconds this app added to Windows' recent starts. This is Windows' own measurement (from the Diagnostics-Performance event log), shown only when Windows recorded one. No figure just means Windows did not time that app.
 
 ## What to switch off
 
 - **Usually safe to switch off:** chat apps, game launchers, cloud-storage clients you do not need constantly, music players and update helpers, printer and scanner utilities. They start when you open them.
 - **Leave on:** your antivirus, your audio and graphics control panels (if you use them), backup software, touchpad and keyboard utilities, and Deck itself if you want it in the tray.
-- If you are not sure what something is, the name plus **Launch command** usually tells you. When in doubt, switch it off for a week; nothing is lost, and you can switch it back on.
+- If you are not sure what something is, the name plus **Program** usually tells you. When in doubt, switch it off for a week; nothing is lost, and you can switch it back on.
 
 **Recommended:** switch off what you do not need within seconds of signing in, starting with the entries that show a measured "slowed startup" time. The more apps start together, the longer the desktop feels busy.
 
@@ -70,9 +72,9 @@ Select an app to see:
 
 # Part 2: Startup optimizer
 
-Find it under **Clean > Startup optimizer**. It reads Windows' own startup measurements and local settings, ranks the causes of delay, and keeps a way back for everything it changes.
+Find it under **Maintenance > Startup optimizer**. It reads Windows' own startup measurements and local settings, ranks the causes of delay, and keeps a way back for everything it changes.
 
-**Analysis is read-only.** Press **Analyze** to read the measurements. It can take up to about a minute because Windows has to be asked for its startup history and Deck checks services, tasks and settings. Nothing changes until you press a fix button and confirm.
+**Analysis is read-only.** Press **Analyse** to read the measurements. It can take up to about a minute because Windows has to be asked for its startup history and Deck checks services, tasks and settings. Nothing changes until you press a fix button and confirm.
 
 ## What it shows
 
@@ -106,9 +108,9 @@ The ranked list of things that affected the last start. Each finding has:
 - Plain advice, the source of the measurement and an **About** fold for longer explanation.
 - Action buttons where one applies.
 
-**Measured** findings come from Windows' own record of what slowed that start: apps (switch off at sign-in), services, drivers, devices, Windows components and security software. For an app that is also in your startup list, the **Turn off at sign-in** / **Turn on at sign-in** button is the same switch as the Startup apps page, and it is greyed out for read-only entries. Delays can overlap, so the times are not promised savings.
+**Measured** findings come from Windows' own record of what slowed that start: apps (switch off at sign-in), services, drivers, devices, Windows components and security software. For an app that is also in your startup list, the **Start with Windows** switch is the same switch as the Startup apps page, and it is greyed out for read-only entries. Delays can overlap, so the times are not promised savings.
 
-**Other checks (impact unknown)** are things Deck can see but Windows did not time:
+**Other checks · impact unknown (N)** are things Deck can see but Windows did not time; the fold title includes their count:
 
 | Finding | What Deck tells you |
 |---|---|
@@ -153,7 +155,7 @@ If Deck is not running with administrator rights, a panel offers **Set up admini
 ## Recommended setup
 
 1. Open **Startup apps** and switch off the apps you do not need at sign-in, starting with those that show a measured delay.
-2. Restart, then open **Startup optimizer** and press **Analyze** to see the new timing.
+2. Restart, then open **Startup optimizer** and press **Analyse** to see the new timing.
 3. Apply **Remove startup delay** only if you want your tray apps up as fast as possible. Apply **Enable Fast Startup** only if you use Shut down, not Restart, and do not dual boot.
 4. Compare using a few starts, not one.
 
@@ -163,7 +165,7 @@ If Deck is not running with administrator rights, a panel offers **Set up admini
 
 ## Troubleshooting
 
-**"Startup logging is off."** Enable the Diagnostics-Performance Operational log in Event Viewer as described above, restart Windows, then analyze again. Deck does not enable it by itself.
+**"Startup logging is off."** Enable the Diagnostics-Performance Operational log in Event Viewer as described above, restart Windows, then analyse again. Deck does not enable it by itself.
 
 **"No recorded boots are available."** The log is on but has no start recorded yet, or your Windows setup does not publish them. Restart once and try again.
 
@@ -173,7 +175,7 @@ If Deck is not running with administrator rights, a panel offers **Set up admini
 
 **A fix says it needs administrator rights.** Use **Set up administrator access**, then apply it again.
 
-**Analyze says it could not read the startup inventory.** Try again after Windows has finished signing in; it times out if the PC is very busy.
+**Analyse says it could not read the startup inventory.** Try again after Windows has finished signing in; it times out if the PC is very busy.
 
 ---
 

@@ -1,8 +1,10 @@
+Where to find it: Hardware › Fans
+
 # Fans
 
 The Fans page controls the case, CPU and pump fans connected to your motherboard. Each fan can follow the BIOS, hold a fixed speed, follow a temperature curve you can drag, combine two curves, or copy another fan. Deck also gives you quiet hours, a rehearsal that shows what a curve would do without touching a fan, and a calibration that measures each fan's real range.
 
-**Where to find it:** sidebar > **Tune** > **Fans**. The page has three tabs: **Speeds**, **Curves** and **Calibrate & extras**. Deck remembers the tab you used last.
+The page has three tabs: **Speeds**, **Curves** and **Calibrate & extras**. Deck remembers the tab you used last.
 
 ![The Fans page](../screenshots/fans.png)
 
@@ -10,7 +12,7 @@ The Fans page controls the case, CPU and pump fans connected to your motherboard
 
 **The most important thing to know:** fans always go back to the BIOS (your motherboard's own control) when Deck quits, crashes, is ended from Task Manager, or Windows signs out. See [What happens if Deck crashes](#what-happens-if-deck-crashes-or-quits).
 
-Related pages: [GPU](gpu.md) (the graphics card's own fans are set there), [Lighting](lighting.md), [Sensors](sensors.md) (fan speed graphs), [Gaming](gaming.md) (a fan preset per game), [Game bar](game-bar.md) (a Fan preset widget), [Home](home.md).
+Related pages: [GPU](gpu.md) (the graphics card's own fans are set there), [Lighting](lighting.md), [Sensors](sensors.md) (fan speed graphs), [Game profiles](gaming.md) (a fan preset per game), [Game bar](game-bar.md) (a Fan preset widget), [Home](home.md).
 
 ## Contents
 
@@ -81,14 +83,16 @@ Temperature in degrees C against fan speed in %:
 | **Balanced** | 30 C: 30 %, 50 C: 40 %, 65 C: 60 %, 80 C: 85 %, 90 C: 100 % |
 | **Performance** | 30 C: 40 %, 45 C: 55 %, 60 C: 75 %, 75 C: 100 %, 100 C: 100 % |
 
-Curve points are always entered in degrees C, even if the rest of Deck shows Fahrenheit (Settings > Appearance > Performance and units; see [Settings](settings.md)).
+Curve points are always entered in degrees C, even if the rest of Deck shows Fahrenheit (Settings › Appearance > Performance and units; see [Settings](settings.md)).
 
 ## The Speeds tab
+
+The **Quieter fans** panel on this tab holds the quiet choices in one place: **Ignore short spikes** and **Keep fans quieter at night** (quiet hours). The same choices are also on **Calibrate & extras**. Changes wait for **Apply hardware changes**; **Discard pending changes** drops them.
 
 **Fan speeds** (or **Live monitoring** when Deck can't control the fans):
 
 - **All fans**: a drop-down that sets every fan to one mode at once (BIOS, a fixed speed, or a curve). It shows **Mixed** when fans differ.
-- One tile per fan: its name (the chip's own, such as CPU fan, Pump, System fan 1), its live **RPM**, the percentage it is running at now, and its mode. A fan with no reading shows "Unavailable". A header with no fan plugged in reads 0.
+- One tile per fan, all the same size and on one line each: its name (the chip's own, such as CPU fan, Pump, System fan 1), its live **RPM**, and the control signal it is sending, such as "25% signal" (a signal, not a measured speed). The tile only names a mode when that fan's mode differs from the **All fans** choice (or the fans have no common mode). A fan reading 0 is dimmed and says "No reading". A fan with no reading at all shows "Unavailable". A header with no fan plugged in reads 0. Hover a tile for the full wording.
 - A link to the [GPU page](gpu.md), where graphics card fans are set.
 
 **Fan settings** (**?**): one row per fan with two drop-downs.
@@ -98,13 +102,13 @@ Curve points are always entered in degrees C, even if the rest of Deck shows Fah
 | **Mode** | The fan's mode. Click the fan's name to jump to its curve on the Curves tab. |
 | **Follows** (**?**) | The temperature source for a curve or mix (greyed out in other modes). Case fans that follow the **hotter** of CPU and GPU help in games. The curve's marker moves to the new temperature. |
 
-Press **Apply** to send changes to the fans.
+Press **Apply hardware changes** to send changes to the fans.
 
 ## The Curves tab
 
 A curve is temperature (across) against fan speed (up), smoothed between points. The orange marker shows the temperature the curve reads now and the speed it gives.
 
-**Editing:** drag a point; click empty space to add one; right-click a point to remove one. Temperatures run from 20 to 100 C. Changes apply after **Apply**.
+**Editing:** drag a point; click empty space to add one; right-click a point to remove one. Temperatures run from 20 to 100 C. Changes apply after **Apply hardware changes**.
 
 The chips above the graph pick which curve you are editing. Under the curve a line says which fans use it ("Used by CPU fan, Front 1. The marker follows CPU/GPU hotter.") or "No fan uses this curve yet. Assign it under Speeds."
 
@@ -136,11 +140,11 @@ Only fans named as **case fans** (a name containing "system", "chassis" or "case
 
 (**?**) Two ways to make fans react together.
 
-**Mix two curves** (needs at least two curves): choose a fan, then **Highest of**, **Lowest of** or **Average of**, then the two curves, and press **Use mix on this fan**. The fan then uses, at every temperature, the higher, lower or average speed of the two. Use it to combine two cooling needs, for example a quiet curve with a performance curve, and take the highest.
+**Mix two curves** (needs at least two curves): choose a fan, then **Highest of**, **Lowest of** or **Average of**, then the two curves, and press **Set curves for** that fan. The fan then uses, at every temperature, the higher, lower or average speed of the two. Use it to combine two cooling needs, for example a quiet curve with a performance curve, and take the highest.
 
-**Follow another fan**: choose the fan that follows, the fan it follows, and an **Offset** (from -30 % to +30 %), then press **Use follow on this fan**. The fan copies the other fan's speed plus the offset, with a minimum of 20 %. Two fans can't follow each other: that pair reverts to the BIOS when you apply. If the fan it follows has no reading, the fan runs fast (100 %) rather than guess.
+**Follow another fan**: choose the fan that follows, the fan it follows, and an **Offset** (from -30 % to +30 %), then press **Set following rule for** that fan. The fan copies the other fan's speed plus the offset, with a minimum of 20 %. Two fans can't follow each other: that pair reverts to the BIOS when you apply. If the fan it follows has no reading, the fan runs fast (100 %) rather than guess.
 
-Both buttons set the fan's mode in the draft; press **Apply** afterwards. Switching a fan back to a plain curve or the BIOS in **Speeds** undoes them.
+Both buttons set the fan's mode in the draft; press **Apply hardware changes** afterwards. Switching a fan back to a plain curve or the BIOS in **Speeds** undoes them.
 
 ### Quiet hours
 
@@ -154,11 +158,11 @@ Both buttons set the fan's mode in the draft; press **Apply** afterwards. Switch
 
 In those hours, fans on a **curve or mix** never go above the cap, unless the temperature reaches the lift point. **Fixed speeds, followers (Follows another fan) and BIOS fans aren't capped.** An unknown temperature never caps. Normal safety limits still apply.
 
-### Rehearse a curve
+### Preview a curve
 
 (**?**) Runs made-up temperatures through your **draft** curve, its slow-down settings, the safety rules and quiet hours, and plots the result. **Nothing is sent to the hardware.**
 
-Pick a fan (it must be on a curve or a mix) and a temperature story, then **Rehearse**:
+Pick a fan (it must be on a curve or a mix) and a temperature story, then **Run preview**:
 
 | Story | What it plays |
 |---|---|
@@ -227,7 +231,7 @@ Deck never injects into games or reads their memory, and the Fans page does noth
 ## The tray and other ways to change fans
 
 - **Tray menu > All fans:** sets every fan to one mode (BIOS, a fixed speed or a curve). Only shown when fan control is available.
-- **Gaming** (per game): a **fan preset** is switched on while the game runs and everything goes back after. See [Gaming](gaming.md).
+- **Game profiles** (per game): a **fan preset** is switched on while the game runs and everything goes back after. See [Game profiles](gaming.md).
 - **Game bar:** a **Fan preset** widget. See [Game bar](game-bar.md).
 - Changes from the tray and Gaming take effect right away; they don't need Apply.
 
@@ -243,7 +247,7 @@ Deck never injects into games or reads their memory, and the Fans page does noth
 
 **HP laptops:** Deck drives the two fans (CPU and GPU) through the BIOS interface and never asks for less than about 1,800 RPM while a manual speed is set. Leave them on the BIOS if you don't need manual control.
 
-Always **Apply**, then watch the temperatures on [Sensors](sensors.md) for a while under load.
+Always **Apply hardware changes**, then watch the temperatures on [Sensors](sensors.md) for a while under load.
 
 ## Troubleshooting
 
@@ -255,7 +259,7 @@ Always **Apply**, then watch the temperatures on [Sensors](sensors.md) for a whi
 
 **A fan shows "Unavailable" or 0 RPM.** Nothing is plugged into that header, or the fan has no tachometer wire, or it is stopped on purpose.
 
-**I changed a mode and nothing happened.** Edits are a draft: press **Apply** in the bar. Changes from the tray and Gaming apply immediately.
+**I changed a mode and nothing happened.** Edits are a draft: press **Apply hardware changes** in the bar. Changes from the tray and Gaming apply immediately.
 
 **The fan is faster than my curve.** A safety rule is on (CPU at 85 C, the source at 90 C or no reading) or a calibration is holding that fan. Check the curve's source and sensor readings. A fan always speeds up at once when the temperature rises; the slow-down settings only delay slowing down.
 
@@ -283,7 +287,7 @@ Always **Apply**, then watch the temperatures on [Sensors](sensors.md) for a whi
 
 **Does Deck change anything permanent in my BIOS?** No. It writes the fan chip's live registers (and saves the originals first), never the BIOS settings.
 
-**What does Deck change on my PC for fans, and how do I undo it?** Deck changes fan speeds in the motherboard chip while it runs, and keeps your modes and curves in its own settings. To undo: set fans to **BIOS** and **Apply**, or quit Deck.
+**What does Deck change on my PC for fans, and how do I undo it?** Deck changes fan speeds in the motherboard chip while it runs, and keeps your modes and curves in its own settings. To undo: set fans to **BIOS** and **Apply hardware changes**, or quit Deck.
 
 **What if I set the same curve on a fan that follows another?** A fan in **follow** mode copies a leader; two fans that follow each other revert to the BIOS.
 

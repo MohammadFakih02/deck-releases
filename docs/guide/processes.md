@@ -1,8 +1,10 @@
+Where to find it: PC status › Processes
+
 # Processes
 
 The **Processes** page shows every program running on your PC, grouped by app, with how much processor and memory each one uses. You can end a stuck program from here, and you can ask Deck to check whether a program file is safe: who signed it, whether antivirus engines flag it, and what Microsoft Defender says.
 
-Find it under **Watch > Processes** in the sidebar. It is a single page with no tabs.
+Find it under **PC status > Processes** in the sidebar. It is a single page with no tabs.
 
 > It does the same job as the first tab of Windows' Task Manager, with two additions: a one-line "what is this?" for each program and the optional safety checks. The **Task Manager** button at the top opens the real Task Manager if you want it.
 
@@ -46,7 +48,7 @@ Click a row and the panel on the right shows that program:
 - A one-line **"what is this?"**. Deck has a built-in list of common Windows and driver programs. For anything else it reads the description stored inside the program file itself.
 - CPU and memory.
 - Its safety result (see below).
-- **Scan file**: runs the safety checks on this one program (see [Check a file](#check-a-file-once)).
+- **Check for viruses**: runs the safety checks on this one program (see [Check a file](#check-a-file-once)).
 - **End app**: ends the program. If it has several processes the button says **End app (N processes)**. You are asked to confirm first, and told that unsaved work may be lost. Protected programs show a **Protected by Windows** chip instead of the button.
 - A **File and check results** fold with the full path of the program file (or a note that none could be read) and the check chips again.
 
@@ -102,13 +104,13 @@ Each result is a small chip in the row and in the selected-app panel:
 | **AV 0%** / **AV 12%** | The share of antivirus engines that flag the file. 0% means it is not known as malware. |
 | **Def (tick)** / **Def: <threat name>** / **Def ?** | Defender found nothing / found something / could not scan the file. |
 | **VT 0/70** | VirusTotal: how many of its engines call the file malicious. Click it to open the full report in your browser. **VT ?** means VirusTotal has never seen the file. |
-| **File not scanned yet** | You have not run a check since this file last changed. |
+| **Not checked for viruses yet** | You have not run a check since this file last changed. |
 
 Results are saved per file fingerprint on your PC, so a file is only checked again when it changes.
 
-### Sort apps by safety
+### Sort by safety
 
-The **Sort apps by safety** button sorts the lists with the most worrying results first: a Defender detection counts most, then VirusTotal and antivirus-engine detections, then a bad signature, then no signature. Press it after running the checks to bring anything suspicious to the top. Click a column heading to go back to normal sorting.
+The **Sort by safety** button sorts the lists with the most worrying results first: a Defender detection counts most, then VirusTotal and antivirus-engine detections, then a bad signature, then no signature. Press it after running the checks to bring anything suspicious to the top. Click a column heading to go back to normal sorting.
 
 ### Programs that cannot be checked
 
@@ -117,11 +119,11 @@ A few rows show a dash and "can't be checked: no file to scan". These have no re
 - Windows' kernel parts (System, Registry, Memory Compression, the idle process). Deck checks the Windows kernel file they run from instead, and marks them in the results. A file check cannot see a threat that lives only in memory.
 - Programs Windows will not show Deck without administrator rights.
 
-The line above the buttons also explains why "Check all N files" can be smaller than the number of rows: several rows can run from the same file, and each file is checked once.
+The line above the buttons also explains why "Check all N program files with" can be smaller than the number of rows: several rows can run from the same file, and each file is checked once.
 
 ### Check a file once
 
-**Check a file...** (top right of the Check panel) and **Scan file** (in the selected-app panel) check one file privately. You pick the checks (VirusTotal only if you added a key), press **Check**, and see the result with the file's SHA-256 fingerprint and a copy button. **Nothing about the file is saved**: not its path, not its fingerprint, not the results. They live in memory while that window is open and are forgotten when you close it. This is the right tool for a download you are unsure about.
+**Check a file...** (top right of the Check panel) and **Check for viruses** (in the selected-app panel) check one file privately. You pick the checks (VirusTotal only if you added a key), press **Check**, and see the result with the file's SHA-256 fingerprint and a copy button. **Nothing about the file is saved**: not its path, not its fingerprint, not the results. They live in memory while that window is open and are forgotten when you close it. This is the right tool for a download you are unsure about.
 
 ---
 

@@ -1,23 +1,25 @@
-# Drives and disk space
+Where to find it: PC status › Drive health
+
+# Drive health and disk space
 
 This page covers everything about your storage:
 
-- **Drives** (Watch > Drives): the health of every hard drive and SSD, how much you have written to it, its temperature, optional warnings, a drive speed test, and a way to copy your important folders off a drive that is failing.
-- **Disk space** (Clean > Disk space): a map of what fills a drive, with tools to find duplicates, see what grew, and plan how to free a given amount of space.
+- **Drive health** (PC status > Drive health): the health of every hard drive and SSD, how much you have written to it, its temperature, optional warnings, a drive speed test, and a way to copy your important folders off a drive that is failing.
+- **Disk space** (Maintenance > Disk space): a map of what fills a drive, with tools to find duplicates, see what grew, and plan how to free a given amount of space.
 
 Drive health needs Deck to run as administrator. Disk space works without it, but scans a whole NTFS drive much faster with it.
 
 ---
 
-# Part 1: Drives (drive health)
+# Part 1: Drive health (drive health)
 
-Find it under **Watch > Drives**. The page title line says "Deck checks drive health every 10 minutes", or "N drive(s) need attention" if any drive is in trouble. Buttons at the top: **Check drives** (reads every drive again now), **Disk space** (jumps to the disk map) and the **?** help.
+Find it under **PC status > Drive health**. The page title line says "Deck checks drive health every 10 minutes", or "N drive(s) need attention" if any drive is in trouble. Buttons at the top: **Check drives** (reads every drive again now), **Disk space** (jumps to the disk map) and the **?** help.
 
 Deck reads each drive's own health data (S.M.A.R.T.) the way tools such as CrystalDiskInfo do: the NVMe health log for NVMe SSDs, and the attribute and threshold tables for SATA drives. It uses standard commands that Windows passes through to the drive, with no vendor driver.
 
 ## Drive health warnings
 
-The switch is **Drive health** in **Settings › Notifications**. While it is off, the Drives page says so at the top, with a button to that setting.
+The switch is **Drive health** in **Settings › Notifications**. While it is off, the Drive health page says so at the top, with a button to that setting.
 
 - **Default: off.**
 - When on, Deck compares each drive with its last check. If something got **worse** (a new bad sector, new read errors, falling life, a worse verdict), it shows one notification with a sound that stays until you dismiss it, and a **Show** button that opens this page. Each worsening is reported once.
@@ -57,11 +59,11 @@ Each drive gets a card, sorted worst first (Bad, Caution, Good, then drives with
 
 When a card shows a Caution or Bad reason, back up your important files and check the drive with its maker's diagnostic tool.
 
-### Drives that are asleep
+### Drive health that are asleep
 
 To avoid waking a sleeping hard drive, Deck asks Windows for the drive's power state first. A sleeping drive (or one whose state Windows will not report) is skipped, and the card says "Drive asleep" or "Power state unavailable" with how long ago the last reading was. Check again while the drive is in use.
 
-### Drives behind a USB adapter
+### Drive health behind a USB adapter
 
 Health data passed through a USB bridge can be wrong. For these drives Deck says so on the card, and waits for a **second** unhealthy reading before it alerts you. Confirm any warning with the maker's tool.
 
@@ -86,7 +88,7 @@ TBW is the rated write total, not a failure forecast: many drives last well beyo
 The form under it has two fields:
 
 - **Rated endurance (TBW)**: 1 to 100,000.
-- **Temperature alert (C)**: 20 to 100. When the drive reaches this temperature, Deck shows a notification ("Improve airflow and check it on the Drives page"). It fires when the drive rises to the limit, not on every reading. Leave it blank for **off** (the default).
+- **Temperature alert (C)**: 20 to 100. When the drive reaches this temperature, Deck shows a notification ("Improve airflow and check it on the Drive health page"). It fires when the drive rises to the limit, not on every reading. Leave it blank for **off** (the default).
 
 Press **Save drive settings** to keep them. Below the form is a **graph of the temperature** Deck has recorded, with the time range and the number of readings. Deck keeps up to about a month of readings for each drive. It shows "Temperature history appears after another reading" until there are two readings.
 
@@ -137,7 +139,7 @@ What happens:
 - Deck copies the files into a new folder on the destination called `Deck copies\verified-<code>`, one numbered subfolder per source folder.
 - Every file is hashed while it is read, then the copy is read back and hashed again; the two must match, or the copy stops with a message.
 - **The source is never changed or deleted.** You decide later what to do with the original.
-- Progress shows at the bottom of the Drives page ("Verified folder copy: Copying and verifying", bytes and files verified), with a **Cancel copy** button. A cancelled copy leaves a partial folder for you to review or delete.
+- Progress shows at the bottom of the Drive health page ("Verified folder copy: Copying and verifying", bytes and files verified), with a **Cancel copy** button. A cancelled copy leaves a partial folder for you to review or delete.
 
 Limits and refusals (the message tells you which): you can choose 1 to 100 folders; the destination needs the folders' total size plus 1 GB free; a copy stops after one hour; the source and destination must be on different physical drives; Windows' own folders cannot be chosen; and folders containing links or **online-only** (cloud) files are refused, as are folders that contain each other or very large trees (over about 250,000 files and folders).
 
@@ -145,7 +147,7 @@ Limits and refusals (the message tells you which): you can choose 1 to 100 folde
 
 # Part 2: Disk space
 
-Find it under **Clean > Disk space**. It answers "what is filling my drive?" with a map and a folder list, and lets you send big things to the Recycle Bin.
+Find it under **Maintenance > Disk space**. It answers "what is filling my drive?" with a map and a folder list, and lets you send big things to the Recycle Bin.
 
 ## Scanning
 
@@ -154,7 +156,7 @@ The page opens on a card per drive (with used space; **Almost full** appears abo
 - **NTFS drives** are read straight from the drive's file table (the Master File Table), which takes seconds even for a very large drive. This needs administrator rights.
 - Other drives (exFAT, network drives), single folders, and any scan without admin rights are listed folder by folder, which is slower. A note under the breadcrumb says which method was used and, if it fell back, why.
 
-A summary card shows the space used on the scanned root and free space.
+A summary card shows the space used on the scanned root, with the date and time of the scan ("Used on <drive> when scanned ..."), and the free space. The free figure is read live from the drive and reads "N GB free now": the same figure Drive health and [This PC](this-pc.md) show, in decimal GB, at most about ten seconds old. If the drive is not in the live list (a network folder, a drive that has gone) it falls back to the value captured when the scan finished and says "free when scanned" with the scan time. The grey block in the map is labelled **Free space when scanned**, and hovering it shows the scan time.
 
 ## The explorer
 
@@ -175,6 +177,8 @@ After a scan you get:
 **Windows' own files are locked.** Deck refuses to recycle drive roots, the Windows folder, Program Files, ProgramData, the Users and profile folders themselves, and system files at the root of a drive (pagefile, hibernation file, recovery and boot data, System Volume Information). These show a padlock instead of a Recycle button. Deck also follows folder links to the real location first, so a link cannot be used to reach Windows' files, and it only removes what your own account would be allowed to delete.
 
 ## Disk tools
+
+Disk tools sits below the folder explorer and treemap, so the files and folders come first. Duplicate checking reports identical contents only; links, protected files and online-only files are skipped.
 
 A panel above the map (after a scan) has three tools. None of them changes anything until you confirm each step.
 
@@ -211,7 +215,7 @@ Within each step the biggest items come first. Each line has a **Review** button
 - Enter the TBW from your SSD's datasheet if Deck did not know it, and set a **Temperature alert** around 70 C for an SSD you want to watch.
 - Scan your system drive with **Disk space** every few months. Use **Find duplicate files** and the **Space plan** before buying more storage.
 - Use the **Drive speed test** after installing a new drive or when a drive feels slow. A small size (256 MB to 1 GB) is enough.
-- **Laptops** with one NVMe drive: the Drives page is the only warning you will get before data loss. Keep a backup anyway.
+- **Laptops** with one NVMe drive: the Drive health page is the only warning you will get before data loss. Keep a backup anyway.
 
 ---
 

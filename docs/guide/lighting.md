@@ -1,15 +1,17 @@
+Where to find it: Hardware › Lighting
+
 # Lighting and the cooler display
 
-Two pages in the **Tune** group cover the lights on your PC:
+Two pages in the **Hardware** group cover the lights on your PC:
 
 - **Lighting** controls the RGB lights of your motherboard and RAM, ARGB strips and fans on the board's headers, a supported mouse, and other devices through OpenRGB. One effect, one place, instead of a program per brand.
 - **Cooler display** drives the little lit display on a supported CPU cooler: temperatures, a clock, text, your own painted design, animations or a music meter.
 
 Both are optional hardware. A page only appears when Deck can use something for it (the Lighting page is always there, because OpenRGB can control devices without a supported board). When Deck finds no lights it can control (no Mystic Light board, no Kingston Fury RAM, no supported Logitech mouse, and no OpenRGB devices), the page starts with **Lighting isn't supported on this PC yet** and a **Copy report** button: laptop keyboard lighting, for example, isn't in Deck yet, and the report tells us what your PC has.
 
-**Where to find them:** sidebar > **Tune** > **Lighting**, and **Tune** > **Cooler display** (only when a supported cooler display is connected).
 
-Related pages: [CPU](cpu.md) and [GPU](gpu.md) (a profile can set a lighting colour), [Fans](fans.md), [Sensors](sensors.md) (heat alerts can flash the lights), [Gaming](gaming.md) (a lighting effect per game), [Death counter](death-counter.md) (flash red on a death).
+
+Related pages: [CPU](cpu.md) and [GPU](gpu.md) (a profile can set a lighting colour), [Fans](fans.md), [Sensors](sensors.md) (heat alerts can flash the lights), [Game profiles](gaming.md) (a lighting effect per game), [Death counter](death-counter.md) (flash red on a death).
 
 ## Contents
 
@@ -43,6 +45,8 @@ Board, RAM and display control go through a small signed hardware driver (PawnIO
 **Close other RGB software.** Manufacturer RGB programs (MSI Center, Mystic Light, and for the cooler display TRCC) fight over the same controller. Deck's board loop re-checks every five seconds that the Mystic Light controller still holds Deck's configuration and rewrites it if not, but two programs writing at once still flicker. Run one at a time.
 
 ## The Lighting page
+
+**Colour comes first.** The preview is at the top of the page, so you see a change without scrolling back. The **Colour** section is open when you arrive, under the preview. Closing it keeps it closed while you stay on the page.
 
 **Top card.** A dot in the current colour, the current effect's name (or "Lights are off"), and a line for the board and one for the RAM (for example "RAM: 2 RGB stick(s) at 0x60, 0x61"). The **Lights off** button (turns into **Turn lights on**) switches every light Deck drives off at once. It takes effect immediately, is remembered, and is also in the tray menu as **Lights off**. It does not need Apply.
 
@@ -137,7 +141,7 @@ Your saved effect is never changed by these; they sit on top and then step aside
 4. **The Game effect**, when **Game effect while playing** is on and a game is in front.
 5. Your chosen effect.
 
-[Gaming](gaming.md) can also switch the lighting effect for a game and put it back afterwards.
+[Game profiles](gaming.md) can also switch the lighting effect for a game and put it back afterwards.
 
 ## Mouse lighting and Test my mouse
 
@@ -171,7 +175,7 @@ Off by default. Deck only talks to the address you enter.
 
 ## The cooler display
 
-A supported cooler has a small display made of 84 lit segments: two rows (top for the CPU, bottom for the GPU), each with a label, a 3-digit number, a degree symbol or a percent sign. This page controls what it shows. A **Preview** of the display redraws about twelve times a second so you can see your changes. If no display is connected, a banner says "No cooler display connected. You can still edit the preview below." The display needs **Apply** for its settings like the other hardware pages, except the **Display is on / off** switch, which acts at once and is remembered (the tray also has **Cooler display off**).
+A supported cooler has a small display made of 84 lit segments: two rows (top for the CPU, bottom for the GPU), each with a label, a 3-digit number, a degree symbol or a percent sign. This page controls what it shows. A **Preview** of the display redraws about twelve times a second so you can see your changes. If no display is connected, a banner says "No cooler display connected" and tells you to check its USB cable and close TRCC; you can still edit the preview below. The display needs **Apply** for its settings like the other hardware pages, except the **Display is on / off** switch, which acts at once and is remembered (the tray also has **Cooler display off**).
 
 **Display power**
 
@@ -218,7 +222,7 @@ A supported cooler has a small display made of 84 lit segments: two rows (top fo
 | Sends colours to RAM sticks (Kingston) | Same. |
 | Saves a mouse effect to a Logitech mouse's onboard memory | Choose another effect (or **Off**) and **Apply mouse effect**. |
 | Sends to OpenRGB | Turn **Also control OpenRGB devices** off. |
-| Drives the cooler display | Switch **Display is on** off, or quit Deck and let the vendor's tool take over. |
+| Drive health the cooler display | Switch **Display is on** off, or quit Deck and let the vendor's tool take over. |
 | Settings are stored in Deck's settings folder under `hardware` | Delete or change them in Deck; uninstalling Deck stops all of it. |
 
 Nothing here can damage hardware: lighting only changes colours.
@@ -239,7 +243,7 @@ Nothing here can damage hardware: lighting only changes colours.
 
 **The board ignores colours.** Another program (MSI Center, a manufacturer app) may be fighting for the controller. Close it. Deck rewrites its configuration if the controller loses it.
 
-**RAM status says "no RGB controller answered on the SMBus (non-RGB kit?)".** The modules are Kingston but have no RGB controller Deck can talk to.
+**Memory status says "they have no lights Deck can control".** The modules are Kingston but have no RGB controller Deck can talk to.
 
 **RAM says some sticks are "not answering ... writes paused".** Deck pauses writes to a stick that doesn't answer and retries every few seconds. If it keeps happening, close other RGB programs.
 
@@ -253,7 +257,7 @@ Nothing here can damage hardware: lighting only changes colours.
 
 **The cooler display shows nothing.** The page says "No cooler display connected" when Deck doesn't see USB device `0416:8001`. Close TRCC (Thermalright's program) if it is running: it fights for the same display.
 
-**Changes don't show on the lights.** Press **Apply**. Lighting edits are a draft until you do (except **Lights off**, the mouse's **Apply mouse effect** and the display's on/off switch).
+**Changes don't show on the lights.** Press **Apply hardware changes** (or **Discard pending changes** to drop the draft). Lighting edits are a draft until you do (except **Lights off**, the mouse's **Apply mouse effect** and the display's on/off switch).
 
 ## FAQ
 

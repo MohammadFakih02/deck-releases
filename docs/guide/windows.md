@@ -1,8 +1,10 @@
-# Windows
+Where to find it: Desktop › Arrange windows
 
-The **Windows** page is for tidying your desktop: see every open window, pin one on top, make one see-through, snap windows into neat zones, and save a working arrangement of apps so you can bring it all back with one click.
+# Arrange windows
 
-Find it under **Desktop > Windows** in the sidebar. The page has three tabs: **Open windows**, **Snap zones** and **Workspaces**. A **Refresh** button sits beside the tabs; the open-window list also follows windows opening and closing on its own.
+The **Arrange windows** page is for tidying your desktop: see every open window, pin one on top, make one see-through, snap windows into neat zones, and save a working arrangement of apps so you can bring it all back with one click.
+
+Find it under **Desktop > Arrange windows** in the sidebar. The page has three tabs: **Open windows**, **Snap zones** and **Workspaces**. **Refresh windows** sits in the Open windows card header; the list also follows windows opening and closing on its own.
 
 Deck moves windows with ordinary Windows calls, the same ones a snapping tool uses. It does not inject into any program and does not read the memory of any program, so it is safe to use with anti-cheat. Rules that move windows by themselves are paused while a game is in front.
 
@@ -24,7 +26,7 @@ Click a row to open its controls. One window at a time is open (the first one un
 | **Maximize** / **Restore** | Maximizes the window; if it is already maximized the button reads Restore and puts it back. |
 | Snap zone buttons | A small map of the layout chosen on the Snap zones tab, one numbered button per zone. Click a number to place the window in that zone of its own monitor. |
 | **On top** | Keeps the window above all others until you turn it off. Windows may refuse this for some protected programs; Deck then says "Windows didn't allow it (the app may run as administrator)". |
-| See-through slider (eye icon) | Sets the window's opacity from 20% to 100%. Dragging back to 100% removes the see-through setting Deck added. |
+| **Opacity** | Sets the window's opacity from 20% to 100%. Dragging back to 100% removes the see-through setting Deck added. |
 | **Close window** | Asks the window to close, exactly like clicking its X, so the app can ask you to save. A stuck program may ignore it; use [Processes](processes.md) to end it. |
 
 Under the controls is a line of facts about the window: its size and position (or Minimized / Maximized), the monitor number, the process ID (PID) and the memory the program uses.
@@ -37,7 +39,7 @@ Good to know:
 
 ### Arrange windows
 
-Beside the list is an **Arrange windows** card (shown when at least one window is open). One click arranges the open windows, the front one first, on the monitor the front window is on. Minimized windows are left alone, except by **Minimize all**.
+Beside the list is a **Layouts for all open windows** card. One click arranges the open windows, the front one first, on the monitor the front window is on. Minimised windows are left alone, except by **Minimise all**. Each tile's tooltip explains which windows it uses.
 
 | Button | Result |
 |---|---|
@@ -47,8 +49,8 @@ Beside the list is an **Arrange windows** card (shown when at least one window i
 | **Main + 2** | The front window big, the next two stacked beside it. |
 | **Cascade** | Every window stacked so each title bar shows. |
 | **Focus** | The front window fills the screen; every other window is minimized. |
-| **Center all** | Every window centred on its monitor, its size kept. |
-| **Minimize all** | Every window down to the taskbar. |
+| **Centre all** | Every window centred on its monitor, its size kept. |
+| **Minimise all** | Every window down to the taskbar. |
 
 A note tells you how many windows were arranged. Arrangements are one-off actions; to bring a layout back later, save a [workspace](#tab-3-workspaces).
 
@@ -94,7 +96,7 @@ Below the layout choice is the window rules section.
 |---|---|---|
 | **Open an app in its own zone** | When a window of a chosen app opens, Deck moves it into the zone you saved for that app. | Off |
 
-To add a rule, pick an open app, a layout and a zone, then press **Remember**. The rule is listed as "Zone N of layout name". Press **Remove** to delete it. If a rule's layout or zone no longer exists, the row says "Its layout or zone is gone. Remove it or remember it again."
+To add a rule, turn on **Open an app in its own zone**, pick an open app, a layout and a zone, then press **Add rule**. These controls are disabled while the switch is off. The rule is listed as "Zone N of layout name". Press **Remove** to delete it. If a rule's layout or zone no longer exists, remove the rule and add it again.
 
 Behaviour you should know about:
 
@@ -116,7 +118,7 @@ How it works:
 - While the setting is on and the monitors have stayed the same for about 20 seconds, Deck saves where your windows are for that monitor set and keeps it up to date as you rearrange.
 - When a monitor set that Deck has seen before comes back and stays steady, it moves matching open windows back and shows a "Windows put back" notification.
 - Up to 8 monitor sets are kept, each with up to 60 windows. Nothing is saved or restored while a game is in front.
-- **Connected now** names the monitors currently connected. **Remember windows now** saves immediately; **Put them back now** restores the saved arrangement for this set immediately.
+- **Connected now** names the monitors currently connected. **Remember windows now** saves immediately; **Put them back now** restores the saved arrangement for this set immediately. Both buttons are disabled while **Remember windows for each set of monitors** is off.
 - Each remembered set is listed with how many windows it holds and when it was kept. **Forget** deletes one.
 - It only moves windows of programs that are already open; it launches nothing. To launch programs too, use a [workspace](#tab-3-workspaces).
 
@@ -163,7 +165,7 @@ For each window: the program, its title, its position and size, and whether it w
 |---|---|
 | **Name** | The workspace's name. |
 | **Close these apps when opening (they get the chance to save first)** | Comma-separated program names, for example `EpicGamesLauncher.exe, Steam.exe`. ".exe" is added if you leave it off. Deck asks them to close like clicking X, so they can save, waits up to about 8 seconds, then ends leftovers that have no window (tray helpers). A program still showing a window, probably a "save changes?" box, is left open and named in the notification. |
-| **Switch sound to** | An output device. "Leave it" does nothing. See [Sound and mic](sound.md). |
+| **Switch sound to** | An output device. "Leave it" does nothing. See [Sound & mic](sound.md). |
 | **Keep the PC awake** | Turns Keep awake on while the workspace is open. You turn it off yourself on the [Power](power.md) page. |
 
 ### Recommended setup

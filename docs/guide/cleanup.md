@@ -1,8 +1,10 @@
+Where to find it: Maintenance › Clean up
+
 # Clean up
 
 The **Clean up** page removes safe junk that Windows and your apps rebuild by themselves: temporary files, browser caches, crash dumps, shader caches and old installers. You see the size of each category before anything happens, tick what you want, review it, and only then does Deck delete.
 
-Find it under **Clean > Clean up** in the sidebar. Once the sizes are measured, the **Clean** group in the sidebar shows the total amount that could be cleaned.
+Find it under **Maintenance > Clean up** in the sidebar. Once the sizes are measured, the **Maintenance** group in the sidebar shows the total amount that could be cleaned.
 
 > Nothing here needs administrator rights, and nothing is deleted until you confirm in a review window. Deck never touches your documents, pictures, saved games, browser passwords, bookmarks, history or logins: it clears only cache folders and the other locations listed below.
 
@@ -86,7 +88,7 @@ None. Everything here is in your own user folders. Deck deletes through a held h
 
 ## Troubleshooting
 
-**A category shows 0 B.** Nothing is in it right now, or the app is open and has its cache locked. Close the app and press **Measure again**.
+**A category shows 0 B.** Nothing is in it right now, or the app is open and has its cache locked. Close the app and press **Measure again**. In a group with more than three unselected rows measured at 0 B, those rows fold behind **Show N with nothing to clean (0 B)**. Open it to inspect them; **Hide the ones with nothing to clean** folds them again. Selected rows and rows not yet measured stay visible.
 
 **It freed less than the number shown.** Files in use were skipped. The recycled part (old installers) is not counted as freed until you empty the Recycle Bin.
 
@@ -96,7 +98,7 @@ None. Everything here is in your own user folders. Deck deletes through a held h
 
 **The first launch of a game stuttered after cleaning shader caches.** Expected: the game is rebuilding its shaders. It will be smooth again afterwards.
 
-**Where is Clear RAM?** It is not on this page. Deck's **Clear RAM now** button lives on the CPU page, under **Settings > Memory** (see [CPU](cpu.md)).
+**Where is Clear RAM?** It is not on this page. Deck's **Clear RAM now** button lives on the CPU page, in the **Hardware** menu of the tray and on the CPU page's memory panel (see [CPU](cpu.md)).
 
 ---
 

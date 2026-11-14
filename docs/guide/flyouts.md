@@ -1,16 +1,18 @@
-# Flyouts
+Where to find it: Desktop › Music & volume pop-ups
 
-Flyouts are small cards that pop up on the edge of your screen when something changes: the song, the volume, your microphone, Caps Lock, and so on. Deck can also hide Windows' own volume pop-up so you do not see two.
+# Music & volume pop-ups
 
-Find them under **Desktop > Flyouts**. The tabs are **Music**, **System**, **Music apps** and **Placement**. Every flyout is **off by default**; you turn on the ones you want.
+Music & volume pop-ups are small cards that pop up on the edge of your screen when something changes: the song, the volume, your microphone, Caps Lock, and so on. Deck can also hide Windows' own volume pop-up so you do not see two.
+
+Find them under **Desktop > Music & volume pop-ups**. The tabs are **Music**, **System**, **Music apps** and **Placement**. Every flyout is **off by default**; you turn on the ones you want.
 
 Key facts:
 
-- Flyouts never take focus. They do not steal keystrokes from a game or app.
+- Music & volume pop-ups never take focus. They do not steal keystrokes from a game or app.
 - They follow what Windows reports (its media controls, its volume and device notifications). Deck does not hook your keyboard, so a change from any key, app, phone or controller counts the same.
 - Several flyouts stack instead of overlapping.
-- Over a game or a fullscreen window, a flyout lets mouse clicks pass through to the game. It is drawn without the web engine there so it does not cost frames. Flyouts are separate windows; Deck never injects into a game or reads its memory, so they are safe with anti-cheat. The one caveat is exclusive fullscreen, where no window can be drawn over the game (see [Placement](#placement-tab)).
-- Flyouts stay out of the way during presentations and when Windows is in Do not disturb mode.
+- Over a game or a fullscreen window, a flyout lets mouse clicks pass through to the game. It is drawn without the web engine there so it does not cost frames. Music & volume pop-ups are separate windows; Deck never injects into a game or reads its memory, so they are safe with anti-cheat. The one caveat is exclusive fullscreen, where no window can be drawn over the game (see [Placement](#placement-tab)).
+- Music & volume pop-ups stay out of the way during presentations and when Windows is in Do not disturb mode.
 - If another program also shows song pop-ups, a warning banner at the top of the page names it, because you would see both. Close it or turn off its pop-ups.
 
 ---
@@ -34,7 +36,7 @@ When the song changes, the card says the song is changing and never shows the ol
 | **Also for pausing and resuming** | Shows a card when playback pauses or resumes. | On | Your preference. |
 | **Pause or resume stays for** | How long that card stays (0.5 to 15 s). Shown when the previous switch is on. | 2.5 s | |
 | **Song end tolerance** (under **Advanced**) | How close to the end of a song a skip still counts as the song finishing (1 to 12 s). Raise it if your player crossfades. | 4 s | Leave as is unless a crossfade confuses it. |
-| **Show the current card** | Previews the current song, or a labelled sample if nothing is playing. | | |
+| **Preview card** | Previews the current song, or a labelled sample if nothing is playing. | | |
 
 If both "When you skip" and "When the next song starts" are off, new songs do not show, but pausing and resuming still can. How Deck tells a skip from a song ending: by how close the song was to its end when it changed (it estimates from the player's position).
 
@@ -80,22 +82,22 @@ A media entry that only gives a program's own name (a game launcher, for example
 
 | Setting | What it does | Default |
 |---|---|---|
-| **Position** | Six spots: top left, top middle, top right, bottom left, bottom middle, bottom right. Flyouts appear on the monitor containing the window you are using. Changing it moves flyouts that are already open, and shows a sample. | Top right |
-| **Over games and fullscreen** | **Card**: shows cards that let clicks pass through to the game. **Overlay text**: shows the song as text in Deck's in-game overlay instead of a window (needs the Overlay turned on under Play; see [Overlay](overlay.md)). **Nothing**: hides flyouts while a game or fullscreen window is in front. | Card |
+| **Position** | Six spots: top left, top middle, top right, bottom left, bottom middle, bottom right. Music & volume pop-ups appear on the monitor containing the window you are using. Changing it moves flyouts that are already open, and shows a sample. | Top right |
+| **Over games and fullscreen** | **Card**: shows cards that let clicks pass through to the game. **Overlay text**: shows the song as text in Deck's in-game overlay instead of a window (needs the Performance overlay turned on under Play; see [Performance overlay](overlay.md)). **Nothing**: hides flyouts while a game or fullscreen window is in front. | Card |
 | **After the pointer leaves** | How long a flyout lingers after your pointer moves away from it (0.5 to 10 s). | 1.5 s |
 
 Details for games:
 
-- In true exclusive fullscreen, no window can be drawn over the game, so cards may be hidden. If the Overlay is on, the song is also shown there.
+- In true exclusive fullscreen, no window can be drawn over the game, so cards may be hidden. If the Performance overlay is on, the song is also shown there.
 - Overlay text is drawn by RivaTuner, which cannot draw most non-Latin text (Japanese, for example). Use Card for those songs.
-- Flyouts stay out of the way while the player or Deck itself is in front.
+- Music & volume pop-ups stay out of the way while the player or Deck itself is in front.
 
 ---
 
 ## Recommended setup
 
 - Casual PC: turn on **Song changes** and **Volume**, set **Show volume with music** to **One card**, and enable **Hide Windows' own volume pop-up**.
-- Gamers: leave **Over games and fullscreen** at **Card** for borderless-windowed games, or **Overlay text** with the Overlay on for exclusive fullscreen; **Nothing** if you never want interruptions.
+- Gamers: leave **Over games and fullscreen** at **Card** for borderless-windowed games, or **Overlay text** with the Performance overlay on for exclusive fullscreen; **Nothing** if you never want interruptions.
 - Laptops: turn on **Charger** and **Brightness**.
 - Voice chat users: turn on **Microphone** so you notice a mute change.
 
@@ -113,11 +115,11 @@ Details for games:
 
 **Song card appears for videos.** Set that app (often a browser) to **Never** on the Music apps tab.
 
-**Nothing shows in my game.** Exclusive fullscreen hides windows. Use borderless windowed, or set **Over games and fullscreen** to **Overlay text** with the Overlay on.
+**Nothing shows in my game.** Exclusive fullscreen hides windows. Use borderless windowed, or set **Over games and fullscreen** to **Overlay text** with the Performance overlay on.
 
 ## FAQ
 
-**Is it safe with anti-cheat?** Yes. Flyouts are ordinary windows that never take focus, drawn over the game by Windows. Deck does not inject into games or read their memory, and it does not hook the keyboard.
+**Is it safe with anti-cheat?** Yes. Music & volume pop-ups are ordinary windows that never take focus, drawn over the game by Windows. Deck does not inject into games or read their memory, and it does not hook the keyboard.
 
 **Do they cost frames?** Over a game they are drawn without the web engine and with very little work; you can also choose Nothing.
 

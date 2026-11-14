@@ -1,10 +1,12 @@
-# Workspace Sync
+Where to find it: Project sync (below the sidebar groups)
 
-**Workspace Sync** keeps your workspace client's sessions, memory, settings and add-on servers the same on all your PCs, so you can start a piece of work on one PC and carry on in the same place on another. It can also copy your project folders and tell you which developer programs another PC has that this one is missing.
+# Project sync
+
+**Project sync** keeps your workspace client's sessions, memory, settings and add-on servers the same on all your PCs, so you can start a piece of work on one PC and carry on in the same place on another. It can also copy your project folders and tell you which developer programs another PC has that this one is missing.
 
 This feature is for people who use a "workspace client" (a coding tool that keeps conversation sessions, project memory and settings in a folder in your user profile) on more than one PC. If you do not, you can ignore this page; the feature is off until you switch it on.
 
-Find it in the sidebar under **Workspace Sync** (the footer group, between PC to PC and Phone). It is hidden unless it is on or you turn on **Show Workspace Sync** in [Settings › General › Sidebar](settings.md#sidebar).
+Find it in the sidebar under **Project sync** (the footer group, between PC to PC and Phone). It is hidden unless it is on or you turn on **Show Project sync** in [Settings › General › Sidebar](settings.md#sidebar).
 
 ---
 
@@ -15,7 +17,7 @@ When it is off the page is a short pitch: "Bring your sessions, memory and proje
 What switching on does:
 
 - Starts syncing sessions, memory and settings (project files stay off until you turn them on).
-- Adds two small hooks to the workspace client's own settings file: one stops a session being used on two PCs at once (session lock) and one tells the client which PC it is running on. They run a copy of Deck's program in your user profile. Switching Workspace Sync off removes both hooks.
+- Adds two small hooks to the workspace client's own settings file: one stops a session being used on two PCs at once (session lock) and one tells the client which PC it is running on. They run a copy of Deck's program in your user profile. Switching Project sync off removes both hooks.
 - Starts a small listener for your other PCs: UDP 47835 and TCP 47836.
 
 If the older standalone sync app is running on this PC, Deck asks you to close it first (tray icon > Exit). Settings from the standalone app are imported once.
@@ -49,7 +51,7 @@ Facts shown: how many sessions, memory files, settings files and project files t
 
 ### Your other PCs
 
-Each PC that was found: online or not, how it is reached (home network or Tailscale), when it last changed, how many files it holds, its Deck version and processor kind (Intel/AMD or ARM). If none are found there are three steps: switch on Workspace Sync on both PCs, use the same sync key, join the same network, Tailscale or cloud folder.
+Each PC that was found: online or not, how it is reached (home network or Tailscale), when it last changed, how many files it holds, its Deck version and processor kind (Intel/AMD or ARM). If none are found there are three steps: switch on Project sync on both PCs, use the same sync key, join the same network, Tailscale or cloud folder.
 
 ### Programs
 
@@ -95,15 +97,15 @@ Each project (a folder the client has worked in) has a name that is the same on 
 
 ---
 
-## Workspace Sync settings
+## Project sync settings
 
-These live in **Settings › Connections**, under the Workspace Sync switch, while sync is on.
+These live in **Settings › Connections**, under the Project sync switch, while sync is on.
 
 ### This PC
 
 | Setting | What it does |
 |---|---|
-| **Name** | This PC's name in Workspace Sync. |
+| **Name** | This PC's name in Project sync. |
 | **Sync key** | Shown hidden; use the eye to show it and the copy button. Type the same key on every PC. |
 | **Use the other PC's key** | Paste a key from another PC. |
 | **New key** | Makes a new key. Your other PCs stop syncing until they get the new key. |
@@ -144,13 +146,13 @@ The bottom of the tab shows the session folder, the ports (UDP 47835, TCP 47836)
 
 ## Log tab
 
-Recent activity of Workspace Sync (also copied into Deck's main log at debug level).
+Recent activity of Project sync (also copied into Deck's main log at debug level).
 
 ---
 
 ## Recommended setup
 
-1. Switch on Workspace Sync on both PCs.
+1. Switch on Project sync on both PCs.
 2. Copy the sync key from the first PC's Settings › Connections into **Use the other PC's key** on the second.
 3. If they are on the same network they appear on the Status tab within a minute. Otherwise use Tailscale or a cloud folder.
 4. Leave Sessions, Memory and Settings on. Turn on **Project files** only for the projects you really move between PCs (use **Sync this project** and **Its files** per project).
@@ -159,7 +161,7 @@ Recent activity of Workspace Sync (also copied into Deck's main log at debug lev
 
 ## Troubleshooting
 
-**The other PC does not appear.** Same sync key? Workspace Sync on in both? Network or Tailscale reachable? Try **Other PC's address**. The Status tab's "Away from home" fact tells you whether Tailscale is used.
+**The other PC does not appear.** Same sync key? Project sync on in both? Network or Tailscale reachable? Try **Other PC's address**. The Status tab's "Away from home" fact tells you whether Tailscale is used.
 
 **"runs an older Deck".** Update Deck on the PC named so both use matching versions.
 

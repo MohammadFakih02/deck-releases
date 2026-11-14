@@ -1,8 +1,10 @@
+Where to find it: PC to PC (below the sidebar groups)
+
 # PC to PC
 
 **PC to PC** sends files, folders, installers, apps and your Windows "look" between your own PCs. Both PCs run Deck. They find each other on your network, prove they share a pairing code, and talk over an encrypted channel. Nothing goes through a cloud service.
 
-Find it at the bottom of the sidebar: **PC to PC**. The tabs are **Send**, **Activity**, **Share link**, **Apps**, **Copy my look** and **Settings**. A switch beside the page title turns the whole feature on or off. It is **on by default**.
+Find it at the bottom of the sidebar: **PC to PC**. The tabs are **Send**, **Activity**, **Share link**, **Apps** and **Copy my look**. Press **Switch on PC to PC** to start it; the **PC to PC on** switch in the page turns it off. Existing connection choices are kept.
 
 Typical uses: moving a project folder to your laptop, sending an installer and having the other PC install it, copying the same list of apps to a new PC, handing a friend a download link, and waking a PC that is asleep so you can send to it.
 
@@ -11,8 +13,8 @@ Typical uses: moving a project folder to your laptop, sending an installer and h
 ## Getting two PCs to find each other
 
 1. Install Deck on both PCs and leave **PC to PC** on.
-2. On the first PC open **Settings › Connections › Pairing** (or just look at the empty Send tab) and copy **Pairing code** (twenty letters and digits, shown as `XXXX-XXXX-XXXX-XXXX-XXXX`).
-3. On the other PC paste it under **Use the other PC's code** (also shown on the Send tab as "Code from the other PC" while no PC is found).
+2. On the first PC copy **This PC's code** in the connection card (or **Pairing code** in **Settings › Connections › Pairing**). It has twenty letters and digits, shown as `XXXX-XXXX-XXXX-XXXX-XXXX`.
+3. On the other PC paste it under **Code from the other PC** (or **Use the other PC's code** in Settings). Copy one PC's code to the other; you do not need to swap both codes.
 4. The PCs find each other. Each appears under **Recipient** with its name, address and "home network" or "Tailscale".
 
 How they find each other: every PC broadcasts a small UDP beacon on the local network containing its name and a fingerprint of the pairing code. Only PCs with the same code recognise each other. Ports used: UDP 47833 and TCP 47834 (shown at the bottom of Settings). Windows Firewall must allow Deck on your private network.
@@ -23,6 +25,8 @@ If they do not find each other:
 - The PCs need to be on the same subnet. Guest Wi-Fi networks and some routers block device-to-device traffic.
 - Use **Other PC's address** in Settings › Connections › Pairing: type the other PC's name or IP address (for example `LAPTOP` or `192.168.1.20`).
 - Away from home, use [Tailscale](https://tailscale.com) (free) on both PCs with the same account. They then find each other over it. The Settings page and the "Looking for your other PC" card show Tailscale's state with **Get Tailscale** / **Open Tailscale**.
+
+Once signed in, the card says **Signed in to Tailscale**. Open **Details** for the account, network address and other PCs.
 
 Each PC also has its own key, so PCs that share a pairing code are still told apart. Another device with the same code cannot pass for one of your PCs.
 
@@ -38,10 +42,12 @@ The **Recipient** card lists the PCs found (select one). Each recipient has **Br
 
 | Control | What it does |
 |---|---|
-| **Choose files** | Pick files or installers to send. |
-| **Choose a folder** | Pick a folder. Deck counts its files first and shows a card (see below). |
+| **Send files** | Pick files or installers to send. |
+| **Send a folder** | Pick a folder. Deck counts its files first and shows a card (see below). |
 | **Install on arrival** | Tick it before sending an installer. The other PC will install it once its user accepts. Installers always wait for an Accept, even from a trusted PC. |
 | Text box and **Send text** | Sends text or a link to the other PC. |
+
+The send buttons stay greyed out until a recipient is found. The page says **Connect your other PC first** while waiting.
 
 The other PC sees a notification and a card: "<PC> wants to send you <what>", with the number of files and size, and (if you open **What's in it**) the biggest files and the file types. If any file can start a program or script (exe, msi, bat, cmd, ps1, vbs, js, lnk, reg, dll and similar) a warning counts them. The receiver chooses **Accept**, **Decline**, or **Accept and trust <PC>...** for a week, a month, six months or always. Deck also checks the receiving drive has room, always leaving 100 MB free.
 
@@ -55,7 +61,7 @@ After you choose a folder a card shows what will go.
 | **Only send what's new or changed** | Skips files that are already identical on the other PC, so a second copy takes seconds. |
 | **Delete files on the other PC that no longer exist here** | Makes the other PC's folder match this one. Needs you to tick **Yes, delete them**, and the other PC's user is asked first, with the number of files that would be deleted. |
 
-Then press **Send**. If the destination folder already exists, Settings > **Folder conflicts** decides what happens.
+Then press **Send**. If the destination folder already exists, **Folder conflicts** on the PC to PC page decides what happens.
 
 ### Transfers
 
@@ -93,7 +99,7 @@ What arrived, newest first, with the sender, time, number of files and size. Dep
 
 ### Activity log
 
-The recent log of what PC to PC did.
+Open **Show log** for the recent log of what PC to PC did.
 
 ---
 
@@ -104,10 +110,10 @@ For someone who is not one of your PCs. You get a link they open in any browser;
 | Option | Choices | Default |
 |---|---|---|
 | **Link works for** | 1 hour, 1 day, 7 days | 1 day |
-| **Downloads** | **Once** or **Until it ends** | Once |
-| **Over the internet (Tailscale Funnel)** | Off: this Wi-Fi only. On: reachable over the internet through Tailscale. | Off |
+| **Downloads** | **Once** or **Until the link expires** | Once |
+| **Over the internet** | Off: this Wi-Fi only. On: anyone with the link can download through Tailscale Funnel. | Off |
 
-Press **Share a file** or **Share a folder** (a folder is zipped first). The result appears under **Open links** with a copy button for the link and its size, remaining downloads and time left. **Stop** ends a link early.
+Press **Share a file** or **Share a folder** (a folder is zipped first). The result appears under **Your shared links** with a copy button for the link and its size, remaining downloads and time left. **Stop sharing** ends a link early. The card says **No active links** when there are none.
 
 Details:
 
@@ -130,6 +136,8 @@ Sends a list of the apps installed on this PC so another PC can install them. De
 
 Requires winget (App Installer) on both PCs.
 
+Placeholder rows appear while Deck lists installed apps. **Send apps** stays disabled until a recipient and apps are selected.
+
 ---
 
 ## Tab: Copy my look
@@ -138,9 +146,11 @@ Sends this PC's appearance to another PC. Choose what to copy:
 
 | Item | What it covers |
 |---|---|
-| **Windows look and feel** | Theme, accent colour, taskbar, Explorer settings and Maintenance tweaks (see [Tweaks](tweaks.md)). No drivers. |
+| **Windows look and feel** | Theme, accent colour, taskbar, Explorer settings and Maintenance tweaks (see [Windows tweaks](tweaks.md)). No drivers. |
 | **Wallpaper** | The desktop picture. |
 | **Windhawk mods** | The Windhawk mods and their settings. Both PCs need the same Windhawk version; mods are only added or updated. Greyed out if Windhawk is not installed here. |
+
+The Windhawk row shows the mod count. **Included Windhawk mods** expands to show each mod ID. **Send my look** stays disabled while waiting for the other PC; its connection status appears beside the button.
 
 Press **Send look to <PC>**. On the other PC, **Apply setup...** (in Activity) shows what is inside and lets the user choose what to apply, including **Restart Explorer afterwards so the taskbar updates** (closes open folder windows). Windhawk is off unless ticked, because mods run inside other programs: only apply your own. **Undo** puts the previous settings back.
 

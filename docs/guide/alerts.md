@@ -1,15 +1,17 @@
+Where to find it: PC status › Sensors
+
 # Alerts and notifications out
 
 Deck can watch your PC's sensors and tell you, or act, when something goes wrong: a CPU that is too hot, a fan that stopped, a drive that is running out of room on the speed you set. It can also send chosen messages to your phone or a chat app, so you hear about them when you are away from the PC.
 
-**Where to find it:** sidebar > **Watch** > **Sensors** > the **Alerts** tab. That tab holds, from top to bottom:
+That tab holds, from top to bottom:
 
 1. **Temperature alerts** (the simple CPU and GPU heat warning)
 2. **Sensor logging** (an optional log file)
 3. **Alert rules** (your own rules on any reading)
 4. **Notifications out** (ntfy and Discord)
 
-Other Deck warnings live on their own pages: drive health warnings on the Drives page, and the warning before a shutdown plan on the [Power](power.md) page. Notifications out can forward those too.
+Other Deck warnings live on their own pages: drive health warnings on the Drive health page, and the warning before a shutdown plan on the [Power](power.md) page. Notifications out can forward those too.
 
 Alerts need the sensor engine, so this tab only works on a PC where the Sensors page is available. See [Sensors](sensors.md). Alert checking runs while Deck is running (in the tray is fine) but not while Deck is quit.
 
@@ -49,7 +51,7 @@ Temperature alerts, sensor logging and the lighting flash are applied together w
 | Setting | What it does | Default |
 |---|---|---|
 | **Log every sensor to a CSV file** | Writes every reading from the All readings table once a second to a `monitor.csv` file that Excel opens. Use it to see what happened before a crash, or to compare two settings over a session. A new file starts every 50 MB and the latest five are kept. | Off |
-| **Slow readings during games** | While a game is running, drive and idle-fan sensors are read every three seconds instead of every second (fan control itself stays fast). Keeps the sensor engine lighter while you play. | On |
+| **Read less often during games** | While a game is running, drive and idle-fan sensors are read every three seconds instead of every second (fan control itself stays fast). Keeps the sensor engine lighter while you play. | On |
 | **Open folder** | Opens the folder that holds the log. | |
 
 The log contains sensor names and numbers only. See [where Deck stores data](settings.md#where-deck-stores-data).
@@ -82,7 +84,7 @@ A rule fires **once per stretch** in which it holds: the tests must all be true,
 
 ### Saving
 
-Rules are edited as a draft. **Save alerts** stores them; **Discard changes** goes back to what was saved. (This is separate from the **Apply changes** bar of the heat alerts and logging above.) If saving fails the message is shown under the rules.
+Rules are edited as a draft. **Apply changes** stores them; **Discard changes** goes back to what was saved. (This is separate from the **Apply changes** bar of the heat alerts and logging above.) If saving fails the message is shown under the rules.
 
 ### Example rules
 
@@ -120,7 +122,7 @@ All four default to off. These four are the only things Deck can forward. Every 
 ### Buttons
 
 - **Send a test message** sends "Deck test" to every destination that is switched on and has a valid address, whatever the ticks say, using what you have typed even if you have not saved yet. It tells you what happened ("Sent to ntfy and Discord." or what went wrong, such as an address that does not look right, or the service not being reachable).
-- **Save** stores the destinations, ticks and addresses (the **Save** button is enabled when something changed). Rules and destinations are saved together in the same file, so saving one saves any edits to the other.
+- **Apply changes** (in the bar at the bottom, with **Discard changes**) stores the destinations, ticks and addresses together with any pending rule or logging edits. Nothing is saved until you press it.
 
 ### Limits and privacy
 

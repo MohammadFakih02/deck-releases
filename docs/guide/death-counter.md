@@ -1,8 +1,10 @@
-# Deaths (the death counter)
+Where to find it: Gaming › Death counter
+
+# Death counter (the death counter)
 
 The death counter counts how often you die in any game, and per boss: tries, wins, time spent, records and a history of every play session. In the games it knows it counts by itself. In every other game you start by counting a death by hand, and Deck can then learn to recognise that game's death screen.
 
-**Where to find it:** sidebar > **Play** > **Deaths**. The page has five tabs: **Now**, **Bosses**, **History**, **Games** and **Settings**.
+The page has four tabs: **Now**, **Bosses**, **History** and **Games**.
 
 **Anti-cheat and safety.** The death counter never reads a game's memory and never injects anything into a game. It does one of three things: reads a save file (read-only, never changed), looks at the picture of the game window the way a screen recorder does, or waits for you to press a button or shortcut. The in-game counter is an ordinary click-through window that never takes focus. Deck's keyboard shortcuts use Windows' standard hotkey mechanism, and the controller combo only reads the controller, like any other program that shows controller input.
 
@@ -47,12 +49,12 @@ The Now tab is the main view for the game in front (or the last game you played)
 - **+1 death:** counts a death in the game and in the current fight.
 - **Undo death:** takes back the last counted death. Greyed out when there is nothing to undo.
 - **Boss defeated:** appears during a fight; marks the boss beaten.
-- **Start boss fight** with a **Boss name** box: starts a fight by hand. The **Again:** chips start a fight with a boss name you used before. While a fight is open, **Fight actions** lets you **Rename fight**, **Abandon fight** (stop it without a win) or mark it **Not a boss** (see below).
+- **Start a boss fight** with a **Boss name** box: starts a fight by hand. The **Again:** chips start a fight with a boss name you used before. While a fight is open, **Fight actions** lets you **Rename fight**, **Abandon fight** (stop it without a win) or mark it **Not a boss** (see below).
 - **Last tries:** a small bar chart of how long your last tries lasted; the newest is on the right.
 - **This session / Last session:** deaths this session, deaths in this game, how long you have been playing, the average time between deaths and the deadliest boss this session.
 - **All-time records:** longest try, quickest win (fewest deaths), deadliest boss and most deaths in a session. **Share** copies or saves a picture of the game's numbers.
 - **Manage learned screens** opens the Games tab.
-- The line at the bottom says how this game is being counted automatically (for example "Counting automatically from the game's save file" or "Watching for death screens and boss health bars"). If it says the screen is unreadable, see [Troubleshooting](#troubleshooting).
+- The line at the bottom says how this game is being counted automatically (for example "Counting automatically from the game's save file" or "Watching for death screens and boss health bars"). If counting is switched off for this game, it says so ("Counting is off for this game, so nothing is watched. Turn it on above."). If it says the screen is unreadable, see [Troubleshooting](#troubleshooting).
 
 **Not a boss.** If Deck opened a fight for something that isn't a boss, use **Not a boss** on the fight. The deaths stay in the game's total and nothing is deleted. When the screen read can't be a real boss, a tick box offers to ignore that name in this game from now on.
 
@@ -65,7 +67,7 @@ Each boss card shows: **Fighting** or **Beaten**, deaths, time on this boss, lon
 Under **Share or merge this boss entry**:
 
 - **Copy boss picture** and **Save boss picture...** make a shareable image of that boss's numbers.
-- **Same boss as:** fixes a misread name. If Deck read "aldii" and "Aldrich" is the real name, choose the real boss and press **Combine boss counts**. Deaths and fights are combined, the correction applies to future reads, and the original names stay in History. Undo it with **Undo that**, or later from Settings > Recognition rules & testing.
+- **Same boss as:** fixes a misread name. If Deck read "aldii" and "Aldrich" is the real name, choose the real boss and press **Combine boss counts**. Death counter and fights are combined, the correction applies to future reads, and the original names stay in History. Undo it with **Undo that**, or later from **Recognition rules & testing** on the Death counter page.
 
 For games with boss fights the tab also shows **The boss's health bar and name**: **Show where they are** lets you tell Deck where the bar and name sit (see [Teaching and setting up a game](#teaching-and-setting-up-a-game)); **Forget the bar** and **Forget the name box** remove your marks.
 
@@ -110,12 +112,14 @@ History is one card per play session: day and time, length, number of deaths, bo
 Teaching is for a game whose death screen has no readable words, is in an unsupported language, or is only a symbol or flash. You do it once.
 
 1. Count a death by hand (or let Deck count one) while the death screen is still up, or just after.
-2. Go to Deaths > **Games** and choose **Show the last 10 seconds**. Deck shows a strip of pictures from just before.
+2. Go to Death counter > **Games** and choose **Show the last 10 seconds**. Deck shows a strip of pictures from just before.
 3. Click the picture where the death screen is clearest. Deck learns which part of the screen changed and keeps a small copy of the picture you chose. The rest stays in memory.
 
 You can teach up to three death screens per game and three victory screens. If Deck spots a screen that appeared before several deaths you counted by hand, it asks **Is this the death screen?** Press **Yes, that's it** to count it from now on, or **No** to stop it suggesting that one.
 
-Wrong death counted? Find the screen that did it in the list, press **Forget** (the deaths it counted stay; delete wrong ones in History), then teach the real one.
+Learned death and victory pictures fold behind a summary showing their count and when the last one was learned. Open the summary to inspect the pictures or forget one.
+
+Wrong death counted? Open the learned death screens, find the screen that did it, press **Forget** (the deaths it counted stay; delete wrong ones in History), then teach the real one.
 
 **Set up (game name)** has optional steps that improve accuracy:
 
@@ -203,7 +207,7 @@ If the counter is missing in a game, try borderless or windowed mode: games in e
 
 ## OBS text files
 
-**Write text files for OBS** (Settings > Streaming text files) writes three files into a folder you choose, updated whenever the numbers change:
+**Write text files for OBS** (**Streaming text files** on the Death counter page) writes three files into a folder you choose, updated whenever the numbers change:
 
 | File | Contents |
 |---|---|
@@ -266,8 +270,8 @@ In OBS, add a **Text (GDI+)** source and tick **Read from file** for each file y
 
 **How do I back up or export my history?** Games tab > **Export** (one game) or **Export everything**, both CSV.
 
-**How do I start over?** Settings > Start over > **Reset all death counts** (type `reset`). Learned screens and settings stay.
+**How do I start over?** Death counter page › **Start over** › **Reset all death counts** (type `reset`). Learned screens and settings stay.
 
 **Where else can I count?** Home shows +1 and Undo for games that have a death counter. The tray's **Death counter** menu has **+1 death**, **Undo last death**, **Boss defeated**, **Abandon fight**, **Start boss fight...**, **Count deaths in this game** and **Open death counter...**. The [Game bar](game-bar.md) can also count and fix deaths without leaving the game.
 
-**See also:** [Controller](controller.md), [Game bar](game-bar.md), [Overlay](overlay.md), [Gaming](gaming.md).
+**See also:** [Controller](controller.md), [Game bar](game-bar.md), [Performance overlay](overlay.md), [Game profiles](gaming.md).

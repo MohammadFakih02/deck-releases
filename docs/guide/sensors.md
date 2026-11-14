@@ -1,14 +1,16 @@
+Where to find it: PC status › Sensors
+
 # Sensors
 
 The Sensors page is where you look at what your PC is doing right now and what it did earlier: every temperature, clock, load, power, voltage, fan speed and drive or network reading Deck can find, live graphs for the last five minutes, a day, week or month of history, frame times, and the settings for heat alerts and logging to a file. It only reads: nothing on this page changes your hardware.
 
-**Where to find it:** sidebar > **Watch** > **Sensors**. The page has three tabs: **All readings** (opens first), **Graphs** and **Alerts**. Deck remembers the tab you used last.
+The page has three tabs: **All readings** (opens first), **Graphs** and **Alerts**. Deck remembers the tab you used last.
 
 ![The Sensors page](../screenshots/sensors.png)
 
 *(The screenshot may differ a little from the current layout.)*
 
-Related pages: [CPU](cpu.md), [GPU](gpu.md), [Fans](fans.md), [Overlay](overlay.md) (the same readings drawn over a game), [Alerts](alerts.md) (alert rules and notifications), [Drives](drives.md), [This PC](this-pc.md).
+Related pages: [CPU](cpu.md), [GPU](gpu.md), [Fans](fans.md), [Performance overlay](overlay.md) (the same readings drawn over a game), [Alerts](alerts.md) (alert rules and notifications), [Drive health](drives.md), [This PC](this-pc.md).
 
 ## Contents
 
@@ -25,7 +27,7 @@ Related pages: [CPU](cpu.md), [GPU](gpu.md), [Fans](fans.md), [Overlay](overlay.
 ## What you need
 
 - **Administrator rights** for readings that come through Deck's hardware driver: CPU temperature and power, per-core clocks, and the motherboard's temperatures, voltages and fan speeds. Without them the page shows **One-time set up: Hardware control needs admin rights** with a **Set up** button. One admin prompt, then Deck starts with the rights it needs and never asks again.
-- **RivaTuner Statistics Server (RTSS)** for the frametime graph (frames per second, 1 % and 0.1 % lows). See [Overlay](overlay.md); Deck can install it.
+- **RivaTuner Statistics Server (RTSS)** for the frametime graph (frames per second, 1 % and 0.1 % lows). See [Performance overlay](overlay.md); Deck can install it.
 - Which readings exist depends on your PC. Laptops, AMD CPUs, graphics cards from other makers and boards with different chips report different sets. The page shows what is there and hides what isn't.
 
 ## Where the readings come from
@@ -42,7 +44,7 @@ The page can tell you, for any reading, which collector produced it and how far 
 | **GPU** | The graphics driver's own library: **NVIDIA** (NVML) or **AMD** (ADL). Load can also come from Windows' GPU counters. | Board power can differ from what a meter at the wall shows. The GPU's fan reading is the speed it was asked for in percent, not RPM. On graphics from other makers, GPU readings can be missing or limited. |
 | **Motherboard** temperatures, voltages, fan speed and duty | The board's monitoring chip (Super I/O), through the hardware driver. | What a temperature is attached to depends on the board; the name is the chip's own. Voltages can be off by a few percent; compare with the BIOS before trusting small differences. A header with no fan reads 0. |
 | **Memory** | Windows' memory status and performance counters. | |
-| **Drive** | The drive's own sensor through Windows' storage interface (also NVMe and SMART logs), plus Windows disk performance counters for traffic and busy time. | Not every drive reports a temperature. For health see [Drives](drives.md). |
+| **Drive** | The drive's own sensor through Windows' storage interface (also NVMe and SMART logs), plus Windows disk performance counters for traffic and busy time. | Not every drive reports a temperature. For health see [Drive health](drives.md). |
 | **Network** | Windows' network adapter counters. | Traffic over the last second. |
 
 Everything is read on your PC; nothing is sent anywhere.
@@ -80,7 +82,7 @@ The **Customize** button at the top moves, resizes, hides and shows the panels o
 | **Temperatures** | One small graph for the CPU, one for the GPU, and one for each motherboard temperature (not the CPU's own, which is already drawn), with the latest value. |
 | **Load · 5 min** | CPU and GPU load. |
 | **Power · 5 min** (**?**) | CPU package power and graphics card board power in watts. Shows what a power limit or undervolt really changed, and what a game draws. CPU power needs admin. |
-| **History** (**?**) | A **day**, **week** or **month** of CPU and GPU **Temperature**, **Load** or **Power**. Each point is an average (day: every minute, week: every 10 minutes, month: every hour); the legend says each line's highest value. Gaps mean no readings. It collects only while Deck is running and keeps a small file (well under a megabyte), so a restart can lose up to the last minute to an hour. Use it to compare sustained use with short peaks. |
+| **History** (**?**) | A **day**, **week** or **month** of CPU and GPU **Temperature**, **Load** or **Power**. Each point is an average (day: every minute, week: every 10 minutes, month: every hour); the legend says each line's highest value. Gaps mean no readings. It collects only while Deck is running and keeps a small file (well under a megabyte), so a restart can lose up to the last minute to an hour. Use it to compare sustained use with short peaks. If the history cannot be read, the card shows the reason with **Try again**; Deck does not keep asking on its own. |
 | **Frametimes** (**?**) | How long each frame took (from RivaTuner) with the average FPS, the **1 % low** and **0.1 % low**, **Lowest** and **Highest**, for the game that is drawing. **Reset** starts the average and lows over (the same as the overlay's reset key). The average hides stutter; the lows and spikes show it. A smooth game is a flat line. Needs RivaTuner running and a game it draws in; otherwise the panel says what is missing. |
 | **Fan speeds** | One graph per fan that has reported a speed, in RPM. **Show unused connectors** lists the headers with no speed. |
 
@@ -104,14 +106,14 @@ Alerts and logging are saved together with **Apply changes** (the bar at the bot
 | Setting | What it does | Default |
 |---|---|---|
 | **Log every sensor to a CSV file** (**?**) | Writes every reading from the All readings tab, once a second, to `monitor.csv`, which Excel opens. A new file is started at 50 MB and the latest five are kept, so it can't fill the disk. Use it to see what happened before a crash or to compare two settings over a session. A new header row is written when the set of sensors changes. | Off |
-| **Slow readings during games** | While a game is in front, reads drive counters and idle fan chips every three seconds instead of every second, so Deck's own load stays small. Manual fan curves keep their one-second timing. | On |
+| **Read less often during games** | While a game is in front, reads drive counters and idle fan chips every three seconds instead of every second, so Deck's own load stays small. Manual fan curves keep their one-second timing. | On |
 | **Open folder** | Opens the folder holding `monitor.csv`. | |
 
 **Alert rules** and **Notifications out** (below these two panels) are covered in [Alerts](alerts.md): rules like "this reading above that value for N seconds", with a toast, a message to your phone, flashing lights or a profile switch as the action.
 
 ## Units
 
-**Settings > Appearance > Performance and units** picks MHz or GHz, Mb/s or MB/s and degrees C or F for every page, the readings table, the phone and the overlay (see [Settings](settings.md)). Values you type in elsewhere (fan curves, GPU offsets, temperature limits) stay in MHz and degrees C.
+**Settings › Appearance > Performance and units** picks MHz or GHz, Mb/s or MB/s and degrees C or F for every page, the readings table, the phone and the overlay (see [Settings](settings.md)). Values you type in elsewhere (fan curves, GPU offsets, temperature limits) stay in MHz and degrees C.
 
 ## Recommended setup
 
@@ -131,7 +133,7 @@ Alerts and logging are saved together with **Apply changes** (the bar at the bot
 
 **The GPU page is missing but Sensors shows my card.** GPU tuning is NVIDIA only; AMD and Intel graphics get sensors only.
 
-**Frametimes says RivaTuner isn't installed / isn't running / no game is drawing.** Install or start RivaTuner (see [Overlay](overlay.md)) and start a game it draws in.
+**Frametimes says RivaTuner isn't installed / isn't running / no game is drawing.** Install or start RivaTuner (see [Performance overlay](overlay.md)) and start a game it draws in.
 
 **A fan isn't in the Fan speeds graph.** Only fans that have reported a speed are drawn. **Show unused connectors** lists the rest.
 
@@ -147,9 +149,9 @@ Alerts and logging are saved together with **Apply changes** (the bar at the bot
 
 **Does Deck write anything to my hardware from this page?** No. The only things written are Deck's own files: `monitor.csv` (if you turn logging on) and the history file in Deck's settings folder.
 
-**Does monitoring slow my game?** Readings are taken once a second, and with **Slow readings during games** on, the heavier ones every three seconds while a game is in front. The numbers cost very little.
+**Does monitoring slow my game?** Readings are taken once a second, and with **Read less often during games** on, the heavier ones every three seconds while a game is in front. The numbers cost very little.
 
-**Can I see these readings over my game?** Yes: the [Overlay](overlay.md) page draws chosen readings in the game through RivaTuner.
+**Can I see these readings over my game?** Yes: the [Performance overlay](overlay.md) page draws chosen readings in the game through RivaTuner.
 
 **Why do min, max and average start empty?** They start counting when Deck's hardware engine starts and restart when you press **Reset statistics**.
 

@@ -1,3 +1,5 @@
+Where to find it: Phone (below the sidebar groups)
+
 # Phone
 
 The **Phone** page turns your phone into a remote for your PC. You scan a code once, and the phone opens a small web app (it works in the browser and can be added to your home screen) with sound controls, media buttons, timers, power controls, a way to pass text and files both ways, and, if you turn them on, a live view of the PC's screen, an on-screen controller and keyboard, and the phone as the PC's speaker or microphone.
@@ -40,9 +42,9 @@ The code carries a key and the certificate's fingerprint. The key itself never t
 
 The status chips under the code show how many phones are connected "at home" and "away". A phone is counted once, whatever it has open.
 
-### At home / Away (Tailscale)
+### At home / Away from home
 
-When Tailscale is available, a switch shows **At home** and **Away (Tailscale)**. For away from home:
+When Tailscale is available, a switch shows **At home** and **Away from home** (needs Tailscale). For away from home:
 
 1. The phone needs Tailscale too. If none of your phones is on your Tailscale network yet, the Away view shows a code that opens the Tailscale app in the phone's store, and the account to sign in with.
 2. Sign in with the same account as this PC and turn Tailscale on (allow its VPN).
@@ -50,7 +52,7 @@ When Tailscale is available, a switch shows **At home** and **Away (Tailscale)**
 
 Tailscale is a private network: nothing is opened to the internet.
 
-### Put it in your app drawer (Android)
+### Add Deck to your phone's home screen
 
 Chrome on Android only offers "Install app" for trusted pages. Deck's certificate is its own, so in Chrome open `chrome://flags`, find **Insecure origins treated as secure**, add the address shown on the page, set it to Enabled, relaunch, scan the code, and choose the menu > Install app. This is only for the app-drawer icon; the page works without it.
 
@@ -95,7 +97,7 @@ When connected, the phone page shows cards for:
 - **Now playing**: title, artist, cover, progress and previous / play-pause / next. When the player has no previous/next, the buttons jump 10 seconds instead.
 - **Sound**: the playback device chips, the master volume ("Everything") with mute, and per-app volumes (the two loudest, **All apps** shows more).
 - **Speaker and mic**: when you turned those on.
-- **PC**: Game mode and Clean up background (the Gaming page's actions), the Game bar on the PC, Keep awake, Lock, Screen off, Sleep, Restart, Shut down, your CPU and GPU profile chips, quick plans (Sleep in 30 min / 1 h, Off when downloads finish, Sleep when music stops) and live temperature, memory, network and power readings.
+- **PC**: Deck game mode and Clean up background (the Game profiles page's actions), the Game bar on the PC, Keep awake, Lock, Screen off, Sleep, Restart, Shut down, your CPU and GPU profile chips, quick plans (Sleep in 30 min / 1 h, Off when downloads finish, Sleep when music stops) and live temperature, memory, network and power readings.
 - **Timers**: 5, 10, 15, 25 or 60 minutes, with the running timers.
 - **Send to PC**: text or a link (**Copy on PC**, **Open on PC**), **Send files**, and **PC clipboard** to get what is on the PC's clipboard.
 - **Between phone and PC**: what has been passed back and forth, with download, open and copy buttons.
@@ -128,10 +130,10 @@ You can also send the selected text or a copied file to the phone from the [Clip
 |---|---|---|
 | **Screen access** | **Off**: no screen access. **View only**: the phone can watch. **View and control**: the phone can also tap, click and type on the PC. | Off |
 | **Picture size** | The largest the picture may be: **Full**, **Medium** or **Small**. Full keeps small text sharp. | Full |
-| **Smoothness** | 15, 24, 30 or 60 frames per second. | 30 |
-| **Bitrate** | **Auto** (follows your connection), a fixed limit from 0.5 to 30 Mb/s, or **Type...** for your own. | Auto |
-| **Slow connection** | **Smoother** (keep motion, may blur) or **Sharper** (keep detail, may drop frames). | Smoother |
-| **Video** | **H.264** (light on data) or **JPEG**. | H.264 |
+| **Frames per second** | 15, 24, 30 or 60 frames per second. | 30 |
+| **Data use (bitrate)**, under Picture and bandwidth help | **Auto** (follows your connection), a fixed limit from 0.5 to 30 Mb/s, or **Type...** for your own. | Auto |
+| **When the connection is slow** | **Keep it smooth** (keep motion, may blur) or **Keep it sharp** (keep detail, may drop frames). | Smoother |
+| **Video format**, under Picture and bandwidth help | **H.264** (less data) or **JPEG**. | H.264 |
 
 A chip shows "N watching" when someone is viewing. The picture is the PC's screen (DXGI capture with a fallback), sent over your network only; nothing goes through an outside server.
 
@@ -210,7 +212,7 @@ When the phone is playing or talking, Deck writes down what it muted or switched
 
 ## Tab 5: Layouts
 
-### Keyboard layouts
+### Phone button layouts
 
 The phone's controller page has a keyboard button (the keyboard icon) with a full keyboard, a small gaming set (WASD, mouse buttons, a mouse pad, scrolling) and buttons of your own: any key or combo (such as Ctrl+Shift+Esc), mouse buttons, a trackpad area, scrolling, typed text and macros (such as `ctrl+c, wait 200, ctrl+v`). Each button can hold while touched, fire once, or stay on until pressed again.
 

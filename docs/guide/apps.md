@@ -1,8 +1,10 @@
+Where to find it: Maintenance › Apps
+
 # Apps
 
 The **Apps** page is where you uninstall programs properly, update them, remove the apps Windows ships with, and install or update Microsoft Store apps even when the Store is broken or slow.
 
-Find it under **Clean > Apps** in the sidebar. The page has four tabs:
+Find it under **Maintenance > Apps** in the sidebar. The page has four tabs:
 
 | Tab | What it is for |
 |---|---|
@@ -21,12 +23,14 @@ The list shows what Windows' own "Installed apps" shows: programs registered in 
 
 ### Finding an app
 
-- **Search your apps** matches the name and publisher.
+- **Filter this list by name or publisher** narrows only this list (Deck's search at the top finds pages and settings).
 - **All / Desktop / Store / Needs attention (N)** filters the list.
 - **Name / Size / Newest** sorts it. Sizes are what the app itself reports; a few report none.
 - **Refresh** reads the list again.
 - A folder button on a row (and **Open folder** in the selected-app panel) opens the app's install folder. Store apps have none.
 - The line above the list gives the number of apps and the total of the sizes that were reported.
+
+Row details wrap so the version, date, size and publisher remain readable. Choosing an app keeps keyboard focus on its name. If a filter hides your selection, **Selected app** explains which app it is showing instead. When **Uninstall** is unavailable, the details explain why and whether **Review removal** can help; nothing is deleted until you confirm.
 
 ### Needs attention
 
@@ -34,9 +38,9 @@ Some entries are leftovers of a half-finished uninstall. They sit in their own *
 
 | Chip | Meaning |
 |---|---|
-| **Uninstaller missing** | The uninstall program is gone. **Advanced** removes what is left. |
+| **Uninstaller missing** | The uninstall program is gone. **Review removal** removes what is left. |
 | **Missing from Windows' list** | Windows Installer knows the app but Settings does not list it (a cleanup tool or a bad uninstall removed the entry). It uninstalls normally from here. |
-| **Files gone** | The install folder is gone. **Uninstall** finishes the job; **Advanced** also clears leftovers. |
+| **Files gone** | The install folder is gone. **Uninstall** finishes the job; **Review removal** also clears leftovers. |
 
 They clutter the list and can stop you reinstalling the app. If Deck closed in the middle of an advanced uninstall, a banner offers **Look for leftovers now** or **Forget it**.
 
@@ -47,7 +51,7 @@ They clutter the list and can stop you reinstalling the app. If Deck closed in t
 1. Deck asks you to confirm.
 2. The uninstaller runs. Deck waits until it **and anything it started** have finished (many installers copy themselves to a temporary folder first).
 3. If the app is gone, Deck automatically looks for what it left behind and shows the **What <app> left behind** window (below). If it found nothing, it says so.
-4. If the uninstaller closed without removing the app, Deck says "is still installed". You can try again or use Advanced.
+4. If the uninstaller closed without removing the app, Deck says "is still installed". You can try again or use **Review removal**.
 
 A **Store app** is removed for your account, with no leftovers search.
 
@@ -55,7 +59,7 @@ A **Store app** is removed for your account, with no leftovers search.
 
 ### Advanced uninstall (Review removal)
 
-For an app whose uninstaller is broken or missing, or one that keeps coming back. It is the **Advanced** button on a row, or **Review removal** in the selected-app panel.
+For an app whose uninstaller is broken or missing, or one that keeps coming back. Use **Review removal** on a row or in the selected-app panel.
 
 - If the uninstaller still works, it runs first. If it fails or is cancelled, Deck asks whether to look for leftovers anyway.
 - If the uninstaller is missing, Deck removes the app's list entry and goes straight to leftovers.
@@ -76,7 +80,7 @@ Each item shows its path, why Deck thinks it belongs to the app, and its size. *
 
 Choose **Keep all** to leave everything, or **Remove selected**. Nothing is removed unless you tick it.
 
-**Recommended:** for ordinary apps use **Uninstall**. Use **Advanced** when something is broken.
+**Recommended:** for ordinary apps use **Uninstall**. Use **Review removal** when something is broken.
 
 ---
 
@@ -85,7 +89,7 @@ Choose **Keep all** to leave everything, or **Remove selected**. Nothing is remo
 Shows which of your installed **desktop** apps have newer versions. It uses Windows' App Installer tool (winget). If winget is not installed, the tab says so and points you to **App Installer** in the Microsoft Store.
 
 1. Press **Check for updates**. Deck asks winget and lists every app with an update, each with `current version -> new version`. It is ticked.
-2. Untick any app you do not want updated (**Tick all** / **Untick all** help).
+2. Deselect any app you do not want updated (**Select all** / **Select none** help).
 3. Press **Update N apps**. Apps update **one at a time**, each with its own result: **Waiting**, **Updating...**, **Updated**, **Failed** or **Skipped**. A single app gets up to 15 minutes.
 4. **Stop after this one** ends the run after the current app. If a game comes to the front, the rest wait and are marked Skipped.
 5. A summary says how many updated and how many failed.
@@ -121,11 +125,11 @@ Removing is not a risk to your files, but a removed app's own data goes with it.
 Press **Check for updates** to ask Microsoft's servers about every Store app you have. Deck lists those with a newer version (installed `->` latest, and the size). It works without the Store app.
 
 - **Update** installs the new version for one app. **Update all (N)** / **Update N selected** updates the ticked ones **one at a time** (a slow line split ten ways helps nobody). Others wait in a queue shown on the row, and **Don't update** takes one out.
-- **Install Store updates when downloaded** (a switch in **Settings › Desktop**, **on by default**): the update installs as soon as it has downloaded. With it off, or for apps with **Wait for Install** ticked, the update downloads and then waits for you to press **Install**, so an open app never closes in front of you. The app is closed if it is open when installing.
+- **Install Store updates when downloaded** (a switch in **Settings › Desktop**, **on by default**): the update installs as soon as it has downloaded. With it off, or for apps with **Wait for me to install** selected, the update downloads and then waits for you to press **Install**, so an open app never closes in front of you. The app is closed if it is open when installing.
 - **Stop** pauses an update; what was downloaded is kept, and **Carry on** continues. **Stop all** and **Carry on all** do it for everything. An update interrupted by closing Deck can be carried on later too.
 - A message names any app that **could not be checked** (with the reason, often that Microsoft's server was busy; Deck retries each, and **Try those again** repeats it), paid or protected apps that only the Store can check, and apps that are not in the Store's catalogue because they were installed elsewhere.
 - An app whose version numbers use a different style is marked **Different version numbering: not ticked**, because Deck cannot tell whether it is newer.
-- **Update all with the Microsoft Store** hands the whole job to Windows' own Store update. It cannot skip unticked apps, so Deck warns you first. If the **Store apps update by themselves** tweak is set to Off (see [Tweaks](tweaks.md)), Windows does not let the Store update apps on its own, so this button cannot work, and Deck explains your options.
+- **Update all with the Microsoft Store** hands the whole job to Windows' own Store update. It cannot skip unticked apps, so Deck warns you first. If the **Store apps update by themselves** tweak is set to Off (see [Windows tweaks](tweaks.md)), Windows does not let the Store update apps on its own, so this button cannot work, and Deck explains your options.
 - **Store's Downloads page** opens the Store.
 - The per-app **...** menu gives the download links, or updates that app in the Store.
 
@@ -158,8 +162,8 @@ For when the Store is broken, removed or slow. Search the Store ("Spotify, Whats
 
 ## Recommended setup
 
-- Uninstall with **Uninstall** first. Use **Advanced** only when it fails.
-- Check **App updates** every few weeks for desktop apps, and leave **Install Store updates when downloaded** on for Store apps, unless you often keep apps open for days, in which case tick **Wait for Install** on those.
+- Uninstall with **Uninstall** first. Use **Review removal** only when it fails.
+- Check **App updates** every few weeks for desktop apps, and leave **Install Store updates when downloaded** on for Store apps, unless you often keep apps open for days, in which case select **Wait for me to install** on those.
 - **Built-in apps:** start with the **Safe to remove** group. Skip anything you might use. On a laptop from HP, Dell or Lenovo the maker's own apps are listed under Optional.
 - Make the restore point when asked.
 
@@ -167,9 +171,9 @@ For when the Store is broken, removed or slow. Search the Store ("Spotify, Whats
 
 ## Troubleshooting
 
-**An app is still in the list after Advanced.** Press **Refresh**. If it stays, it may be a Store package; remove it from the Store entry.
+**An app is still in the list after Review removal.** Press **Refresh**. If it stays, it may be a Store package; remove it from the Store entry.
 
-**"Is still installed" after Uninstall.** The uninstaller was cancelled or failed. Try again, or use **Advanced**.
+**"Is still installed" after Uninstall.** The uninstaller was cancelled or failed. Try again, or use **Review removal**.
 
 **Update says "Failed".** The row gives the reason. Close the app and try again; for desktop apps, a program that needs a reboot or is open often blocks winget.
 

@@ -1,3 +1,5 @@
+Where to find it: Home › Home
+
 # Getting started
 
 This page takes you from download to a comfortably set up Deck: installing, why Deck asks for administrator rights, the one-time set up, the first run, the ways to open Deck, a 10-minute tour of what to set first, updates and uninstalling.
@@ -35,7 +37,7 @@ How Deck gets those rights without asking every time:
 
 The installer already does the set up, so you normally never see it. If you started Deck some other way (an old copy, or the files copied by hand), hardware pages show a card titled **One-time set up**, and the CPU card on Home says **Needs admin**.
 
-1. Open any hardware page ([CPU](cpu.md), [GPU](gpu.md), [Fans](fans.md), [Lighting](lighting.md), [Drives](drives.md)), click **Needs admin** on Home's CPU card, or use the card on [This PC](this-pc.md#one-time-set-up).
+1. Open any hardware page ([CPU](cpu.md), [GPU](gpu.md), [Fans](fans.md), [Lighting](lighting.md), [Drive health](drives.md)), click **Needs admin** on Home's CPU card, or use the card on [This PC](this-pc.md#one-time-set-up).
 2. Press **Set up**. Windows shows one administrator prompt.
 3. Deck creates its start-up task and restarts itself with those rights. The card does not come back.
 
@@ -50,12 +52,15 @@ Fan control, motherboard sensors, CPU power limits, lighting on supported boards
 
 ## First run
 
-On the first start:
+On the first start Deck opens on **Home**. There is no welcome screen and no questions.
 
-1. Deck opens Settings on **Choose your look**. Pick a theme and press **Done**. You can change it later on the Appearance tab ([Settings](settings.md#first-start)).
-2. A short introduction, **What Deck found on this PC**, may show at the top of Settings > General. It lists which feature areas your PC supports (Available, Partly available, Not available), with switches for **Clipboard history** and **Local file search** and shortcuts to the CPU, GPU, Fans and This PC pages. Press **Done** when you have looked.
-3. Each page you open for the first time shows a short tour of its main parts. **Skip all tours** on the tour card turns them off; the **✦** button next to the search box plays a page's tour whenever you want it (see [Settings](settings.md#page-tours)).
-3. Deck then lives in the tray. The **X** in Deck's top corner only hides it; use **Quit Deck** in the tray menu to really quit.
+1. A short introduction at the top says what Deck is and how to open it again: from the tray icon next to the clock, and from the hot corner or your shortcut if you use them. It has two buttons: **Change Deck's look** (opens **Settings › Appearance**, so choosing a theme is optional) and **What Deck found on this PC** (a list of which feature areas your PC supports). **Dismiss introduction** removes it for good.
+2. **First steps** lists four or five pages worth a visit on your PC, such as CPU, Sensors, Performance overlay and Phone. A tick means you have visited the page. **Dismiss first steps** removes the list.
+3. Home starts with four main tiles (Sound, Pinned & frequent apps, PC readings and Power & timers). Everything else is still there: **Edit Home** adds it. See [Home](home.md#first-run).
+4. Tours never start by themselves. Press the tour button next to the search box on any page to play that page's tour.
+5. Deck then lives in the tray. The **X** in Deck's top corner only hides it; use **Quit Deck** in the tray menu to really quit.
+
+For a one-minute map of the sidebar, search and Settings › Features, read [Find your way around](find-your-way.md).
 
 Some pages will be missing from the sidebar. That is normal: hardware pages hide themselves when your PC has nothing for them. [This PC](this-pc.md) shows what Deck found.
 
@@ -65,7 +70,7 @@ Some pages will be missing from the sidebar. That is normal: hardware pages hide
 |---|---|
 | **Hot corner** | Rest the mouse in the top-left corner of the screen (the default). Quick panel mode only. Off over fullscreen games unless you turn that on. |
 | **Tray icon** | Left-click opens or closes Deck. Right-click opens the tray menu. If you cannot see the icon, click the small up-arrow near the clock and drag it onto the bar. |
-| **Keyboard shortcut** | Empty by default. Choose one in Settings > General > Opening Deck. It works over games too. |
+| **Keyboard shortcut** | Empty by default. Choose one in Settings › General > Opening Deck. It works over games too. |
 | **Start menu** | Starts Deck, or shows it if it is already running. Deck never runs a second copy. |
 | **Phone** | The phone remote drives many of Deck's controls ([Phone](phone.md)). |
 
@@ -73,14 +78,14 @@ There are two window modes: **Quick panel** (default; a panel over a dimmed scre
 
 ## A 10-minute tour: what to set first
 
-1. **Opening Deck (1 minute).** In [Settings](settings.md) > General choose the window mode and, if you like, a keyboard shortcut. Keep **Start with Windows** and **Start again after a crash** on.
-2. **See what Deck found (1 minute).** Open [This PC](this-pc.md). Check that **Admin rights** shows Deck runs with them, and read the "What Deck can do here" table so you know what to expect.
+1. **Opening Deck (1 minute).** In [Settings](settings.md) › General choose the window mode and, if you like, a keyboard shortcut. Keep **Start with Windows** and **Start again after a crash** on.
+2. **See what Deck found (1 minute).** Open [This PC](this-pc.md). Check that **Admin rights** shows Deck runs with them, and read the "What Deck can control here" list so you know what to expect.
 3. **Home (1 minute).** Open [Home](home.md). Use Edit Home to hide tiles you do not want and drag the rest where you like.
 4. **Profiles (2 minutes).** On [CPU](cpu.md) try the built-in modes: Balanced day to day, Quiet when you want calm. With an NVIDIA card, try **Efficient** on [GPU](gpu.md) and run **Measure this card** once. Laptop users set what applies when plugged in and on battery.
-5. **Fans (2 minutes, desktops).** On [Fans](fans.md) put the CPU fan and case fans on **Balanced**, press **Apply**, and watch [Sensors](sensors.md) under load for a while. Leave anything you are unsure about on the BIOS.
-6. **Gaming (2 minutes).** On [Gaming](gaming.md) leave *Automatic game profiles* on, and set a frame rate limit just under your monitor's refresh rate for games where you want less heat and noise. If you want FPS readings, start RivaTuner from [Overlay](overlay.md).
+5. **Fans (2 minutes, desktops).** On [Fans](fans.md) put the CPU fan and case fans on **Balanced**, press **Apply hardware changes**, and watch [Sensors](sensors.md) under load for a while. Leave anything you are unsure about on the BIOS.
+6. **Gaming (2 minutes).** On [Game profiles](gaming.md) leave *Automatic game profiles* on, and set a frame rate limit just under your monitor's refresh rate for games where you want less heat and noise. If you want FPS readings, start RivaTuner from [Performance overlay](overlay.md).
 7. **Heat alerts (30 seconds).** On [Sensors](sensors.md) turn on **Warn me when it gets hot** (defaults 90 C for the CPU, 85 C for the GPU; see [Alerts](alerts.md)).
-8. **Backups (30 seconds).** In Settings > Data & recovery turn on **Weekly backup** ([Settings](settings.md#backups)).
+8. **Backups (30 seconds).** In Settings › Data & recovery turn on **Weekly backup** ([Settings](settings.md#backups)).
 
 After that, explore at your own pace. Press the "?" next to a hardware setting for a plain explanation of what it does and what to watch for. [Recommended setups](recommended.md) has full checklists by type of user.
 
@@ -88,7 +93,7 @@ After that, explore at your own pace. Press the "?" next to a hardware setting f
 
 - Deck checks the public releases page once a day and shortly after it starts. With **Update by itself** on (the default) it downloads the setup, checks its SHA-256 checksum and installs silently once **no game or fullscreen program is in front**. It never interrupts a game.
 - Your settings and profiles stay. Deck starts again, hidden, after the update.
-- Settings > About > Updates also has **Check now**, **Go back to *version*** (when a previous version is available), **Beta releases** (off by default) and **What is new**.
+- Settings › About > Updates also has **Check now**, **Go back to *version*** (when a previous version is available), **Beta releases** (off by default) and **What is new**.
 - If Deck is not running as admin, it tells you and installs when you press **Install**, with one Windows prompt.
 - A copy of Deck in a folder your own account can change does not update itself.
 
@@ -101,7 +106,7 @@ More in [Settings](settings.md#updates). What changed in each version is in `CHA
 3. The uninstaller removes Deck's scheduled tasks, shortcuts, firewall rules, the PawnIO driver (if Deck installed it), logs and browser data, and puts back CPU power plans and the minimum-clock lock.
 4. To remove your settings later, delete the Deck folders under `%APPDATA%` and `%LOCALAPPDATA%` (listed in [Settings](settings.md#where-deck-stores-data)).
 
-Windows tweaks and sound changes stay as you set them. If you want Windows back exactly as it was, undo them first: tweaks one by one or all at once on the [Tweaks](tweaks.md) page, and **Undo sound changes** on [Sound and mic](sound.md).
+Windows tweaks and sound changes stay as you set them. If you want Windows back exactly as it was, undo them first: tweaks one by one or all at once on the [Windows tweaks](tweaks.md) page, and **Undo sound changes** on [Sound & mic](sound.md).
 
 If you installed from source with `install.ps1`, `uninstall.ps1` removes it; add `-Purge` to delete settings too.
 

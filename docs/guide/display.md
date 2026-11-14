@@ -1,3 +1,5 @@
+Where to find it: Desktop › Display
+
 # Display and screen tools
 
 This page covers two parts of Deck's **Desktop** group:
@@ -23,9 +25,9 @@ The heading shows the monitor's name (with a **Main** chip for the primary one),
 |---|---|---|
 | **Refresh rate** | One chip per rate the monitor supports. Click one to switch. | Shown only when the monitor offers more than one. If the monitor is running below its maximum, a hint says so and a **Use N Hz** button switches to the top rate. Most people want the maximum. |
 | **Brightness** | A slider from 0 to 100%. | Laptop panels and monitors that answer Windows or DDC/CI. Otherwise the page says "Brightness can't be changed from Windows. Turn on DDC/CI in the monitor's menu." |
-| **Contrast** | A slider from 0 to 100%. | Shown only when the monitor reports it. |
+| **Contrast** | A slider from 0 to 100%. | Shown only when the monitor reports it. If the monitor refuses the value you let go on, the slider goes back to what the monitor reports and the page shows the error. The same applies to Brightness. |
 | **Resolution** | Drop-down of the monitor's modes, the largest first. | Shown only when more than one is available. |
-| **Scale (text, apps)** | Windows' display scaling. The recommended one is marked. | Shown only when more than one is available. |
+| **Scale (text, apps)** | Windows' display scaling. The recommended one is marked. | Shown only when more than one is available. If Windows refuses a scale, the list returns to the scale in use. |
 | **Orientation** | Landscape, Portrait, Landscape (flipped) or Portrait (flipped). | |
 | **HDR** | A switch. | Shown only when the monitor and graphics driver support HDR. |
 
@@ -80,17 +82,17 @@ Under **Picture tuning**:
 
 | Control | Notes |
 |---|---|
-| **Digital vibrance** | NVIDIA graphics only. The Control Panel's colour saturation, 50 to 100%. 50% is normal. Higher makes colours stronger and less natural. The driver keeps it. |
+| **Digital vibrance** | NVIDIA graphics only. Shows the current value and maximum on the driver's raw scale, with the minimum and maximum explained below the slider. This differs from NVIDIA Control Panel's percentage. Higher makes colours stronger and less natural. The driver keeps it. |
 | **Sharpness** | If the monitor lets Deck set it. If not, the page says it can only be changed from the monitor's own menu. |
-| **Colour preset** | The presets the monitor lists (for example sRGB, Native, 6500 K, User 1). |
-| **Red**, **Green**, **Blue** | Colour gains, when listed. |
+| **Colour preset** | The presets the monitor lists (for example sRGB, Native, 6500 K, User 1). Shows the current preset when recognised; otherwise it shows the monitor's reported code without guessing a preset. |
+| **Red**, **Green**, **Blue** | Colour gains, when listed, shown as a percentage of the monitor's range. |
 
-Under **Input and audio**:
+Under **Monitor input and speakers**:
 
 | Control | Notes |
 |---|---|
 | **Input** | Switches the monitor to another input, for example HDMI or DisplayPort. Only inputs the monitor lists are offered. Deck asks first, because the monitor will then show that input instead of this PC until you switch it back with the monitor's own buttons. |
-| **Speaker volume** | Monitors with built-in speakers. |
+| **Speaker volume** | Monitors with built-in speakers, shown as a percentage of the monitor's range. |
 
 Deck deliberately does not offer anything that could turn a monitor off or reset it (power mode, factory reset).
 

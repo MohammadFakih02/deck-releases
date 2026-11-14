@@ -1,6 +1,8 @@
+Where to find it: Power & time › Keep awake
+
 # Power: keep awake, timers and shutdown plans
 
-The **Power** group has three pages for controlling when your PC sleeps, shuts down or reminds you of something:
+The **Power & time** group has three pages for controlling when your PC sleeps, shuts down or reminds you of something:
 
 | Page | What it is for |
 |---|---|
@@ -8,7 +10,7 @@ The **Power** group has three pages for controlling when your PC sleeps, shuts d
 | **Timers & breaks** | Countdown timers, a stopwatch, and reminders to stand up and rest your eyes. |
 | **Shut down when…** | Shut down, sleep, restart (and more) automatically when something happens: a download finishes, an app closes, the PC goes idle, or at a set time. |
 
-**Where to find it:** sidebar > **Power**, then the tab you want. The Home page also has a **Power & timers** tile and the tray menu has a **Keep the PC awake** switch. See [Home](home.md).
+The Home page also has a **Power & timers** tile and the tray menu has a **Keep the PC awake** switch. See [Home](home.md).
 
 None of these pages change your Windows power plan. Keep awake works by asking Windows not to sleep while Deck is running, and gives the request back when it ends. Deck also never touches any game: nothing here involves anti-cheat.
 
@@ -55,7 +57,7 @@ When a "downloads" keep awake ends, you get a "Downloads finished: your PC can s
 
 ### Also keeping this PC awake
 
-A read-only list of **other** programs and drivers that are asking Windows to stay awake (it reads Windows' own power-request list). Use **Refresh requests** to reload it. If it says "Windows reports no active power requests." nothing else is holding the PC up. This is useful when your PC refuses to sleep and you want to know who is responsible.
+A read-only list of **other** programs and drivers that are asking Windows to stay awake (it reads Windows' own power-request list). Use **Refresh list** to reload it. If it says "Windows reports no active power requests." nothing else is holding the PC up. This is useful when your PC refuses to sleep and you want to know who is responsible.
 
 ### Windows sleep settings (side panel)
 
@@ -63,7 +65,7 @@ Shows, read-only, when the **PC sleeps after** and the **screen turns off after*
 
 ### Good to know
 
-- A running keep awake also appears under **Active changes** on Home, where **Release** turns it off.
+- A running keep awake also appears under **What Deck changed**, where **Put back** turns it off.
 - Keep awake belongs to Deck: if you **quit Deck**, the request ends and normal sleep returns. It is not saved across a restart of Deck.
 - An app-based keep awake waits for the app to be seen running first, so you can start it before launching the app.
 - Closing the laptop lid or pressing the power button follows your Windows lid / power-button settings; keep awake does not change those.
@@ -72,12 +74,14 @@ Shows, read-only, when the **PC sleeps after** and the **screen turns off after*
 
 ### Timers
 
-- **Your timers:** every running timer with time left, a progress bar, **Pause / Resume** and a remove button. A finished timer shows **Done** and an **Again** button.
+- **Your timers:** every running timer with time left, a progress bar and **Rings at** with its clock time (and day when needed), or **Paused**. Buttons are named **Pause timer**, **Resume timer** and **Cancel timer**. A finished timer shows **Done**, **Again** and **Dismiss timer**.
 - **Start a timer:** presets **Start 5 min**, **Start 10 min**, **Start 25 min**, a **More durations** list (1, 3, 15, 45, 60 min), or type a **Duration** such as `25m`, `1h30`, `90s` or `1:30` with an optional **Label** ("Tea", "Laundry"…) and press **Start timer**.
 - When a timer ends you get a sticky notification with a sound, with **5 more min** and **OK** buttons. It rings even if Deck's panel is closed, as long as Deck is running.
 - You can also start one by typing `timer 10m` in the search box, or tapping a preset on the Home tile.
 
 Timers only run while Deck is running. If you quit Deck, they stop.
+
+Timed shutdown plans also show **Waiting for** with the clock time and day; timed Quick picks show **At** with the time. **Cancel** stops the plan without performing its action.
 
 ### Stopwatch
 
@@ -141,7 +145,7 @@ Options are remembered between plans on this PC (they are kept in the page's loc
 | **Warning** (seconds) | When the condition is met you get a notification with **Cancel** and **Do it now** for this many seconds before anything happens. 0 means no warning. Not used for "Just tell me". | 60 s |
 | **Not while I'm playing** | If a fullscreen game or video is in use, the plan waits until you leave it, then gives you a **fresh warning** before acting. | On |
 | **Keep the PC awake while waiting** | Stops Windows sleeping before the download ends or the set time arrives. Not applied to "I've been away", and not applied while Deck is still waiting for a download, playback or app to start. | On |
-| **Close apps that hold it up** | For Shut down, Restart and Sign out only: forces apps with unsaved work to close. **Unsaved work in them is lost.** Without it, Windows waits for someone to answer. | Off |
+| **Force-close apps that block shutdown** | For Shut down, Restart and Sign out only: forces apps with unsaved work to close. **Unsaved work in them is lost.** Without it, Windows waits for someone to answer. | Off |
 
 **Condition options** (shown for the condition you chose)
 
@@ -162,7 +166,7 @@ Options are remembered between plans on this PC (they are kept in the page's loc
 ### While a plan is set
 
 - The plan panel shows what it is waiting for and how far along it is ("Network quiet for 2 min of 5 min", a countdown to a set time with a progress bar).
-- When the condition is met the state becomes a **countdown**. You get a sticky notification ("Shut down in 60 s") with **Cancel** and **Do it now**. **Do it now** runs the plan at once; **Cancel** drops it.
+- When the condition is met the state becomes a **countdown**. You get a sticky notification ("Shut down in 60 s") with **Cancel** and **Do it now**. **Do it now** runs the plan at once; **Cancel** drops it. The notification stays up while other notifications come and go: when too many are showing, Deck removes the oldest other one and never this warning.
 - If, during the warning, the condition stops being true (a download resumes, you come back to the PC, the app reopens), the warning is called off and Deck goes back to waiting, with a short notification saying why.
 - Download, music and app conditions need to see the thing **happen first**: "downloads finish" will not fire until a download has been seen, "app closes" not until the app has been seen running, so nothing fires immediately because nothing was happening yet. The page says "Waiting for a download to start" / "Waiting for *app* to start" while that holds.
 - A plan with a **set time** that Windows slept through is **skipped**, not run late. If the PC was asleep or off at the set time (more than 10 minutes late), Deck drops the plan with a notice rather than acting when you wake it, so a 23:00 shutdown never hits you the next morning.
@@ -204,7 +208,7 @@ There are also search actions "Keep the PC awake" and "Let the PC sleep normally
 - **Gamers:** keep **Not while I'm playing** on so a plan never closes a game under you. Use "Just tell me" if you want to be told but not acted on.
 - **Laptops:** use Keep awake for a duration instead of "until I turn it off" so you do not forget and drain the battery. Sleep, rather than Shut down, if you want to come back to your work.
 - **Quiet PCs:** keep the warning at 60 seconds or more; it is your only chance to cancel.
-- Leave **Close apps that hold it up** off unless you have saved everything and need the shutdown to finish unattended.
+- Leave **Force-close apps that block shutdown** off unless you have saved everything and need the shutdown to finish unattended.
 
 ## Troubleshooting
 
@@ -232,7 +236,7 @@ There are also search actions "Keep the PC awake" and "Let the PC sleep normally
 
 **Does Deck change my Windows power plan?** No. Keep awake only sets a request while Deck runs. (CPU profiles on the [CPU](cpu.md) page do work with Windows power plans, but that is separate.)
 
-**Will an unsaved document be lost on shutdown?** Not unless you turn on **Close apps that hold it up**. Without it, Windows waits for apps to answer, as with a normal shutdown.
+**Will an unsaved document be lost on shutdown?** Not unless you turn on **Force-close apps that block shutdown**. Without it, Windows waits for apps to answer, as with a normal shutdown.
 
 **Does keep awake affect anti-cheat or games?** No. It only asks Windows not to sleep; it never touches a game process.
 

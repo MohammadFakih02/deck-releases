@@ -1,20 +1,23 @@
+Where to find it: Settings › General
+
 # Settings
 
-Settings is the one place for Deck's preferences: how it opens and looks, what search covers, game profiles, the death counter, CPU and GPU profile options, the clipboard, connections to your other PCs and phone, warnings, backups and updates. Pages that are settings in themselves (Overlay, Game bar, Flyouts, Fans, Lighting) stay where they are; each part of Settings ends with links to them under **On their own pages**.
+Settings is the one place for Deck's preferences: how it opens and looks, what search covers, game profiles, the death counter, CPU and GPU profile options, the clipboard, connections to your other PCs and phone, warnings, backups and updates. Pages that are settings in themselves (Performance overlay, Game bar, Music & volume pop-ups, Fans, Lighting) stay where they are; each part of Settings ends with links to them under **On their own pages**.
 
-**Where to find it:** the **Settings** button at the bottom of the sidebar, or **Settings** in the tray menu. The parts are listed on the left, grouped and coloured like the sidebar. **Find a setting** at the top of the list narrows it to the parts that match, and hides the rows of the open part that don't.
+The parts are listed on the left, grouped and coloured like the sidebar. **Find a setting** at the top of the list narrows it to the parts that match, and hides the rows of the open part that don't.
 
 | Part | What it covers |
 |---|---|
 | [General](#general) | How Deck opens (window mode, hot corner, shortcut), starting with Windows, crash restart, the sidebar |
 | [Appearance](#appearance) | Theme, accent colour, opacity, opening animation, low-spec mode, units |
 | [Search](#search) | Web search provider, saved links and commands, local file search |
-| Games | Automatic game profiles, the default profile, programs that are not games, crash records ([Gaming](gaming.md#gaming-settings)) and controller batteries ([Controller](controller.md)) |
+| Games | Automatic game profiles, the default profile, programs that are not games, crash records ([Game profiles](gaming.md#gaming-settings)) and a link to Devices for controller batteries |
 | Death counter | Counting, stream text files, automatic counting, the in-game counter and the card after a death ([Death counter](death-counter.md#death-counter-settings)) |
 | CPU and GPU | Profile shortcuts, the switch notice, the GPU profile at start, plugged in / on battery profiles, memory clean-up ([CPU](cpu.md#settings-for-cpu-profiles), [GPU](gpu.md#settings-for-gpu-profiles)) |
+| Devices | Battery tray icons and low-battery warnings for controllers, headsets, mice and keyboards, per device ([Devices](devices.md)) |
 | Desktop | Clipboard history, snippets, plain-text paste ([Clipboard](clipboard.md#clipboard-settings)) and Store app updates ([Apps](apps.md)) |
-| Notifications | Drive health warnings ([Drives](drives.md#drive-health-warnings)), with links to temperature alerts and break reminders |
-| Connections | PC to PC ([PC to PC](pc-to-pc.md#pc-to-pc-settings)), Workspace Sync ([Workspace Sync](workspace-sync.md#workspace-sync-settings)) and what a phone may do ([Phone](phone.md#power-and-uploads)) |
+| Notifications | Drive health warnings ([Drive health](drives.md#drive-health-warnings)), with links to temperature alerts and break reminders |
+| Connections | PC to PC ([PC to PC](pc-to-pc.md#pc-to-pc-settings)), Project sync ([Project sync](workspace-sync.md#workspace-sync-settings)) and what a phone may do ([Phone](phone.md#power-and-uploads)) |
 | [Data & recovery](#data--recovery) | Backups and restore, Deck's storage |
 | [About](#about) | Version, updates, quitting Deck, diagnostics |
 
@@ -25,7 +28,9 @@ At the end of this page: [where Deck stores data](#where-deck-stores-data), [pri
 ## Contents
 
 - [Finding a setting](#finding-a-setting)
+- [The parts of Settings](#the-parts-of-settings)
 - [General](#general)
+- [Features](#features)
 - [Appearance](#appearance)
 - [Search](#search)
 - [Data & recovery](#data--recovery)
@@ -41,11 +46,31 @@ At the end of this page: [where Deck stores data](#where-deck-stores-data), [pri
 - **Find a setting** (top of the list on the left): type a word ("hot corner", "battery", "obs"). The list keeps the parts whose settings match; the open part hides rows that don't match. Clear the box to see everything again.
 - The search box at the top of Deck also finds the most used settings ("Clipboard settings", "Profile shortcut preferences", "Deck updates").
 
+## The parts of Settings
+
+Settings is one page with a list of parts on the left. The parts follow the sidebar's areas.
+
+| Part | What it holds |
+|---|---|
+| **General** | How Deck opens and starts, the sidebar, the introduction on Home. |
+| **Features** | Which areas and pages Deck shows. |
+| **Appearance** | Theme, accent, animation, units. |
+| **Search** | Web search provider, folders to index, saved actions. |
+| **Games** | Automatic game profiles, crash records, controller batteries. Links to the Performance overlay, Game bar and Controller pages. |
+| **Death counter** | How deaths are counted and how the counter looks. See [Death counter](death-counter.md). |
+| **CPU and GPU** | What CPU and GPU profiles share, shortcuts and memory clean-up. See [CPU](cpu.md) and [GPU](gpu.md). |
+| **Devices** | Battery icons and warnings. See [Devices](devices.md). |
+| **Desktop** | Clipboard history, snippets, plain-text paste and Store app updates. |
+| **Notifications** | What Deck warns you about. See [Alerts](alerts.md). |
+| **Connections** | PC to PC, Project sync and what a phone may do. |
+| **Data & recovery** | Backups, storage and starting over. |
+| **About** | Version, updates, diagnostics and quitting. |
+
 ## General
 
 ### First start
 
-The first time you open Deck, Settings opens on **Choose your look**: pick a theme (Midnight, Graphite or Forest are offered first; **All themes and accents** unfolds the rest) and press **Done**. You can change it any time under Appearance. A short introduction, **What Deck found on this PC**, may also appear at the top of General the first time. It lists which feature areas your PC supports (Available / Partly available / Not available) with switches for **Clipboard history** and **Local file search**, shortcuts to the CPU, GPU, Fans and This PC pages, and a **Done** button. You can bring it back later with **Show introduction** at the bottom of General.
+The first time you start Deck it opens on **Home**, not on Settings. Home shows a short introduction and a **First steps** list (see [Home](home.md#first-run)). Choosing a look is optional: the introduction has a **Change Deck's look** button that opens **Settings › Appearance**. **What Deck found on this PC** opens **Show available controls** here in General, a list of which feature areas your PC supports (Available, Partly available, Not available) with switches for **Clipboard history** and **Local file search** and shortcuts to the CPU, GPU, Fans and This PC pages. You can open it again any time from the **Sidebar** panel below.
 
 ### Opening Deck
 
@@ -72,19 +97,24 @@ When Deck is ended from outside (a crash, Task Manager, a driver installer) a sm
 | Setting | What it does |
 |---|---|
 | **Group and page order** | Drag sidebar groups or page tabs to reorder them. **Reset order** (enabled once you have reordered) returns them to the default after a confirmation. |
-| **Show Workspace Sync** | Workspace Sync only appears in the sidebar while it is on, unless you tick this. See [Workspace Sync](workspace-sync.md). |
-| **What Deck found on this PC** > **Show introduction** | Shows the introduction again. |
+| **Show Project sync** | Project sync only appears in the sidebar while it is on, unless you tick this. See [Project sync](workspace-sync.md). You can also use [Features](#features). |
+| **What Deck found on this PC** › **Show available controls** | Shows the list of what your PC supports. |
 
 ### Page tours
 
-The first time you open a page, a short tour lights up its main parts one at a time (its tabs, a key panel, the main buttons), with a sentence beside each. Use **Next** and **Back** (or the arrow keys), **Skip** to end this page's tour, or **Skip all tours** to stop tours on pages you haven't opened yet. **Esc** also ends it. The **✦** button next to the search box plays the tour of the page you are on again, at any time.
+Tours never start by themselves. Press the tour button next to the search box to play a short tour of the page you are on: it lights up the page's main parts one at a time, with a sentence beside each. Use **Next** and **Back** (or the arrow keys); **Esc** or **Skip** ends it. The **Page tours** panel in General says the same.
 
-| Setting | What it does | Default |
-|---|---|---|
-| **Show a tour the first time a page opens** | Off: tours only play when you press ✦. **Skip all tours** turns this off. | On |
-| **Start the tours over** > **Reset** | Every page shows its tour again on your next visit. | |
+**More settings on other pages:** **Home layout** opens Home's editor (which tiles show, and their size).
 
-**On their own pages:** **Home layout** opens Home's editor (which tiles show, and their size).
+## Features
+
+**Settings › Features** shows areas in columns, with related links in a row. Each area (Gaming, Hardware, PC status, Desktop, Maintenance, Power & time, PC to PC, Project sync and Phone) has a switch that reads **Shown in Deck** or **Hidden from Deck**, and a fold-out **Pages in <area>** with one switch per page. When the whole area is hidden, its pages say **Hidden with area**; their saved choices return when you show the area again.
+
+- Hiding removes the entrance from the sidebar, the page row, search, Home and the tray menu. Home and Settings can never be hidden.
+- Hiding never starts or stops anything, changes how a feature works, or deletes data. Under each area Features says what keeps running (for example hidden timers and Keep awake keep going) and links to the real switch if you want it off.
+- An old link or a search for a hidden page's full name still works: it opens Features, or the page with a short notice and a **Show it** button.
+- Pages your hardware does not support are listed as not available, with the reason.
+- **Show everything** brings every entrance back. Your page order, Home layout and service settings are untouched.
 
 ## Appearance
 
@@ -94,7 +124,8 @@ The first time you open a page, a short tour lights up its main parts one at a t
 |---|---|---|
 | **Theme** | Eight themes: **Midnight** (default), Graphite, OLED black, Pure black, Nord, Forest, Plum, Ember. Each card previews the theme in the current accent. | Midnight |
 | **Accent** | Eight accent colours: Blue, Violet, Purple, Pink, Orange, Amber, Green, Teal. | Blue |
-| **Opacity with pin off** / **Opacity with pin on** | How see-through Deck's surfaces are, 30 % to 100 % in steps of 5. Only the backgrounds fade (frosted); text and the accent keep their colour. The pin has its own value, so a pinned floating panel can be fainter than the normal one. | 100 % |
+| **Opacity when Deck can hide** / **Opacity when pinned open** | How see-through Deck's surfaces are, 30 % to 100 % in steps of 5. Only the backgrounds fade (frosted); text and the accent keep their colour. The pin has its own value, so a pinned floating panel can be fainter than the normal one. | 100 % |
+| **Show what Deck is changing** | The **Deck is changing N things** button next to the search box. Off hides it; **What Deck changed** stays in the tray menu. | On |
 | **Opening animation** | How Deck appears: Zoom (default), Fade, Pop, Rise, Drop, Flip, Swirl, Blur in, None. **Preview** plays it. | Zoom |
 
 OLED black and Pure black save power on OLED screens and look best on them. Use a lower opacity if you want to see what is behind a pinned panel.
@@ -104,7 +135,7 @@ OLED black and Pure black save power on OLED screens and look best on them. Use 
 | Setting | What it does | Default |
 |---|---|---|
 | **Low-spec mode** | No animations or soft shadows, and live readings refresh every 3 seconds instead of every second. The opening animation is off while this is on. | Off |
-| **Clock speeds** | Show clocks in **MHz** or **GHz**. Offsets you type on the Tune pages stay in MHz. | MHz |
+| **Clock speeds** | Show clocks in **MHz** or **GHz**. Offsets you type on the Hardware pages stay in MHz. | MHz |
 | **Network speed** | **Mb/s** (megabits) or **MB/s** (megabytes); 8 megabits equal 1 megabyte. | Mb/s |
 | **Temperature** | **°C** or **°F**. Fan curves and limits stay in °C. | °C |
 
@@ -153,7 +184,7 @@ A Deck backup saves your settings and profiles, fan and hardware settings, fan c
 | **Backup folder** | Where weekly copies go (default: a **Deck backups** folder in your Documents). |
 | **Weekly copies to keep** | 1 to 52, default 4. The oldest are removed beyond that. |
 
-What a restore does **not** do: it never turns on a network service or startup tuning. After a restore the following are switched off and you turn them back on if you want them: the phone remote, Workspace Sync, PC to PC, automatic Game mode start, automatic updates and weekly backups. Active CPU and GPU profile choices, the GPU startup profile and the plugged-in / battery profile choices are cleared. Restoring a newer backup into an older Deck is refused ("update Deck first").
+What a restore does **not** do: it never turns on a network service or startup tuning. After a restore the following are switched off and you turn them back on if you want them: the phone remote, Project sync, PC to PC, automatic Deck game mode start, automatic updates and weekly backups. Active CPU and GPU profile choices, the GPU startup profile and the plugged-in / battery profile choices are cleared. Restoring a newer backup into an older Deck is refused ("update Deck first").
 
 A backup does **not** include: alert rules and notification addresses ([Alerts](alerts.md)), the shutdown plan, game artwork, logs, driver files or tweak undo records.
 
@@ -194,7 +225,20 @@ How updating works and how it is kept safe:
 
 ### Quit Deck
 
-**Quit Deck** stops everything Deck runs: the hot corner, clipboard history, timers, shutdown plans, keep awake, the phone link and any Game mode session. Fans go back to BIOS control and the GPU fan back to the driver. You are asked to confirm because timers and shutdown plans stop too. **Support report** opens the support report on the [This PC](this-pc.md) page.
+**Quit Deck** stops everything Deck runs: the hot corner, clipboard history, timers, shutdown plans, keep awake, the phone link and any Deck game mode session. Fans go back to BIOS control and the GPU fan back to the driver. You are asked to confirm because timers and shutdown plans stop too. **Support report** opens the support report on the [This PC](this-pc.md) page.
+
+### Support report
+
+A text report that answers "what is this machine and what did Deck find?" without a second round of questions. Attach or paste it when you report a problem. (It used to be on This PC.)
+
+- **Copy report** puts the report on the clipboard so you can paste it into a chat or an issue.
+- **Save report** writes it to a file in Deck's data folder and shows the file in Explorer.
+- **Include crash files (may contain private data)** adds Deck's crash reports. The box starts ticked only if you have already agreed to include crash files since Deck started; otherwise it is off. When you copy the report, crash text is added to the end (with personal details blanked out). When you save, the report and the crash files go into one zip file.
+- If your PC has lighting Deck can control, **Save report** asks first whether to add a **lights test**: the lights cycle red, green and blue for about 15 seconds and then return. Use it for lighting problems. **Cancel**, **Save without it** and **Add the test** are your choices.
+
+The report has these parts: Deck (version, whether it runs as admin, whether the hardware engine, the PawnIO driver and the NVIDIA engine run, shortcut keys), Windows (edition and build), Computer (type, board and BIOS, battery, processor, memory, graphics), Machine (what Deck detected: processor family, maker, graphics kinds, which maker interfaces answered), Hardware (what the engine found: fans, sensors, lighting), Performance overlay (whether RivaTuner is installed and running), Drive health (model, health, temperature, hours), Runs (this run and the previous one, safe mode), Deck memory, Background workers, Problems this run, and the last 80 log lines. Three parts help us add support for parts Deck can't control yet (laptop fans, keyboard lighting): **Maker and lighting apps** (installed and running control apps such as MSI Center or SteelSeries GG), **ACPI devices** (what the firmware describes: an embedded controller, ACPI fans, the maker's own control devices) and **HID devices** (each keyboard, mouse, light or laptop-key device with its IDs and report sizes). They are read from Windows' device list; nothing is sent to the devices, and serial numbers are left out.
+
+It contains **no personal data**: file paths are shortened and drive serial numbers are left out. Read it before you share it if you are unsure. Keep **Include crash files** off unless someone asks for them.
 
 ### Diagnostics
 
@@ -218,8 +262,8 @@ All of it is on your PC. In the paths, `%APPDATA%` and `%LOCALAPPDATA%` are your
 | Drive health history | `%APPDATA%\Deck\drive-health.json` |
 | Sensor log (when on) | `%APPDATA%\Deck\monitor.csv` |
 | Shutdown plan | `%APPDATA%\Deck\plan.json` (removed when the plan ends) |
-| Tweaks undo journal | `%APPDATA%\Deck\tweaks.json` |
-| PC to PC, Workspace Sync | `%APPDATA%\Deck\transfer\`, `%APPDATA%\Deck\claude-sync\` |
+| Windows tweaks undo journal | `%APPDATA%\Deck\tweaks.json` |
+| PC to PC, Project sync | `%APPDATA%\Deck\transfer\`, `%APPDATA%\Deck\claude-sync\` |
 | Log | `%LOCALAPPDATA%\Deck\logs\deck.log` (2 MB per file, four older files kept) |
 | Crash evidence | `%LOCALAPPDATA%\Deck\crashes` |
 | Store downloads, update records | `%LOCALAPPDATA%\Deck\store\` |
@@ -227,7 +271,7 @@ All of it is on your PC. In the paths, `%APPDATA%` and `%LOCALAPPDATA%` are your
 
 Hardware settings (fan curves, overclocks) are also fingerprinted in the registry (under Deck's own key) so a program that edits the files behind Deck's back is not trusted blindly; this is a protection against tampering, and deleting the key only means Deck trusts the current files at its next admin start.
 
-**Secrets** (the phone remote key and pairing code, PC to PC and Workspace Sync keys, your VirusTotal key, the ntfy / Discord addresses) are stored encrypted for your Windows account (DPAPI), so a copy of the files on another account or PC cannot read them.
+**Secrets** (the phone remote key and pairing code, PC to PC and Project sync keys, your VirusTotal key, the ntfy / Discord addresses) are stored encrypted for your Windows account (DPAPI), so a copy of the files on another account or PC cannot read them.
 
 **The log** is masked as it is written: values after words like token, password, secret, API key, "Bearer", pairing code, sync key and phone key are hidden, and your user name and PC name are removed from paths. The same line repeated within a minute is counted instead of written again. Logs stay on your PC; a support report is only built when you ask for one, and crash files are only included in it after you agree.
 
@@ -247,7 +291,7 @@ Deck is a local app. It does not need an account. It does not upload your settin
 | Safety check of a file (Processes) | VirusTotal | Only if you add your own VirusTotal key and ask for a check. |
 | Store apps | Microsoft's Store servers | Only when you use the Apps page's Store features. |
 | Notifications out | The ntfy or Discord address you typed | Only if you turn it on. See [Alerts](alerts.md). |
-| Share links, phone, PC to PC, Workspace Sync | Your own devices on your network (or Tailscale for an internet share link, if you open one) | Features you turn on; they are off until you do. |
+| Share links, phone, PC to PC, Project sync | Your own devices on your network (or Tailscale for an internet share link, if you open one) | Features you turn on; they are off until you do. |
 
 A **web search** opens your chosen search site in your browser, like any other link.
 
@@ -271,7 +315,7 @@ Deck never injects into games and never reads their memory; its overlay, death c
 
 **A restore did not apply.** A restore is applied at the next start. Quit Deck from the tray (not just close it) and open it again. If Deck says the settings need a newer version, update Deck first.
 
-**After a restore some things are off.** This is deliberate: the phone remote, PC to PC, Workspace Sync, automatic updates, weekly backups and automatic Game mode are switched off by a restore so a backup can never switch on a network service by itself. Turn them back on.
+**After a restore some things are off.** This is deliberate: the phone remote, PC to PC, Project sync, automatic updates, weekly backups and automatic Deck game mode are switched off by a restore so a backup can never switch on a network service by itself. Turn them back on.
 
 **Weekly backup did not run.** It runs about once a week while Deck is running. If the folder is not writable Deck shows "Weekly backup could not be saved". Choose another folder.
 
@@ -299,7 +343,7 @@ Deck never injects into games and never reads their memory; its overlay, death c
 
 **Will changing settings affect games or anti-cheat?** Settings on this page (window mode, theme, search, backups, updates) do not touch games. Deck never injects into games or reads their memory.
 
-**Where do I turn off the death counter, overlay, game bar or controller overlay?** On their own pages: [Death counter](death-counter.md), [Overlay](overlay.md), [Game bar](game-bar.md) and [Controller](controller.md).
+**Where do I turn off the death counter, overlay, game bar or controller overlay?** On their own pages: [Death counter](death-counter.md), [Performance overlay](overlay.md), [Game bar](game-bar.md) and [Controller](controller.md).
 
 **Why are some pages missing from the sidebar?** Hardware pages only show when your PC has something for them; see [This PC](this-pc.md).
 
