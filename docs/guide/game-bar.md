@@ -148,7 +148,7 @@ Show, move or resize the controller overlay. Options: **Move and resize** (the b
 
 ### FPS drops
 
-See why your FPS just dropped: the likely cause of each dip, from [Why did my FPS drop?](gaming.md#why-did-my-fps-drop). Option: **Drops listed** (1 to 6, default 3). Needs RivaTuner measuring the game. Each row says how long ago the dip was (counted from the dip, in seconds). With no drops it shows "No drops in this game so far".
+See why your FPS just dropped: the likely cause of each dip, from [Why did it stutter?](gaming.md#why-did-it-stutter). Option: **Drops listed** (1 to 6, default 3). Needs RivaTuner measuring the game. Each row says how long ago the dip was (counted from the dip, in seconds). With no drops it shows "No drops in this game so far".
 
 ### Clock
 

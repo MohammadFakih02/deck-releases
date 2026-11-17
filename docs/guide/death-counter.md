@@ -101,10 +101,10 @@ History is one card per play session: day and time, length, number of deaths, bo
 ## Games tab
 
 - **Your games:** every game you have counted deaths in, with its total and when it was last counted. **Export** saves that game's history as a CSV file; **Show** switches the other tabs to that game. A game turned off shows an "off" chip.
-- The line under the list says how many games the shared library covers.
-- **All games:** total deaths, time played and bosses beaten across all games, deaths per week for the last 12 weeks, the deadliest games and the deadliest bosses. **Export everything** saves the lot as CSV.
-- **Death-screen library > Add a death screen a friend taught:** paste a share code starting `deck-death-screen:` and press **Add**.
-- **Learned screens** for the chosen game (use the **Game** drop-down): the guess card, the Set up steps, the death and victory screens Deck learned, and the teaching card. See below.
+- A new game joins the list once a death is counted in it: start the game, then use **+1 death** on Now.
+- **All games:** total deaths, time played and bosses beaten across all games, deaths per week for the last 12 weeks, and the deadliest bosses. **Export everything** saves the lot as CSV.
+- **Death-screen library:** how many games the shared library covers, and **Add a death screen a friend taught**: paste the code a friend copied with **Share with a friend** (it starts `deck-death-screen:`) and press **Add**. Deck then recognises that game's deaths without being taught.
+- **Learned screens** for the chosen game (use the **Game** drop-down): the guess question, the Set up steps, the death and victory screens Deck learned (it keeps up to three of each), and the teaching card, all in one card. See below.
 - **Games with presets:** the built-in list described above.
 
 ### Teaching and setting up a game
@@ -127,8 +127,8 @@ Wrong death counted? Open the learned death screens, find the screen that did it
 |---|---|
 | Your own bars and items, and a boss's posture bar | Drag boxes (up to 8) over your own health bars and item slots so Deck never takes them for a boss. Press **Mark them**, then **Save**. |
 | Boss health bar and name | Click the boss's health bar, then drag a box around its name (or use **Name is above the bar** / **Name is below it**). Deck shows what it reads in your box. Do this during or just after a fight. |
-| Death screen | Pick it from your last death. |
-| Boss kill screen | Pick the victory screen after you mark a boss beaten. **This game has none** if the game shows nothing when a boss dies. |
+| Death screen | Pick it from your last death (**Pick another** once one is learned). |
+| Boss kill screen | Pick the victory screen after you mark a boss beaten. **This game has none** if the game shows nothing when a boss dies (**It has one after all** undoes it). |
 
 **Victory screens** make Deck mark the open fight as beaten when they show.
 

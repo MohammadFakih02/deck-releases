@@ -23,7 +23,7 @@ The tray menu has the same switches under **Controller overlay**: **Show overlay
 
 A preview picture on the right shows the overlay exactly as drawn with your settings.
 
-On screen keeps Look and Position beside the preview, with Per game and Behaviour underneath it. The six Corner choices form a map of the screen's top and bottom edges.
+On screen keeps Look, Position and Per game beside the preview, with Behaviour underneath it. The six Corner choices form a map of the screen's top and bottom edges.
 
 ### Look
 

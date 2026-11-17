@@ -94,7 +94,7 @@ The **Built-in modes** panel is at the top of the Profiles tab and is open. **No
 
 Which modes appear depends on the card: a mode that would come out the same as an earlier one is left out, and a card with no clock locks only gets the modes it can express. Modes below Saver need core clock locks.
 
-Efficient, Saver and the lower modes use numbers from the card's voltage table until you press **Measure this card**; their description says "Estimated from the driver's table" or "Measured on this card ...".
+Efficient, Saver and the lower modes use numbers from the card's voltage table until you press **Measure each mode's speed**; their description says "Estimated from the driver's table" or "Measured on this card ...".
 
 The eye button on the header folds all modes away. Profile pickers elsewhere (GPU profile when Deck starts, Gaming, plugged in / on battery) show modes behind one "Modes" row, and the tray puts them under a **Modes** submenu.
 
@@ -102,7 +102,7 @@ Modes set the fan to **Card decides**.
 
 ## Measure this card
 
-**Measure this card** (**Measure again** afterwards, with a **?**) finds the lowest voltage and the fastest clock your card really holds, so Efficient, Saver and the lower modes use your card's real numbers instead of estimates from the driver's table. The table can be off: on one RTX 3080 measuring gave about 10 % more frames per watt.
+**Measure each mode's speed** (the button under the built-in modes; **Measure each mode's speed again** afterwards, with a **?**) finds the lowest voltage and the fastest clock your card really holds, so Efficient, Saver and the lower modes use your card's real numbers instead of estimates from the driver's table. The table can be off: on one RTX 3080 measuring gave about 10 % more frames per watt.
 
 - Where: on the **Built-in modes** header. It only shows when Deck has admin rights, the card supports core clock locks, an Efficient or Saver mode exists and the modes are not folded away.
 - How long: about three minutes. No game may be open (a game in front stops it).
@@ -276,7 +276,7 @@ Profile cards, the tray's **GPU profile** submenu (modes under **Modes**), the p
 
 ## Recommended setups
 
-**Most people:** apply **Efficient** or **Saver** for everyday gaming (try **Measure this card** once). Efficient gives most frames for far less power; Saver goes a step further. Use **Normal** when you want the card as sold, **Quiet** when you want less noise.
+**Most people:** apply **Efficient** or **Saver** for everyday gaming (try **Measure each mode's speed** once). Efficient gives most frames for far less power; Saver goes a step further. Use **Normal** when you want the card as sold, **Quiet** when you want less noise.
 
 **A simple undervolt:** use the voltage curve. Pick your usual game clock and a voltage around 850 to 900 mV, use **Undervolt: keep [MHz] from [mV] up**, press **Apply temporarily**, play for a while, and **Save** if it is stable. If a game crashes, raise the voltage or lower the clock.
 

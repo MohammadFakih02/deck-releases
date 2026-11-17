@@ -34,6 +34,9 @@ Deck asks every few seconds for controllers, once a minute for Bluetooth devices
 | **Colour by level** | Green while charging, red when the level is at or below its warning level. The number is always shown, so colour is never the only hint. | On |
 | **Hide while charging** | The icon goes while the device charges and returns when it is unplugged. | Off |
 | **Hide when full** | The icon goes at 100% and returns when the level drops. | Off |
+| **One icon for all devices** | One tray icon instead of one per device: it shows the device with the least battery, and pointing at it lists every device, the weakest first (charging ones last). | Off |
+
+The icons follow the taskbar: a dark battery on a light taskbar, a light one on a dark taskbar. Switching Windows between light and dark redraws them within a few seconds.
 
 ## New devices
 

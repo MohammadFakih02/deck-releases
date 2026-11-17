@@ -2,6 +2,72 @@
 
 All notable changes to Deck. Setups for each version are on the [Releases](https://github.com/MohammadFakih02/deck-releases/releases) page.
 
+## 4.6.0 — 2026-11-17
+
+### Power & time
+- **Shut down when a task says it's done.** A new condition for **Shut down when…**: Deck waits for the programs that signal it, and acts only when every one has been finished for the minutes you set. Made for long jobs in coding tools, which keep working in the background after they seem to stop.
+  - **One switch per tool.** Deck can add its signal to Claude Code and Codex for you and take it out again; your other settings in those tools are left as they are. Any other program or script can send the same signal with one command shown on the page.
+  - **It knows the difference between done and paused.** A task with background jobs still running, or one that will wake itself up again, is still working. A task waiting for your permission or your reply holds the plan (or counts as done after the minutes you choose). A task that stopped with an error or a usage limit holds the plan unless you say it counts as done.
+  - **You see who it waits for,** with a **Don't count** button beside each task. Signals sent while Deck is closed are picked up when it starts.
+
+### Gaming
+- **"Why did it stutter?" (was "Why did my FPS drop?") is rebuilt to explain a whole session, not only single dips.**
+  - **A verdict for every session:** Smooth, Mostly smooth, Some stutter or Rough, a one-line diagnosis, and the figures behind it: average, 1% and 0.1% lows, hitches per hour, the share of time lost to hitches and the slowest frame.
+  - **A timeline of the session:** FPS with its 1% low, every hitch, everything Windows logged, and a numbered pin for each saved moment. Point at it for the figures of that stretch; click a pin to open the moment.
+  - **What the stutters have in common:** a hitch that comes back on a timer (the classic sign of RGB, fan-control and monitoring apps, Wi-Fi scanning or a device reconnecting, which Deck names when it lines up), shader compiling, one cause that keeps coming back, and driver or drive resets.
+  - **Many more causes, read from Windows without touching the game:** the graphics driver saving new shaders, drivers holding up a processor core, memory read back from disk, another program using the graphics card, a program that just started, and the system event log (graphics driver resets and errors, a device connecting by name, drive resets, hardware errors, the firmware limiting the processor, battery and mains switches, Windows Update and Defender).
+  - **What to try for each cause,** with a button to the Deck page that helps (Apps to close, Free memory, Fans, GPU, Drive health, Network, Startup apps).
+  - **Moments are numbered like their pins,** with a count of their causes you can click to show only those, and a strip of the slowest frame of each half second around each one.
+  - **This game over time:** hitches per hour for its last twelve sessions, whether this one was smoother or rougher than usual, and whether shader stutters are fading.
+  - **Session reports** open the same view for that session.
+  - The panel no longer flickers while the Sessions tab redraws every second during a game; an open session report no longer shows "Loading" again each time.
+- **"Why did it stutter?" lists only what you would notice.** It used to record any single late frame, so a steady 60 FPS game filled the list with entries like "60 → 62 FPS". Now a drop must stay down (a fifth under the usual speed for a second and a half, or a third under for half a second), and a stutter needs one long frame of 100 ms or more, or two shorter hitches close together.
+  - **Drops and stutters are told apart:** a stutter reads "Stutter at 60 FPS · longest frame 85 ms" instead of two nearly equal speeds, and a speed is never shown going up.
+  - **Menus, cutscenes and frame limits are left out:** a smooth lower speed while the graphics card and processor have less to do is the game easing off.
+  - **One bad stretch is one entry** (trouble within 10 seconds merges), and a long session keeps its 20 worst moments instead of its 20 latest.
+
+- **Game names and pictures:** a game found through Windows’ list of installed programs no longer carries the installer’s additions in its name (“XCOM Enemy Within version 1.0” is now “XCOM Enemy Within”). A game that Steam sells as an add-on of another had no picture on Home and in Game profiles; it now uses the pictures of the game it belongs to.
+
+### Flyouts
+- **The music flyout no longer opens when a song ends by itself** with **When the next song starts** switched off. Some players stop for a second while the next song loads; Deck took that for a pause and a resume and showed the card for each. A pause the player takes on its own right after a song change, and the resume that follows it, are no longer announced. Pausing yourself still shows the card.
+
+### Game pictures and detection
+- **Pictures that failed once are no longer missing for a week.** A picture asked for while the internet was down (just after logon) or while a site was busy was remembered as "none"; now Deck tries again later. Pictures already missed that way are asked for again once.
+- **More games get their pictures:** the picture you set in Steam yourself comes first; older and newer Steam layouts on your PC are read; newer Steam games whose pictures moved to new addresses are found; Epic pictures from all of Epic's image servers and kinds load; and a game known only by its program's name is also looked up by its folder's name.
+- **Gentler on the sites:** one picture request at a time, the same picture asked for by two cards is fetched once, and nothing is asked for a while after the network failed or a site said to slow down.
+- **Steam's own word on what is a game.** Steam apps the store calls software (Wallpaper Engine, Blender) are no longer listed, and new games are never left out for a name nobody listed. Names are now matched as whole words, so games like *Assassin's Creed Origins* are no longer mistaken for a launcher.
+- **Fewer false games:** Wallpaper Engine's window and anti-cheat starters (such as Fortnite's EasyAntiCheat starter) are no longer recorded as games, and old sessions of them are hidden. *Crash Bandicoot* and *Call of Duty: Vanguard* are no longer mistaken for a crash reporter and an anti-cheat. New games without a store are recognised by what only games ship (DLSS, FSR, XeSS, GameMaker, Ren'Py, FNA, MonoGame, LÖVE).
+
+### Pages
+- **Open folds are one box.** A folded section that is open now keeps its settings inside the same border as its title bar, with a line down the side, so it is clear where it starts and ends.
+- **Controller overlay page is shorter.** Per game moved beside Look and Position, so the two columns end together instead of the right one running a third of a screen further; **Reset overlay** is a button that asks first instead of a fold.
+- **Death counter › Games: the Game picker shows the game whose screens are shown.** A game with no deaths yet was missing from the picker, which then showed another game's name above it.
+- **Battery tray icons follow the taskbar:** on a light taskbar they are a dark battery on white (they were a white battery with a dark rim, muddy there), and switching Windows between light and dark redraws them.
+  - **One icon for all devices** (Settings › Devices › Look): a single tray icon for the device with the least battery; pointing at it lists every device, the weakest first.
+- **Sensors › All readings redesigned.** A device's readings are one table grouped by what they measure, the unit shown once beside the current figure, then Lowest, Average and Highest. The Cores and Fans tables show performance and efficiency cores under their own headings, and a switch chooses between **Now and highest** and **Lowest, average, highest** (this replaces the long "Minimum and average per item" list underneath). **Where these readings come from** is a plain list: each collector once, and only the readings that stopped updating are named.
+- **Windows tweaks name what a press does:** an on/off setting shows its state (**On** / **Off**) and a **Turn off** or **Turn on** button instead of a switch; a setting with mixed parts has **Turn all off** and **Turn all on**.
+- **Disabled buttons and drop-downs look disabled:** a dashed outline and faded words, instead of looking almost like the enabled ones.
+- **Smaller layout fixes:** a button beside a labelled field lines up with the field (Display's night colour and test pattern); the Game servers list lines up with the rest of its card.
+- **Death counter › Games is tidier:** each game's deaths are shown once (All games keeps only the deadliest bosses); the shared library's count sits in the Death-screen library fold; the stray "+1 death" row at the bottom is gone (adding a death is on Now); Learned screens is one card with sections instead of cards inside a card; "2 of 3" reads "2 (keeps up to 3)"; **Pick another** once a screen is learned; the kill-screen choice is a real button (**This game has none**); and only the guess question's **Yes, that's it** is highlighted.
+- **CPU and GPU editors read properly in narrow windows:** a slider row's label and description sit above its slider instead of being squeezed beside it (the CPU editor's descriptions broke every two words); GPU labels keep their help mark after the last word, values like "+500 MHz → 11001" fit on one line, and the "Runs at … at most" note has its padding back.
+- **Death-screen library says where a friend's code comes from** (Share with a friend, under that game's learned screens) and sits inside its fold without a second frame.
+- **Controller › Test: Device details no longer flickers** under the pointer, and the test redraws only when a reading changes and never during a click.
+- **Windows tweaks: the category list no longer flickers** when you switch categories.
+- **No line above the first setting of a card** on the Performance overlay and status pages.
+- **Scrolling no longer jumps back while a page updates.** Pages that refresh every second, like **Recent sessions** while a game runs, pulled the scroll back a little each time; they now wait until you stop scrolling.
+
+### PC to PC, phone and Project sync
+- **PC and phone transfers:** Verify the PC at the selected address, fail unreadable project offers safely, reserve receiving folders, verify resumed files, and remember completed uploads and transfers so a lost reply cannot duplicate them. Empty projects keep their root folder. Phone control releases held mouse buttons when paused, upload cleanup only removes Deck part files, and pending Android layout edits survive other clients' broadcasts. Connection and storage errors explain what to check.
+
+- **Workspace / Project sync:** Keeps edits made during sync and versions received from different PCs, preserves session branches, and waits for complete backups, folder scans and cloud uploads before passing changes on.
+
+- **PC to PC:** Control opens a paired PC's screen in your browser after its user allows it, over the home network or Tailscale. Phone and Screen settings on that PC still apply.
+
+- **PC to PC:** Compact recipient, offer, transfer, sharing and app layouts adapt to narrow windows.
+
+- **PC to PC:** Incoming offers clear when the connection ends, and a failed connection reports that the sender should try again.
+
+
 ## 4.5.0 — 2026-11-14
 
 ### Clearer controls and steadier pages

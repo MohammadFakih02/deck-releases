@@ -59,10 +59,10 @@ This is a table of every sensor, like HWiNFO: for each reading the value **Now**
 
 **Right: the device's readings.**
 
-- A table of the single readings (**Reading**, **Unit**, **Now**, **Min**, **Max**, **Average**).
-- Readings that repeat for every core or every fan (such as "P-core 3 temperature" or a fan's speed and duty) are folded into one grid, **Cores** or **Fans**, with their **Temp**, **Clock**, **Load**, **Speed** and **Duty** side by side (**Now** and **Max**). A fold underneath, **Minimum and average per item**, holds the rest.
+- A table of the single readings, grouped under **Temperatures**, **Power**, **Load**, **Voltages** and so on: **Now** (with its unit), then **Lowest**, **Average** and **Highest** since Deck started collecting.
+- Readings that repeat for every core or every fan (such as "P-core 3 temperature" or a fan's speed and duty) are one table, **Cores** or **Fans**, with their **Temp**, **Clock**, **Load**, **Speed** and **Duty** side by side, performance and efficiency cores under their own headings. The switch on that table chooses the figures: **Now and highest**, or **Lowest, average, highest**.
 - Temperatures are coloured: amber from 85 C, red from 95 C.
-- **Where these readings come from** (a fold): the collector of each reading, a plain-words meaning, and how fresh it is ("Updating", "Last seen 40 s ago").
+- **Where these readings come from** (a fold): each collector once, with what it measures in plain words and how fresh its readings are ("Updating", "Last seen 40 s ago"). Readings that stopped updating are named.
 
 At the top of the right side:
 

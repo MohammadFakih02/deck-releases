@@ -21,7 +21,7 @@ Related pages: [Performance overlay](overlay.md) (FPS and readings over the game
 - [Gaming settings](#gaming-settings)
 - [The Apps to close tab](#the-apps-to-close-tab)
 - [The Sessions tab](#the-sessions-tab)
-- [Why did my FPS drop?](#why-did-my-fps-drop)
+- [Why did it stutter?](#why-did-it-stutter)
 - [Energy and cost](#energy-and-cost)
 - [Recommended setup](#recommended-setup)
 - [Troubleshooting](#troubleshooting)
@@ -66,8 +66,10 @@ A searchable list of the games Deck knows about, each with a small banner (a gam
 
 Deck finds games in two ways:
 
-- **Installed games** from Steam, Epic Games, Riot, EA app, Battle.net, Ubisoft, GOG, Rockstar and the Xbox app / Game Pass, each with its artwork. Deck rereads the libraries in the background every few minutes, and a game whose folder has gone (uninstalled, a drive unplugged) disappears from the list at once.
-- **Games you play with Deck running.** Deck also recognises a game it has no launcher information about: a program that Windows itself lists as a game, one that runs from a game's folder, or one that takes over the whole screen and is not a browser or video player. Launchers, crash reporters and installers are left out.
+- **Installed games** from Steam, Epic Games, Riot, EA app, Battle.net, Ubisoft, GOG, Rockstar and the Xbox app / Game Pass, each with its artwork. Deck rereads the libraries in the background every few minutes, and a game whose folder has gone (uninstalled, a drive unplugged) disappears from the list at once. Steam apps that the Steam store calls software (Wallpaper Engine, Blender) and Steam's own tools (Proton, Steamworks) are left out; a new game is never left out just because Deck has not heard of it.
+- **Games you play with Deck running.** Deck also recognises a game it has no launcher information about: a program that Windows itself lists as a game, one that runs from a game's folder, one whose folder holds what only games ship (a game engine, DLSS, FSR or XeSS, anti-cheat), or one that takes over the whole screen and is not a browser or video player. Launchers, crash reporters, installers, anti-cheat starters and the windows of apps that are not games are left out.
+
+Each game's pictures come from, in order: the picture you set for it in Steam, Steam's copies on your PC, the store it came from, then its name (or its folder's name) on Steam, GOG, PCGamingWiki and Wikipedia. An add-on installed as its own game uses its main game's pictures. If the internet is down when a picture is wanted, Deck tries again later.
 
 | Control | What it does |
 |---|---|
@@ -233,7 +235,7 @@ Your ticks are used when a game's **Close apps** setting is on, and by **Close a
 
 ## The Sessions tab
 
-At the top is the live [Why did my FPS drop?](#why-did-my-fps-drop) panel, followed by the session reports.
+At the top is the live [Why did it stutter?](#why-did-it-stutter) panel, followed by the session reports.
 
 ### Session reports
 
@@ -245,7 +247,7 @@ The list groups sessions by day (*Today*, *Yesterday*, then dates) and shows six
 - **CPU profile** and **GPU profile** that were active.
 - **Highest temperatures** of the CPU and GPU.
 - **Death counter** counted during the session (if the [death counter](death-counter.md) is used; older sessions show "Not recorded").
-- The session's [frame drops](#why-did-my-fps-drop).
+- The session's [smoothness verdict, timeline and stutters](#why-did-it-stutter).
 - **Energy estimate** in Wh and how long it was measured.
 
 Use the reports to compare sessions of one game and see whether a profile helped. FPS needs RivaTuner measuring that game; without it the FPS fields say "Not recorded", but time, temperatures and energy are still kept.
@@ -254,41 +256,82 @@ Use the reports to compare sessions of one game and see whether a profile helped
 
 Session data is stored locally in Deck's data folder. Nothing is uploaded.
 
-## Why did my FPS drop?
+## Why did it stutter?
 
-After a stutter or a dip, Deck shows when it happened and the most likely causes, with the readings behind them. It is on the Sessions tab, inside each session report, and as the **FPS drops** widget in the [Game bar](game-bar.md). The panel at the top of the tab covers the current session, or the last one if no game is running; with none recorded it says "No FPS drops recorded in the current session" (or "the last session") and points to the session reports, where earlier drops are kept.
+Deck grades how smooth each session runs, draws the whole session, finds what its stutters have in common, and explains each one with what the PC was doing at that moment. It is at the top of the Sessions tab (the current session, or the last one when no game runs), inside each session report, and as the **FPS drops** widget in the [Game bar](game-bar.md).
 
-**Requires RivaTuner** running and reading the game's FPS (the overlay can be off). It pauses while the game is not in front and during loading screens. Nothing runs when no game is open, and it uses only readings Deck already takes; it adds nothing to the game.
+**Requires RivaTuner** running and reading the game's FPS (the overlay can be off). It pauses while the game is not in front and during loading screens. Nothing runs when no game is open. It never reads or touches the game: the extra readings come from Windows itself.
 
-### What counts as a drop
+### The verdict
 
-Deck keeps the last 30 seconds of readings while you play. A moment is recorded when the frame rate falls by more than about a third against the previous eight seconds' average, or a single frame takes far longer than the usual frame (at least 2.5 times as long and at least 12 ms more). Nearby moments within about 4 seconds merge into one. A moment saves a few seconds of readings around it, and a session keeps up to 20 moments.
+At the top: a grade (**Smooth**, **Mostly smooth**, **Some stutter** or **Rough**), a one-line diagnosis, and the session's figures:
 
-Loading screens are recognised conservatively (stalled frames, or a mostly idle game) and are not counted. A busy loading screen can still look like a stutter.
+- **Average** and **1% low** / **0.1% low**: the speed of the slowest 1 % (and 0.1 %) of the playing time. A low far under the average means uneven frames.
+- **Hitches**: how many half-seconds had a frame at least two and a half times longer than the frames around it (and 10 ms longer), counted per hour of play.
+- **Time lost to hitches**: the share of the playing time those frames took beyond a normal frame.
+- **Slowest frame** of the session.
 
-### Reading a moment
+The grade needs a minute of play. Smooth is under 0.3 % lost, fewer than 30 hitches an hour and no drop; Mostly smooth is under 1 % and 120 an hour; Some stutter is under 3 %.
 
-Each moment shows the time ("12 s ago" live, or "N min into session" in a report), the speed ("144 -> 61 FPS", or the length of a single long frame) and the top cause. Open it to see up to three likely causes, each with its evidence, and a table of the readings from before, during and after the drop (FPS, slowest frame, busiest CPU thread, GPU load, disk and download rate), plus GPU, video memory, temperatures, RAM and network figures at the moment of the drop. The causes Deck can name:
+### The timeline
+
+The whole session in one chart: the average FPS as a line, the 1% low dotted under it, a tick for each stretch with hitches, a diamond for each thing Windows logged, and a numbered pin for each saved moment. Gaps are times the game was in the background or loading. Point at the chart for the figures of that stretch; click a pin to open that moment in the list below.
+
+### What the stutters have in common
+
+Deck looks across the whole session for:
+
+- **A hitch on a timer.** Hitches that come back at a steady beat (every 30 seconds, every 2 minutes) are usually a program checking something on a schedule: RGB and fan-control apps, hardware monitors, a Wi-Fi adapter scanning for networks, or a device that keeps reconnecting. When a device reconnected on the same beat, Deck names it.
+- **Shader compiling.** Most stutters came while the graphics driver was saving new shaders: the game was preparing effects and areas it had not drawn before. These fade as you keep playing and come back after a game or driver update.
+- **One cause again and again.** Half or more of the moments point at the same thing.
+- **Something Windows logged as a fault**: a graphics driver reset, a drive reset or a hardware error.
+
+Each comes with what to try and, where Deck has the page for it, a button that opens it.
+
+### Moments
+
+A moment is saved when the speed falls or frames hitch in a way you would notice:
+
+- **A drop:** the frame rate stays more than a fifth under the usual speed of the last eight seconds for a second and a half, or more than a third under it for half a second.
+- **A stutter:** the speed holds but frames hitch. One frame of 100 ms or more counts by itself. Shorter hitches (several frames' worth, never under 50 ms) count only when two come within three seconds.
+
+Not saved: a single late frame, a speed that only wobbles or rises, and a smooth lower speed while the graphics card and processor have less to do (a menu, a cutscene or a frame limit). Trouble within about 10 seconds of the last is one moment. A session keeps its 20 worst moments.
+
+The moments are numbered like their pins and listed newest first. Above them, a count of their causes: click a cause to show only the moments with it. Open a moment to see the slowest frame of each half second around it, up to three likely causes (each with its evidence, what to try and a button where one helps), what Windows logged around it, the readings at that moment, and all the readings from a few seconds before to a few after.
+
+### The causes Deck can name
 
 | Cause | When it is shown |
 |---|---|
+| The game was compiling shaders | The graphics driver saved new shaders at that moment (NVIDIA, AMD, Intel and Windows' own shader caches are watched). |
+| <App> used a lot of CPU | A background program used a large share of the processor; ranked higher when it had only just started. |
+| <App> started | A program started at that moment. |
+| <App> used the graphics card | Another program used 10 % or more of the graphics card (a browser video, a recorder). |
+| A driver held up a processor core | Drivers took 10 % or more of one core's time, at least three times their usual share. LatencyMon, a free tool, names the driver. |
+| Hardware interrupts held up a processor core | Interrupts took 10 % or more of one core's time, at least three times the usual. |
+| Windows read memory back from disk | Many memory pages came back from disk while RAM was 85 % full or more. |
+| The game was loading data from disk | Many memory pages came from disk with RAM to spare: the game was loading new areas or textures. |
 | GPU slowed down for heat / GPU clock fell while hot | The GPU reported a heat or slowdown limit, or its clock fell while it was 85 °C or more and busy. |
 | Video memory nearly full | Video memory use of 97 % or more. |
 | GPU hit its power limit | The GPU reported a power limit while heavily loaded. |
-| <App> used a lot of CPU | A background program used a large share of the CPU. |
 | One CPU thread was maxed out | The busiest thread was at 95 % or more while the GPU was not: the game may be CPU-bound. |
 | CPU clock fell while hot | CPU at 90 °C or more, busy, and its clock fell well below its recent average. |
 | System memory nearly full / Committed memory near its limit | RAM or Windows' commit charge close to full. |
 | Heavy disk activity | Disks moving 100 MB/s or more. This does not prove a disk bottleneck. |
-| Heavy download activity | The PC downloading at 10 MB/s or more. The readings do not name the downloader. |
+| Heavy download activity | The PC downloading at 10 MB/s or more. |
 | GPU was fully busy | GPU load of 98 % or more: that part of the game may be GPU-bound. |
-| No clear cause in the readings | The sensors do not explain the dip. |
+| Logged by Windows | Within 8 seconds before the moment or 4 after: the graphics driver stopped and recovered or reported an error, a device connected (by name), a drive was slow or reset, a corrected hardware error, the firmware limited the processor's speed, the PC switched between battery and mains, Windows Update, or a Microsoft Defender scan or update. |
+| No clear cause in the readings | The readings do not explain it. |
 
-These are **clues, not proof**. Use them to decide what to try: close a heavy background program, lower texture quality when video memory is full, improve cooling when heat is named.
+These are **clues, not proof**.
+
+### This game over time
+
+With two or more sessions of the same game, a bar for each of its last twelve shows hitches per hour, with a line saying whether this session was smoother or rougher than usual, and whether shader stutters are fading from session to session.
 
 ### The current panel
 
-The live panel says "Watching for frame drops.", "Waiting for enough steady gameplay." or "Waiting for the game to return to the foreground." With no game it says "Play a game to start collecting moments."; once a game runs smoothly it says "No drops yet. After a stutter, likely causes show up here." A *How this works* fold-out repeats the points above. If it reports "RivaTuner must be running and reading this game's FPS.", start RivaTuner from the [Performance overlay](overlay.md) page.
+Under the title, the panel says "Watching this session" (with a live dot), "Waiting for steady gameplay", "Paused while the game is in the background", or "Last session · saved with its session report". If it says "RivaTuner must be running and reading this game's FPS.", start RivaTuner from the [Performance overlay](overlay.md) page. With no session yet it says "Play a game to start". A *How this works* fold-out sums up the points above.
 
 ## Energy and cost
 
@@ -304,7 +347,7 @@ Use it to compare gaming power over time, or the effect of a frame limit or Targ
 
 ## Recommended setup
 
-- **Most people:** leave *Automatic game profiles* on and everything else on its default. You get session reports and the "Why did my FPS drop?" history for free. Add a frame rate limit just under your monitor's refresh rate for the games where you want less heat and noise.
+- **Most people:** leave *Automatic game profiles* on and everything else on its default. You get session reports and the "Why did it stutter?" verdict and history for free. Add a frame rate limit just under your monitor's refresh rate for the games where you want less heat and noise.
 - **Competitive players:** set *Game priority* to High on the default profile, pause Deck's downloads, close sync and update apps, and use a CPU profile you trust. Skip Target FPS. Keep RivaTuner running with the overlay off so session reports have FPS and 1% lows.
 - **Laptops and handhelds:** use a frame limit per game, Target FPS where you have an NVIDIA card, and a quiet fan preset in *PC settings*. Leave the electricity price blank unless you track costs.
 - **Quiet PCs:** give demanding games a frame limit and Target FPS, a fan preset in PC settings, and watch the temperature numbers in the session reports.

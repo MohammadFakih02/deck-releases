@@ -284,7 +284,7 @@ Deck is a local app. It does not need an account. It does not upload your settin
 | Feature | Contacts | Why |
 |---|---|---|
 | Update checks | GitHub (the project's public releases) | Look for and download a newer Deck. Turn off with **Update by itself**; **Check now** still works. |
-| Game artwork and details | Steam's store and CDN, GOG's catalogue, PCGamingWiki, Wikipedia / Wikimedia | Download cover and banner pictures for games found on your PC. Cached on your PC; **Clear artwork** removes them. |
+| Game artwork and details | Steam's store and CDN, Epic's image server, GOG's catalogue, PCGamingWiki, Wikipedia / Wikimedia | Download cover and banner pictures for games found on your PC, and ask the Steam store which installed Steam apps are games (their app numbers only). Cached on your PC; **Clear artwork** removes them. |
 | Currency conversion in search | A public exchange-rate service | Rates for the search box's converter. |
 | Speed test | Cloudflare's speed-test servers | Only when you press the speed test. |
 | Display schedule by sunset | A public "approximate location from IP address" service | Only when you use the sunset schedule on the Display page. |

@@ -35,7 +35,7 @@ Related pages: [Game profiles](gaming.md) (per-game profiles and session reports
 What this means in practice:
 
 - **You need RivaTuner installed and running.** Deck can install it for you from the Performance overlay page (it uses Windows' package manager, `winget`, which downloads Guru3D's own package). If `winget` is missing, get RivaTuner from guru3d.com.
-- **FPS-related features in Deck depend on RivaTuner**: the FPS and lows in [session reports](gaming.md#session-reports), the live figures in Deck game mode, [Why did my FPS drop?](gaming.md#why-did-my-fps-drop) and [Target FPS](gaming.md#target-fps-power-saver). For these, RivaTuner must be measuring the game; the overlay itself can be off.
+- **FPS-related features in Deck depend on RivaTuner**: the FPS and lows in [session reports](gaming.md#session-reports), the live figures in Deck game mode, [Why did it stutter?](gaming.md#why-did-it-stutter) and [Target FPS](gaming.md#target-fps-power-saver). For these, RivaTuner must be measuring the game; the overlay itself can be off.
 - The overlay shows on every PC. It does not depend on which CPU or graphics card you have: readings the PC does not have are marked **No reading** and skipped.
 - Deck publishes the same readings in the way MSI Afterburner does, so RivaTuner's own tools (its Performance overlay Editor, stream widgets) can still read them (see *Share readings with other tools* under [RivaTuner](#rivatuner)).
 

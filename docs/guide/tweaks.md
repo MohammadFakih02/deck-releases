@@ -28,12 +28,12 @@ Each tweak is a row:
 | **Risk chip** | **Advanced** uses a neutral tag (omitted inside the Advanced category). Red tags identify reduced protection or visible protected files. Effects and tradeoffs stay in Details. |
 | **After chip** | **Sign out to finish** or **Restart to finish**: what has to happen before the change is fully in effect. Explorer restart requirements appear once per section and in each affected row's Details. |
 | **Mixed** chip | The parts do not all match. For example, **11 of 13 parts off** counts the underlying steps that match Off. Special cases explain why the setting is only partly effective. |
-| **Control** | A switch (**On / Off**), a choice (a short row of buttons or a list), a link to another page, or a one-time action button. |
-| **Details** | Opens the explanation: **Effect** (what you gain), **Tradeoff** (what you give up), the original technical name, Windows default, restart requirement, technical steps, source, and date Deck changed it. Every switch and choice also shows **Default: value** below its control. |
+| **Control** | For an on/off setting, what it is now (**On** or **Off**) and a button naming what pressing it does (**Turn off** or **Turn on**); otherwise a choice (a short row of buttons or a list), a link to another page, or a one-time action button. |
+| **Details** | Opens the explanation: **Effect** (what you gain), **Tradeoff** (what you give up), the original technical name, Windows default, restart requirement, technical steps, source, and date Deck changed it. Every setting also shows **Default: value** below its control. |
 
 The control always shows the **current Windows value**, not a proposal. Opening the page reads the real state, so a setting you changed in Windows' own Settings is shown correctly too. On a choice that has a value of its own that none of the options match, the list shows **Custom**.
 
-If another tool set only some parts, the switch says **Mixed** and neither option is selected. A mixed choice shows **Mixed** in its list. Choosing an option applies all its parts. The **Changed by Deck** strip shows the recorded previous option so you can see what **Put back** restores; unmatched previous values are described as custom.
+If another tool set only some parts, the row shows a **Mixed** badge ("Mixed · 9 of 13 parts off") with **Turn all off** and **Turn all on**. A mixed choice shows **Mixed** in its list. Choosing an option applies all its parts. The **Changed by Deck** strip shows the recorded previous option so you can see what **Put back** restores; unmatched previous values are described as custom.
 
 ### Risk levels
 

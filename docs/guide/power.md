@@ -125,6 +125,7 @@ For Shut down, Sleep, Restart, Hibernate and Sign out, Deck asks you to confirm 
 | **At a time** | A clock time. If that time has already passed today, it means tomorrow. | At (time). |
 | **An app closes** | A chosen running app (a game, an export, an install) has closed. | Choose a running app. |
 | **An app finishes its work** | A chosen app that stays open (a render, an export) has become quiet: its CPU use drops below a level for some minutes, after having been busy. | Choose a running app; "Quiet for" minutes. |
+| **A task says it's done** | Every program that signals Deck has finished its work. See [When a task says it's done](#when-a-task-says-its-done). | "After the last one finishes, wait" minutes. |
 | **Music or video stops** | Audio or video that was playing has stopped. It first waits until something has played. | "Silent for" minutes. |
 | **The PC goes idle** | CPU use stays below a level (renders, installs, builds). | "Quiet for" minutes. |
 | **The graphics card goes idle** | GPU use stays below a level. Only listed when Deck can read an NVIDIA graphics card. | "Quiet for" minutes. |
@@ -159,9 +160,40 @@ Options are remembered between plans on this PC (they are kept in the page's loc
 | App finishes its work | **Finished when under** (% CPU): the app must be busy first, then quiet. | 10 |
 | Graphics card idle | **Idle below** (% GPU). | 10 |
 | Disk quiet | **Quiet below** (KB/s). | 1024 |
+| A task says it's done | **Waiting for my answer** (min): a task that asks for permission or a reply counts as done after this long; 0 means the plan waits until you answer. **A task that stops with an error counts as done**: a usage limit or a lost connection. | 0, off |
 | App closes | **Closed for** (seconds), so a launcher that restarts itself does not count. | 30 |
 | I've been away | **A controller counts as being here**; **Playing music or video counts as being here**. | on, off |
 | Downloads finish / An app closes | **Then wait until the PC is idle**: also wait for CPU and disk to go quiet for the plan's minutes. Good for a download that unpacks or installs afterwards. Shows its own CPU % and disk KB/s fields. | Off |
+
+### When a task says it's done
+
+Some jobs cannot be judged from outside: a coding tool that keeps working in the background after it seems to stop, a script that runs for hours. With this condition the program tells Deck itself.
+
+**Setting it up (once).** Choose **A task says it's done** and look at **Where signals come from**:
+
+- **Signals from Claude Code** / **Signals from Codex:** a switch each. Deck adds a few lines to that tool's own settings file and takes them out again when you switch it off. Everything else in the file is left as it is; if Deck cannot read the file it changes nothing and says so. Sessions you open afterwards send signals. Codex asks you to approve new hooks once: type `/hooks` inside it.
+- **Any other program or script:** copy the line shown and run it with `start` when the work begins and `done` when it ends (also `fail`, `wait`). The word after `--task-signal` names the task.
+
+**What counts as done.** Deck keeps a list, **Tasks Deck has heard from**:
+
+| It says | Meaning | The plan |
+|---|---|---|
+| Working | It is busy, has background jobs still running, or will wake itself up again. | waits |
+| Waiting for you | It asked for permission, or its last message ended in a question. | waits (or goes on after **Waiting for my answer** minutes) |
+| Stopped | An error or a usage limit. | waits (or goes on if you ticked the option) |
+| Finished | It said so, or it was closed. | goes on when every counted task is finished |
+
+The plan acts when at least one task has been seen and every counted one has been finished for the minutes you set, after the usual warning. A task that starts again during the warning calls it off.
+
+**Don't count** takes a task out (one you stopped by hand, or one you do not care about); **Count again** puts it back.
+
+**Good to know**
+
+- Deck does not have to be open when a signal is sent; it reads them when it starts.
+- Stopping a tool by hand in the middle of its work sends no signal, so it stays "Working" until it speaks again. Use **Don't count**.
+- A question is recognised by a final question mark, so a task that ends on a statement while it really waits for you looks finished.
+- Work in WSL, in the cloud or on another PC is not seen.
+- Try it first with **Just tell me** as the action.
 
 ### While a plan is set
 
