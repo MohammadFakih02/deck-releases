@@ -2,393 +2,405 @@ Where to find it: Gaming › Game profiles
 
 # Game profiles
 
-Gaming is where you tell Deck what to do for each game: which graphics and processor profile to use, whether to cap the frame rate, which background apps to close, which fan preset, lights, audio output and display mode to switch to. Deck applies those choices when the game starts and puts everything back when it closes. The same page keeps a report of every session: how long you played, your FPS, temperatures, power use, and what probably caused each frame drop.
+Tell Deck what to change for each game (profiles, frame rate limit, apps to close, fans, lights, sound, display), and get a report of every session.
 
-The page has three tabs: **Games**, **Apps to close** and **Sessions**. Deck remembers the tab you used last.
+Deck applies a game's choices when it starts and puts everything back when it closes. Game profiles has two tabs, **Games** and **Apps to close**; the reports are on **Diagnostics › Session reports**, linked below the title.
 
 ![The Game profiles page](../screenshots/boost.png)
 
-Related pages: [Performance overlay](overlay.md) (FPS and readings over the game), [Game bar](game-bar.md) (quick controls over the game), [CPU](cpu.md) and [GPU](gpu.md) (where the profiles you pick here are made), [Death counter](death-counter.md).
+Related pages: [Performance overlay](overlay.md), [Deck bar](game-bar.md), [CPU](cpu.md) and [GPU](gpu.md) (where profiles are made), [Death counter](death-counter.md).
 
-## Contents
+## How it works
 
-- [How it works in one minute](#how-it-works-in-one-minute)
-- [What Deck changes, and what it never touches](#what-deck-changes-and-what-it-never-touches)
-- [The Games tab](#the-games-tab)
-- [Deck game mode](#game-mode)
-- [A game's settings](#a-games-settings)
-- [Target FPS power saver](#target-fps-power-saver)
-- [Gaming settings](#gaming-settings)
-- [The Apps to close tab](#the-apps-to-close-tab)
-- [The Sessions tab](#the-sessions-tab)
-- [Why did it stutter?](#why-did-it-stutter)
-- [Energy and cost](#energy-and-cost)
-- [Recommended setup](#recommended-setup)
-- [Troubleshooting](#troubleshooting)
-- [FAQ](#faq)
+1. The **Default profile** applies to every game. Any game can have its own **Custom profile**; what you leave alone follows the default.
+2. When a game has been in front for a few seconds, Deck turns on Deck game mode (with **Automatic game profiles** on, the default) and applies the game's profile.
+3. While you play, Deck records the session: time, FPS, 1% low, power, temperatures and stutters.
+4. About 45 seconds after the game closes, Deck puts everything back and reopens the apps it closed. The wait means a launcher handing over to the game doesn't end the session.
 
-## How it works in one minute
+If Deck or the PC crashes mid-session, Deck puts back the power plan, profiles and settings at the next start.
 
-1. Deck keeps a **default profile** that applies to every game, and lets you give any game its own **custom profile**. A game's own choices override the default; anything you leave alone follows the default.
-2. When a game has been in front for a few seconds, Deck turns **Deck game mode** on by itself (if *Automatic game profiles* is on, which it is by default) and applies that game's profile.
-3. While you play, Deck records the session: time played, average FPS, 1% low, GPU power, temperatures and frame drops.
-4. When the game closes (after about 45 seconds with no game found, so a launcher handing over to the game, or a match loading, does not end it), Deck puts everything back the way it was and reopens any apps it closed.
+## What Deck changes
 
-If Deck or the PC crashes in the middle of a session, Deck checks at the next start and puts back the power plan, profiles and other settings it had changed.
+Only what you set up:
 
-## What Deck changes, and what it never touches
-
-Deck game mode can change the following, and only the parts you set up:
-
-| Change | Restored afterwards |
+| Change | Afterwards |
 |---|---|
-| Switch to a GPU profile or built-in mode | The profile that was active before |
-| Switch to a CPU profile or Windows' fastest power plan | The profile or power plan that was active before |
-| Give the game higher processor and graphics priority | Priorities put back |
-| Close the apps you ticked | The apps are started again |
-| Lower the priority of background apps | Priorities put back |
-| Free idle memory | Nothing to restore (Windows loads data back as needed) |
-| Pause Deck's own app downloads | Downloads carry on |
-| Fan preset, lighting effect, audio output, display mode, HDR, digital vibrance | The previous values |
-| Target FPS: lower GPU and CPU power limits | The original limits |
+| GPU or CPU profile, or Windows' fastest power plan | The previous profile or plan |
+| More processor time for the game | Priority back to normal |
+| Close the selected apps | Started again |
+| Let background apps wait (lower priority) | Back to normal |
+| Make room in memory | Nothing to restore |
+| Pause Deck's own downloads | Resumed |
+| Fan preset, lighting effect, audio output, voice effect, notifications, display mode, HDR, digital vibrance | The previous values |
+| Target FPS: lower power limits | The original limits |
 
-Deck **never touches** games, game launchers (Steam, Epic, Battle.net, EA app, Ubisoft Connect, GOG Galaxy, Xbox app and similar), anti-cheat programs, voice chat and music players, mouse and headset software, recording tools, security software, VPNs, terminals and Windows itself. It does not even open a handle to them. The only thing it does to a game's own process is raise its priority when you ask for *Game priority*, using Windows' ordinary priority calls.
-
-Deck never injects anything into a game and never reads a game's memory, so it is safe to use with anti-cheat. Some games' anti-cheat refuses priority changes; Deck then reports that the game did not allow it and carries on with the rest.
+Deck never touches games, launchers, anti-cheat, voice chat, music players, mouse and headset software, recorders, security software or Windows itself. The only thing it does to a game is raise its priority when you ask, and it skips that for games with a known anti-cheat. Deck never injects into a game or reads its memory; see the [FAQ](faq.md).
 
 ## The Games tab
 
-The Games tab has the Deck game mode bar across the top, your games listed on the left, and the selected game on the right: its picture, name and figures, then its profile.
+Your games on the left, the selected game on the right. While Deck game mode is on, a bar across the top shows the session.
 
 ### Your games
 
-A searchable list of the games Deck knows about, each with a small banner (a gamepad glyph when Deck has no picture) and a line saying whether it uses its **Own profile** or the **Default profile**. A green dot marks the game that is running now ("Playing now"); a small diamond means the game has its own profile. **Default profile** sits at the top of the list, above the games. The number next to the title is how many games there are, and the line at the bottom counts the games with their own profile.
+**Default profile** sits at the top, then every game Deck knows, each with its banner and whether it uses the **Custom profile** or the default. A green dot marks the game running now.
 
 Deck finds games in two ways:
 
-- **Installed games** from Steam, Epic Games, Riot, EA app, Battle.net, Ubisoft, GOG, Rockstar and the Xbox app / Game Pass, each with its artwork. Deck rereads the libraries in the background every few minutes, and a game whose folder has gone (uninstalled, a drive unplugged) disappears from the list at once. Steam apps that the Steam store calls software (Wallpaper Engine, Blender) and Steam's own tools (Proton, Steamworks) are left out; a new game is never left out just because Deck has not heard of it.
-- **Games you play with Deck running.** Deck also recognises a game it has no launcher information about: a program that Windows itself lists as a game, one that runs from a game's folder, one whose folder holds what only games ship (a game engine, DLSS, FSR or XeSS, anti-cheat), or one that takes over the whole screen and is not a browser or video player. Launchers, crash reporters, installers, anti-cheat starters and the windows of apps that are not games are left out.
-
-Each game's pictures come from, in order: the picture you set for it in Steam, Steam's copies on your PC, the store it came from, then its name (or its folder's name) on Steam, GOG, PCGamingWiki and Wikipedia. An add-on installed as its own game uses its main game's pictures. If the internet is down when a picture is wanted, Deck tries again later.
+- Installed games from Steam, Epic Games, Riot, EA app, Battle.net, Ubisoft, GOG, Rockstar and the Xbox app, with their artwork. A game whose folder is gone leaves the list. Steam software and tools (Wallpaper Engine, Proton) are left out.
+- Games you play with Deck running: a program Windows lists as a game, or that runs from a game folder, ships game files (an engine, DLSS, anti-cheat), or takes the whole screen and isn't a browser or video player.
 
 | Control | What it does |
 |---|---|
 | **Find a game** | Filters the list by name. |
-| **+** (Add a game) | Opens a picker so you can choose a game's program yourself. Use it for a game Deck has not seen. It joins the list once it has a profile of its own. |
-| **Default profile** (top row) | Selects the profile that applies to every game without its own settings. |
+| **Add a game** (+) | Pick a game's program yourself, for a game Deck hasn't seen. |
+| **Default profile** | The profile for every game without its own. |
 
-**Something is listed as a game but is not one?** On Home, while the program is running, use *Not a game*. Deck stops treating it as a game. To undo it, open [Settings › Games](#gaming-settings) > *Not games* and click the program's name to treat it as a game again. Adding a program with **Add game** also overrides the exclusion.
+**Other game folders** (at the bottom) lists games from other stores or portable games: press **Add a folder**, give a name pattern (default `*.exe`), **Try** to see how many games it finds, then **Apply**. **Remove** drops the folder.
 
-If the list is empty, it reads "No games found yet. Play one with Deck running, or add it with +."
+### Organize your games
+
+- The star adds a game to favorites; favorites stay first.
+- The chips under **Find a game** filter the list: **Favorites**, **Custom profile**, **Playing**, **Backlog**, **Finished**, **Dropped** and your tags. They combine. **Show all** clears them.
+- **Save this filter** keeps a combination as a chip (up to 12).
+- The list has sections: **Playing now**, **Custom profile** and **All other**.
+- On a game's banner, set its **Status** (**Playing**, **Backlog**, **Finished**, **Dropped**, or **No status**) and press **+ Tag** to add tags (up to 8, 1 to 24 characters).
+- **Pick a game** suggests what to play: **Playing** games first, then **Backlog**. **Short** keeps games whose sessions averaged 45 minutes or less. **Another** shows the next one, **Open** selects it.
+
+Library choices don't change how a game runs. **Playing** is a status you set; **Playing now** means the game is running.
+
+### Programs that aren't games
+
+Deck's **Built-in list** keeps known programs out of the game list and away from Deck game mode: benchmarks and stress tests (Unigine, 3DMark, PCMark, Cinebench, FurMark, OCCT), the Roblox launcher and Studio, store launchers, crash reporters and engine editors.
+
+- Something else listed as a game? On Home, while it runs, use **Not a game**. It moves to **Not games** at the end of the Games tab.
+- To count a program as a game again, click it under **Not games** or **Built-in list**. A program with its own profile always counts.
 
 ## Deck game mode
 
-The **Deck game mode** bar (across the top of the Games tab) shows what Deck sees and lets you start or stop Deck game mode by hand.
+While Deck game mode is on, the bar at the top of the Games tab shows **Playing** and the game, how long, and live **FPS**, **1% low**, **GPU power**, **FPS per watt** and GPU temperature when RivaTuner measures the game.
 
-- **No game running.** Shows "Deck sees <game>" when a game is in front but Deck game mode is not on, and tells you whether profiles switch by themselves ("Profiles switch when a game starts.") or not ("Automatic profiles are off. Start Deck game mode to apply them.").
-- **Nothing to change yet: choose what Deck game mode does.** Until a game's profile has at least one change selected, the bar says this and offers **Choose changes**, which takes you to that game's settings. A session started with no changes selected still records its figures, and offers **End session**.
-- **Start game mode** turns Deck game mode on by hand. It applies the profile of the game in front, or of the next game that starts.
-- **Playing <game>.** While Deck game mode is on you see how long it has been on and whether it started automatically or manually, plus live figures when RivaTuner is measuring the game: **FPS**, **1% low**, **GPU power**, **FPS per watt** and **GPU temperature**.
-- **Stop** ends Deck game mode and puts everything back.
-- **Changes this session** (fold-out) lists what Deck game mode did: the GPU and CPU profile, the fastest power plan, the game put first, apps closed, background apps slowed, downloads paused. If it reads "nothing to change, figures only", the profile asked for no changes and only the session figures are recorded.
-- **Choose apps to close** jumps to the [Apps to close](#the-apps-to-close-tab) tab.
+- **Stop Deck game mode** ends it and puts everything back. If the game is still running, Deck leaves it alone until it has been closed for about two minutes.
+- **Changes this session** lists what Deck did. If nothing was set up, only the figures are recorded.
+- **On start** shows the profile's changes as chips (for example **Game first**, **CPU fastest plan**).
+- A session started by hand ends with its game, or after 3 hours if no game was found.
 
-**How it ends.** Deck game mode that started by itself always ends with its game, about 45 seconds after the game is gone. One you started by hand ends the same way while Deck's automatic ending is on (it is by default); if no game was ever found, it ends by itself after 3 hours, so the PC is not left in game mode with your apps closed.
-
-**Turning it off mid-game.** If you press Stop while the game is still running, Deck does not switch it straight back on. It leaves that game alone until the game has been closed for about two minutes.
-
-**Automatic start timing.** Deck waits until the same game has been in front for two checks in a row, so a launcher or loading screen flashing past does not trigger it. A session that would change nothing starts quietly; a session that does change something shows a short notification saying what it did.
-
-Deck game mode is also available as a **Boost** switch in the [Game bar](game-bar.md).
+You can also start it from the **Deck game mode** switch on the [Deck bar](game-bar.md).
 
 ## A game's settings
 
-Select a game (or *Default profile*) and the right side shows it. At the top, the game's picture with its name and, for a real game, its figures: time played **this week**, **in all, over N sessions**, **FPS last time**, **1% low**, **GPU power**, **FPS per watt** and **GPU at most** (temperature). A *Last time you played* fold-out opens the full report of the last session. Without any data it says "Play it with Deck running to see its FPS, power and play time here."
+Select a game (or **Default profile**). The head shows the game and its figures: this week, **In all**, **FPS last time**, **1% low**, **GPU power**, **FPS per watt** and **GPU at most**. **Last session** opens its last report.
 
-A game with no settings of its own says "Uses the default profile until you change something here." As soon as you change any setting, the game gets a **custom profile**, and only the settings you change differ from the default. Each dropdown on a custom profile has a first choice of **Default · <what the default is>**, which means "follow the default".
+- Change any setting and the game gets a **Custom profile**; only what you change differs. Each choice offers **Default** (with what the default is) to follow it again, and the undo button beside a row does the same.
+- A change to a running game applies at once, otherwise at the next start. Every change saves at once.
+- **Use default settings** removes the game's own choices. **Copy from…** copies another game's settings.
 
-If the game is running when you change a setting, the change applies at once ("Running now: changes apply at once"); otherwise it applies the next time the game starts. Every change is saved immediately.
-
-At the bottom, **Reset this game's profile** > *Use default settings for this game* removes the custom choices. The frame rate limit is kept separately, so it stays.
-
-The settings are in four sections: **Performance**, **Power**, **While playing** and **PC settings**.
+The settings are in five sections: **Performance**, **Power**, **While playing**, **PC settings** and **Saves**.
 
 ### Performance
 
-| Setting | What it does | Default | Notes |
-|---|---|---|---|
-| **GPU profile** | Switches the graphics card to a built-in mode or one of your saved GPU profiles while the game runs. | Don't change | Needs a GPU Deck can control (the [GPU page](gpu.md); NVIDIA). Built-in modes are listed under *Modes*, your own profiles after them. |
-| **CPU profile** | Switches the processor to a built-in mode or a saved CPU profile, or to **Fastest power plan**. | Don't change | The fastest power plan option names the plan Deck will use. A CPU profile brings its own power plan, so you do not need both. |
-| **Frame rate limit** | Caps this game's FPS. See below. | No limit | Per game only (not on the default profile). Available once Deck has learned the game's program. |
-| **Game priority** | **High: the game first** gives the game higher processor and graphics priority while it runs. | Normal | Some games block priority changes. Deck never uses real-time priority, which can stall drivers. |
+| Setting | What it does | Default |
+|---|---|---|
+| **GPU profile** | A built-in mode (under **Power modes**) or a saved GPU profile while the game runs. Needs a GPU Deck can control. | Don't change |
+| **CPU profile** | A built-in mode, a saved CPU profile, or Windows' fastest power plan. A CPU profile brings its own power plan. | Don't change |
+| **Frame rate limit** | Caps this game's FPS. On the Default profile it is RivaTuner's global limit, with an on/off switch. | No per-game limit |
+| **Game priority** | **Game first** gives the game more processor time. Hidden for games with a known anti-cheat. Deck never uses real-time priority. | Don't change |
 
-**Frame rate limit.** On NVIDIA cards the limit is kept by the **NVIDIA driver** (the same setting as the Control Panel's Max Frame Rate), so it works even when Deck is not running and nothing hooks into the game. On other graphics cards it is kept in the game's **RivaTuner** profile and needs RivaTuner running (see [Performance overlay](overlay.md) for installing it). The dropdown offers *No limit*, 30, 60, 90, 120, 144, and for each of your monitors its refresh rate and **just under it** (for example 141 for a 144 Hz screen). A cap three frames under the refresh rate keeps G-Sync or FreeSync on without tearing. With more than one monitor the entries are named after the monitor. **Other...** lets you type any number. If neither a supported driver nor RivaTuner is available, the row says "Requires a supported driver or RivaTuner; see Performance overlay for setup." The change applies at once.
+Frame rate limit:
 
-*Recommended:* leave the GPU and CPU profile on *Don't change* until you have profiles you trust. For competitive games, set *Game priority* to High. For demanding single-player games, cap the frame rate just under the monitor's refresh rate: less heat, noise and power, and smoother frame pacing.
+- On NVIDIA cards the NVIDIA driver keeps the limit (like the Control Panel's Max Frame Rate), so it works even without Deck. On other cards it is kept in the game's RivaTuner profile and needs RivaTuner ([Performance overlay](overlay.md)). Without either, the row says **Needs NVIDIA or RivaTuner**.
+- The choices include 30 to 144, each monitor's refresh rate and "just under" it (141 for 144 Hz), which keeps G-Sync or FreeSync on without tearing. **Other…** takes any number.
+- A new installed game shows **After the first play** until Deck has learned its program.
 
-### Power & time
+Recommended: leave the profiles on **Don't change** until you have ones you trust, and cap demanding games just under the refresh rate for less heat and noise.
 
-The **Power** section holds [Target FPS](#target-fps-power-saver) and a fold-out **Energy and cost for this PC** (see [Energy and cost](#energy-and-cost)). On the default profile it only says "Select a game to set its target FPS for power saving", because Target FPS is set per game.
+### Power
+
+Holds [Target FPS](#target-fps-power-saver) for this game, and an **Energy and cost** line whose **Power use** button opens [Power use](power-use.md). On the Default profile it says "Pick a game to set its target FPS".
 
 ### While playing
 
-| Setting | What it does | Default | Notes |
-|---|---|---|---|
-| **Close apps** | *Close the ticked apps* closes the apps picked on [Apps to close](#the-apps-to-close-tab) while you play and reopens them afterwards. | Leave them open | Save your work first: reopened apps do not restore unsaved changes. |
-| **Deck's downloads** | *Pause them* pauses Deck's own app downloads until the game closes. | Keep going | Only the Store-app downloads Deck itself runs. Steam, browsers and other programs keep downloading. |
-| **Background apps** (in *Advanced background settings*) | *Lower priority* gives background apps without a window low processor priority. | Normal priority | Voice chat and music players are left alone. Priority returns to normal afterwards. |
-| **Free memory** (in *Advanced background settings*) | Asks Windows to move idle memory of background programs aside when the game starts. | Off | *When memory is low (gentle)* acts only when memory use is 85 % or more. *On (full clean)* always runs the full clean, which also trims idle memory and the standby cache, so other apps may load slower afterwards. Nothing is closed. |
+| Setting | What it does | Default |
+|---|---|---|
+| **Close apps** | **Close the selected apps** closes the apps chosen on [Apps to close](#the-apps-to-close-tab) and reopens them afterwards. **Edit list** opens that tab. Save your work first. | Leave them open |
+| **Pause Deck's downloads** | Pauses only Deck's own app downloads; they resume afterwards. | Keep going |
+| **Let background work wait** | **Background waits** gives background apps without a window lower priority. Voice chat and music are untouched. | Don't change |
+| **Make room in memory** | **When nearly full** frees idle memory when 85 % or more is in use; **Always clear** also clears the standby cache, so other apps may load slower afterwards. Nothing closes. | Don't change |
 
-*Recommended:* leave *Free memory* off unless the PC regularly runs out of RAM during games; with plenty of memory it only makes background apps slower to come back. Pause downloads if you play online and your connection is shared.
+Recommended: leave memory alone unless the PC runs out of RAM in games.
 
 ### PC settings
 
-Switches devices for this game, then restores them after you play. Needs *Automatic game profiles* to be on.
+Switches devices for this game and puts them back afterwards. Needs **Automatic game profiles** on.
 
-- **Use the default PC settings** (custom profiles only): on, the game follows the default profile's PC settings; turn it off to set them for this game.
-- **Apply PC settings**: the master switch for the list below.
-- **Fan preset**: use one of your saved fan presets while playing (see [Fans](fans.md)).
-- **Lighting effect**: use one of your lighting effects while playing (see [Lighting](lighting.md)).
-- **Audio output**: switch the PC's audio output while playing, for example to your headset.
-- **Monitor**: which display the next settings apply to.
-- **Display mode**: a resolution and refresh rate for that monitor while playing.
-- **HDR**: turn high dynamic range on or off while playing (only if the monitor supports it).
-- **Digital vibrance**: colour intensity through the NVIDIA driver while this game is in front (only if the monitor and card support it). Leave blank to keep the current setting; the previous level returns on the desktop.
+- **Use the default PC settings** (games only): turn it off to set them for this game.
+- **Apply PC settings** turns the list on.
+- **Fan preset** ([Fans](fans.md)), **Lighting effect** ([Lighting](lighting.md)) and **Audio output**.
+- **Voice effect** ([Mic](voice.md)): back to the earlier effect after playing, also after a crash.
+- **Turn off notifications**: Windows notifications off while you play, back on afterwards.
+- **Monitor**, then its **Display mode**, **HDR** and **Digital vibrance** (NVIDIA).
 
-Each device row has **Don't change** as its first choice. You only see fan, lighting, audio and display entries that exist on this PC.
+Each row starts with **Don't change**, and you only see devices this PC has.
+
+### Saves
+
+See [Save backups](#save-backups).
 
 ## Target FPS power saver
 
-Target FPS saves power and heat in games that run faster than you need. You choose a frame rate, for example 60, 90, 120 or 144. While that game is in front and stays comfortably above the target, Deck lowers the **GPU power limit** and the **processor's long-term power limit** step by step. If the frame rate falls toward the target, Deck raises the limits again. The result is a game running near your target at lower power.
+Saves power and heat in games that run faster than you need. Pick a frame rate; while the game stays comfortably above it, Deck lowers the GPU power limit and the processor's long-term power limit step by step, and raises them again when the frame rate nears the target.
 
-It is **off by default** and set **per game** on **Games > (a game) > Power**.
+It is off by default and set per game in the game's **Power** section.
 
 ### Requirements
 
-- An **NVIDIA graphics card** that Deck can control (it changes the card's power limit).
-- **RivaTuner** running and measuring the game's FPS (the overlay itself can be off). See [Performance overlay](overlay.md).
-- **Administrator rights** for Deck. Without them the page says "Power saving needs admin rights. Restart Deck with admin rights or use Simulate."
-- The processor part works only where Deck can read and write the processor's power limit (see the [CPU page](cpu.md)); otherwise only the graphics card is limited.
-- No other tuning program in control: if MSI Afterburner (or another tool) is running, or an anti-cheat has put Deck's hardware driver on hold, Target FPS waits and says why.
+- An NVIDIA card Deck can control, and RivaTuner measuring the game (the overlay can be off).
+- Deck running as administrator ([why](getting-started.md#why-deck-needs-administrator)).
+- The processor part works only where Deck can set its power limit ([CPU](cpu.md)).
+- No other tuning tool (such as MSI Afterburner) in control. Otherwise it waits and says why.
 
 ### The settings
 
 | Setting | What it does | Default |
 |---|---|---|
-| **Target FPS** | **Off**, 60, 90, 120, 144, or **Other number** (a whole number from 10 to 1000, then **Apply target**). | Off |
-| **Go below the lowest power limit** | Appears once a target is set. When the card is already at its minimum power limit and the game is still far above the target, Deck also lowers the core clock step by step, down to the card's *Minimum* mode measured on the GPU page. | Off |
+| **Target FPS** | **Off**, 60, 90, 120, 144 or **Other number** (10 to 1000, then **Apply target**). | Off |
+| **Go below the lowest power limit** | When the card is at its minimum power and still far above target, also holds the core clock lower. | Off |
 
-Under the controls the page shows the live status, for example "87 FPS now, target 60: GPU 140 W (profile 320 W), CPU 45 W (from 125 W)". While waiting it says "Waiting for this game in front with fresh FPS. Limits return when you leave." It also shows the average power cut this session (an estimate, not measured), and after a session the last session's length, average cut and approximate watt-hours saved.
+The status line shows the live state, for example "87 FPS now, target 60: GPU 140 W", or "Waiting for this game in front with fresh FPS. Limits return when you leave." It also shows the estimated power cut this session and last session.
 
-### How the control behaves
+### How it behaves
 
-- It starts from your active GPU and CPU profile's limits. If the same game and target were held at lower limits last time, it starts there.
-- It acts only after a delay: it lowers limits after about 2 seconds above the target band (more than 8 % over), and raises them after about 1 second below it (more than 3 % under). Far from the target it takes two steps at a time. The delays and the band stop it hunting up and down.
-- It only lowers a limit the hardware actually runs into. A GPU-bound game gets a lower GPU limit; the CPU limit stays put unless the processor is the one near its limit.
-- It never goes below safe floors: the card's own minimum power limit, and for the processor 35 % of its maximum or 25 W, whichever is higher.
-- A **frame guard** protects smoothness: if the 1% low of the last few seconds falls under 75 % of the target, or frames become much more uneven than they were at the profile's limits, Deck steps back up ("Stepped back up once: the frames got uneven."). A reduction that failed is not tried again that session.
-- Limits go back to the profile's values on a **loading screen or idle menu** (FPS under half of the target, or both processor and GPU nearly idle), when the **FPS reading goes missing for 3 seconds**, and when the game is **not in front**.
-- A **heat guard** pauses it when the CPU reaches 92 °C or the GPU 87 °C. It stays paused for that game until you turn Target FPS off and on.
-- If you **pick a different profile** while it is running, Target FPS is off for that game until the game restarts.
+- It starts from your active profile's limits, or the lower ones that held the target last time.
+- It lowers limits after about 2 seconds more than 8 % above the target, and raises them after about 1 second more than 3 % below.
+- It never goes below the card's minimum power limit, or for the processor 35 % of its maximum or 25 W.
+- If the 1% low falls under 75 % of the target or frames get uneven, it steps back up.
+- Limits return to the profile's values on loading screens and idle menus, when FPS data stops for 3 seconds, and when the game isn't in front.
+- At 92 °C on the CPU or 87 °C on the GPU it pauses for that game until you turn Target FPS off and on.
+- If you pick another profile while it runs, it stays off for that game until the game restarts.
 
-### Getting your original limits back
-
-Your original limits are written to a protected record on disk before Deck changes anything, and restored when you leave the game, alt-tab, change a profile, change the setting, quit Deck, or when the heat guard trips. If Deck or the PC crashes, the limits are restored at the next start. If that fails the page tells you "Power limits could not be restored. Keep Deck open and retry after closing other tuning programs."
+Your original limits are saved before the first change and restored when you leave the game, change a profile or the setting, quit Deck, or after a crash at the next start.
 
 ### Simulate power saving
 
-A fold-out lets you watch the controller work on **made-up FPS data**. No game or hardware is touched, and it works on any PC. Pick a target and one of the traces: *Steady headroom*, *Brief FPS spikes*, *Idle menus*, *Loading screen*, *Switch to desktop*, *Missing FPS* or *1% low guard*, then **Simulate**. It plots the power limits and the frame rate over 180 seconds, plus the average power-limit reduction.
+Try it on made-up FPS data; no game or hardware is touched. Pick a target and a trace (such as **Steady headroom**, **Brief FPS spikes**, **Idle menus** or **Loading screen**) and press **Simulate**.
 
-*Recommended:* try **Simulate** first. Then set a target a little above what you want to feel (for example 100 for a game you want smooth at 90) and watch the status line for a session. Skip it for competitive games where every frame counts.
+Recommended: try **Simulate** first, then set a target a little above what you want to feel. Skip it for competitive games.
 
 ## Gaming settings
 
-These live in **Settings › Games**, with the controller battery settings.
+At the end of the Games tab, in **Automatic profiles** and **Save backups**:
 
 | Setting | What it does | Default |
 |---|---|---|
-| **Automatic game profiles** | Deck notices a game starting, applies its settings and restores them afterwards. Off: nothing switches by itself; use **Start game mode** yourself. | On |
-| **Default profile** > **Edit** | Opens Gaming with the default profile selected. | n/a |
-| **Not games** | Programs you marked as "not a game". Click one to treat it as a game again. | Empty |
-| **Record Windows crash reports** (*Profile stability*) | Reads Windows crash and driver-reset events on the desktop and notes which CPU and GPU profiles were active, so you can spot a profile that is active during repeated crashes. A *Crash history* fold-out lists them, and a profile active in two or more crashes in the last 7 days gets a warning line. | Off |
+| **Automatic game profiles** | Deck notices a game, applies its settings and restores them afterwards. Off: nothing switches automatically. | On |
+| **Never suggest closing** | Apps you told Apps to close never to suggest. Click one to allow it again. | Empty |
+| **Back up game saves**, **Size limit**, **Backups kept** | See [Save backups](#save-backups). | Off, 500 MB, 10 |
+| **Not games**, **Built-in list** | See [Programs that aren't games](#programs-that-arent-games). | |
 
-Being named in a crash report does not prove a profile caused the crash; it is a clue.
+Two report options sit in the gear menu of **Diagnostics › Session reports**: **Detailed after-game summary** (off; the after-game notice also lists peak temperatures, average FPS and hitches) and **Add connection quality to reports** (on; see [Network](#session-reports)). **Record Windows crash reports** is on [Crashes](crashes.md#profiles).
 
 ## The Apps to close tab
 
-Pick which apps Deck game mode closes, or close them right now. The list of running programs is read when you open the tab and when you press **Refresh**; it does not update by itself, so press **Refresh** after starting or closing a program. If it cannot be read, the tab shows the reason with **Try again**.
+Pick which apps Deck game mode closes, or close them now.
 
-At the top are two actions:
+At the top, a ring shows memory **In use** and the part **Held by selected apps**. Tiles show what the default profile does **When a game starts** and how many games are **Set per game**. Beside them:
 
-- **Close apps now** closes the apps ticked below once. Unsaved work may be lost, and they stay closed (nothing reopens later). The button sits in a fold-out so you do not press it by accident.
-- **Free memory now** runs the full clean: every program's idle memory and the standby cache. It shows how much memory is in use and what the last clean did.
+- **Close N apps now** closes the selected apps once, after you confirm. They stay closed, and unsaved work may be lost.
+- **Free memory now** frees every program's idle memory and the standby cache. Apps stay open but may slow down briefly.
 
-Below, **Running now** lists the apps you can close, split into *Open windows* and *Running in the background*, each with its memory use. A switch ticks each one. A counter shows how many are ticked and about how much memory they hold, and a memory bar shows the share held by selected apps (the memory freed in practice may differ).
+**Running apps** lists **Open windows** and **Running in the background**, with each app's memory. Press **Refresh** after starting or closing a program. Select an app's name to see its memory, why it is or isn't suggested, and **Close it** or **Leave it open**.
 
-- **Suggested** apps are ticked for you the first time: cloud sync, torrent clients, updaters and helpers that do nothing for a game. Browsers are suggested only while they have no window open.
-- **Only suggested** ticks only the suggestions; **None** unticks everything.
-- Apps marked "voice, calls or music" (Discord, Spotify and similar) are shown but never ticked for you and never slowed down.
+- **Suggested** apps are selected for you the first time: cloud sync, torrent clients, updaters and helpers. Browsers only while they have no window.
+- **Only suggested** selects just the suggestions; **Select none** clears all.
+- **Voice, calls or music** apps (Discord, Spotify) are shown but never selected for you.
+- **Never suggest** keeps an app off the suggestions for good; **Allow again** undoes it.
 
-Games, launchers, anti-cheat, voice chat, and mouse or headset software stay open and are never offered. Apps are asked to close the way clicking X does, so they can save their session. An app that keeps a window open (probably asking to save) is left alone.
+Games, launchers, anti-cheat, voice chat and mouse or headset software are never offered. Apps are asked to close like clicking X, so they can save; an app that keeps a window open is left alone.
 
-Your ticks are used when a game's **Close apps** setting is on, and by **Close apps now**.
+## Starting point
 
-## The Sessions tab
+On a fresh install, **Games** offers a **Starting point**: **Balanced** (game first, background waits, memory cleared when nearly full), **Performance** (also always clears memory and pauses Deck's downloads) or **Leave my PC alone**. Nothing changes until you pick one; it fills in the Default profile, where you can change it.
 
-At the top is the live [Why did it stutter?](#why-did-it-stutter) panel, followed by the session reports.
+## Save backups
+
+A mod, a game rule or a crash can damage saves. With **Back up game saves** on, Deck copies the game's save folder at game start, before changing anything, and again when the game closes, but only when the saves changed.
+
+1. Open **Game profiles › Games**, pick a game and open **Saves**.
+2. Choose the **Save folder** once (Deck suggests it only where it is sure).
+3. **Back up now** copies it by hand. Each dated copy has **Restore** and delete.
+
+- A restore first saves today's files as **Before restore**, never deletes a file, and is refused while the game runs.
+- Deck waits for saves to settle before copying and retries a copy that changed midway. An automatic copy is skipped (**Skipped**, with the reason) when the saves are over the size limit or the drive would have under 1 GB free.
+- Only files are copied; the game itself isn't touched.
+
+## Session reports in Diagnostics
+
+Open **Diagnostics › Session reports**, or use the link on Game profiles. The list starts with the live [Why did it stutter?](#why-did-it-stutter) panel, then the reports. Crashes have their own page, [Diagnostics › Crashes](crashes.md); a session with one shows **Crash recorded**.
 
 ### Session reports
 
-Every time you play a game with Deck running, it records a session, whether or not Deck game mode was on. When the game closes you get a "Session report" notification with the minutes played and an **Open** button.
+Deck records a session every time you play with Deck running, with or without Deck game mode. When the game closes, a "Session report" notification offers **Open**.
 
-The list groups sessions by day (*Today*, *Yesterday*, then dates) and shows six at a time with **Show more** and **Show latest six**. A **Game** filter narrows the list to one game. Each row shows the game, the start time, how long you played, **Average FPS** and **1% low FPS** ("Not recorded" when RivaTuner was not measuring that game). Open a row to see:
+The list groups sessions by day, with **Show more**, **Find a game** and a game filter. Its gear menu has **Show latest only**, **Include sessions under 1 minute**, **Detailed after-game summary** and **Add connection quality to reports**. Select a session to open its report:
 
-- **Frame rate**: average and 1% low. The average is the typical rate; the 1% low is the average of the slowest 1 % of frames, so a higher 1% low means fewer stutters.
-- **CPU profile** and **GPU profile** that were active.
-- **Highest temperatures** of the CPU and GPU.
-- **Death counter** counted during the session (if the [death counter](death-counter.md) is used; older sessions show "Not recorded").
-- The session's [smoothness verdict, timeline and stutters](#why-did-it-stutter).
-- **Energy estimate** in Wh and how long it was measured.
+- **Summary**: when and how long, the grade and the main cause of stutters, **Average** FPS, **1% low** and **Hitches**. A note says when frames were read for only part of the session.
+- **Frame rate (FPS)**: the [timeline](#the-timeline).
+- **What caused stutters**: [causes and patterns](#what-caused-stutters).
+- **Moments**: [the saved moments](#moments).
+- **Frame times (ms)**: how frame times were spread, with **Show table** / **Show chart**.
+- **This game over time**: [the trend and comparison](#this-game-over-time).
+- **Details**: profiles, highest temperatures, deaths, **Energy estimate**, FPS per watt, the 0.1% low and slowest frame. **Network** appears when connection quality was recorded ([Network](network.md)): pings answered and the typical and slowest delay. It describes pings only, not proof of packet loss.
+- **Tools**: **Rename**, **Pin as baseline**, **Export** (CSV or JSON), **Compare with** (the baseline or another session), **Mark as benchmark** and **Before / after** (compares play before and after a change; **End step** finishes it).
 
-Use the reports to compare sessions of one game and see whether a profile helped. FPS needs RivaTuner measuring that game; without it the FPS fields say "Not recorded", but time, temperatures and energy are still kept.
+FPS needs RivaTuner measuring the game; without it FPS says **Not recorded**, but time, temperatures and energy are kept. **Deck game mode runs** in the game filter lists older Deck game mode runs. Everything stays on your PC.
 
-*Deck game mode history* (a fold-out, shown when there is history) lists the older Deck game mode sessions with the profiles used, apps closed and whether Deck game mode started by itself.
+### Timed runs
 
-Session data is stored locally in Deck's data folder. Nothing is uploaded.
+While a game plays, the live panel has **Timed runs**:
+
+1. Name the run, pick 30 s, 1 min, 2 min or 5 min, and add the scene or route.
+2. Press **Start run**. Deck measures that stretch (average, 1% and 0.1% lows, hitches, worst frame) and stops automatically. **Stop run** ends it early (**Cut short**).
+3. On the game's saved reports, pick two finished runs and **Compare runs**. A warning shows when the games, lengths or scenes differ.
 
 ## Why did it stutter?
 
-Deck grades how smooth each session runs, draws the whole session, finds what its stutters have in common, and explains each one with what the PC was doing at that moment. It is at the top of the Sessions tab (the current session, or the last one when no game runs), inside each session report, and as the **FPS drops** widget in the [Game bar](game-bar.md).
+Deck grades how smoothly each session ran and explains each stutter with what the PC was doing at that moment. It is at the top of Session reports (the current session, or the last one), inside each report, and in the [Deck bar](game-bar.md)'s **FPS drops** widget.
 
-**Requires RivaTuner** running and reading the game's FPS (the overlay can be off). It pauses while the game is not in front and during loading screens. Nothing runs when no game is open. It never reads or touches the game: the extra readings come from Windows itself.
+It needs RivaTuner reading the game's FPS (the overlay can be off). It pauses while another window is in front or the game seems to be loading. It never touches the game; the extra data comes from Windows.
 
 ### The verdict
 
-At the top: a grade (**Smooth**, **Mostly smooth**, **Some stutter** or **Rough**), a one-line diagnosis, and the session's figures:
+A grade, **Smooth**, **Mostly smooth**, **Some stutter** or **Rough**, with one line and three figures:
 
-- **Average** and **1% low** / **0.1% low**: the speed of the slowest 1 % (and 0.1 %) of the playing time. A low far under the average means uneven frames.
-- **Hitches**: how many half-seconds had a frame at least two and a half times longer than the frames around it (and 10 ms longer), counted per hour of play.
-- **Time lost to hitches**: the share of the playing time those frames took beyond a normal frame.
-- **Slowest frame** of the session.
+- **Average** and **1% low** (the speed of the slowest 1 % of the time). A low far under the average means uneven frames.
+- **Hitches**: half-seconds with a frame at least 2.5 times longer than those around it, per hour.
 
-The grade needs a minute of play. Smooth is under 0.3 % lost, fewer than 30 hitches an hour and no drop; Mostly smooth is under 1 % and 120 an hour; Some stutter is under 3 %.
+The grade needs a minute of frames, read across at least 60 % of the session; otherwise it shows **No verdict** and a note such as "Frames read for 17 of 70 min". Smooth means under 0.3 % of time lost to hitches, fewer than 30 hitches an hour and no drop; Mostly smooth is under 1 % and 120 an hour; Some stutter is under 3 %.
 
 ### The timeline
 
-The whole session in one chart: the average FPS as a line, the 1% low dotted under it, a tick for each stretch with hitches, a diamond for each thing Windows logged, and a numbered pin for each saved moment. Gaps are times the game was in the background or loading. Point at the chart for the figures of that stretch; click a pin to open that moment in the list below.
+The whole session in one chart: average FPS as a line, the 1% low dotted, a tick for hitches, a diamond for each thing Windows logged and a numbered pin for each saved moment. Gaps mean no frame data, never zero FPS. Click a pin to open that moment.
 
-### What the stutters have in common
+- Hatched bands show when the game lost the foreground, with a line such as "Left the game 4 times, 2 min total". Deck says **You switched to** a program when you pressed a key or clicked just before, and that a program **took focus** when it came on its own.
+- Two lanes under the chart: **Hardware limit** (the GPU at its power or heat limit, the CPU at 95 °C or more, video memory nearly full) and **Network** (lag spikes from [Diagnostics › Network](network.md), shown when **Add connection quality to reports** is on). A short session says **Network: not enough data**.
 
-Deck looks across the whole session for:
+If RivaTuner gets no frames from a game, Deck can't measure it. Don't change a game's protection settings to fill a report.
 
-- **A hitch on a timer.** Hitches that come back at a steady beat (every 30 seconds, every 2 minutes) are usually a program checking something on a schedule: RGB and fan-control apps, hardware monitors, a Wi-Fi adapter scanning for networks, or a device that keeps reconnecting. When a device reconnected on the same beat, Deck names it.
-- **Shader compiling.** Most stutters came while the graphics driver was saving new shaders: the game was preparing effects and areas it had not drawn before. These fade as you keep playing and come back after a game or driver update.
-- **One cause again and again.** Half or more of the moments point at the same thing.
-- **Something Windows logged as a fault**: a graphics driver reset, a drive reset or a hardware error.
+### What caused stutters
 
-Each comes with what to try and, where Deck has the page for it, a button that opens it.
+Each cause with the number of moments it led. Click one to show only those moments. Above them, Deck names patterns:
+
+- A stutter on a timer (every 30 s, every 2 min): often an RGB or fan app, a hardware monitor, a Wi-Fi scan or a device reconnecting. Deck names the device when it can.
+- Shader caches changed: the game was probably preparing new effects; this usually fades as you play.
+- Faults Windows logged: a graphics driver reset, a drive reset or a hardware error.
+
+Each comes with what to try and, where it helps, a button to the page.
+
+### How sure Deck is
+
+- **Seen**: the reading or Windows log entry was there at that moment. Still not proof.
+- **Possible**: an indirect sign that can be a coincidence.
+- **Not enough data**: the readings don't explain it.
+
+A faint line names the signals Deck couldn't watch, for example "Not watched this session: Windows event log".
 
 ### Moments
 
-A moment is saved when the speed falls or frames hitch in a way you would notice:
+A moment is saved when you would notice it:
 
-- **A drop:** the frame rate stays more than a fifth under the usual speed of the last eight seconds for a second and a half, or more than a third under it for half a second.
-- **A stutter:** the speed holds but frames hitch. One frame of 100 ms or more counts by itself. Shorter hitches (several frames' worth, never under 50 ms) count only when two come within three seconds.
+- A drop: the frame rate stays more than a fifth under the last eight seconds' speed for 1.5 s, or a third under for 0.5 s.
+- A stutter: a frame of 100 ms or more, or two shorter hitches within three seconds.
 
-Not saved: a single late frame, a speed that only wobbles or rises, and a smooth lower speed while the graphics card and processor have less to do (a menu, a cutscene or a frame limit). Trouble within about 10 seconds of the last is one moment. A session keeps its 20 worst moments.
+A single late frame, or a lower but smooth speed in a menu or cutscene, isn't saved. A session keeps its 20 worst moments. The **Moments** table lists them newest first: time, FPS, slowest frame and main cause. Open one for the frames around it, up to three likely causes with **Try** advice, and what Windows logged. **All readings** shows every sensor around that moment.
 
-The moments are numbered like their pins and listed newest first. Above them, a count of their causes: click a cause to show only the moments with it. Open a moment to see the slowest frame of each half second around it, up to three likely causes (each with its evidence, what to try and a button where one helps), what Windows logged around it, the readings at that moment, and all the readings from a few seconds before to a few after.
+**Whole PC froze** means Deck itself was paused for half a second or more, with the temperatures and Windows events around it. **Frame data gap** means the frame source paused; it doesn't prove the PC froze.
 
 ### The causes Deck can name
 
-| Cause | When it is shown |
+| Cause | Shown when |
 |---|---|
-| The game was compiling shaders | The graphics driver saved new shaders at that moment (NVIDIA, AMD, Intel and Windows' own shader caches are watched). |
-| <App> used a lot of CPU | A background program used a large share of the processor; ranked higher when it had only just started. |
-| <App> started | A program started at that moment. |
-| <App> used the graphics card | Another program used 10 % or more of the graphics card (a browser video, a recorder). |
-| A driver held up a processor core | Drivers took 10 % or more of one core's time, at least three times their usual share. LatencyMon, a free tool, names the driver. |
-| Hardware interrupts held up a processor core | Interrupts took 10 % or more of one core's time, at least three times the usual. |
-| Windows read memory back from disk | Many memory pages came back from disk while RAM was 85 % full or more. |
-| The game was loading data from disk | Many memory pages came from disk with RAM to spare: the game was loading new areas or textures. |
-| GPU slowed down for heat / GPU clock fell while hot | The GPU reported a heat or slowdown limit, or its clock fell while it was 85 °C or more and busy. |
-| Video memory nearly full | Video memory use of 97 % or more. |
-| GPU hit its power limit | The GPU reported a power limit while heavily loaded. |
-| One CPU thread was maxed out | The busiest thread was at 95 % or more while the GPU was not: the game may be CPU-bound. |
-| CPU clock fell while hot | CPU at 90 °C or more, busy, and its clock fell well below its recent average. |
-| System memory nearly full / Committed memory near its limit | RAM or Windows' commit charge close to full. |
-| Heavy disk activity | Disks moving 100 MB/s or more. This does not prove a disk bottleneck. |
-| Heavy download activity | The PC downloading at 10 MB/s or more. |
-| GPU was fully busy | GPU load of 98 % or more: that part of the game may be GPU-bound. |
-| Logged by Windows | Within 8 seconds before the moment or 4 after: the graphics driver stopped and recovered or reported an error, a device connected (by name), a drive was slow or reset, a corrected hardware error, the firmware limited the processor's speed, the PC switched between battery and mains, Windows Update, or a Microsoft Defender scan or update. |
-| No clear cause in the readings | The readings do not explain it. |
+| You switched to an app / an app took focus | The game wasn't in front, or had just come back. Returning to a game can hitch while it redraws. |
+| Shader caches changed during the stutter | A shader cache folder changed (NVIDIA, AMD, Intel, Windows). |
+| An app used a lot of CPU, or started | A background program was busy, or started then. |
+| An app used the graphics card | Another program used 10 % or more of the GPU. |
+| Driver work or hardware interrupts were high on one core | 10 % or more of a core, at least three times the usual. The free tool LatencyMon can name the driver. |
+| Windows read memory back from disk / Memory pages came from disk | Many pages from disk, with RAM nearly full or to spare. |
+| GPU slowed down for heat, hit its power limit, or was fully busy | The GPU reported a limit, or ran at 98 % or more. |
+| Video memory nearly full | 97 % or more. |
+| One CPU thread was maxed out / CPU clock fell while hot | The game may be CPU-bound, or the CPU slowed at 90 °C or more. |
+| System or committed memory nearly full | RAM or commit charge close to full. |
+| Heavy disk or download activity | 100 MB/s on disk, or 10 MB/s downloading. |
+| Logged by Windows | Within seconds of the moment: a driver reset, a device connecting, a slow drive, a hardware error, a power change, Windows Update or a Defender scan. |
+| No clear cause in the readings | Nothing explains it. |
 
-These are **clues, not proof**.
+These are clues, not proof.
 
 ### This game over time
 
-With two or more sessions of the same game, a bar for each of its last twelve shows hitches per hour, with a line saying whether this session was smoother or rougher than usual, and whether shader stutters are fading from session to session.
+With two or more measured sessions of a game, a bar for each of the last twelve shows hitches per hour, and a line says whether this session was smoother or rougher than usual.
+
+To compare: select an earlier bar (or Tab to it and press Enter). The table shows both sessions' average FPS, lows, hitches and length; select the bar again or **Stop comparing** to go back. A word says how fair the comparison is:
+
+- **Like for like**: at least 10 minutes each, with FPS and matching frame limits and display mode. One change (driver, game version or profile) is allowed, so you can test it. Play the same stretch with the same game settings.
+- **Rough comparison**: a short session, several changes at once, older sessions, or battery versus plugged in.
+- **Not comparable**: different frame limits or display modes, or no FPS.
+
+**What was different** lists the graphics driver (NVIDIA only), game version, profiles, RivaTuner frame limit and Deck version at each session's start. These are facts to investigate, not proof.
 
 ### The current panel
 
-Under the title, the panel says "Watching this session" (with a live dot), "Waiting for steady gameplay", "Paused while the game is in the background", or "Last session · saved with its session report". If it says "RivaTuner must be running and reading this game's FPS.", start RivaTuner from the [Performance overlay](overlay.md) page. With no session yet it says "Play a game to start". A *How this works* fold-out sums up the points above.
+Under the game's name: "Watching this session", "Waiting for steady gameplay", "Paused while the game is in the background", or the last session. If it asks for RivaTuner, start it on [Performance overlay](overlay.md).
 
 ## Energy and cost
 
-Deck adds up the processor's package power and the graphics card's board power while it runs. It is an **estimate of those two parts only**, not of the whole PC (monitor, drives, fans and the power supply's losses are not included), and gaps (sleep, a stalled reader) are never counted as measured time. It needs both power readings to be available; otherwise it says "No power readings".
-
-Where to see it:
-
-- The **Power & time** section of a game, under **Game profiles**: **Energy and cost for this PC**: **Today**, **This month**, and **Gaming this month**, in kWh, plus a **Daily energy** fold-out with up to 31 days.
-- Each session report's **Energy estimate**.
-- **Electricity price per kWh**: type your price in your own currency to show costs next to the energy. Leave it blank to hide costs. The valid range is 0 to 10000.
-
-Use it to compare gaming power over time, or the effect of a frame limit or Target FPS.
+The whole PC's energy and cost are on [Power use](power-use.md). Each session report keeps its own **Energy estimate**; compare it to see what a frame rate limit or Target FPS saves.
 
 ## Recommended setup
 
-- **Most people:** leave *Automatic game profiles* on and everything else on its default. You get session reports and the "Why did it stutter?" verdict and history for free. Add a frame rate limit just under your monitor's refresh rate for the games where you want less heat and noise.
-- **Competitive players:** set *Game priority* to High on the default profile, pause Deck's downloads, close sync and update apps, and use a CPU profile you trust. Skip Target FPS. Keep RivaTuner running with the overlay off so session reports have FPS and 1% lows.
-- **Laptops and handhelds:** use a frame limit per game, Target FPS where you have an NVIDIA card, and a quiet fan preset in *PC settings*. Leave the electricity price blank unless you track costs.
-- **Quiet PCs:** give demanding games a frame limit and Target FPS, a fan preset in PC settings, and watch the temperature numbers in the session reports.
-- **Everyone:** tick the apps that clutter your PC (sync clients, torrent clients, updaters) on *Apps to close*, but only turn *Close apps* on for the games where you want it.
+- Most people: leave **Automatic game profiles** on and everything else default. You get session reports for free. Add a frame rate limit just under the refresh rate where you want less heat.
+- Competitive players: **Game first** on the Default profile, pause Deck's downloads, close sync and update apps. Skip Target FPS. Keep RivaTuner running for FPS in reports.
+- Laptops and handhelds: a frame rate limit per game, Target FPS on NVIDIA, a quiet fan preset in **PC settings**.
+- Everyone: select the clutter (sync, torrents, updaters) on Apps to close, but turn **Close apps** on only for games where you want it.
 
 ## Troubleshooting
 
-**Deck does not notice my game.** Use **Add game** and pick the game's program. Some launchers start the game from another program; add the game's own `.exe`.
+**Deck doesn't notice my game.** Use **Add a game** and pick the game's own `.exe`, not its launcher.
 
-**Deck game mode does not start by itself.** Check *Settings › Games > Automatic game profiles*. If you pressed Stop during that game, Deck leaves it alone until the game has been closed for about two minutes. A game has to stay in front for a few seconds.
+**Deck game mode doesn't start.** Check **Automatic game profiles**. The game has to stay in front for a few seconds. If you stopped game mode during that game, Deck waits until it has been closed for two minutes.
 
-**A program is treated as a game.** Use *Not a game* on Home while it runs. You can take it back later under *Settings › Games > Not games*.
+**A program is treated as a game.** Use **Not a game** on Home while it runs.
 
-**FPS says "Not recorded".** RivaTuner has to be running and drawing in the game. Start it from the [Performance overlay](overlay.md) page. Games that RivaTuner cannot hook (some anti-cheat protected games, some launchers) have no FPS readings; time, temperature and energy are still kept.
+**FPS says "Not recorded".** Start RivaTuner on [Performance overlay](overlay.md). Games RivaTuner can't hook have no FPS.
 
-**The Frame rate limit row says it needs a driver or RivaTuner.** Without an NVIDIA card Deck uses RivaTuner's per-game profile. Install and start RivaTuner (Performance overlay page). The row reads "After the first play" until Deck has learned the game's program.
+**The frame rate limit says Needs NVIDIA or RivaTuner.** Install and start RivaTuner, or use an NVIDIA card. **After the first play** means Deck hasn't learned the game's program yet.
 
-**Target FPS says it is waiting.** It needs the game in front, a fresh FPS reading from RivaTuner, admin rights, an NVIDIA card, and no other tuning program (such as Afterburner) running. Read the line under the setting; it names the reason.
+**Target FPS is waiting.** It needs the game in front, fresh FPS from RivaTuner, administrator, an NVIDIA card and no other tuning tool. The line under it names the reason.
 
-**Target FPS stopped and says the heat guard paused it.** The CPU reached 92 °C or the GPU 87 °C. Let the PC cool, then turn Target FPS off and on for that game.
+**Target FPS paused for heat.** Let the PC cool, then turn it off and on for that game.
 
-**A custom profile did not seem to apply.** Changes are saved at once, but only apply immediately to a running game ("Running now: changes apply at once" appears on its card). Otherwise they apply the next time it starts.
+**A change didn't apply.** Changes apply at once only to a running game; otherwise at its next start.
 
-**An app I closed did not reopen.** Deck reopens apps with the command it noted when it closed them and tells you which ones it reopened. If one did not come back, start it yourself. Unsaved work is never restored by Deck.
+**An app didn't reopen.** Start it yourself. Deck never restores unsaved work.
 
-**Greyed-out or missing choices.** GPU profiles need a supported NVIDIA card. Fan, lighting, audio, monitor and HDR choices appear only if the PC has that device. Digital vibrance needs a supported monitor on an NVIDIA card.
+**Choices are missing.** GPU profiles need a supported NVIDIA card; device rows show only what this PC has.
+
+## Ready to play?
+
+The Home tile **Ready to play?** checks sound output, mic, refresh rate and HDR, power plan, Game Mode, variable refresh, disk space, a pending Windows restart, busy background apps, the graphics driver's age and VPNs. Checks that need a look get their own chip; the rest are one **N OK** chip. Click a chip to open the page that fixes it. Deck changes nothing here, and reads nothing while a game is in front; press **Refresh** from the desktop.
 
 ## FAQ
 
-**Will Deck get me banned?** Deck never injects code into a game or reads its memory. Deck game mode uses ordinary Windows calls (power plan, priorities, closing normal apps) and never touches anti-cheat. The FPS readings come from RivaTuner, which anti-cheat systems already accept. One known exception concerns Deck's hardware driver: FACEIT refuses to run while it is loaded, so when FACEIT's client is running Deck hands the fans back to the BIOS and stops using that driver, with a notification saying why. Both come back when the client closes.
+**Will Deck get me banned?** Deck never injects into games or reads their memory. Game mode uses ordinary Windows calls, and FPS comes from RivaTuner, which anti-cheat already accepts. FACEIT refuses Deck's hardware driver, so while FACEIT runs Deck hands the fans to the BIOS. See the [FAQ](faq.md).
 
-**Does Deck change things while I am playing online?** Only what you set up, at the start of the session. Updates, Windows tweaks, app removal and hardware changes wait until no game is in front.
+**Does Deck change things while I play online?** Only what you set up, at the start. Updates, tweaks and hardware changes wait until no game is in front. Five actions ask first with an **A game is running** box: a Disk space scan, **Update** in App updates, opening a workspace that closes apps, a display mode change, and fan calibration. **Continue anyway** goes ahead; **Cancel** leaves everything.
 
-**What happens if the PC or Deck crashes mid-game?** At the next start Deck puts back the power plan, profiles and other settings it had changed; the Target FPS limits are restored from a record written before the first change.
+**What if the PC or Deck crashes mid-game?** At the next start Deck puts back the power plan, profiles and Target FPS limits.
 
-**Where is my data stored?** Locally, in Deck's data folder: the session history, energy totals and the limits Target FPS learned for each game. Nothing is sent anywhere.
+**Where is my data?** In Deck's data folder on this PC. Nothing is sent.
 
-**Why is a newly installed game's profile applied only after its first play?** An installed Steam or Epic game is set up by its folder, and Deck learns the program name the first time it runs. The profile applies as soon as Deck has learned it.
+**Why does a new game's profile apply only after its first play?** Deck learns the program name the first time the game runs.
 
-**Does Gaming need RivaTuner?** No. Deck game mode, profiles, closing apps, priority and the NVIDIA driver frame limit all work without it. RivaTuner adds FPS, 1% lows, FPS per watt, the frame drop explanations and Target FPS.
+**Does Gaming need RivaTuner?** No. Profiles, closing apps, priority and the NVIDIA frame rate limit work without it. RivaTuner adds FPS, lows, stutter explanations and Target FPS.
 
-**Does it work with AMD or Intel graphics?** Closing apps, priority, fan and display changes, session reports and RivaTuner FPS work on any graphics card. GPU profiles and Target FPS need an NVIDIA card. The driver-kept frame cap is NVIDIA only; on other cards the cap is kept in RivaTuner.
+**Does it work with AMD or Intel graphics?** Everything except GPU profiles, Target FPS and the driver-kept frame rate limit, which need NVIDIA.
 
-**Why is the energy figure lower than my wall meter?** It counts only the processor package and the graphics card board. See [Energy and cost](#energy-and-cost).
+**Why is the energy figure lower than my wall meter?** It counts only the processor and graphics card. See [Power use](power-use.md).

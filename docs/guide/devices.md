@@ -1,69 +1,100 @@
-Where to find it: Settings › Device batteries
+Where to find it: Devices › Device batteries
 
-# Devices
+# Device batteries
 
-**Settings › Device batteries** shows the battery of your controllers, headsets, mice and keyboards, and decides which of them get a battery icon in the tray and a warning when the level is low. Each device keeps its own choices.
+See the battery of your controllers, headsets, mice and keyboards, and choose where those levels show.
 
-Find it under **Settings** (the button at the bottom of the sidebar), part **Devices**, or click a device's tray icon.
+Devices are listed most urgent first: low battery, then the lowest levels, then charging devices. Each card shows the device, a ring with its level, its state, and that device's own options. The summary at the top says how many are reporting now (for example **3 of 4 reporting**). Links open **Controller › Battery**, **Lighting › Lighting** and **Lighting › Cooler display** when that hardware is there.
 
----
+Clicking a battery tray icon or the taskbar widget opens a small battery pop-up. It never takes focus and closes when you click elsewhere or move the pointer away.
+
+## Live, asleep and not seen
+
+Every place that shows a device battery uses the same words:
+
+| State | When | Example |
+| --- | --- | --- |
+| Live | The device answered Deck's last check. Also **Charging**, plugged in or low. | 89% · live |
+| **Asleep** | The device stopped answering. Most wireless mice and headsets sleep when idle; Deck keeps the last level and shows its age. | 89% · asleep · 4 min ago |
+| Not seen | No answer for 24 hours. The device leaves the tray, pop-up and widget and moves to **Not connected for a day**. | 89% · not seen · 3 days ago |
+
+Only a live level can trigger a low-battery warning. A device with no level shows **No reading**, never 0 %.
+
+## Battery history and time left
+
+Every device with a percentage keeps a history for 30 days. The history button (the pulse icon) on a card opens a chart; dashed parts are charging, gaps mean the device didn't answer. After half an hour on battery, the card shows how many hours are left (for example "4.5 h left"). When a device finishes charging, Deck says so once (**Say when a device is charged**). During a game it waits.
+
+## Each device's options
+
+- **In tray**: show the device in the tray icon and taskbar widget. Off, it stays on this page only.
+- **Warn in games**: show the low-battery warning on a small card over a game.
+- **Warn at**: Off, or 5 to 40 % in steps of 5. You get one warning per discharge.
+- **Rename**: type a name and press **Save name**. **Use "<name>"** goes back to the device's own name.
+- **Forget**: for a device that is asleep or not seen, removes its choices and last level.
+
+A headset Deck knows also lists what its family offers (**Battery**, **Charging**, **Sidetone**, **Mic light**, **Auto off**, **Chat mix**, **EQ**, **Voice prompts**). A check mark means Deck reads it. The list comes from [HeadsetControl](https://github.com/Sapd/HeadsetControl)'s device list.
+
+### Headset controls
+
+Some headsets also get **Controls** on their card, while connected. **Audio › Mixer** links here.
+
+| Headset | Controls |
+| --- | --- |
+| HyperX Cloud Alpha Wireless | **Sidetone**, **Auto off** (10, 20 or 30 min), **Voice prompts** |
+| Logitech G633, G635, G733, G933, G935 | **Sidetone** |
+
+No model has been tried with these controls yet, so they are locked and marked **Needs a tester**. To try them:
+
+1. Turn on **Use untested** on the headset's card.
+2. With no game running, try each control. Each change is sent when you let go of the slider or pick a value.
+3. Report what happened with **Copy device report**.
+
+These headsets don't report their own values, so the card shows the last value Deck sent. If HyperX NGENUITY or Logitech G HUB is running, the card warns that it may write its own values back. Deck never updates firmware.
+
+## Tray and taskbar
+
+The card at the bottom holds every other battery setting. Rows for the tray icon only show while tray icons are on; rows for the widget only while the widget is on.
+
+| Setting | What it does | Default |
+| --- | --- | --- |
+| **Show in** | **Tray icon**, **Taskbar widget** or **Both**. | Tray icon |
+| **Tray icon style** | **Ring**, **Number**, **Badge** or **Two icons**. | Ring |
+| **One icon for all devices** | One tray icon for the most urgent device. Point at it for the full list. | On |
+| **Widget style** | **Inline** (icon and percentage in the taskbar's own font), **Stacked** (icon above percentage, narrower) or **Rings**. | Inline |
+| **Widget background** | A soft panel behind Inline and Stacked, for see-through taskbars. | Off |
+| **Moon on asleep devices** | Adds a small moon after an asleep device in the widget. | Off |
+| **Color by level** | Green while charging, red when low. | On |
+| **Hide while charging** | Hides charging devices from the tray, pop-up and widget. | Off |
+| **Hide when full** | Hides full devices until their level drops. | Off |
+| **Say when a device is charged** | One notice when a device finishes charging. | On |
+| **Show new devices** | Which kinds show the first time Deck sees them. | Controllers, headsets, mice |
+| **Device report** | **Copy device report** (see below). | |
+
+The taskbar widget sits just left of the notification area and moves and hides with the taskbar. It hides when no device is shown or when there is no room. On a crowded taskbar it can cover task buttons.
 
 ## What Deck can read
 
-Deck shows a battery for a device when Windows or the device's own receiver reports one:
+- Controllers: Xbox, PlayStation, GameSir and other pads Windows knows. More on [Controller](controller.md#battery-tab).
+- Bluetooth devices that give Windows a level (the number Windows' Bluetooth settings show), plus Bluetooth LE devices with the standard battery service. A headset with no other source uses its hands-free level, marked "Bluetooth hands-free, approximate".
+- Logitech wireless mice, keyboards and headsets, on a Unifying, Bolt or Lightspeed receiver or direct.
+- Wireless headsets on their USB dongle: SteelSeries Arctis 7, Pro and Nova 7, Corsair Void and HS, HyperX Cloud Alpha Wireless.
+- Razer wireless mice (DeathAdder, Viper, Basilisk, Naga, Cobra, Lancehead, Mamba, Pro Click).
+- Other USB devices that report a standard battery level, such as some UPS units.
 
-- **Controllers:** GameSir, PlayStation, Xbox and other pads Windows knows. The [Controller](controller.md#battery-tab) page has the history and hours left.
-- **Bluetooth headsets, mice and keyboards** that give their level to Windows (the same number Windows' own Bluetooth settings show). A Bluetooth device appears only while it is connected.
-
-- **Logitech wireless mice, keyboards and headsets** on a Unifying, Bolt or Lightspeed receiver, or connected directly. Deck asks the device itself for its battery (the same read-only request Logitech's own software uses), with the device's own name. Because these devices are asked rarely to leave them asleep, the level is refreshed about every 5 minutes. A device on a receiver that doesn't answer is hidden and tried again every 5 minutes, so a mouse you switch on after a long time off appears within about 5 minutes.
-
-- **Wireless headsets on their USB dongle:** SteelSeries Arctis 7, Pro and Nova 7 models, Corsair Void and HS headsets, and the HyperX Cloud Alpha Wireless. Deck asks the dongle for the battery with the one read request the maker's own software sends, about every 5 minutes. A headset that is switched off is hidden and asked again every 5 minutes. A dongle that doesn't answer is tried again after 5, 10, 20 and then every 30 minutes. These readers are new and have been built from the makers' documented protocols; if your headset doesn't show, use the device report below.
-- **Razer wireless mice** (DeathAdder, Viper, Basilisk, Naga, Cobra, Lancehead, Mamba and Pro Click models, on their dongle or by cable). Deck asks the mouse for its battery level and charging state with the same two read requests Razer's own software uses, about every 5 minutes. A mouse that is asleep or switched off is hidden and tried again after 5, 10, 20 and then every 30 minutes. If Razer Synapse is open at the same time, Deck waits and asks again later.
-- **Bluetooth LE devices without a Windows level:** a connected Bluetooth LE mouse, keyboard or other device that gives Windows no battery number but offers the standard Battery Service is asked for it directly, about every 5 minutes. Deck never touches the part of the device that carries your typing and pointing.
-- **Devices with a standard battery report**, such as uninterruptible power supplies and some headsets: if the device says in its USB description that it has a battery level, Deck reads it. These are listed last, so a better source for the same device wins.
-
-A device without a number in Windows' Bluetooth settings usually doesn't report its battery to Windows. Deck then tries the device's own Battery Service, but many cheap mice and keyboards have none, and Deck can't show them. If you think a device should report one, use the device report below.
-
-Deck asks every few seconds for controllers, once a minute for Bluetooth devices and about every 5 minutes for Logitech devices and headset dongles. If every tray icon and every warning is off, nothing is read at all.
-
-## Look
-
-| Setting | What it does | Default |
-|---|---|---|
-| **Tray icon style** | **Number** shows only the level; **Symbol and number** adds a small symbol for the kind of device (controller, headset, mouse, keyboard). | Symbol and number |
-| **Colour by level** | Green while charging, red when the level is at or below its warning level. The number is always shown, so colour is never the only hint. | On |
-| **Hide while charging** | The icon goes while the device charges and returns when it is unplugged. | Off |
-| **Hide when full** | The icon goes at 100% and returns when the level drops. | Off |
-| **One icon for all devices** | One tray icon instead of one per device: it shows the device with the least battery, and pointing at it lists every device, the weakest first (charging ones last). | Off |
-
-The icons follow the taskbar: a dark battery on a light taskbar, a light one on a dark taskbar. Switching Windows between light and dark redraws them within a few seconds.
-
-## New devices
-
-Pick the kinds that get a tray icon the first time Deck sees a device of that kind: controllers, headsets and mice are on at first; keyboards and other devices are off. This only affects devices Deck has not seen before. A device you have already set up keeps your choice.
-
-## The device list
-
-Every device Deck has seen is listed, connected ones first. Each row shows the device's name, its kind, its level (or **Not connected**), where the reading comes from, and:
-
-- **Name:** type your own name for it. Leave it empty to follow the device's own name. The tray tooltip and the warning use this name.
-- **Tray icon:** switch the device's icon on or off.
-- **Warn over games:** show the low-battery warning on its own small card over a game.
-- **Warn at:** the level that triggers the warning: Never, 5, 10, 15, 20, 30 or 50%. You get one warning per charge; it re-arms when the level has recovered by 5 points.
-- **Forget:** removes a device that isn't connected, with its choices. It starts with the defaults if it shows up again.
-
-A device that is away stays in the list, greyed, with the choices you made.
-
-Clicking the tray icon of a controller opens the Controller page; any other device's icon opens this part.
+Deck only sends read requests, the same ones the makers' own apps use. Controllers are read every few seconds, Bluetooth devices once a minute, Logitech, Razer and dongles about every 5 minutes. Plugging something in or waking the PC reads them all again. With every tray icon and warning off, nothing is read.
 
 ## Copy device report
 
-**Copy device report** puts a short text on the clipboard. It lists the Bluetooth devices (by kind and Windows category, connected or not, and whether they report a battery) and the USB or receiver interfaces that could carry a battery (vendor and product ID, what the maker calls it, and what Deck's readers answered). It never includes the names you gave your devices, Bluetooth addresses, serial numbers or file paths. Paste it into a message when a device shows no battery.
+To ask for support for a device Deck can't read, press **Copy device report** and paste it into a bug report. It lists device ids and descriptors only: no names, Bluetooth addresses, serial numbers or file paths.
 
 ## Troubleshooting
 
-**My device isn't listed.** It must be connected and report a battery. Check Windows' own Bluetooth & devices settings: if no percentage shows there, Windows doesn't get one.
+**My device isn't listed.** It must have reported a level once. If Windows' Bluetooth settings show no percentage for it, Windows doesn't get one, and many cheap mice and keyboards have none.
 
-**The level stays the same for a long time.** Bluetooth devices give Windows a new level only now and then, and Deck asks once a minute.
+**The level doesn't change for a long time.** Bluetooth devices report a new level only now and then.
 
-**I switched the tray icon on and nothing appears.** The device must be connected and reporting; check **Hide while charging** and **Hide when full** under Look.
+**I turned on In tray and nothing appears.** The device must have answered in the last 24 hours. Check **Show in**, **Hide while charging** and **Hide when full**.
+
+**My mouse says asleep while I'm using it.** Logitech, Razer and dongle readers ask about every 5 minutes, so it turns live at the next check.
+
+The battery list and widget look were inspired by [Joule](https://github.com/DillanCidral/Joule) (AGPL-3.0) and [BatteryHub](https://github.com/krisgfx9/Wireless-Device-Battery-Monitor) (GPL-3.0); Deck includes none of their code or assets.

@@ -2,276 +2,266 @@ Where to find it: Power & time › Keep awake
 
 # Power: keep awake, timers and shutdown plans
 
-The **Power & time** group has three pages for controlling when your PC sleeps, shuts down or reminds you of something:
+The Power & time area controls when your PC sleeps, shuts down or reminds you of something.
 
 | Page | What it is for |
 |---|---|
-| **Keep awake** | Stop the PC and (optionally) the screen from going to sleep, for a while, until a download finishes, or while an app runs. |
-| **Timers & breaks** | Countdown timers, a stopwatch, and reminders to stand up and rest your eyes. |
-| **Shut down when…** | Shut down, sleep, restart (and more) automatically when something happens: a download finishes, an app closes, the PC goes idle, or at a set time. |
+| [Keep awake](#keep-awake) | Keep the PC (and the screen) from sleeping: for a while, until downloads finish, or while an app runs. |
+| [Timers & breaks](#timers--breaks) | Timers, a stopwatch, break reminders and time rules. |
+| [Shut down when…](#shut-down-when) | Shut down, sleep, restart and more when something happens or at a set time. |
 
-The Home page also has a **Power & timers** tile and the tray menu has a **Keep the PC awake** switch. See [Home](home.md).
-
-None of these pages change your Windows power plan. Keep awake works by asking Windows not to sleep while Deck is running, and gives the request back when it ends. Deck also never touches any game: nothing here involves anti-cheat.
-
-## Contents
-
-- [Keep awake](#keep-awake)
-- [Timers & breaks](#timers--breaks)
-- [Shut down when…](#shut-down-when)
-- [Typing commands in search](#typing-commands-in-search)
-- [Recommended setup](#recommended-setup)
-- [Troubleshooting](#troubleshooting)
-- [FAQ](#faq)
+Home's **Power & timers** tile and the tray menu's **Keep awake** reach the same features ([Home](home.md)). None of these pages change your Windows power plan, and none touch a game.
 
 ## Keep awake
 
-Windows normally sleeps the PC after some idle time (and turns the screen off sooner). Keep awake overrides that for as long as you choose. When it ends, normal sleep comes back by itself.
+Keep awake asks Windows not to sleep for as long as you choose. When it ends, or when you quit Deck, normal sleep returns.
 
-### The status panel
+### The Keep awake card
 
-At the top, a panel says either **Windows can put this PC to sleep** or **Staying awake**, with what it is doing: a countdown for "for a duration", "While *app* is running. Ends when it closes.", "Downloading. Ends after the last download stays quiet.", or "Until you turn it off." While it is on you get **Turn off**, and for a timed one a **+ 30 min** button to extend it. It also says whether **the screen stays on too**.
+The card shows **On** or **Off** and **Keeping awake** or **Not keeping awake**.
 
-### For a duration
+- **Off:** one click starts it: **30 min**, **1 hour**, **2 hours**, **4 hours** or **Indefinitely**.
+- **On:** the time left, how it ends (**Until** a time, **While** an app **runs**, **Downloading** or **Waiting for a download**, or **Indefinitely**), **30 min** (adds time to a timed one), and **Stop**.
+- **Keep screen on**: on, the screen stays on too; off, only the PC stays awake. You can change it while Keep awake runs. Turn it off for overnight downloads so the monitor can sleep.
 
-| Control | What it does |
+### Other ways to start
+
+| Card | What it does |
 |---|---|
-| **Start 30 min**, **Start 60 min**, **Start 120 min** | Start immediately. The preset buttons are 30 min, 1 hour and 2 hours. |
-| **More durations** (fold) | **Start 4 hours** and **Until I turn it off** (no end time). |
-| **Custom duration** | Type 1 to 1440 minutes (24 hours), press **Start duration** (or Enter). |
-| **Also keep the screen on** | On (default): the screen will not turn off either. Off: only the PC stays awake; the screen may turn off as usual. You can change it while keep awake is running. |
+| **For a duration** | Type 1 to 1440 **Minutes** and press **Start duration** (or Enter). |
+| **Until downloads finish** | Set **Downloading above** (default 100 KB/s) and **Then quiet for** (default 1 min), then **Start watching downloads**. It waits for a download to begin, then ends once downloads have been quiet that long. |
+| **While an app runs** | Pick an app in **Choose a running app…**, then **Start watching app**. It ends when the app closes. You can start it before the app opens. |
 
-Recommended: for a download or an overnight job, turn **Also keep the screen on** off so the monitor can sleep and save power; for a presentation or a video, leave it on.
+A download is an unfinished download file in your Downloads folder that is still being written (such as `.crdownload` or `.part`), a Steam download in progress, or network traffic above your speed. When a downloads keep awake ends, a notification says so.
 
-### Until an event
+### Windows sleep
 
-| Control | What it does |
-|---|---|
-| **Start watching downloads** | Keeps the PC awake until downloads finish. It first waits for a download to *begin* ("Waiting for a download to begin."), then ends once downloads have stayed quiet long enough. |
-| **Download options** (fold) | **Count as downloading above** (default **100 KB/s**, 1 to 100000) and **Stop after downloads stay quiet for** (default **1 minute**, 1 to 1440). These two numbers are Deck settings shared by every "until downloads finish" keep awake. |
-| **Start watching app** | Choose a running app from the list (**Choose a running app…**), then start. It stays awake while that app runs and ends when the app closes. |
+Read only: **PC sleeps after** and **Screen off after** from your Windows power plan for the current power source. Keep awake overrides them while it is on. **Open settings** opens Windows' sleep settings.
 
-What counts as a download: an unfinished download file (extensions such as `.crdownload`, `.part`, `.download`, `.tmp` and a few others) written to recently in your Downloads folder, a Steam game download that is genuinely in progress, or network traffic above the speed you set. A paused or abandoned download does not count forever.
+### Windows requests
 
-When a "downloads" keep awake ends, you get a "Downloads finished: your PC can sleep normally again" notification.
+Other programs and drivers asking Windows to stay awake, from Windows' own list. Use it when your PC won't sleep. **Refresh list** reads it again. Windows only shows this list to an administrator.
 
-### Also keeping this PC awake
+### After the PC wakes
 
-A read-only list of **other** programs and drivers that are asking Windows to stay awake (it reads Windows' own power-request list). Use **Refresh list** to reload it. If it says "Windows reports no active power requests." nothing else is holding the PC up. This is useful when your PC refuses to sleep and you want to know who is responsible.
+A few seconds after the PC wakes, Deck checks audio devices, graphics card settings, fans, lighting, monitor brightness and the phone server (only parts this PC has) and tries again what didn't come back, after 2, 6 and 20 seconds. The **Check** row shows the last result (**All fine** or **N failing**); each part shows **Fine**, **Fixed** or **Still failing**, with the reason behind **?**. **Check now** runs it again. It waits while a game is in front (**Waiting for game**).
 
-### Windows sleep settings (side panel)
+### What woke this PC
 
-Shows, read-only, when the **PC sleeps after** and the **screen turns off after** according to the active Windows power plan for the current power source (plugged in or on battery). "never" means 0 / disabled. Keep awake overrides these while it is on. **Open Windows sleep settings** jumps to Windows Settings to change them; the other two buttons open **Shut down when…** and **Timers & breaks**.
+Read only, from Windows: **Last wake source**, **Wake timers** and **Devices allowed to wake the PC**. If Windows refuses a read, the card says it couldn't read it.
+
+### Battery health
+
+On PCs with a battery: the **Report date**, **Full charge / design capacity** and the **Cycle count** when Windows reports it. These are the battery's own estimates.
+
+- **Monthly capacity trend**: up to 12 months from Windows' history, one value per month. Gaps stay empty.
+- **Sleep drain sessions**: how much charge was lost during each sleep. **Sleep study needs Modern Standby.**
+- The report refreshes at most once a day and waits while a game runs. If it fails it says **Report unavailable. Reopen this page tomorrow to try again.**
+- Reports stay on your PC. A capacity drop of another 5 % adds a line to **Activity**.
+
+Each app's power use on battery is on [Power use](power-use.md); the **PC status › Power use** link at the top of the page opens it.
 
 ### Good to know
 
-- A running keep awake also appears under **What Deck changed**, where **Put back** turns it off.
-- Keep awake belongs to Deck: if you **quit Deck**, the request ends and normal sleep returns. It is not saved across a restart of Deck.
-- An app-based keep awake waits for the app to be seen running first, so you can start it before launching the app.
-- Closing the laptop lid or pressing the power button follows your Windows lid / power-button settings; keep awake does not change those.
+- A running Keep awake is listed under **What Deck changed**, where **Undo** turns it off.
+- It doesn't survive quitting Deck.
+- Closing the lid or pressing the power button follows your Windows settings.
 
 ## Timers & breaks
 
 ### Timers
 
-- **Your timers:** every running timer with time left, a progress bar and **Rings at** with its clock time (and day when needed), or **Paused**. Buttons are named **Pause timer**, **Resume timer** and **Cancel timer**. A finished timer shows **Done**, **Again** and **Dismiss timer**.
-- **Start a timer:** presets **Start 5 min**, **Start 10 min**, **Start 25 min**, a **More durations** list (1, 3, 15, 45, 60 min), or type a **Duration** such as `25m`, `1h30`, `90s` or `1:30` with an optional **Label** ("Tea", "Laundry"…) and press **Start timer**.
-- When a timer ends you get a sticky notification with a sound, with **5 more min** and **OK** buttons. It rings even if Deck's panel is closed, as long as Deck is running.
-- You can also start one by typing `timer 10m` in the search box, or tapping a preset on the Home tile.
+- The top card shows **Next to ring** with its time and **Rings at**, and counts of **Counting down**, **Paused** and **Finished**.
+- **Start a timer**: one click on **1**, **3**, **5**, **10**, **15**, **25**, **45** or **60** min, or type a **Duration** (`25m`, `1h30`, `90s`, `1:30`) and an optional **Label (optional)**, then **Start timer**.
+- **Your timers**: each timer with **Pause** or **Resume**, **+5 min** and **Cancel**. A finished one shows **Done**, **Again** and **Dismiss**.
+- When a timer ends, a notification rings from the tray, even with Deck's window closed.
+- You can also type `timer 10m` in search or use Home's tile.
 
-Timers only run while Deck is running. If you quit Deck, they stop.
-
-Timed shutdown plans also show **Waiting for** with the clock time and day; timed Quick picks show **At** with the time. **Cancel** stops the plan without performing its action.
+Timers only run while Deck runs.
 
 ### Stopwatch
 
-**Start / Stop**, **Lap** and **Reset**. Laps show both the split and the total time.
+**Start** or **Stop**, **Reset** and **Lap**. Laps show the split and the total.
 
 ### Break reminders
 
 | Setting | What it does | Default |
 |---|---|---|
-| **Remind me to stand up or look away** | A nudge after a stretch of use. Waits for fullscreen games and videos to end before showing. | Off |
-| **Remind me every** (appears when the above is on) | 20, 30, 45, 50, 60, 90 or 120 minutes. | 50 minutes |
-| **Rest your eyes every 20 minutes** | The "20-20-20" rule: every 20 minutes of use, look at something about 6 metres away for 20 seconds. Waits for fullscreen games and videos to end. | Off |
+| **Stand-up reminder** | A nudge after a stretch of use. | Off |
+| **Remind me every** | 20 to 120 minutes (shown while the reminder is on). | 50 minutes |
+| **Break length** | 30 seconds to 10 minutes. | 1 minute |
+| **Eye-rest reminder** | Every 20 minutes: look about 6 meters away for 20 seconds. | Off |
 
-How they count: time only counts while you are using the PC. About two quiet minutes (no keyboard or mouse) resets the stand-up reminder; about 20 quiet seconds resets the eye-break clock. The stand-up notification offers **10 more min** and **Done**. A reminder due during a game or fullscreen video is held back and shows as soon as you leave it; Deck never interrupts a game.
+Only time at the PC counts: about two minutes without keyboard or mouse resets the stand-up count, about 20 seconds resets the eye-rest one. Reminders wait for fullscreen games and videos to end, so they never interrupt a game.
+
+### Timeline
+
+**Timer timeline** (on this page) and **Plan timeline** (on **Shut down when…**) show each step as **Done**, **Now**, **Next**, **Skipped**, **Missed** or **Paused**, with an **On hold:** line and the reason when something waits. Sleeping time doesn't count as "quiet". A warning that ran out during sleep starts again instead of acting; a timer that ran out still rings and says how long ago.
+
+### Time rules
+
+**Time rules** change fans, lighting or volume at set times.
+
+1. Press **Add a rule** and name it.
+2. Choose the time and the days (**Mon** to **Sun**, **Weekdays**, **Weekends** or **Every day**).
+3. Pick a **Fans** preset, a **Lighting** effect and a **Volume**, or leave a field on **Leave as is**.
+4. Press **Save rules**.
+
+Up to 12 rules. A rule waits while a game is in front, and is skipped for the day if its time passed more than 6 hours ago. Fan presets need hardware control.
+
+**What rules changed** lists recent changes as **Applied**, **Failed**, **Undone** or **Sent, not confirmed**, with **Undo** to restore the old value.
 
 ## Shut down when…
 
-This is Deck's "do something when something happens" tool. You choose an **action** and a **condition**, adjust the options, and press **Start plan**. Only **one plan** can be set at a time. While a plan is set, the page shows it with its progress and a **Cancel** button, and the sidebar shows a **Set** badge.
+Choose an action and a condition, check the options, and press **Start plan**. Only one plan can be set at a time; the sidebar shows **Set** while it is.
+
+### Build a plan
+
+1. Under **Action**, choose what happens.
+2. Under **When**, choose the condition. Fill in its fields (minutes, a time, an app or a folder).
+3. Check **Plan options** and any condition options.
+4. Press **Start plan**. For Shut down, Sleep, Restart, Hibernate and Sign out Deck asks first, saying whether open work closes and how long the warning is.
+
+**Discard changes** clears the form. Your options are remembered on this PC.
 
 ### Actions
 
 | Action | What happens |
 |---|---|
-| **Shut down** | Windows shuts down. |
-| **Sleep** | The PC sleeps. Open work stays open. |
-| **Restart** | Windows restarts. |
-| **Hibernate** | Saves memory to disk and powers off. Needs hibernation to be enabled in Windows (otherwise Deck reports "Hibernate is turned off on this PC"). |
+| **Shut down**, **Restart**, **Sign out** | As in Windows. |
+| **Sleep** | The PC sleeps; open work stays open. |
+| **Hibernate** | Saves memory to disk and powers off. Needs hibernation turned on in Windows. |
 | **Lock** | Locks Windows. |
-| **Sign out** | Signs you out. |
 | **Screen off** | Turns the monitors off. |
-| **Just tell me** | Only shows a notification when the condition is met. Nothing else happens. |
-
-For Shut down, Sleep, Restart, Hibernate and Sign out, Deck asks you to confirm when you start the plan, and spells out what will happen ("Open work and games will close…" or "Open work and games stay open…") and how many seconds of warning you will get.
+| **Just tell me** | Only shows a notification. |
 
 ### Conditions
 
-| Condition | Meaning | Extra field |
-|---|---|---|
-| **Downloads finish** | Nothing is downloading any more (browser, Steam or any download). The page shows current download speed. | "After the last one, wait" minutes (default 5). |
-| **After a while** | A number of minutes from now. | In *N* minutes. |
-| **At a time** | A clock time. If that time has already passed today, it means tomorrow. | At (time). |
-| **An app closes** | A chosen running app (a game, an export, an install) has closed. | Choose a running app. |
-| **An app finishes its work** | A chosen app that stays open (a render, an export) has become quiet: its CPU use drops below a level for some minutes, after having been busy. | Choose a running app; "Quiet for" minutes. |
-| **A task says it's done** | Every program that signals Deck has finished its work. See [When a task says it's done](#when-a-task-says-its-done). | "After the last one finishes, wait" minutes. |
-| **Music or video stops** | Audio or video that was playing has stopped. It first waits until something has played. | "Silent for" minutes. |
-| **The PC goes idle** | CPU use stays below a level (renders, installs, builds). | "Quiet for" minutes. |
-| **The graphics card goes idle** | GPU use stays below a level. Only listed when Deck can read an NVIDIA graphics card. | "Quiet for" minutes. |
-| **The disk goes quiet** | Disk reads plus writes stay below a speed (installs, unpacking, copying). | "Quiet for" minutes. |
-| **The network goes quiet** | Network traffic stays below a speed (uploads, syncing). | "Quiet for" minutes. |
-| **I've been away** | No mouse, keyboard or controller input for some minutes. | "Away for" minutes. |
+The **When** list is grouped into Time, Jobs, Activity and Hardware.
 
-The builder shows a sentence such as "Shut down when downloads finish" and a one-line warning about what happens ("You get 1 minute to cancel before anything happens.").
+| Condition | Met when | Fields |
+|---|---|---|
+| **After a while** | A number of minutes has passed. | **In** minutes |
+| **At a time** | The clock reaches the time (tomorrow if it has passed today). | **At** |
+| **Downloads finish** | Nothing downloads any more (browser, Steam or any download). | Quiet minutes |
+| **Deck's downloads finish** | Deck's own downloads (Store apps, Deck updates) are done. The plan names the download and its progress; if it fails, the plan is called off. | **Then wait** |
+| **A transfer finishes** | A [PC to PC](pc-to-pc.md) transfer or a copy to another drive is done. A failed transfer calls the plan off. | **Then wait** |
+| **A folder stops changing** | Nothing is written to a chosen folder for some minutes. | **Folder**, **Quiet for** |
+| **An app finishes its work** | An app that stays open (a render) has been busy and is now quiet. | **App**, **Quiet for** |
+| **An app closes** | A chosen app has closed. | **App** |
+| **A task says it's done** | Every program that signals Deck is finished. See [When a task says it's done](#when-a-task-says-its-done). | Minutes |
+| **Music or video stops** | Something played and has stopped. | **Silent for** |
+| **I've been away** | No mouse, keyboard or controller input. | **Away for** |
+| **The PC goes idle** | CPU use stays low. | **Quiet for** |
+| **The graphics card goes idle** | GPU use stays low. Only when Deck can read the graphics card. | **Quiet for** |
+| **The disk goes quiet** | Disk use stays low. | **Quiet for** |
+| **The network goes quiet** | Network traffic stays low. | **Quiet for** |
+
+The card shows the plan as a sentence, such as "Shut down when downloads finish and stay quiet for 5 min".
 
 ### Plan options
 
-Options are remembered between plans on this PC (they are kept in the page's local storage). **Undo changes** puts the form back to defaults.
-
-**For every plan**
-
 | Option | What it does | Default |
 |---|---|---|
-| **Warning** (seconds) | When the condition is met you get a notification with **Cancel** and **Do it now** for this many seconds before anything happens. 0 means no warning. Not used for "Just tell me". | 60 s |
-| **Not while I'm playing** | If a fullscreen game or video is in use, the plan waits until you leave it, then gives you a **fresh warning** before acting. | On |
-| **Keep the PC awake while waiting** | Stops Windows sleeping before the download ends or the set time arrives. Not applied to "I've been away", and not applied while Deck is still waiting for a download, playback or app to start. | On |
-| **Force-close apps that block shutdown** | For Shut down, Restart and Sign out only: forces apps with unsaved work to close. **Unsaved work in them is lost.** Without it, Windows waits for someone to answer. | Off |
+| **Warn me before** | Seconds of warning, with **Cancel** and **Do it now**. 0 means no warning. | 60 s |
+| **Not while I'm playing** | Waits while a fullscreen game or video is in use, then warns again. | On |
+| **Keep awake while waiting** | Stops Windows sleeping while the plan waits. | On |
+| **Force-close apps that block it** | Shut down, Restart and Sign out only: closes apps that would stop it. Unsaved work is lost. | Off |
 
-**Condition options** (shown for the condition you chose)
+Condition options (only for the chosen condition):
 
 | Condition | Option | Default |
 |---|---|---|
-| Downloads finish | **Quiet below** (KB/s): traffic under this counts as not downloading (averaged over several readings). | 100 |
-| | **Paused after** (min): an unfinished file untouched this long counts as paused. | 5 |
-| | **Also watch** folders (separated by semicolons) where your download manager saves; Downloads is always watched. | none |
-| Network goes quiet | **Quiet below** (KB/s) and **Count uploads too**. | 100, on |
-| PC idle | **Idle below** (% CPU). | 10 |
-| App finishes its work | **Finished when under** (% CPU): the app must be busy first, then quiet. | 10 |
-| Graphics card idle | **Idle below** (% GPU). | 10 |
-| Disk quiet | **Quiet below** (KB/s). | 1024 |
-| A task says it's done | **Waiting for my answer** (min): a task that asks for permission or a reply counts as done after this long; 0 means the plan waits until you answer. **A task that stops with an error counts as done**: a usage limit or a lost connection. | 0, off |
-| App closes | **Closed for** (seconds), so a launcher that restarts itself does not count. | 30 |
-| I've been away | **A controller counts as being here**; **Playing music or video counts as being here**. | on, off |
-| Downloads finish / An app closes | **Then wait until the PC is idle**: also wait for CPU and disk to go quiet for the plan's minutes. Good for a download that unpacks or installs afterwards. Shows its own CPU % and disk KB/s fields. | Off |
+| Downloads finish | **Quiet below** (KB/s), **Paused after** (min: an untouched file counts as paused), **Also watch** (more folders; Downloads is always watched). | 100, 5 |
+| The network goes quiet | **Quiet below** (KB/s), **Count uploads too**. | 100, on |
+| The PC goes idle, The graphics card goes idle | **Idle below** (%). | 10 |
+| An app finishes its work | **Finished when under** (% CPU). | 10 |
+| The disk goes quiet | **Quiet below** (KB/s). | 1024 |
+| An app closes | **Closed for** (seconds), so a launcher that restarts itself doesn't count. | 30 |
+| A task says it's done | **Waiting for my answer** (min; 0 waits for you), **A task that stops with an error counts as done**. | 0, off |
+| I've been away | **A controller counts as being here**, **Playing music or video counts as being here**. | on, off |
+| Downloads finish, An app closes | **Then wait until the PC is idle**, with **Counts as idle below** for CPU and disk. Good for downloads that unpack afterwards. | Off |
 
 ### When a task says it's done
 
-Some jobs cannot be judged from outside: a coding tool that keeps working in the background after it seems to stop, a script that runs for hours. With this condition the program tells Deck itself.
+For jobs Deck can't judge from outside, such as a coding tool working in the background, or a long script: the program tells Deck itself.
 
-**Setting it up (once).** Choose **A task says it's done** and look at **Where signals come from**:
+Set it up once under **Where signals come from**:
 
-- **Signals from Claude Code** / **Signals from Codex:** a switch each. Deck adds a few lines to that tool's own settings file and takes them out again when you switch it off. Everything else in the file is left as it is; if Deck cannot read the file it changes nothing and says so. Sessions you open afterwards send signals. Codex asks you to approve new hooks once: type `/hooks` inside it.
-- **Any other program or script:** copy the line shown and run it with `start` when the work begins and `done` when it ends (also `fail`, `wait`). The word after `--task-signal` names the task.
+- **Signals from** Claude Code and **Signals from** Codex: a switch each. Deck adds a few lines to that tool's settings file and removes them when you turn it off. Codex asks you to approve the new hooks once: type `/hooks` in it.
+- **Any other program or script**: **Copy line**, then run it with `start` when the work begins and `done` when it ends.
 
-**What counts as done.** Deck keeps a list, **Tasks Deck has heard from**:
+**Tasks Deck has heard from** lists each task:
 
-| It says | Meaning | The plan |
-|---|---|---|
-| Working | It is busy, has background jobs still running, or will wake itself up again. | waits |
-| Waiting for you | It asked for permission, or its last message ended in a question. | waits (or goes on after **Waiting for my answer** minutes) |
-| Stopped | An error or a usage limit. | waits (or goes on if you ticked the option) |
-| Finished | It said so, or it was closed. | goes on when every counted task is finished |
+| It says | The plan |
+|---|---|
+| **Working** | waits |
+| **Waiting for you** (it asked a question) | waits, or goes on after **Waiting for my answer** |
+| **Stopped** (an error or usage limit) | waits, or goes on if you turned that option on |
+| **Finished** | goes on once every counted task is finished |
 
-The plan acts when at least one task has been seen and every counted one has been finished for the minutes you set, after the usual warning. A task that starts again during the warning calls it off.
-
-**Don't count** takes a task out (one you stopped by hand, or one you do not care about); **Count again** puts it back.
-
-**Good to know**
-
-- Deck does not have to be open when a signal is sent; it reads them when it starts.
-- Stopping a tool by hand in the middle of its work sends no signal, so it stays "Working" until it speaks again. Use **Don't count**.
-- A question is recognised by a final question mark, so a task that ends on a statement while it really waits for you looks finished.
-- Work in WSL, in the cloud or on another PC is not seen.
-- Try it first with **Just tell me** as the action.
+**Don't count** leaves a task out; **Count again** puts it back. A tool you stop by hand sends nothing and stays **Working**, so use **Don't count**. Work in WSL, the cloud or another PC isn't seen. Try it first with **Just tell me**.
 
 ### While a plan is set
 
-- The plan panel shows what it is waiting for and how far along it is ("Network quiet for 2 min of 5 min", a countdown to a set time with a progress bar).
-- When the condition is met the state becomes a **countdown**. You get a sticky notification ("Shut down in 60 s") with **Cancel** and **Do it now**. **Do it now** runs the plan at once; **Cancel** drops it. The notification stays up while other notifications come and go: when too many are showing, Deck removes the oldest other one and never this warning.
-- If, during the warning, the condition stops being true (a download resumes, you come back to the PC, the app reopens), the warning is called off and Deck goes back to waiting, with a short notification saying why.
-- Download, music and app conditions need to see the thing **happen first**: "downloads finish" will not fire until a download has been seen, "app closes" not until the app has been seen running, so nothing fires immediately because nothing was happening yet. The page says "Waiting for a download to start" / "Waiting for *app* to start" while that holds.
-- A plan with a **set time** that Windows slept through is **skipped**, not run late. If the PC was asleep or off at the set time (more than 10 minutes late), Deck drops the plan with a notice rather than acting when you wake it, so a 23:00 shutdown never hits you the next morning.
-- Plans are saved, so they survive Deck restarting (an update, a crash) and carry on waiting, with anything they had already seen kept and a fresh warning if one was running. But a plan from **before this Windows session** (before you last signed in, restarted or shut down; Fast Startup does not count as a restart here) is dropped, except a set-time plan, so "shut down when downloads finish" set last night cannot shut down the PC you just switched on. A plan cannot run while Deck is closed.
-- The same plan can also be set from search, from the Home tile, from your phone and from notifications; they all use the same single plan.
+- The plan card shows what it waits for and how far along it is, with **15 more min** and **Cancel**.
+- When the condition is met, a warning notification ("Shut down in 60 s") offers **Cancel** and **Do it now**. If the condition stops being true during the warning, Deck goes back to waiting and says why.
+- Download, music and app conditions first wait to see the thing happen, so nothing fires at once.
+- **Missed times are skipped**: if the PC was asleep or off at the set time, the plan is dropped instead of running late.
+- Plans survive a Deck restart. A plan from before you last restarted or signed in is dropped (except a set-time plan), so last night's "when downloads finish" can't shut down the PC you just turned on.
+- **Replace this plan** opens the builder again.
+
+The same plan can be set from search, Home, your phone or a notification.
 
 ### Quick picks
 
-On the right of the builder:
+**Shut down when downloads finish**, **Sleep when music stops**, **Sleep when I'm away 20 min**, **Sleep in 30 min**, **Sleep in 1 hour** and **Shut down in 1 hour**. Each asks first, uses your last options and replaces any plan.
 
-- **Shut down when downloads finish** (2 quiet minutes after the last one)
-- **Sleep when music stops** (after it has been quiet a minute)
-- **Sleep when I'm away 20 min**
-- **Sleep in 30 min**, **Sleep in 1 hour**, **Shut down in 1 hour**
-
-Each asks for the usual confirmation, uses the options last set in the form, and replaces any plan already set.
-
-### Outgoing messages for plans
-
-If you turned on [Alerts](alerts.md) "Notifications out" for **Shutdown plans**, the warning before a plan acts is also sent to your phone or chat. See [Alerts](alerts.md).
+The warning can also go to your phone or chat through [Alerts](alerts.md).
 
 ## Typing commands in search
-
-In Deck's search box:
 
 | Type | Result |
 |---|---|
 | `timer 10m` (or `t 10m`) | Starts a 10-minute timer. |
-| `sleep in 30m`, `shutdown in 2h`, `restart in 1h`, `lock in 10m` | Sets a timed plan (with the usual confirmation). Also accepts `after` instead of `in`. |
-| `awake 2h` (also `keep awake`, `caffeine`, `stay awake`) | Keeps the PC awake for 2 hours. |
-| `cancel` / `stop` (optionally followed by `plan`, `sleep`, `shutdown` or `restart`) | Cancels the current shutdown plan, when one is set. |
-
-There are also search actions "Keep the PC awake" and "Let the PC sleep normally".
+| `sleep in 30m`, `shutdown in 2h`, `restart in 1h`, `lock in 10m` | Sets a timed plan, after you confirm. `after` works too. |
+| `awake 2h` (also `keep awake`, `stay awake`) | Keeps the PC awake for 2 hours. |
+| `cancel` or `stop` | Cancels the current plan. |
 
 ## Recommended setup
 
-- **Overnight download or render:** use **Shut down when… > Downloads finish** (or **An app closes** / **The PC goes idle**) with **Then wait until the PC is idle** if it unpacks afterwards, leave the 60-second warning on, and turn off "Also keep the screen on" in Keep awake if you also use it.
-- **Falling asleep to a film or music:** **Sleep when music stops** or **Sleep in 1 hour**.
-- **Gamers:** keep **Not while I'm playing** on so a plan never closes a game under you. Use "Just tell me" if you want to be told but not acted on.
-- **Laptops:** use Keep awake for a duration instead of "until I turn it off" so you do not forget and drain the battery. Sleep, rather than Shut down, if you want to come back to your work.
-- **Quiet PCs:** keep the warning at 60 seconds or more; it is your only chance to cancel.
-- Leave **Force-close apps that block shutdown** off unless you have saved everything and need the shutdown to finish unattended.
+- **Overnight download or render:** **Downloads finish** (or **An app closes**, **The PC goes idle**), with **Then wait until the PC is idle** if it unpacks afterwards, and the 60-second warning.
+- **Falling asleep to music or a film:** **Sleep when music stops** or **Sleep in 1 hour**.
+- **Gamers:** keep **Not while I'm playing** on.
+- **Laptops:** use Keep awake for a duration so you don't drain the battery.
+- Leave **Force-close apps that block it** off unless everything is saved.
 
 ## Troubleshooting
 
-**The PC went to sleep even though Keep awake was on.** Check the status panel says **Staying awake**. A timed one ends at its time. Lid-close and the power button follow Windows' own settings, and manual Sleep from the Start menu always works. Quitting Deck ends it.
+**The PC slept even though Keep awake was on.** Check the card says **Keeping awake**. A timed one ends at its time; the lid and power button follow Windows; quitting Deck ends it.
 
-**The PC will not go to sleep.** Open Keep awake and look at **Also keeping this PC awake** for programs holding a request, and make sure Deck's own keep awake is off. A pending shutdown plan with **Keep the PC awake while waiting** also holds the PC up while it waits.
+**The PC won't sleep.** Look at **Windows requests** for programs holding it awake, and check that Deck's own Keep awake and **Keep awake while waiting** in a plan aren't on.
 
-**"Shut down when downloads finish" never fires.** It waits until it has seen a download start, then until nothing downloads for the number of minutes you set. A download that writes to an unusual folder is not seen: add that folder under **Also watch**. A leftover `.tmp` or unfinished file that is no longer being written does not count after the "Paused after" time. Very small or very slow traffic below the **Quiet below** speed counts as quiet.
+**"Shut down when downloads finish" never fires.** It first waits to see a download start. A download manager that saves elsewhere isn't seen: add its folder under **Also watch**. Traffic below **Quiet below** counts as quiet.
 
-**The plan did not run after I woke the PC.** Deck skips a set-time plan that Windows slept through, and drops plans from before a restart / sign-out. Set it again.
+**The plan didn't run after the PC woke.** Missed set times are skipped, and plans from before a restart are dropped. Set it again.
 
-**"Hibernate is turned off on this PC".** Enable hibernation in Windows (an elevated `powercfg /hibernate on`), or choose Sleep.
+**Hibernate is turned off.** Turn hibernation on in Windows (`powercfg /hibernate on` as administrator), or choose Sleep.
 
-**The graphics card idle condition is missing.** It is only offered when Deck can read an NVIDIA card.
+**The graphics card condition is missing.** It only shows when Deck can read the graphics card.
 
-**Nothing fired because I was in a game.** That is **Not while I'm playing**. The plan waits until you leave the fullscreen game or video, then gives a fresh warning.
-
-**My timer did not ring.** Timers only run while Deck is running. If you quit Deck the timer is gone.
+**My timer didn't ring.** Timers only run while Deck runs.
 
 ## FAQ
 
-**Can I have two plans at once?** No, one plan at a time. Setting a new one replaces the old one (the quick picks say so).
+**Can I have two plans?** No. A new plan replaces the old one.
 
-**Can I stop a plan after the warning has started?** Yes: press **Cancel** in the notification or on the page, or type `cancel` in search. You can also press **Do it now**.
+**Can I stop a plan during the warning?** Yes: **Cancel** in the notification or on the page, or type `cancel` in search.
 
-**Does Deck change my Windows power plan?** No. Keep awake only sets a request while Deck runs. (CPU profiles on the [CPU](cpu.md) page do work with Windows power plans, but that is separate.)
+**Does Deck change my Windows power plan?** Not from these pages. (CPU profiles can; see [CPU](cpu.md).)
 
-**Will an unsaved document be lost on shutdown?** Not unless you turn on **Force-close apps that block shutdown**. Without it, Windows waits for apps to answer, as with a normal shutdown.
+**Will unsaved work be lost on shutdown?** Only with **Force-close apps that block it** on.
 
-**Does keep awake affect anti-cheat or games?** No. It only asks Windows not to sleep; it never touches a game process.
+**Does a plan run with Deck's window closed?** Yes, while Deck runs in the tray. Not after you quit Deck.
 
-**Does the shutdown plan work with the Deck window closed?** Yes, as long as Deck is running in the tray. It does not run if Deck is quit.
-
-**Are timers and reminders sent to my phone?** Only the shutdown-plan warning can be sent out (see [Alerts](alerts.md)). Timers and break reminders show on this PC.
+**Are timers sent to my phone?** No. Only the plan warning can be sent ([Alerts](alerts.md)).

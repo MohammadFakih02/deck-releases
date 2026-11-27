@@ -16,12 +16,10 @@ import base64, json, os, re, sys
 TW, TH = 64, 36
 MIN_CELLS = 24
 MIN_SPREAD = 8.0
-# Deck uses at most this many library prints per game (MAX_PER_GAME * 2 in library.rs)
 MAX_PER_GAME = 6
 KEY = re.compile(r"^(exe|emu):[A-Za-z0-9._-]{1,64}$")
 CODE = re.compile(r"deck-death-screen:([A-Za-z0-9+/=\s]+)")
 DEFAULT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", "data", "death-screens", "library.json")
-
 
 def valid_print(p):
     """None when fine, else the reason."""
@@ -44,13 +42,11 @@ def valid_print(p):
         return "a flat picture can't be a death screen"
     return None
 
-
 def aspect(v):
     """The picture's shape (width / height x 1000) the print was taught on; 0 when unknown."""
     if isinstance(v, bool) or not isinstance(v, int) or not 0 <= v <= 10000:
         return 0
     return v
-
 
 def preview(p):
     """The print drawn in text, for the pull request: the reviewer sees what will be matched
@@ -70,13 +66,11 @@ def preview(p):
         rows.append(row)
     return "\n".join(rows)
 
-
 def made(v):
     """The teaching time, as a number Deck can read back (a u64; anything else becomes 0)."""
     if isinstance(v, bool) or not isinstance(v, int) or not 0 <= v < 2**53:
         return 0
     return v
-
 
 def read_code(body):
     m = CODE.search(body or "")
@@ -97,10 +91,8 @@ def read_code(body):
         why = valid_print(p)
         if why:
             raise ValueError(why)
-    # the name is shown in a pull request and a comment: letters, digits and a few marks only (no @mentions, links, markup)
     name = re.sub(r"[^\w .:'&()+-]", "", str(name or game))[:100].strip() or game
     return game, name, [{"mask": p["mask"], "values": p["values"], "made": made(p.get("made")), "aspect": aspect(p.get("aspect"))} for p in prints]
-
 
 def add(lib, game, name, prints):
     """Adds the prints to the library dict; returns how many were new."""
@@ -118,7 +110,6 @@ def add(lib, game, name, prints):
         del lib["games"][game]
     return n
 
-
 def main(path, body):
     game, name, prints = read_code(body)
     lib = json.load(open(path, encoding="utf-8")) if os.path.exists(path) else {"version": 1, "games": {}}
@@ -133,7 +124,6 @@ def main(path, body):
         shape = f", taught on a {p['aspect'] / 1000:.2f}:1 picture" if p["aspect"] else ""
         print(f"\nDeath screen {i + 1}{shape} (what Deck will match; '.' is left out):\n```\n{preview(p)}\n```")
     return 0
-
 
 def selftest():
     cells = 40
@@ -172,7 +162,6 @@ def selftest():
     assert main(f, code()) == 0 and json.load(open(f))["version"] == 2
     assert main(f, code()) == 1
     print("selftest ok")
-
 
 if __name__ == "__main__":
     if sys.argv[1:] == ["--selftest"]:

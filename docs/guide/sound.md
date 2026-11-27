@@ -1,179 +1,130 @@
-Where to find it: Desktop › Sound & mic
+Where to find it: Audio › Mixer
 
-# Sound & mic
+# Mixer
 
-The **Sound & mic** page controls where your sound plays, how loud everything is, which apps use which speakers, and how your microphones are set up. It also holds automatic switching: output profiles, rules that react to a headset being plugged in or an app starting, and a microphone check before calls.
+Choose where sound plays, set every volume, send apps to different outputs and switch outputs automatically.
 
-Find it under **Desktop > Sound & mic**. It has three tabs: **Playback**, **Microphones** and **Outputs & rules**. Deck reopens on the tab you used last.
+**Mixer** has two tabs: **Playback** and **Devices**. Your voice itself (the mic Deck uses, its test, clean-up and effects) is on [Mic](voice.md). Links under the title open **Taskbar › Music & volume pop-ups** and **Devices › Device batteries** (headset sidetone and auto power-off, see [Device batteries](devices.md#headset-controls)).
 
-Everything on this page uses Windows' own audio controls (the same ones the Windows volume mixer and Sound settings use). Deck does not install an audio driver, does not hook into games and does not read their memory, so it is safe with anti-cheat.
+Everything here uses Windows' own audio controls, the same ones as the Windows volume mixer and Sound settings. Deck installs no audio driver and doesn't touch games, so it is safe with anti-cheat.
 
----
+## Playback
 
-## Tab 1: Playback
+### Output
 
-### Playback devices
+One button per output Windows has turned on, up to four; the rest are under **More outputs (N)**. The default one is marked **Default output**. Click another to make it the default for apps, games and calls. A virtual cable is marked **Into voice chat**, and Deck asks first before making it your speakers.
 
-A card per speaker, headphone or other output Windows has turned on. The one in use is marked **Default playback**. Click another card to make it the default for apps, games and calls.
+- **Spatial sound** opens Windows' Sound settings, where each output has its own spatial sound choice. Deck changes nothing there.
+- **⋯ › Rename device** changes the name Windows and every app show, handy when two outputs are both called "Speakers".
+- **⋯ › Turn devices on or off** lists every output with a switch, like Windows' Enable and Disable. An output that is off disappears from all apps until you turn it back on.
 
-The panel folds down to just the device in use. **Expand** shows every device and two extra buttons:
-
-| Control | What it does |
-|---|---|
-| **Rename a playback device** | Pick a device, type a new name. It is the name Windows and every app show for it. Handy when two outputs are both called "Speakers". |
-| **Turn playback devices on or off** (shown as "On or off (N off)" when something is off) | Lists every playback device with a switch, like Windows' Enable and Disable. A device that is off disappears from Windows and from all apps until you turn it back on. Devices that are off stay in this list so you can bring them back, and a line under the folded panel says how many are off. |
-
-Recommended: turn off outputs you never use (a monitor's speakers, a virtual cable) to keep the list short. Keep at least one on.
+To switch the output from the tray, right-click the Deck icon and open **Sound output** in the Hardware group. It never changes the microphone.
 
 ### Device volume
 
-A large slider for the volume of the current default output, with a mute button and a live level bar. This is the same master volume as the Windows volume icon.
+The master volume of the default output, with mute and a live level bar, the same as the Windows volume icon. When Windows doesn't report the volume (a device just unplugged, a driver not answering), the card says **Not available** and the slider is locked until it answers.
 
-### App volumes
+### App volume
 
-One row per app that is making sound right now, with its own slider, mute button and level bar. This is the same per-app volume as the Windows volume mixer. Apps appear while they play; if nothing is playing the panel says "No app is making sound right now."
+One row per app making sound now, with its own slider, mute and level bar, the same as the Windows volume mixer. Above 12 apps the silent ones fold behind **Show quiet apps (N)**. Each row also shows which output the app plays on; click it to change it.
 
-### Playing
+### Chat mix
 
-When an app reports a song or video through Windows' media controls, a card shows the title, artist, app and state with **Previous**, **Play / Pause** and **Next** buttons. The buttons are greyed out when the app does not support that action. The pop-up music card is a separate feature; see [Music & volume pop-ups](flyouts.md).
+One dial between voice chat and the game, like the ChatMix wheel on some headsets. Off until you turn on the card's switch.
 
----
+- Turn the dial toward **Chat** to lower the game, toward **Game** to lower chat. In the middle (**Even**) both play at their own level. Double-click for the middle.
+- **Chat** lists the voice-chat apps (Discord to start with). **Add** picks from the apps playing sound now.
+- **Game** counts **Game in front** (on by default); **Add** adds other programs.
 
-## Tab 2: Microphones
+Deck only scales each app's own volume. Turning the mix off, removing an app, or the game leaving the front restores each level; after a crash, the next start does.
 
-A card per microphone Windows has turned on. The panel folds down to the default microphone; **Expand** shows all of them and a **Turn microphones on or off** button that works like the one for speakers.
+### Output equalizer
 
-### On each microphone card
+Drives [Equalizer APO](https://sourceforge.net/projects/equalizerapo/), a free program you install yourself. Without it the card shows **Needs Equalizer APO**.
 
-| Control | What it does |
-|---|---|
-| Name and chips | The short name and the full Windows name. The chip **Apps and games** marks the default recording device; **Calls** marks the one Windows uses for calls. |
-| Rename (pencil) | Changes the name Windows and apps show for the microphone. |
-| Mute (microphone icon) | Mutes or unmutes it in Windows. |
-| **Level** | How loud this microphone records, the same slider as in Windows Sound settings. Aim for your voice to reach about two thirds of the test bar and rarely touch the end. |
-| **Boost** | Extra gain in the sound driver (often +10, +20 or +30 dB) applied before the level slider. Shown only when the driver offers it; otherwise the card says "Boost: not supported by this microphone." Raise the level first and use boost only if that is not enough, because it adds hiss. |
-| **Use for apps and games** | Makes this the default recording device. Hidden on the mic that already is. |
-| **Use for calls** | Makes this the microphone Windows uses for calls. Hidden on the mic that already is. |
-| **Check mic for 5 seconds** | Starts a five-second test: a bar shows your level as you speak. Nothing is kept or sent anywhere. |
-| **Hear it on the speakers** | Windows' "Listen to this device": plays the microphone on your default speakers. Useful to check how you sound or to hear a line-in device such as a console. It needs administrator rights, and with speakers instead of headphones it can howl. Shown only for microphones that support it. |
+1. Turn on the card's switch. The state reads **Off**, **On: <curve>**, **Bypassed** or **On, not linked yet**.
+2. Add the line `Include: deck-eq.txt` to Equalizer APO's `config.txt` (**Copy the line** helps). Until then the equalizer has no effect. Deck never edits `config.txt`.
+3. Shape the ten bands (31 Hz to 16 kHz, ±12 dB): drag a handle, use the arrow keys, or double-click it for 0 dB. Or pick **Flat**, **Bass**, **Footsteps** or **Voice**. The preamp is set for you so boosted bands can't clip.
 
-### Check the mic when a call app starts
+- **Headphones…** holds AutoEq corrections for 16 popular models, included with Deck (nothing is downloaded). **Earlier curve** brings back what you had.
+- **Other headphones: paste a profile**: paste your model's `ParametricEq.txt` from AutoEq and press **Use this profile**.
+- **Bypass (A/B)** keeps the file but writes no filters, to compare.
+- **Remove and restore** turns the equalizer off and restores the file that was there before Deck's first write.
 
-| Setting | What it does | Default | Recommended |
-|---|---|---|---|
-| **Check the mic when a call app starts** | When one of these programs starts, Deck looks at the microphone Windows uses for calls: Zoom, Teams, Discord, Skype, Webex, Cisco Collaboration Host, Slack or WhatsApp. If something is wrong a notification says "Check your microphone before the call". | Off | On, if you take calls. |
+Writing into Equalizer APO's folder needs administrator. The equalizer works on a whole output, not per app. Apps that use exclusive mode bypass it.
 
-What it warns about:
+### Now playing
 
-- no microphone set up for calls
-- the call microphone is muted, or turned almost all the way down
-- "Listen to this device" is on for it, so you may hear yourself
-- calls use a different microphone from the one apps use (it names both)
+When an app reports a song or video to Windows, this card shows it with **Previous**, **Play** / **Pause** and **Next**. A grayed-out button means the app doesn't offer it. The pop-up music card is a separate feature: see [Music & volume pop-ups](flyouts.md).
 
-It only reads settings. It does not record. Only a call app that starts while Deck runs is noticed; one already open when Deck starts is not.
+## Devices
 
-### Five-second microphone check
+### Microphones
 
-After a **Check mic for 5 seconds** test, a panel shows the measurements:
+One row per microphone, with chips for its jobs: **Apps** (the default for apps), **Calls**, **Muted** and **Listen on**. A row's ⋯ menu has:
 
-- **Peak** in dBFS (how close the loudest moment came to the limit; 0 is the limit)
-- **Noise floor** (the background level; "not measured" if you never paused)
-- **Clipping**, the share of the recording that hit the limit
+- **Use for apps and games** and **Use for calls**
+- **Mute** / **Unmute**
+- **Listen to this device…**: plays the mic on your speakers. It asks first, needs administrator and can howl without headphones.
+- **Mic boost…**: extra gain in the driver, only when the driver has it. Raise the input volume on Mic first; boost adds hiss.
+- **Rename…**
 
-Plain advice follows. Examples: your voice reaches the limit and distorts (lower the level or boost); nothing loud was heard (speak up, check mute, raise the level); very quiet (raise the level or boost); level is good; a lot of background noise (move the microphone closer and lower the boost). Pause briefly during the test so the background noise can be measured. Nothing is saved.
+**Turn microphones on or off** works like Windows' Enable and Disable.
 
----
+**Test mic on calls** (off by default) checks your call microphone when Zoom, Teams, Discord, Skype, Webex, Slack or WhatsApp starts. It warns when the mic is missing, muted, nearly silent or playing on your speakers, or when calls use a different mic from apps. It only reads settings and never records.
 
-## Tab 3: Outputs & rules
+### Auto switching
+
+The top card turns automatic switching on or off. It starts off. **Remember app volumes** (off by default) keeps each app's last volume for each output, so speakers and headphones can have different app levels.
 
 ### App outputs
 
-Choose a different output for each app that is playing sound, for example a game on your headset while music stays on the speakers. Each row has a drop-down: **Follow Windows default** or one of your outputs.
+Send each app to its own output, for example a game on your headset and music on the speakers. One row per app playing sound, one column per output; **Default** follows Windows. Apps appear only while they play: start something and press **Refresh**. System sounds always follow the default output.
 
-- An app appears here while it is making sound. If the list is empty, start playing something in the app and press **Refresh app outputs**.
-- Deck sets the choice for all three of Windows' audio roles for that app, the same way Windows' App volume and device preferences page does.
-- If your Windows version does not allow this, the panel shows the reason instead of the list.
-- If the app closes before you choose, Deck says "That app isn't playing sound any more." Start it again and retry.
+### Output rules
 
-**Undo sound changes** restores the previous values of everything Deck changed on this tab (default outputs, app outputs, output volume, app volumes) and turns off both **Automatic output switching** and **Remember each app's volume**. If an output is unplugged or an app is closed, Undo may report that some changes could not be restored; reconnect or reopen it and press Undo again.
+**Add rule** picks when it fires:
 
-### Output profiles and automatic switching
+| When | What it does |
+| --- | --- |
+| **A headset or output connects** | When an output whose name contains your text appears, makes it the default (**Use the connected output**) or applies an output profile. |
+| **An app starts (output goes back when it closes)** | Applies an output profile while the program runs. Your earlier outputs and volumes come back when it closes, even after a restart or crash. |
+| **A game is in front (output goes back when it is not)** | The same, while that game is in front. A quick Alt+Tab doesn't flip it. |
 
-Open the fold **Output profiles and automatic switching**.
+App rules need a saved output profile and **Auto switching** on. While a game is in front, only that game's rules switch anything. A rule that is working says **In force now**. If Deck can't restore the earlier output (it was unplugged), the rule shows **Retrying reset · 2 min**; after that, choose the output yourself on Playback. Rules only react to devices and apps that appear after Deck has started.
 
-**Save current output profile** stores a named setup:
+### Reset changes
 
-| Field | What it does |
-|---|---|
-| **Profile name** | Required. |
-| **Playback output** | The device to make the default for apps, games and calls. |
-| **Calls output** | Optional; "Same as playback" or another device just for calls. |
-| **Include current app outputs and app volumes** | Also saves the output and volume of each app that is playing sound when you save. |
+**Reset all** restores the outputs and volumes Deck changed on this page and turns off **Auto switching** and **Remember app volumes**.
 
-A profile is applied with its **Apply** button, and removed with **Delete** (after asking). Applying a profile switches the output, then sets the saved app outputs and volumes for apps that are running. If a device in the profile is not connected, Deck says which; the rest is still applied. You can keep 24 profiles.
+### Output profiles
 
-Profiles never change the recording (microphone) defaults. Choose microphones on the Microphones tab or in Windows Sound settings.
-
-**Add an output rule** has two kinds:
-
-| Rule | When it fires | What it does |
-|---|---|---|
-| **A headset or output connects** | An output whose name contains the text you typed ("Part of the output name", not case-sensitive) appears. | Makes that output the default, or applies a profile you pick. Choose "Use the connected output" for the first. |
-| **An app starts** | A program you named ("Program file name, including .exe") starts. | Applies the output profile you pick. A profile is required for this kind. |
-
-You can keep 24 rules, which are listed as "When an output containing ... connects" or "When ... starts". Delete one with **Delete rule**.
-
-Two switches control the automation:
-
-| Setting | What it does | Default | Recommended |
-|---|---|---|---|
-| **Automatic output switching** | Applies enabled rules when an app starts or an output connects. | Off | On if you have rules. Everything here stays off until you turn it on. |
-| **Remember each app's volume** | Keeps each app's last volume separately for each output, and restores it when the app starts playing. Lets speakers and headphones have different app levels. | Off | On if you swap outputs often. |
-
-Notes:
-
-- Rules look at devices that appear after Deck has started watching. An output that was already plugged in when Deck started does not trigger a rule.
-- Deck checks every couple of seconds, so a switch can lag a moment behind plugging in.
-- "Remember each app's volume" saves the last level you set for an app on an output, and sets it again the next time the app starts playing there. Changes you make later are remembered. It holds a limited number of entries.
-
----
+**Save current output profile** stores the **Output**, an optional **Calls output** and, with **Include current app outputs and app volumes**, each playing app's output and volume. **Apply profile** applies one; a device that isn't connected is skipped and named. Profiles never change the microphone.
 
 ## Recommended setup
 
-- **Headset and speakers:** save an output profile for each, add a "headset connects" rule that applies the headset profile, and turn on **Automatic output switching**.
-- **Gaming with chat:** set the game to your headset and the chat/music app to your speakers under **App outputs**, and save it as a profile that includes app outputs.
-- **Calls:** set **Use for calls** on your headset microphone, turn on **Check the mic when a call app starts**, and run **Check mic for 5 seconds** once to set a good level.
-- **Laptops:** if you dock often, a "dock connects" rule saves you opening Windows Sound settings.
-- If you ever feel lost, **Undo sound changes** returns the page to how Deck found things.
-
----
+- **Headset and speakers:** save a profile for each, add an **A headset or output connects** rule, and turn on **Auto switching**.
+- **Gaming with chat:** put the game on your headset and music on the speakers in **App outputs**, and save it as a profile that includes app outputs.
+- **Calls:** choose **Use for calls** on your headset mic, turn on **Test mic on calls**, and run **Test (5 s)** on [Mic](voice.md) once.
 
 ## Troubleshooting
 
-**An app is missing from App volumes or App outputs.** Apps only appear while they are making sound. Play something, then press **Refresh app outputs**.
+**An app is missing from App volume or App outputs.** Apps only appear while they make sound. Play something, then press **Refresh**.
 
-**The device I want isn't listed.** It may be turned off. Expand the panel and use **Turn playback devices on or off** (or the microphone equivalent). Disabled devices are listed there with their switch.
+**The device I want isn't listed.** It may be turned off. Use **⋯ › Turn devices on or off** on Output, or **Turn microphones on or off** on Microphones.
 
-**"Not connected now" when applying a profile.** A device in the profile is unplugged. Plug it in and apply again; the connected parts were still applied.
+**A rule didn't fire.** Check that **Auto switching** is on, the rule's text is part of the output's name, and an app rule has a profile and a program name with `.exe`.
 
-**A rule didn't fire.** Check that **Automatic output switching** is on, the rule's text really appears in the output's name (look at the full name on the Playback tab), and for app rules that the program name includes `.exe` and an output profile is chosen. Rules react to things that start or connect after Deck is running.
+**I hear an echo or howl.** **Listen on** is set on a mic while you use speakers. Choose **Turn Listen off** in its menu.
 
-**The mic test shows no movement.** Check that the microphone is not muted in Windows or physically, and that the right microphone is selected. The bar only moves for the five seconds of the test.
-
-**"Hear it on the speakers" is missing or fails.** Not every microphone supports it, and changing it needs administrator rights.
-
-**I hear an echo or howl.** "Hear it on the speakers" is on while using speakers. Turn it off.
-
-**Boost isn't available.** The microphone's driver does not offer it. Use the level slider.
+**Mic boost is missing.** The microphone's driver doesn't offer it.
 
 ## FAQ
 
-**Is this safe with anti-cheat?** Yes. Deck changes volumes and default devices through Windows. It does not touch games.
+**Is this safe with anti-cheat?** Yes. Deck changes volumes and devices through Windows and doesn't touch games.
 
-**What does Deck change on my PC?** Default playback and recording devices, volumes, per-app outputs, microphone mute/level/boost, the "Listen to this device" flag, device names and enabled state, only when you ask (or when you enable automatic switching). Before a change, Deck records the old value so **Undo sound changes** can put it back.
+**What does Deck change?** Default devices, volumes, app outputs, mic mute, boost and Listen, device names and on/off, only when you ask or when a rule fires. **Reset all** restores what Deck changed.
 
-**Does anything record my voice?** No. The five-second check measures levels in memory and keeps nothing. Only the measurements of the last test are shown.
+**Does anything record my voice?** No. The mic test measures levels in memory and keeps nothing.
 
-**Do I need a driver or other software?** No. (Phone as microphone is a different feature and does need a virtual cable; see [Phone](phone.md).)
-
-**Are the changes kept after a restart?** Windows keeps default devices and volumes. Deck keeps profiles, rules and the two switches.
+**Are changes kept after a restart?** Windows keeps default devices and volumes. Deck keeps profiles, rules and the switches.

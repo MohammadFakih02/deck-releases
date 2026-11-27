@@ -2,181 +2,150 @@ Where to find it: Settings › Search
 
 # Launcher and search
 
-Deck's search box is a launcher. Open Deck, type, and press Enter. It finds apps, games, Deck's own pages and actions, files, clipboard items and snippets, answers sums and conversions, runs short commands, and runs your own saved links, commands and action chains.
+The search box at the top of Deck is a launcher: it finds apps, games, pages, settings and files, does sums, and runs commands and your saved actions.
 
-You can use it from any page: the search box sits at the top of Deck. How you open Deck (hot corner, tray icon, Start menu, an optional keyboard shortcut) is in [Settings](settings.md).
-
-There is no page called "Launcher". The things you can set up for it live in **Settings › Search** (web provider, saved actions, folders to search) and **Settings › Desktop** (snippets).
-
----
+There is no page called "Launcher". Its options are in **Settings › Search** ([Settings](settings.md#search)); snippets are on the [Clipboard](clipboard.md) page.
 
 ## Using the search box
 
-Start typing. Results appear straight away in groups. The best match is selected.
+Open Deck and start typing. Results appear in groups, with the best match selected.
 
 | Key | Action |
 |---|---|
 | Up / Down | Move the selection. |
-| Enter | Run the selected result. If the results for your last letters are still arriving, Deck waits for them so Enter never runs a result that belonged to the previous letters. |
-| Escape | Clear the box; press it again on an empty box to hide Deck. |
+| Enter | Run the selected result. If results for your last letters are still arriving, Deck waits for them. |
+| Esc | Clear the box. Press it again on an empty box to hide Deck. |
 
-Hover and click also work. Apps and files have a small folder button, "Show in folder". Right-click an app for its menu.
+- Click also works: pointing at a result selects it, and the **x** in the box clears the search like Esc. Apps and files have a **Show in Explorer** button; right-click an app for its menu.
+- The words you typed are marked, and Deck results show where they live (**Group › Page › Tab**).
+- After you open a result, **Back to results** (or the mouse's Back button) brings the results back. Esc on a cleared search returns to the page you were on.
+- Click the empty box to see your **Pinned** pages, your 5 most **Recent** pages and the **Windows tools**. The pin button on a page or tab result adds or removes it from **Pinned**.
 
 ### How matching works
 
-Search is forgiving about how you type:
-
-- Capitals and accents do not matter: `Clípboárd` finds Clipboard.
-- Words can come in any order, and you can type part of a word (`calib` finds Calibrate & extras).
-- Simple plurals match (`profiles` and `profile`).
-- In a word of five letters or more, one wrong, missing, extra or swapped letter is forgiven: `tempezature` still finds Sensors. Words of one to three letters are never guessed at.
-
-Deck results are ordered by how close the match is: the exact name first, then names that start with what you typed, then words inside a name, then other text and the `?` help. A page or tab beats a control with the same words, and **CPU** and **GPU** come before diagnostics that mention them. Eight Deck results show at first; **More Deck results** shows the rest. A saved quicklink or command whose keyword is exactly the first word you typed comes before ordinary name matches.
-
-When nothing matches, the list says "No matches" and offers up to three nearby page or tab names, with the web search below them.
-
-If a result leads to a setting that is hidden by your current options (for example a control that only shows when another switch is on), Deck opens the owning page and says why the row is not shown instead of landing nowhere. Clearing the search with Escape brings back the page you were on and its scroll position.
+- Capitals and accents don't matter, and words can come in any order or be cut short (`calib` finds Calibrate).
+- Simple plurals match.
+- In words of five letters or more, one wrong, missing, extra or swapped letter is forgiven. Words of one to three letters are never guessed.
+- Exact names come first, then names that start with what you typed, then other words. A page or tab beats a control with the same words. Eight Deck results show at first; **More Deck results** shows the rest.
+- A saved action whose keyword is exactly your first word comes first.
+- With no match, the list says **No matches** and suggests up to three nearby pages, with web search below.
+- A result for a setting that your options hide opens its page and says why the row isn't shown.
 
 ### What is searched
 
 | Group | What it holds |
 |---|---|
-| **Calculator** and **Conversion** | An answer shown on top. Enter copies it. |
+| **Calculator**, **Conversion** | The answer on top. Enter copies it. |
 | **Do it** | Commands such as timers (below). |
-| **Apps** | Start-menu apps and Store apps. Apps you open often rise to the top. |
-| **Deck** | Every Deck page, **every tab of a page and every setting**, plus tools and actions. Choosing a tab or setting opens the exact place and lights the row for a moment; the result says where it is (area › page › tab). Old names still work: "Overlay" finds **Performance overlay**, "Flyouts" finds **Music & volume pop-ups**. Hidden pages (see [Settings › Features](settings.md#features)) are found only by their full name and lead to Features. Actions include: colour picker, copy text from the screen, ruler, keep awake, dark/light mode, lock, sleep, restart, shut down, clean up, speed test, switching sound output to a named device, opening a saved workspace, every Windows tweak by name, and so on. Power actions ask you to confirm. |
-| **Games** | Installed Steam and Epic games. Opens through the store's launcher. |
-| **Files** | Files and folders from Deck's own file index (see below). Enter opens; the folder button shows it in Explorer. Needs at least 2 letters. |
-| **Quicklink**, **Custom command**, **Chained actions** | Your saved actions (see below). |
-| **Snippets** | Your saved texts, found by name or keyword. |
-| **Clipboard** | Text from your clipboard history, from 3 letters. Enter pastes (or copies, see [Clipboard](clipboard.md)). |
-| **Web** | "Search the web for ..." using the provider chosen in Settings › Search. |
+| **Apps** | Start menu and Store apps. Apps you open often rise to the top. |
+| **Deck** | Every page, tab and setting, plus tools and actions: color picker, text extractor, ruler, Keep awake, dark or light mode, lock, sleep, restart, shut down, speed test, switching sound output, opening a saved workspace, every Windows tweak. Choosing a setting opens its page and lights the row. Old names still work ("Overlay" finds **Performance overlay**). Hidden pages are found only by their full name. Power actions ask first. |
+| **Games** | Installed games. They open through their store's launcher. |
+| **Files** | Files and folders from Deck's file index (below). From 2 letters. |
+| **Quicklink**, **Custom command**, **Chained actions** | Your [saved actions](#saved-actions). |
+| **Snippets** | Your saved texts, by name or keyword. |
+| **Clipboard** | Text from your clipboard history, from 3 letters. Enter pastes or copies ([Clipboard](clipboard.md)). |
+| **Web** | Search the web with the provider chosen in Settings › Search. |
+
+Start with a letter and a space to search one source: `w ` lists open windows (none while a game is in front), `c ` searches only the clipboard, `d ` shows the display controls. A saved action with that keyword wins.
+
+When a source can't answer, one line says so (for example "Files not searched: the file index is turned off.") and the other results still appear. Files from an index more than a day old say how old it is.
 
 ### Calculator
 
-Type a sum: `12*7`, `(5+3)^2`, `200 + 10%` (adds ten percent), `200 - 10%`, `17 % 5` (remainder), hex numbers like `0xFF`. Plain numbers or words are not treated as sums. Enter copies the answer.
+Type a sum: `12*7`, `(5+3)^2`, `200 + 10%`, `17 % 5` (remainder), `0xFF`. Enter copies the answer.
 
 ### Conversions
 
 Type a number, a unit, `to` (or `in`, `as`, `=`, `->`) and the unit you want:
 
-- Length, weight, volume, area, time, data size, speed, energy and temperature: `12 km to miles`, `5 ft in cm`, `70 kg to lb`, `20 c to f`.
+- Length, weight, volume, area, time, data size, speed, energy and temperature: `12 km to miles`, `70 kg to lb`, `20 c to f`.
 - Number bases: `255 to hex`, `0xff to dec`, `10 to bin`.
-- Currency: `100 usd to eur`. Rates are downloaded from a public rate service when you first convert a currency and cached on your PC; with no internet the last cached rates are used.
-
-Enter copies the result.
+- Currency: `100 usd to eur`. Rates download from a public service the first time and are cached; offline, the last rates are used.
 
 ### Commands
 
 | Type | What it does |
 |---|---|
 | `timer 10m` (or `t 10m`) | Starts a 10-minute timer. |
-| `sleep in 30m`, `shutdown in 1h`, `restart in ...`, `lock in ...` | Makes a plan to do that after a delay (with a confirmation, and it can be cancelled). See [Power](power.md). |
-| `awake 2h` (also `keep awake`, `caffeine`, `stay awake`) | Keeps the PC awake for that time. |
-| `cancel` or `stop` (while a plan is active) | Cancels the current shutdown/sleep/restart plan. |
-| `kill discord` (also `close`, `end`) | Offers to end a running program matching the name. It asks first, because unsaved work is lost. Protected system programs are not offered. |
+| `sleep in 30m`, `shutdown in 1h`, `restart in …`, `lock in …` | Plans that action after a delay, after you confirm. See [Shut down when…](power.md#shut-down-when). |
+| `awake 2h` (also `keep awake`, `stay awake`) | Keeps the PC awake for that time. |
+| `cancel` or `stop` | Cancels the current plan. |
+| `kill discord` (also `close`, `end`) | Offers to end a program by name, after you confirm. Protected system programs aren't offered. |
 | A web address such as `example.com` | Offers to open it. |
 
 ### Local file search
 
-Deck builds a small file-name index so files can be found from the search box (it does not read file contents). Controls are in **Settings › Search > Local file search**:
+Deck keeps an index of file names (not their contents) so search can find files. Set it up in **Settings › Search › Local file search**: **File search** turns it on or off, **Search folders** lists the folders, with **Add folder** and **Refresh**. See [Settings](settings.md#local-file-search).
 
-| Setting | What it does | Default |
-|---|---|---|
-| **Find files from the search box** | Turns the index on or off. The line under it shows how many files and folders were read and how long it took. It refreshes every 30 minutes. | On |
-| **Folders search looks in** | The folders to index. **Add folder** and the **x** next to each folder change the list. **Refresh now** re-reads them. | Desktop, Documents, Pictures, Videos, Music and OneDrive of your account |
+## Saved actions
 
-Program folders, `node_modules`, `.git`, build output and AppData are skipped. If the file limit is reached or some folders cannot be read, the page says "Partly indexed" and names the folders: choose fewer folders or fix permissions, then refresh.
+In **Settings › Search** the **Saved actions** card holds quicklinks, custom commands and chains. Create one with **New quicklink**, **New custom command** or **New chain**; each has **Edit**, **Run** and **Delete**.
 
----
+Each action has a **Name** and a **Launcher keyword** (no spaces, up to 32 characters, unique; up to 100 actions). Type the keyword in search, plus any extra text, to find it.
 
-## Settings › Search
-
-### Web search
-
-| Setting | What it does | Default |
-|---|---|---|
-| **Search provider** | The site used for the "Search the web" result: Google, DuckDuckGo, Bing, Brave or YouTube. | Google |
-
----
-
-## Quicklinks, custom commands and chains
-
-Under **Settings › Search** there is a panel called **Quicklinks, custom commands and chained actions**. Each one has a name and a **keyword** (no spaces, up to 32 characters; each keyword must be unique; up to 100 saved actions). Type the keyword in the search box, followed by any extra text, and the action shows in the results. Typing part of the name also finds it.
-
-Choosing a saved action first shows a **preview** of exactly what it will do, then asks you to press **Run**. Quicklinks run straight after you confirm. For commands and chains, the first time you run one the box says "First use this session: review every action before running." Deck remembers that you reviewed that exact action; if you edit it, it asks again. When it finishes, a Results box lists every step as done, failed or skipped.
-
-The panel lists each action as `keyword · name` with **Edit**, **Run** and **Delete** buttons. **New quicklink**, **New custom command** and **New chain** create one.
+Running an action first shows exactly what it will do, then waits for **Run**. The first time you run a command or chain in a session it says "First use this session: review every action before running." If you edit it, you review it again. Afterwards a results box lists each step as done, failed or skipped.
 
 ### Quicklink
 
-A web search shortcut. Give it a **Website URL template, with {query}**, for example `https://example.org/search?q={query}`. Typing `keyword some words` opens that address with the words safely encoded in place of `{query}`.
+A web search shortcut. Enter a **Website URL template, with {query}**, such as `https://example.org/search?q={query}`. Typing `keyword some words` opens it with the words in place of `{query}`.
 
-Rules: it must start with `http://` or `https://`, must not contain a username or password, and `{query}` must be in the path or query string, not the host name. Quicklinks open in your default browser.
+The address must start with `http://` or `https://`, contain no login details, and keep `{query}` out of the host name.
 
 ### Custom command
 
-Runs one program of yours.
+Runs one of your programs.
 
 | Field | Meaning |
 |---|---|
-| **Full program file (.exe)** | The full path to an `.exe`. A relative path is refused. |
-| **Arguments, one per line; {query} is optional** | Up to 64 arguments, one per line, no quotes needed. `{query}` is replaced by the text you typed after the keyword. |
-| **Time limit, seconds** | From 1 to 600. The program, including programs it starts, is stopped at the limit. |
+| **Full program file (.exe)** | The full path to an `.exe`. |
+| **Arguments, one per line; {query} is optional** | Up to 64 arguments, no quotes needed. `{query}` becomes the text after the keyword. |
+| **Time limit, seconds** | 1 to 600. The program, and anything it starts, stops at the limit. |
 
-The program runs as your normal signed-in user, never as administrator, and is placed in a job that ends with the time limit. Deck shows the exact command line in the preview before running.
+The program runs as your normal account, never as administrator.
 
-### Chained actions
+### Chains
 
-Runs up to 16 steps in order. If one step fails, the rest are skipped ("Not run because an earlier step failed"). The step types:
+Up to 16 steps run in order. If a step fails, the rest are skipped. Use **Add step**, **Move up** and **Remove step** to arrange them.
 
 | Step | Does |
 |---|---|
-| **Switch sound output** | Makes an output device the default. Use **Undo sound changes** on [Sound & mic](sound.md) to go back. |
-| **CPU profile** | Applies one of your CPU profiles. See [CPU](cpu.md). |
-| **GPU profile** | Applies one of your GPU profiles. See [GPU](gpu.md). |
+| **Switch sound output** | Makes an output the default. **Reset changes** on [Mixer](sound.md) goes back. |
+| **CPU profile** | Applies a CPU profile ([CPU](cpu.md)). |
+| **GPU profile** | Applies a GPU profile ([GPU](gpu.md)), with the same crash guard as the GPU page. |
 | **Power plan** | Switches the Windows power plan. |
-| **Open app** | Launches an app from your installed apps. |
+| **Open app** | Opens an installed app. |
 
-Use **Move up** and **Remove step** to arrange steps. **Undo chain's power plan** (in the panel) puts back the power plan that was active before the first chain changed it.
-
-CPU and GPU steps use the same checked switch as the profile pages, including their crash guards.
-
----
+**Restore power plan** puts back the power plan you had before a chain changed it.
 
 ## Snippets
 
-Short, reusable texts. Create them under **Settings › Desktop › Snippets** (see [Clipboard](clipboard.md)). In the search box, type the snippet's keyword (or part of its name) and press Enter on the result: it pastes (or copies, depending on the Clipboard "On double-click or Enter" setting). In the text, `{date}`, `{time}`, `{datetime}` and `{clipboard}` are filled in at the moment you use it.
-
----
+Short texts you reuse. Create them under **Snippets** on the [Clipboard](clipboard.md) page. In search, type the snippet's keyword or name and press Enter to paste it. `{date}`, `{time}`, `{datetime}` and `{clipboard}` are filled in when you use it.
 
 ## Recommended setup
 
-- Add 2 or 3 quicklinks for sites you search often (a video site, a documentation site, a map).
-- Make a "gaming" chain: switch sound to your headset, apply your gaming CPU and GPU profiles, switch the power plan, open your game launcher. Make a "quiet" chain to undo it. Each is one keyword away.
-- Keep the file index to the folders you really use; fewer folders means a fast, complete index.
-- Learn the `timer`, `awake` and `kill` commands.
+- Add 2 or 3 quicklinks for sites you search often.
+- Make a "gaming" chain (headset, gaming CPU and GPU profiles, power plan, game launcher) and a "quiet" chain to go back.
+- Index only the folders you use.
+- Learn `timer`, `awake` and `kill`.
 
 ## Troubleshooting
 
-**The app I want does not show.** Try fewer letters. If an app was only just installed, give Deck a moment and search again.
+**An app doesn't show.** Type fewer letters. A just-installed app may take a moment.
 
-**Files do not show.** Check **Find files from the search box** is on, the folder is in the list and the page does not say "Partly indexed". Search needs at least two letters. File names only are indexed.
+**Files don't show.** Check that **File search** is on, the folder is in the list, and the page doesn't say **Partly indexed**. Type at least two letters. Only file names are indexed.
 
-**Currency conversion says nothing.** It needs rates. Connect to the internet once so Deck can download and cache them.
+**Currency conversion shows nothing.** Connect to the internet once so Deck can get the rates.
 
-**A saved action says the preview expired.** A preview lasts two minutes. Open it again and run.
+**A saved action says the preview expired.** A preview lasts two minutes. Open it again.
 
-**My chain stopped halfway.** A step failed; the result box says which and why. Fix that step (for example the output device is unplugged) and run again.
+**A chain stopped halfway.** The results box says which step failed and why. Fix it (for example, plug in the output device) and run it again.
 
-**A quicklink is refused.** The address needs `http://` or `https://`, no login details, and `{query}` outside the host name.
+**A quicklink is refused.** It needs `http://` or `https://`, no login details, and `{query}` outside the host name.
 
 ## FAQ
 
-**Is it safe to run custom commands?** They are only what you create. Deck shows the full command line, asks for review the first time and again after any edit, runs it as your normal user (not administrator) and stops it at the time limit.
+**Are custom commands safe?** They run only what you created. Deck shows the full command, asks for a review the first time and after each edit, runs it as your normal account and stops it at the time limit.
 
 **Does the file index send anything online?** No. It is a list of file names on this PC.
 
-**Does anything in the launcher touch games?** No. Launching a game just opens it through its store, like double-clicking its shortcut.
-
-**Can I change the keyword later?** Yes, edit the action. Keywords must be unique.
+**Can I change a keyword later?** Yes, edit the action.

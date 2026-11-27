@@ -1,156 +1,149 @@
-Where to find it: Desktop › Clipboard
+Where to find it: Taskbar › Clipboard
 
 # Clipboard
 
-The **Clipboard** page keeps a history of what you copy (text, images and files), lets you search it, pin the things you want to keep, paste an old item back, change text before you paste it, and store snippets you type often.
+A history of what you copy (text, images and files) that you can search, pin, group and paste back, plus snippets and the paste stack.
 
-Find it under **Desktop > Clipboard**. The tabs are **Text**, **Images**, **Files** and **Pinned**. Windows' own Win+V history keeps working; Deck's history is separate.
-
-Deck does not send your clipboard anywhere. The history is stored on this PC only. Items that a password manager marks as private are never stored (see [Privacy](#privacy)).
-
----
+The tabs are **Text**, **Images**, **Files** and **Pinned**. Windows' own Win+V history keeps working; Deck's history is separate. The history stays on this PC, and copies a password manager marks as private are never kept (see [Privacy](#privacy)).
 
 ## The history
 
 ### The list
 
-Each tab shows one kind of item, newest first, grouped under **Pinned**, **Today**, **Yesterday** and **Earlier**. Each card shows:
+Each tab shows one kind of item, newest first, under **Pinned**, your groups, **Today**, **Yesterday** and **Earlier**. Each card shows the kind, a preview (text, a thumbnail or file names) and details: how long ago, the source app, a link's website, the length of text or the size of an image, and **Wiped within a minute** for likely secrets.
 
-- an icon for the kind (text, link, image, files),
-- a preview (the first 600 characters of text, a thumbnail of an image, or the file names),
-- small details: **Pinned**, "Wiped within a minute" (see below), how long ago it was copied, the app it was copied from, a link's website, the number of characters of text or the size of an image.
-
-The list shows 120 items at a time; scroll to the end, or press **Show N more**, for the rest. The header counts every item kept.
+The list shows 120 items at a time; press **Show N more** for the rest.
 
 ### Searching
 
-The **Search clipboard history** box filters by text, file names and the app the item came from. Tick **Search all tabs** to include every kind of item; leave it unticked to search only the current tab.
+**Search history** filters by text, file names, group and source app. Select **Search all tabs** to search every kind of item.
 
-### Selecting, pasting and keyboard
+Start with `re:` for a regular expression: `re:\d{5}` finds five digits in a row, `re:^https?://` finds links. Case doesn't matter. A broken pattern says so.
+
+### Groups
+
+1. Select an item and type a name under **Group** (or pick an existing one).
+2. Press **Put in group**.
+
+Groups show A to Z under **Pinned**. Up to 20 groups, names up to 40 characters. Grouped items are kept like pinned ones. **Remove from group** returns an item to its day.
+
+### Selecting, pasting and keys
 
 | Action | Result |
 |---|---|
-| One click | Selects the item and shows it on the right. |
-| Double-click or Enter | Pastes the item into the app you were using, or just copies it, depending on the **On double-click or Enter** setting. |
-| Arrow keys | Move the selection. They keep working after you click an item. |
+| Click | Selects the item and shows it on the right. |
+| Double-click or Enter | Pastes into the app you were using, or only copies, as set in **On double-click or Enter**. |
+| Arrow keys | Move the selection. |
 | Delete | Removes the selected item. |
 
-If you Tab to a different item than the selected one, Enter and Delete leave it alone; Enter on the focused item selects it first.
+Keys work while you aren't typing in a box.
 
-The keys work as long as you are not typing in a box.
-
-### The selected item (right side)
+### The selected item
 
 | Control | What it does |
 |---|---|
-| **Paste** / **Copy** | The main button follows the **On double-click or Enter** setting. When it says Paste, a second **Copy** button copies without pasting. |
-| Pin (pin icon) | Pinned items are kept, are not counted towards the history limit, and are never wiped. |
-| Send to phone | Sends the text (or a single copied file) to your connected phone. See [Phone](phone.md). |
-| Delete (bin) | Removes the item. |
-| Preview | Text shows in full up to the first 20,000 characters; copy and paste still use all of it. Images show larger with their size. Files list their names and full paths, with **Show in folder** for each file. |
-| Counts | Characters, words and lines for text. |
+| **Paste** / **Copy** | The main button follows **On double-click or Enter**. When it says Paste, a second **Copy** copies without pasting. |
+| **Pin** | Pinned items are kept forever, don't count towards the limit and are never wiped. |
+| **Send to phone** | Sends the text or one file to your connected [phone](phone.md). |
+| **Delete** | Removes the item. |
+| **Float on screen** | Images only: shows the picture in a small window that stays on top and never takes the keyboard. |
+| Preview | Text in full (the first 20,000 characters show; paste uses all of it), a larger image, or file names and paths with **Show in folder**. |
 
 ### Paste as
 
-For text items, the **Paste as** chips put a changed version on the clipboard (and paste it if pasting is on). The item in your history is not changed.
+For text, the **Paste as** chips copy a changed version (and paste it if pasting is on). The history item isn't changed.
 
-| Chip | Result |
-|---|---|
-| **Plain text** | The text with formatting removed. |
-| **Upper case**, **Lower case**, **Title case** | Changes the letter case. |
-| **Trim spaces** | Trims each line, collapses runs of spaces, trims the whole. |
-| **One line** | Joins lines into a single line. |
+- **Plain text**, **Upper case**, **Lower case**, **Title case**
+- **Trim spaces** (trims lines and collapses runs of spaces)
+- **One line** (joins the lines)
 
-### Change it (preview first)
+### Preview first
 
-A second set of chips for text shows a preview before anything is copied:
+These show the result before anything is copied:
 
-| Chip | Result |
-|---|---|
-| **Format as JSON** | Pretty-prints JSON (it says so if the text is not valid JSON). |
-| **Lines to CSV** | One value per non-empty line, joined with commas, quoted where a spreadsheet needs it. |
-| **Remove link tracking** | Removes tracking parameters (such as campaign tags) from every link in the text. |
-| **Hide private details** | Replaces emails, card numbers, keys and long numbers with labels. |
+- **Format as JSON** (says so if the text isn't valid JSON)
+- **Lines to CSV** (one value per line, joined with commas)
+- **Remove link tracking** (drops campaign tags from links)
+- **Hide private details** (replaces emails, card numbers, keys and long numbers with labels)
 
-Then **Copy the changed text** (or **Paste the changed text**), or **Close preview**. If nothing would change, the page says "Nothing to change in this text." The original stays in your history.
+Then **Copy the changed text** (or **Paste the changed text**) or **Close preview**. The original stays in your history.
 
-### Images
+### Text from an image
 
-For an image item, **Copy text from this image** reads the text in the picture using Windows' built-in text recognition and shows it, with **Copy the text**. The image is untouched. It uses the recognition languages installed in Windows.
+**Extract text from this image** reads the text with Windows' built-in text recognition, in the languages installed in Windows. **Copy the text** copies it.
 
 ### Clear history
 
-**Clear all history (keeps pinned)** deletes unpinned items from every tab, after asking. It is hidden on Pinned.
+**Clear all** deletes unpinned items from every tab, after asking.
 
----
+## Paste stack
+
+Copy several things, then paste them in order.
+
+1. Turn on **Paste stack** (the row under the summary).
+2. Copy what you need, one after the other, from any app.
+3. Press **Copy next**: the oldest waiting copy goes on the clipboard. Paste it with Ctrl+V.
+4. Repeat until the waiting count is 0.
+
+Deck never presses keys for you. Likely secrets and password-manager copies never join the stack. It holds up to 50 copies in memory only, and **Empty** clears it.
 
 ## Clipboard settings
 
-These live in **Settings › Desktop**.
+These sit on the page, under the history.
 
 ### Clipboard history
 
-| Setting | What it does | Default | Recommended |
-|---|---|---|---|
-| **Keep clipboard history** | Master switch. Off stops recording. | On | On, unless you never want a history. |
-| **Keep images** | Also keep copied pictures (stored as PNG files on disk). | On | Off if you copy many screenshots and want to save disk space. |
-| **Wipe codes and keys after a minute** | Removes copies that look like secrets from the history 60 seconds after they were copied. Pinned items stay. | Off | On if you copy passwords, one-time codes or keys. |
-| **On double-click or Enter** | **Paste into the app you were using**, or **Copy only**. | Paste | Paste for speed; Copy only if pasting into the wrong window worries you. |
-| **History limit** | How many items are kept: 100, 200, 400, 1,000 or 3,000. Pinned items do not count. | 400 | 400 for most; more only if you search old items. |
+| Setting | What it does | Default |
+|---|---|---|
+| **Keep clipboard history** | Off stops recording. | On |
+| **Keep images** | Keeps copied pictures too. | On |
+| **Wipe codes and keys after a minute** | Clears copies that look like one-time codes, card numbers or keys 60 seconds after copying. Pinned items stay. It goes by the shape of the text, so treat it as a safety net. | Off |
+| **On double-click or Enter** | **Paste** or **Copy only**. | Paste |
+| **History limit** | 100, 200, 400, 1,000 or 3,000 items. Pinned items don't count. | 400 |
 
-Other limits: text over 1,000,000 bytes is not kept, and at most 150 unpinned images are kept.
-
-"Wipe codes and keys" works on the **pattern** of the text: short, single-line copies that look like a one-time code, a payment card number (it passes the standard card check) or a key/token/password by its shape. It can miss a secret, or wipe ordinary text that looks like one, so treat it as a safety net. Wiped items show "Wiped within a minute" until they go.
+Text over 1,000,000 bytes isn't kept, and at most 150 unpinned images are.
 
 ### Snippets
 
-Short texts you type often (an email sign-off, an address).
+Short texts you use often.
 
 1. Press **New snippet**.
-2. Give it a **Name**, an optional **Keyword you type in the launcher** (one word), and the **Text**.
-3. In the text, `{date}`, `{time}`, `{datetime}` and `{clipboard}` are filled in when you use the snippet. A live line shows "What it pastes right now".
-4. Click a snippet to edit it; the bin deletes it. Up to 200 snippets of up to 20,000 characters each.
+2. Give it a name, an optional keyword (one word, for the [launcher](launcher.md)) and the text. `{date}`, `{time}`, `{datetime}` and `{clipboard}` are filled in when you use it; **What it pastes right now** shows the result.
+3. Click a snippet to copy it, then paste with Ctrl+V.
 
-Type the keyword in the launcher (see [Launcher](launcher.md)) to paste the snippet.
+Up to 200 snippets of 20,000 characters each, stored encrypted for your Windows account.
 
-### Paste as plain text
+### Copy cleanup
 
-A list of apps (for example a code editor, a terminal, a notes app). When one of these apps comes to the front while the clipboard holds formatted text (from a web page or a rich-text document), Deck adds the plain-text version to the top of the history and shows a notice with a button that puts only the plain text on the clipboard. Nothing is pasted for you, and the clipboard itself is not changed until you press the button. Pick an open app and press **Add**; **Remove** takes one off. Empty means off. Up to 30 apps.
+Off until you add an app. Pick an app, select the actions, press **Add**. For text copied from that app Deck can **Remove link tracking**, **Trim spaces** and keep only plain text. The cleaned text is what the history keeps. Password-manager copies and likely secrets are never touched.
 
----
+### Paste as text
+
+A list of apps (a code editor, a terminal). When one comes to the front while the clipboard holds formatted text, Deck adds the plain version to the history and shows a notice with a button that puts it on the clipboard. Nothing is pasted for you. Up to 30 apps.
 
 ## Privacy
 
-- The history is stored on this PC (in `clipboard\history.json` in Deck's data folder, with images as files next to it).
-- Copies that carry the standard Windows "do not keep this" flags are skipped. Password managers set these flags, so their copies never reach the history.
-- Deck does not read the clipboard of other users and does not upload it. It only leaves the PC if you press **Send to phone** (to your own connected phone).
-- Use **Clear all history (keeps pinned)**, pins, **Wipe codes and keys after a minute** and **Keep images** to control what stays.
+- The history, its images and your snippets are stored on this PC, encrypted for your Windows account; a copy of the folder is useless on another PC or account.
+- Backups leave the history out unless you turn on **Include clipboard history in backups** in [Settings](settings.md), and only a backup with a password holds it.
+- Copies flagged "don't keep" by Windows (password managers do this) are skipped.
+- What you copy never goes into Deck's log or support report, and leaves the PC only through **Send to phone**.
 
 ## Recommended setup
 
-- Leave **Keep clipboard history** on, turn on **Wipe codes and keys after a minute**, keep the limit at 400.
-- Pin the handful of things you paste daily.
-- Add snippets for repeated text and give each a short keyword.
-- Add your code editor and terminal to **Paste as plain text**.
+- Keep the history on, turn on **Wipe codes and keys after a minute**, keep the limit at 400.
+- Pin what you paste daily; add snippets with short keywords.
+- Add your code editor and terminal to **Paste as text**.
 
 ## Troubleshooting
 
-**Something I copied is missing.** It may have come from a password manager (never kept), exceeded 1,000,000 bytes, been wiped as a likely secret, or fallen off the end of the history limit. Tick **Search all tabs**.
-
-**Double-click pastes into the wrong window.** Pasting goes to the window that was in front before Deck opened. If that is unreliable, set **On double-click or Enter** to **Copy only** and press Ctrl+V yourself.
-
-**Images are missing.** Check **Keep images** is on. Only 150 unpinned images are kept.
-
-**Clipboard history is empty and the page says it is off.** Turn on **Keep clipboard history** in Settings › Desktop.
-
-**Copy text from this image finds nothing.** The image must contain text in an installed Windows recognition language, large enough to read.
+- **A copy is missing.** It may have come from a password manager, been over 1,000,000 bytes, been wiped as a likely secret, or fallen off the limit. Select **Search all tabs**.
+- **Paste goes to the wrong window.** Set **On double-click or Enter** to **Copy only** and press Ctrl+V yourself.
+- **Images are missing.** Check **Keep images**; only 150 unpinned images are kept.
+- **The page says Clipboard history is off.** Turn on **Keep clipboard history**.
+- **Extract text finds nothing.** The text must be in an installed Windows recognition language and large enough.
 
 ## FAQ
 
-**Does it replace Win+V?** No. Both work side by side.
-
-**Is it safe with anti-cheat?** Deck only listens for clipboard changes through the normal Windows notification; it does not touch games. The Paste action sends a normal Ctrl+V to the app you were using; avoid using it while a game with strict anti-cheat has focus.
-
-**Can I move my history to another PC?** The history is part of the files Deck's backup can include; see [Settings](settings.md).
-
-**Why are there two "Copy" buttons?** When pasting is on, the main button pastes and the second copies. With Copy only, the main button copies, so there is just one.
+- **Does it replace Win+V?** No, both work.
+- **Anti-cheat?** Deck only listens to Windows' clipboard notification. Paste sends a normal Ctrl+V; avoid it while a game with strict anti-cheat has focus.
+- **Can I move my history to another PC?** Only through a password-protected backup with **Include clipboard history in backups** on.

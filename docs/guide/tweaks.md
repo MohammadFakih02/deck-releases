@@ -1,261 +1,205 @@
-Where to find it: Maintenance › Windows tweaks
+Where to find it: Startup › Windows tweaks
 
 # Windows tweaks
 
-The **Windows tweaks** page is a tidy, searchable control panel for Windows settings: privacy, ads and suggestions, Start, the taskbar, File Explorer, the right-click menu, gaming, performance, updates and more. Every tweak shows what Windows is set to **right now**, says in plain words what it does and what it costs you, and can be **undone to the exact value it had before Deck changed it**.
-
-Find it under **Maintenance > Windows tweaks** in the sidebar.
+A searchable panel of Windows settings that shows each one's real value now and undoes any change to the exact value it had before.
 
 ![The Windows tweaks page](../screenshots/tweaks.png)
 
-The page has about 190 tweaks in 19 categories. Not all of them show on every PC: a tweak only appears if your Windows version and edition have it (see [Windows tweaks that are hidden](#tweaks-that-are-hidden)).
-
-The page's change count covers **Windows settings changed by Deck**. The top-bar chip counts all tracked changes, including game mode, GPU modes, fan control, keep awake and scheduled power actions. Hover the chip for a breakdown, or open it for the details.
-
-> The recipes come from the well-known open-source debloat projects Win11Debloat and WinUtil (both MIT-licensed) plus Deck's own, reviewed one by one. Each tweak's **Details** names its source. There is nothing here that removes Microsoft Edge, turns off Windows Update or Defender, or activates Windows.
-
----
+There are 193 tweaks in 19 categories. A tweak shows only if your Windows version and edition have it (see [Tweaks that are hidden](#tweaks-that-are-hidden)). The recipes come from Win11Debloat and WinUtil (both MIT) plus Deck's own, each reviewed. Nothing here removes Microsoft Edge, turns off Windows Update or Defender, or activates Windows.
 
 ## How tweaks work
 
-### Reading a row
-
-Each tweak is a row:
+### A row
 
 | Part | Meaning |
 |---|---|
-| **Name** and short description | What the setting is. |
-| **Risk chip** | **Advanced** uses a neutral tag (omitted inside the Advanced category). Red tags identify reduced protection or visible protected files. Effects and tradeoffs stay in Details. |
-| **After chip** | **Sign out to finish** or **Restart to finish**: what has to happen before the change is fully in effect. Explorer restart requirements appear once per section and in each affected row's Details. |
-| **Mixed** chip | The parts do not all match. For example, **11 of 13 parts off** counts the underlying steps that match Off. Special cases explain why the setting is only partly effective. |
-| **Control** | For an on/off setting, what it is now (**On** or **Off**) and a button naming what pressing it does (**Turn off** or **Turn on**); otherwise a choice (a short row of buttons or a list), a link to another page, or a one-time action button. |
-| **Details** | Opens the explanation: **Effect** (what you gain), **Tradeoff** (what you give up), the original technical name, Windows default, restart requirement, technical steps, source, and date Deck changed it. Every setting also shows **Default: value** below its control. |
+| Name | What the setting controls (**Copilot button**, **Activity history**). |
+| **Advanced** chip | A tweak that can reduce protection, stability or update safety. |
+| Tradeoff chip | What you give up, in a few words, or **Has a tradeoff**. |
+| **Restarts Explorer**, **Sign out to finish**, **Restart to finish** | What has to happen before the change takes full effect. |
+| Control | The state in words beside a switch: **On** / **Off**, or the result (**Shown** / **Hidden**, **Allowed** / **Blocked**). A value that isn't Windows' default is bold. Choices use buttons or a list. |
 
-The control always shows the **current Windows value**, not a proposal. Opening the page reads the real state, so a setting you changed in Windows' own Settings is shown correctly too. On a choice that has a value of its own that none of the options match, the list shows **Custom**.
+The control always shows Windows' current value, so a change made in Windows' own Settings shows too. When a choice holds a value none of its options match, it shows **Custom** with that value, for example "Custom: 300" for a 300 ms menu delay, or your own DNS servers.
 
-If another tool set only some parts, the row shows a **Mixed** badge ("Mixed · 9 of 13 parts off") with **Turn all off** and **Turn all on**. A mixed choice shows **Mixed** in its list. Choosing an option applies all its parts. The **Changed by Deck** strip shows the recorded previous option so you can see what **Put back** restores; unmatched previous values are described as custom.
+If another tool set only some parts of a tweak, the row shows **Mixed** with how many parts match, and offers all on or all off.
+
+Select a row for details on the right: its state, what you gain and give up, the registry values it sets (with **Now** and Windows' default), the recipe's source, and when Deck changed it.
 
 ### Risk levels
 
-| Level | Chip | Meaning |
-|---|---|---|
-| **Safe** | none | A look-and-feel or harmless setting. Easy to reverse and low impact. |
-| **Behaviour** | none | Changes how Windows works in a way you will notice, or gives something up (for example location, Game Bar, automatic Store updates). |
-| **Advanced** | **Advanced** (outside its own category) | Can reduce protection, stability or update safety if misused (for example Recall removal, Memory integrity, reserved storage). |
+Of the 193 tweaks, 123 are safe, 48 have a tradeoff (location, Game Bar, automatic Store updates) and 22 are **Advanced** (Recall, Memory integrity, reserved storage).
 
-Of the roughly 190 tweaks, about 116 are Safe, 48 change behaviour and 22 are Advanced.
+**Advanced** tweaks open **Review change** first, with the setting as now and after, the effect and the registry values. **Apply 1 change** then offers a restore point (once per session; Windows allows one a day). Turning Recall off asks **Delete all Recall snapshots?**; **Unpin all Start apps?** also confirms.
 
-For individual **Advanced** tweaks, **Review change** shows the setting, **Now**, **After**, the effect and the tradeoff. **Apply tweak** continues to the restore-point offer (once per session; Windows itself allows only one a day). Turning Recall off has an explicit **Delete all Recall snapshots?** confirmation, including when selected in a preset or imported file. Unpinning Start apps also confirms before changing your pins.
+### Draft changes
 
-### What gets recorded for Undo
+Turn on **Draft changes** (beside the filters; off each time Deck opens) to collect changes before writing anything.
 
-Before Deck changes a value it writes down exactly what was there: the value and its type, or "it wasn't set", or the service's start type, or a task's state. **Undo** puts back that value, not a "textbook default", so your PC returns to *its* old state even months later. The first value Deck saw is kept, so applying a tweak twice never overwrites the original. The record is tamper-checked: if it is changed outside Deck, Deck sets it aside and says so rather than use it.
+1. Change tweaks as usual. Each row shows **Draft:** and your choice; Windows isn't changed.
+2. Press **Review N changes**. Each shows now and new, its effect and tradeoff. Clear any you don't want.
+3. Press **Apply N changes**. They are applied in order, each with its own undo.
 
-If a tweak's value changed after Deck applied it (you changed it elsewhere), Undo shows a **Review changed settings before Undo** window with **Before**, **Applied** and **Current** values and lets you **Keep current values** or **Restore previous values**.
+Afterwards each tweak shows **Applied**, **Not confirmed yet** or **Failed** with the reason, with **Undo** on those made. **Discard draft** drops the choices.
 
-### After-effects
+### What Undo restores
 
-Some changes only take effect after Explorer restarts, you sign out, or the PC restarts. Deck collects them in one bar at the bottom of the page: "3 changes need File Explorer restarted - **Restart Explorer now** / **Later**", "**Sign out** to finish: ...", "**Restart** to finish: ...". You decide when.
+Before a change, Deck records exactly what was there: the value and type, "not set", a service's start type or a task's state. **Undo** puts back that value, not a textbook default, even months later. Applying a tweak twice never overwrites the first record. If the undo list was changed outside Deck, it is set aside and Deck says so.
+
+If a value changed after Deck applied it, Undo first shows **Review changed settings before putting them back** with **Before**, **Applied** and **Current**, and lets you **Keep current values** or **Restore previous values**.
+
+### After a change
+
+Changes that need Explorer restarted, a sign-out or a restart are collected in one bar: **Restart Explorer now** / **Later**, "Sign out to finish: …", "Restart to finish: …". You choose when.
 
 ### Rules Deck follows
 
-- **Never while a game is in front.** Deck changes Windows settings only outside games and says "<game> is in front".
-- **Needs administrator rights.** Anything that changes the machine-wide registry, a service or a scheduled task needs Deck to run with admin rights. Without them the page shows **Limited without admin** and those rows are marked "Needs Deck's admin rights". Per-user settings (the ones that only touch your own account) work without admin.
-- **Right account.** If Deck was started as a *different* administrator account than the one you are signed in as, per-user tweaks are disabled with a note ("Deck runs as another account here, so it can't change your own settings") so it can never change the wrong account.
-- **Updates changing things back.** Windows feature updates sometimes put settings back. Deck notices (on every page open) and moves those tweaks to **Changed back**.
+- **Never while a game is in front.**
+- **Machine-wide changes need administrator.** Without it, the page shows **Limited without admin** (press it to **Restart as administrator**). Per-user settings work without it. See [Getting started](getting-started.md#why-deck-needs-administrator).
+- **Right account.** If Deck runs as a different administrator account than yours, per-user tweaks are turned off so it never changes the wrong account.
+- **Windows changing things back.** Feature updates sometimes reset settings. Deck notices and lists them under **Changed back**.
 
-### Windows tweaks that are hidden
+### Tweaks that are hidden
 
-A tweak is hidden, not greyed, when it is not for your PC: it needs a newer or older Windows build than yours, Windows Pro (some update controls), a laptop battery, an installed app (Chrome, Brave), or a service/drive type your PC does not have. A note at the bottom of a category says "N more aren't for this PC or this Windows version".
+A tweak is hidden when it isn't for your PC: it needs another Windows build, Windows Pro, a battery, an installed app (Chrome, Brave) or hardware you don't have. A note under the category says "N more aren't for this PC or this Windows version."
 
----
-
-## The page layout
+## The page
 
 ### The left list
 
 | Entry | What it opens |
 |---|---|
-| **Overview** | Recommended changes, presets, saving and sharing, and undo (see below). |
-| **Search every tweak** | Searches the name, the description and the group of every tweak in every category. Results are grouped by category. |
-| The 19 **categories** in three sections: **Privacy & ads**, **Look & feel**, **Behaviour** | Each shows a plain settings total and a separate label such as **3 changed**. Links to other pages do not count as settings. The list scrolls to the selected category when you open it. |
-| **Built-in apps** and **Store apps & updates** | Jump to those tabs on the [Apps](apps.md) page. |
-| **Changed by Deck** | Every tweak Deck currently has changed, with an **Undo N changes** button. |
-| **Changed back** | Only appears when Windows has put something back. Each tweak has **Apply again** and **Forget**. |
+| **Overview** | Recommended changes, presets, saving and undo. |
+| **Search every tweak** | Searches names, descriptions and groups in every category. |
+| The 19 categories | In three sections: **Privacy & ads**, **Look & feel** and **Behavior**. Each shows its count and how many are changed. |
+| **Built-in apps**, **Store apps & updates** | Open those tabs on [Apps](apps.md). |
+| **Changed by Deck** | Every tweak Deck has changed, with **Undo N changes**. |
+| **Changed back** | Shows when Windows reset something. Each tweak has **Apply again** and **Forget** (Deck stops tracking it; the setting stays). |
 
-Inside a category the filter row has **All**, **Off now**, **Changed** and **Low risk**, plus **Refresh**. Windows tweaks are grouped under small headings where a category is large.
+Inside a category, filter by **All**, **Not Windows default**, **Changed** or **Low risk**. **Show values** shows the registry values for every tweak in the history lists.
 
-### Changed back
+The page draws at once from the last state read and shows **Checking…** while it reads the PC again.
 
-After a Windows update, an alert at the top of Overview says "After the Windows update, Windows changed N settings: ...". **See what changed** opens the list, and **Review and apply again** opens a checklist. **Forget** stops listing the tweak: the setting stays as it is now, but Deck can no longer undo it.
-
----
-
-## Overview
+### Overview
 
 | Panel | What it does |
 |---|---|
-| **Review before applying** | "Recommended: N changes". Opens a checklist of the safe tweaks Deck recommends and your PC does not have yet. Untick any you want to keep, then **Apply**. Only **Safe** tweaks are ever in it. |
-| **Presets** | Ready-made sets, each opening the same checklist so you can untick anything: see the list below. A preset says **Already set** when your PC matches it. |
-| **Save and share your tweaks** | **Save my tweaks to a file** and **Open a tweaks file** (see [Sharing](#saving-and-sharing-tweaks)). |
-| **Undo and restore** | How many settings Deck has changed, **See changed settings**, and **Undo N changes**. |
+| **Recommended safe changes** | Safe tweaks Deck recommends that your PC doesn't have yet. **Review N changes** opens a checklist (now → new); clear any, then **Apply N changes**. |
+| **Presets** | Ready-made sets that open the same checklist. A preset your PC already matches says so. |
+| **Save and share** | **Save my tweaks to a file** and **Open a tweaks file**. |
+| Undo | How many settings Deck changed, **See changed settings**, **Undo N changes**, and undo since a date or since the last Deck update. |
 
-### Presets
-
-| Preset | What it is for |
+| Preset | For |
 |---|---|
-| **Privacy** | Sends Microsoft and apps as little as Windows allows (diagnostics, activity history, feedback, cloud search, Recall, update sharing...). |
-| **Clean Start & taskbar** | No ads, Bing, widgets or Copilot in Start and on the taskbar; shows file extensions; adds End task to the taskbar menu. |
-| **Game profiles** | Fewer interruptions and background recording: Game DVR off, mouse acceleration off, Sticky Keys off, no automatic update restarts. |
-| **Quiet Windows** | No tips, nagging, suggestions or surprise restarts. |
-| **Debloat** | Everything the debloat tools switch off that you will not miss: ads, suggestions, smart-feature promotions and installs you did not ask for. |
-| **File Explorer power user** | Explorer shows what is really there (extensions, hidden files, full path), opens to This PC and uses the classic right-click menu. |
-
----
+| **Privacy** | Send Microsoft and apps as little as Windows allows. |
+| **Clean Start & taskbar** | No ads, Bing, widgets or Copilot in Start and the taskbar; file extensions shown; End task on the taskbar menu. |
+| **Gaming** | Fewer interruptions: Game DVR, mouse acceleration and Sticky Keys off, no automatic update restarts. |
+| **Quiet Windows** | No tips, nagging or surprise restarts. |
+| **Debloat** | Everything debloat tools turn off that you won't miss. |
+| **File Explorer power user** | Extensions, hidden files and full path shown; opens to This PC; classic right-click menu. |
 
 ## Saving and sharing tweaks
 
-Use this to set up a second PC the same way, or to restore your choices after a reinstall.
+To set up a second PC the same way, or reapply your choices after a reinstall:
 
-1. **Save my tweaks to a file** (needs at least one tweak Deck has changed) writes `deck-tweaks.json`. It lists only the **ids of your tweaks and of the option you chose** (with the readable name beside each, for people reading the file) and the Windows build. No registry values, no commands, nothing else.
-2. On the other PC, **Open a tweaks file**. Deck reads the file and shows a checklist. **Opening a file never applies anything on its own.** Every line is checked against the recipes in your copy of Deck and sorted into: ready, **already set**, or **skipped** (a tweak your Deck does not know, an option it does not have, or a tweak that is not for this PC).
-3. Untick anything you do not want and press **Apply**. Each change goes through the same engine as a click on the page: it keeps its own exact before-value and has its own Undo.
+1. **Save my tweaks to a file** writes `deck-tweaks.json` with only the tweak and option ids (plus readable names) and the Windows build. No registry values or commands.
+2. On the other PC, **Open a tweaks file**. Nothing is applied yet: Deck checks every line against its own recipes and lists what is ready, already set or skipped.
+3. Clear what you don't want and press **Apply**. Each change keeps its own undo.
 
-A tweaks file is limited to 600 lines and 256 KB. A file from a different version of Deck is refused with a message to export it again.
-
----
+Files are limited to 600 lines and 256 KB. A file from another Deck version is refused.
 
 ## The categories
 
-Counts are the number of tweaks in each category; some may be hidden on your PC.
+Counts include tweaks that may be hidden on your PC.
 
 ### Privacy & ads
 
-**Privacy (9)** - what Windows sends to Microsoft and keeps about you.
+**Privacy (11):** Activity history, Diagnostic data and ads ID, Location services, Find my device, Cloud content search, Search history on this device, Firmware startup programs (**Advanced**: stops the motherboard installing its maker's software), Error reports to Microsoft, Customer Experience Program, Language list for websites, Notifications on the lock screen.
 
-| Tweak | What it does |
-|---|---|
-| Activity history | Stops Windows keeping a list of the apps and files you open. Clipboard history is unaffected. |
-| Diagnostic data and personalised ads | Turns off tailored tips, the advertising ID, typing learning and optional diagnostic data (the required minimum stays). |
-| Location for Windows and apps | **Changes behaviour.** No app or part of Windows can find where you are; weather and maps need a typed city. |
-| Find My Device | **Changes behaviour.** Stops saving the PC's location. If the PC is lost you cannot see it on a map. |
-| Cloud results in search | Start search looks only on this PC, not OneDrive or Outlook. |
-| Search history on this PC | Start forgets what you searched for. |
-| Run the PC maker's software at start-up | **Advanced, restart.** Stops the motherboard from installing its maker's software into Windows. Maker anti-theft tools installed this way stop installing themselves. |
-| Error reports to Microsoft | **Changes behaviour.** Crash reports stay on the PC. |
-| Customer Experience Program | Stops the usage-sharing improvement programme. |
+**App permissions (15):** one switch per Windows privacy permission: Camera, Microphone, Contacts, Call history, Messages, Email, Tasks, Calendar, Bluetooth and Wi-Fi switching, Documents, Pictures, Videos, All files, Notifications and Account info. They block apps that follow Windows' permissions; some desktop apps ignore them. Turning off Camera or Microphone breaks calls until you turn them back on.
 
-**App permissions (15)** - one switch per Windows privacy permission, all **Changes behaviour**: Camera, Microphone, Contacts, Call history, Messages, Email, Tasks, Calendar, Radios, Documents, Pictures, Videos, All files, Notifications and Account info. Turning a permission off blocks it for the apps that follow Windows' privacy permissions (Store apps and apps that ask Windows). Some desktop apps bypass them. Turning off **Camera** or **Microphone** here will break calls and games that rely on them until you turn them on again.
+**Ads & suggestions (10):** Feedback requests, Tips and suggested content, Lock screen tips and facts, Microsoft 365 ads in Settings, Windows-installed suggested apps, Companion apps for new devices, Settings Home page, Online tips in Settings, Device makers' installers, Apps Windows adds by itself.
 
-**Ads & suggestions (9)** - Feedback requests, Tips and suggested content, Lock screen tips and facts, Microsoft 365 ads in Settings, Windows-installed suggested apps (Candy Crush and the like), Companion apps for new devices (**Changes behaviour**: Windows no longer downloads a mouse's or monitor's app), Settings Home page, Online tips in Settings, Device makers' installers (**Changes behaviour**: plugging in a Razer device no longer starts its installer). Nearly all are "nothing you'd notice" to switch off.
+**Smart features & Copilot (6):** Copilot button, **Recall**, Click to Do, Smart features service, Smart features in Paint, Smart features in Notepad. Many need Windows 11 22H2 or later.
 
-**Smart features & Copilot (6)** - Older Copilot pane and button (the old pane and taskbar button), **Recall** (see the warning below), Click to Do, **Start the smart features service with Windows** (**Changes behaviour**, saves memory, restart), and the smart features in Paint and Notepad. Many need Windows 11 22H2 or later and show only there.
+> **Recall is Advanced and permanent.** Turning it off deletes its saved snapshots and removes Recall parts. Undo restores the policies only, not the snapshots.
 
-> **Recall is Advanced and permanent.** Turning Recall off deletes the snapshots it has already saved and removes Recall components. Undo restores the policies only: it cannot bring back deleted snapshots or reinstall the removed pieces. Restart to finish.
-
-**Browsers (5)** - Ads and news in Edge, the smart features in Edge and in Chrome (Chrome's needs Chrome installed), Brave extras (needs Brave installed; Rewards, Wallet, VPN and more), and Edge extras and data sharing. The Edge and Chrome tweaks work through browser **policies**, so the browser then shows "Your browser is managed by your organisation". That line comes from the tweak and goes away with **Undo**.
+**Browsers (5):** Ads and news in Edge, Smart features in Edge, Smart features in Chrome, Brave extras, Edge extras and data sharing. These work through browser policies, so the browser says it is managed by your organization until you undo them.
 
 ### Look & feel
 
-**Start & search (8)** - Bing and Copilot in Start search, Recommended in Start, Recently added apps, Phone Link in Start, how **All apps** lists (Hidden, By category, Grid, List; Windows 11 25H2 onward), the previous Start layout (on builds that still have it), **Unpin everything from Start** (a one-time action; Undo puts your pins back), and Recent files in Start. Most need Explorer restarted.
+**Start & search (8):** Bing and Copilot in Start search, Recommended in Start, Recently added apps in Start, Phone Link in Start, All apps in Start (Windows 11 25H2 on), Previous Start layout, Unpin everything from Start (one-time; Undo restores your pins), Recent files in Start.
 
-**Taskbar (16)** - what's on it (icon alignment, search style, Task view button, Widgets, Chat and Meet now, battery percentage on laptops, **Notifications and calendar** (**Advanced**: hides the notification centre and the clock's calendar), seconds in the clock, Show desktop corner, badges) and how buttons behave (**End task on right-click**, Open the last used window from the taskbar, combine buttons on the main and other displays, which displays show apps, flashing apps). Many need Windows 11.
+**Taskbar (16):** Taskbar alignment, Search on the taskbar, Task view, Widgets, Chat and Meet now, Battery percentage, Notifications and calendar (**Advanced**), Show seconds in the clock, Show desktop in the far corner, Badges on taskbar apps, End task on right-click, Taskbar opens last window, Combine taskbar buttons (main and other displays), Show apps on, Flashing taskbar apps. Also on [Taskbar](taskbar.md).
 
-**File Explorer (28)** - what it shows: File extensions (shows `.exe`, `.png` so a "photo.jpg.exe" cannot hide what it is; recommended), Hidden files and folders, Protected system files (**Advanced**: showing Windows' own protected files makes it easy to delete something Windows needs), Drive letters, Compact view, Full path in the title bar, Recent files and folders, Check boxes to select files, Thumbnails, Office.com files in Home, Compressed files in colour. Side pane and This PC: Home, Gallery, OneDrive, Show USB drives separately in the side pane, your folders under This PC, 3D Objects and Music (older Windows), All folders and Side pane follows open folder. Behaviour: File Explorer opens to, Choose folder views from their contents (**Changes behaviour**; makes big folders like Downloads open faster), Allow file paths over 260 characters (**Changes behaviour**, some developer tools need it), Folders in their own process, Reopen folders at sign-in, Copy window with details, " - Shortcut" on new shortcuts, Store in "Open with". Most apply after Explorer restarts.
+**File Explorer (29):** what it shows (File extensions, Hidden files and folders, Protected system files (**Advanced**), Drive letters, Compact view, full path in the title bar, Recent files and folders, check boxes, Thumbnails, Office.com files, Compressed files in color), the side pane and This PC (Home, Gallery, OneDrive, USB drives in the side pane, your folders, 3D Objects, Music, All folders, Side pane follows open folder) and behavior (File Explorer opens to, Automatic folder views, Paths over 260 characters, separate folder process, Restore previous folder windows at sign-in, Copy window with details, " - Shortcut", Store in "Open with", Ask before merging folders). Most apply after Explorer restarts.
 
-**Right-click menu (13)** - **Classic right-click menu** (**Changes behaviour**; the full Windows 10 menu at once, without "Show more options"), and switches for individual entries: "Include in library", "Give access to", "Share", "Open in Terminal", "Cast to Device", "Restore previous versions", "Scan with Microsoft Defender", "Troubleshoot compatibility", "Ask Copilot", "Edit in Notepad", "Edit with Photos", "Add to Favorites".
+**Right-click menu (13):** Classic right-click menu (the full menu without "Show more options") and one switch per entry: "Include in library", "Give access to", "Share", "Open in Terminal", "Cast to Device", "Restore previous versions", "Scan with Microsoft Defender", "Troubleshoot compatibility", "Ask Copilot", "Edit in Notepad", "Edit with Photos", "Add to Favorites".
 
-**Desktop (7)** - Desktop icons (This PC, your user folder, Network, Control Panel, Recycle Bin), Full-quality wallpaper (no JPG recompression) and Windows version on the desktop.
+**Desktop (7):** icons for This PC, your user folder, Network, Control Panel and Recycle Bin, Full-quality wallpaper, Windows version on desktop.
 
-**Appearance (6 settings and a link)** - Dark mode (**Open Deck's Display page**, with an optional schedule), Transparency effects, Allow Spotlight, Scrollbars always visible, Accent colour on title bars, Blur on the sign-in screen and Menu delay.
+**Appearance (6 settings and a link):** Dark mode (**Open Deck's Display page**, with a schedule), Transparency effects, Allow Spotlight on the desktop, Always show scrollbars, Accent color on title bars, Blur on the sign-in screen, Menu show delay.
 
-### Behaviour
+### Behavior
 
-**Windows & snapping (5)** - Window snapping (**Changes behaviour**), Snap suggestions, Snap layouts, Browser tabs in Alt+Tab (None / 3 / 5 / 20), Shake to minimise.
+**Multitasking (5):** Snap windows, Snap suggestions, Snap layouts, Browser tabs in Alt+Tab, Shake to minimize.
 
-**Keyboard & mouse (7)** - Sticky Keys shortcut (five Shift presses; turn it off for games; recommended), Num Lock on at start, **Mouse acceleration** ("Enhance pointer precision"; **Changes behaviour**; off gives the same hand movement the same distance, better for aiming), Toggle Keys shortcut, Filter Keys shortcut (recommended off for gamers), Key repeat delay, Scroll windows under the pointer.
+**Keyboard & mouse (8):** Sticky Keys shortcut (five Shift presses; turn it off for games), Num Lock on at startup, Enhance pointer precision (mouse acceleration; off is better for aiming), Toggle Keys shortcut, Filter Keys shortcut, Key repeat delay, Key repeat speed, Scroll windows under the pointer.
 
-**Gaming (7 settings and a link)** - Game Mode (**Open CPU profiles**), **Game recording (Xbox Game DVR)** (turn off to stop background recording; recommended for games), Game Bar (**Changes behaviour**: Win+G and the Xbox button stop opening *Windows'* Game Bar; this is separate from Deck's own [game bar](game-bar.md)), **Fullscreen optimisations** (**Advanced**; off restores old exclusive fullscreen; Alt-Tab gets slower and overlays may stop showing), Optimisations for windowed games and Variable refresh for windowed games (**Changes behaviour**, three-way: Automatic / On / Off), **Let the graphics card schedule its work** (**Changes behaviour**, restart; can lower lag and is needed for frame generation) and **Separate display layers for video and games** (**Advanced**, restart; turn off only if you have flicker or black screens on NVIDIA).
+**Gaming (7 settings and a link):** Game Mode (**Open CPU profiles**), Game recording (Xbox Game DVR; off stops background recording), Xbox Game Bar (Win+G stops opening Windows' Game Bar; separate from Deck's [Deck bar](game-bar.md)), Fullscreen optimizations (**Advanced**), Optimizations for windowed games, Variable refresh rate in windowed games, GPU scheduling (restart; can lower lag and is needed for frame generation), Display overlay layers (**Advanced**, restart; turn off only for flicker or black screens).
 
-**Performance (8 settings and a link)** - Animations, Visual effects (opens Windows' own Performance Options), Hold back other traffic during audio/video (**Advanced**: lifts the cap on other traffic while video or audio plays), **SysMain (Superfetch)** (**Advanced**; shown only when a hard drive is present), **Windows Search indexing** (**Advanced**: less disk work, but slow search), Store apps in the background, Delay apps at sign-in (**Changes behaviour**), Power throttling (**Advanced**, restart; more speed in the background, more power use), Automatic maintenance (**Advanced**).
+**Performance (8 settings and a link):** Animation effects, Visual effects (opens Windows' Performance Options), and the **Advanced** Network throttling for media, SysMain (Superfetch, only with a hard drive), Windows Search indexing, Store apps in the background, Power throttling and Automatic maintenance; plus Delay apps at startup.
 
-**Network (3)** - Use IPv4 first for connections (**Changes behaviour**, restart; fixes broken IPv6 networks), **Xbox party chat connection** (Teredo) (**Advanced**, restart; can lower game ping slightly but Xbox party chat and some Game Pass multiplayer need it) and **DNS server** (**Changes behaviour**; Automatic, Cloudflare, Google, Quad9 or AdGuard, which also blocks ads; set it back to Automatic if a site stops loading).
+**Network (3):** IPv4 first (restart; fixes broken IPv6 networks), Xbox party-chat tunnel (**Advanced**, restart; Xbox party chat and some Game Pass multiplayer need it), DNS server (Automatic, Cloudflare, Google, Quad9 or AdGuard; back to Automatic if a site stops loading).
 
-**Updates & Store (14)** - control how Windows Update behaves without disabling it:
+**Updates & Store (14):** how Windows Update behaves, without turning it off.
 
 | Tweak | Notes |
 |---|---|
-| Get updates as soon as released | Off (recommended): features reach you after they are tested on everyone. |
-| Restart by itself after updates | Avoids automatic restarts while you are signed in, but only works if scheduled installation is configured. |
-| Share updates with other PCs | Stops your PC uploading updates to others. |
-| Drivers from Windows Update | **Changes behaviour.** Off stops Windows replacing the driver you chose (such as your GPU driver). You then update drivers yourself. |
-| Store apps update by themselves | **Changes behaviour.** Off means Store apps only update when you say so. Relevant to [Apps](apps.md). |
-| Longest update pause | **Advanced.** Lets Settings pause updates for 1 or 10 years instead of 5 weeks. A long pause misses security fixes. |
-| Automatic updates | **Advanced.** Install by itself, download and ask, ask before downloading, or off. Off means you must install security fixes yourself. |
-| Stay on a Windows version | **Advanced** (Windows 11 24H2 and later). Keeps monthly fixes but holds back the next big version. |
-| Wait before monthly updates / big Windows versions | Defer by days or months. Needs Windows Pro. |
-| Tell me when a restart is needed | Recommended on. |
-| Updates for other Microsoft apps, Updates on metered connections, Malicious Software Removal Tool | As named. |
+| Get the latest updates as soon as they're available | Off: features arrive once tested on everyone. |
+| Restart automatically after updates | Avoids restarts while you're signed in, with scheduled installation set. |
+| Allow downloads from other PCs | Off: your PC doesn't upload updates to others. |
+| Drivers from Windows Update | Off: Windows stops replacing your chosen drivers; you update them yourself. |
+| Store apps update automatically | Off: Store apps update only when you say. See [Apps](apps.md). |
+| Longest update pause | **Advanced.** Pause for 1 or 10 years instead of 5 weeks; you miss security fixes. |
+| Automatic updates | **Advanced.** **Install automatically**, **Ask before installing**, **Ask before downloading** or **Check manually**. |
+| Stay on a Windows version | **Advanced** (24H2 and later). Monthly fixes, but no next big version. |
+| Wait before monthly updates, Wait before big Windows versions | Defer by days or months. Needs Windows Pro. |
+| Notify me when a restart is required to finish updating | Recommended on. |
+| Updates for other Microsoft products, Download updates over metered connections, Malicious Software Removal Tool | As named. |
 
-**System (14)** - Hibernation (**Changes behaviour**; off frees the large `hiberfil.sys` and also turns off Fast start-up), Fast start-up (off makes Shut down a true shutdown), Detailed blue screens, Detailed start-up messages, Storage Sense (**Changes behaviour**), **Reserved storage** (**Advanced**; gives back 7 to 10 GB but big Windows updates may fail on a full drive), Automatic device encryption (**Changes behaviour**; never decrypts a drive), Network while asleep (laptops), Use the same clock for Windows and Linux (**Advanced**, restart; only for dual-booting Linux), Lock screen, Windows Sandbox and Windows Subsystem for Linux (turn on optional Windows features; Sandbox needs Windows Pro), Auto-restart after a blue screen, Drag tray.
+**System (16):** Hibernation (off frees `hiberfil.sys` and turns off Fast startup), Fast startup, Detailed blue screens, Detailed startup messages, Storage Sense, Reserved storage (**Advanced**; gives back 7 to 10 GB, but big updates may fail on a full drive), Automatic device encryption (never decrypts a drive), Network while asleep, UTC hardware clock (**Advanced**; for dual-booting Linux), Lock screen, Windows Sandbox (needs Pro), Windows Subsystem for Linux, AutoPlay, Control Panel view, Auto-restart after a blue screen, Drag tray.
 
-**Advanced (3)** - all **Advanced**: **Memory integrity** (restart; turning it off lets some old drivers and tools run but leaves the PC less protected against kernel malware), Warn before opening unsigned Remote Desktop files, and **Sleep mode** (**Modern standby / Classic sleep**, restart; requires firmware support).
-
----
-
-## Requirements
-
-| Tweak type | Needs |
-|---|---|
-| Per-user settings (look and feel, Explorer, taskbar, permissions) | Nothing special; works without admin. |
-| Machine-wide settings, services, scheduled tasks, optional Windows features | Deck running with administrator rights. |
-| Windows 11 features | A Windows 11 build that has them. |
-| Windows Pro features (deferring updates, Sandbox) | Windows Pro. |
-
----
+**Advanced (3):** Memory integrity (restart; off lets old drivers run but leaves the PC less protected), Unsigned Remote Desktop warning, Sleep mode (**Modern standby** or **Classic sleep**, restart; needs firmware support).
 
 ## Recommended setup
 
-1. Start with the **Recommended** panel on Overview and untick anything you want to keep.
-2. Then use the **Presets** that match you: **Privacy**, **Quiet Windows**, **Clean Start & taskbar**; **Game profiles** if you play.
-3. Leave **Advanced** tweaks alone unless you know why you need them and have read their Details.
-4. Make the **restore point** when asked.
-5. Save your tweaks to a file so you can reapply them after a reinstall.
+1. Start with **Recommended safe changes** on Overview.
+2. Add the presets that fit: **Privacy**, **Quiet Windows**, **Clean Start & taskbar**, and **Gaming** if you play.
+3. Leave **Advanced** tweaks alone unless you know why you need one.
+4. Make the restore point when asked, and save your tweaks to a file.
 
-**Gamers:** Game recording off, Mouse acceleration off, Sticky/Filter Keys shortcuts off, and (if you have the problem) Separate display layers for video and games off. Leave Let the graphics card schedule its work, Fullscreen optimisations and Memory integrity at defaults unless a game needs otherwise.
-**Laptops:** leave Network while asleep and Sleep mode alone unless you know you need them; they affect battery life and wake behaviour.
-**Managed work PCs:** group policy may override tweaks; if a tweak keeps going back, it is probably being reset by your organisation.
-
----
+- Gamers: Game recording off, Enhance pointer precision off, Sticky and Filter Keys shortcuts off. Leave GPU scheduling, Fullscreen optimizations and Memory integrity at their defaults unless a game needs otherwise.
+- Laptops: leave Network while asleep and Sleep mode alone unless you need them.
+- Work PCs: group policy may reset tweaks.
 
 ## Troubleshooting
 
-**A tweak is greyed out or says "Needs Deck's admin rights".** Deck is not running as administrator. Use **Maintenance › Startup optimizer**, or reinstall with the Deck installer.
-
-**It says a game is in front.** Leave the game and try again. Deck never changes Windows settings under a game.
-
-**A tweak went back after a Windows update.** It moved to **Changed back**. Press **Apply again**.
-
-**Undo says the setting changed after Deck applied it.** Something else changed it. Review the values shown and choose to keep the current or restore the old one.
-
-**A tweak is missing.** It does not apply to your Windows version or edition. The note under the category says how many are hidden.
-
-**Edge or Chrome says it is managed by an organisation.** That comes from the browser tweaks; use Undo on them to remove the message.
-
-**A site won't load after I changed DNS.** Set **DNS server** back to **Automatic**.
-
----
+- **A tweak is grayed out.** It needs administrator. Press **Limited without admin** to restart Deck as administrator.
+- **It says a game is in front.** Leave the game and try again.
+- **A tweak went back after a Windows update.** It is under **Changed back**; press **Apply again**.
+- **Undo says the setting changed after Deck applied it.** Choose **Keep current values** or **Restore previous values**.
+- **A tweak is missing.** It isn't for your Windows version or edition.
+- **Edge or Chrome says it is managed.** Undo the browser tweaks.
+- **A site won't load after a DNS change.** Set **DNS server** back to **Automatic**.
 
 ## FAQ
 
-**Does Deck edit the registry directly?** Yes, with its own reviewed recipes, never with free-form scripts downloaded at run time. Each change records its previous value first.
-
-**Can I break Windows?** Safe and most Behaviour tweaks are easy to reverse. Advanced ones can reduce protection or stability, so they ask for a restore point and a review. Undo restores settings, not deleted data (Recall snapshots, for example, cannot return).
-
-**Does anything here affect anti-cheat?** Windows tweaks only change Windows settings; Deck does not inject into games or read their memory. A few settings (such as Memory integrity or Fullscreen optimisations) change how Windows treats games and drivers, so check a game's own requirements before changing those.
-
-**Do Windows tweaks turn off Windows Update or Defender?** There is no switch for Defender or for Windows Update itself. The update tweaks only change timing and how much Windows asks you first; even the strictest choice, "Off: only when you check", leaves checking for updates by hand available. Keep installing security updates.
-
-**What does it send out?** Nothing. All tweak data stays on your PC; a saved tweaks file contains only tweak names and options.
-
-**What happens if Deck crashes mid-change?** The before-value is saved before each step runs, so Undo still works afterwards.
+- **Does Deck edit the registry directly?** Yes, with its own reviewed recipes, never downloaded scripts. Each change records its previous value first.
+- **Can I break Windows?** Safe tweaks and most with a tradeoff are easy to reverse. Advanced ones ask for a review and a restore point. Undo restores settings, not deleted data such as Recall snapshots.
+- **Anti-cheat?** Tweaks only change Windows settings. A few (Memory integrity, Fullscreen optimizations) change how Windows treats games, so check a game's requirements first.
+- **Do tweaks turn off Windows Update or Defender?** No. Update tweaks change timing only; keep installing security updates.
+- **Is anything sent out?** No. A saved tweaks file holds only tweak names and options.
+- **What if Deck crashes mid-change?** The previous value is saved before each step, so Undo still works.
+- **Can I undo only recent changes?** Yes: undo since a date or since the last Deck update. A setting changed since is listed and left alone.
+- **Is there an Auto HDR switch?** Not here: Microsoft documents only the Windows Settings switch. On [Display](display.md), **Auto HDR** opens it.

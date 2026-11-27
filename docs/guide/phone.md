@@ -1,277 +1,276 @@
-Where to find it: Phone (below the sidebar groups)
+Where to find it: Connections › Phone
 
 # Phone
 
-The **Phone** page turns your phone into a remote for your PC. You scan a code once, and the phone opens a small web app (it works in the browser and can be added to your home screen) with sound controls, media buttons, timers, power controls, a way to pass text and files both ways, and, if you turn them on, a live view of the PC's screen, an on-screen controller and keyboard, and the phone as the PC's speaker or microphone.
+The Phone page turns your phone into a remote for your PC: sound, media, timers, power, text and files both ways, and, if you allow it, the PC's screen, a controller, and the phone as speaker or microphone.
 
-Find it at the bottom of the sidebar: **Phone**. The tabs are **Connect**, **Transfers**, **Screen**, **Speaker & mic** and **Layouts**. Deck remembers the tab you used last.
+You scan a code once; the phone opens a small web app (in its browser, or the Deck Android app). The tabs are **Connect**, **Transfers**, **Screen**, **Speaker & mic** and **Layouts**. On a new install the remote is off: turn on **Phone connection** first.
 
 ![The Phone page](../screenshots/phone.png)
 
----
-
 ## What you need
 
-- Windows PC running Deck, and a phone with a browser.
-- For home use: both on the same network (Wi-Fi or cable). Windows Firewall must allow the connection: when Deck has administrator rights it adds a firewall rule called "Deck phone remote" for private and domain networks.
-- For away from home: the free Tailscale app on both the PC and the phone, signed in to the same account.
-- Optional: VB-CABLE (free) only for using the phone as a microphone; RustDesk (free) only for the remote desktop option; the ViGEmBus driver for the phone as a controller (see the Screen section).
+- A phone with a browser.
+- At home: phone and PC on the same network. Windows Firewall must allow Deck; with administrator, Deck adds a "Deck phone remote" rule for private networks.
+- Away from home: the free Tailscale app on both, signed in to the same account.
+- Optional: VB-CABLE for the phone as a microphone, RustDesk for remote desktop, and the ViGEmBus driver for the phone as a controller.
 
----
-
-## Tab 1: Connect
-
-### Allow phone connection
-
-| Setting | What it does | Default |
-|---|---|---|
-| **Allow phone connection** | Turns the phone server on or off. Off, nothing listens and no phone can connect. | On |
-
-While it is on, the server listens on port 47830 on your network. It speaks HTTPS only: Deck makes a self-signed certificate for this PC's addresses. Because the certificate is Deck's own, your phone warns once ("not private" or "not secure"); choose Advanced and Proceed. If a plain http address is tried, Deck answers with one page that sends you to the https address, and the connection is closed before it reaches your router. If a certificate cannot be made, the server does not start and the page tells you why.
+## Connect
 
 ### Connecting a phone
 
-1. Make sure **Allow phone connection** is on. A QR code appears.
-2. Scan it with the phone's camera (the phone and PC must be on the same Wi-Fi or network).
-3. Open the page. It shows your PC's name and the controls.
-4. Optional: add it to your home screen from the browser menu so it opens like an app.
+1. Turn on **Phone connection**. A QR code appears.
+2. Scan it with the phone's camera.
+3. The phone warns that the page is not private, because Deck made its own certificate. Choose **Advanced**, then **Proceed** (the pairing list says **Browser warns “not private”: Advanced › Proceed**). The Deck Android app skips this step.
+   The Deck Android app can also take the link by hand: under the QR code, **Copy link**, then paste it in the app's "Enter the link by hand".
+4. The page shows your PC's name and the controls. The first time it shows **Not secure? Expected**; **Got it** hides it.
 
-The code carries a key and the certificate's fingerprint. The key itself never travels over the network afterwards: the page opens a session and signs every request, and each signed request works only once. Requests must name this PC, and the page uses a content-security policy.
+To add it to the home screen, open **Install on phone**: scan the code and choose ⋮ › Install app. If Chrome offers no Install app, follow the steps under **No Install app?** (`chrome://flags`, **Insecure origins treated as secure**). **Get the Android app** shows a code for the app download when one is available.
 
-**Make a new code** replaces the key. Phones using the old code are disconnected and must scan again. Use it if you scanned the code in front of someone you do not trust, or after losing a phone.
+The server listens on port 47830, HTTPS only. The code holds a key and the certificate's fingerprint; afterwards every request is signed and works only once, so the key never travels again.
 
-The status chips under the code show how many phones are connected "at home" and "away". A phone is counted once, whatever it has open.
+**Make a new code** replaces the key. Phones with the old code are disconnected and must scan again. Use it after losing a phone or showing the code to someone you don't trust.
 
-### At home / Away from home
+The chips under the code count phones connected **At home** and **Away**.
 
-When Tailscale is available, a switch shows **At home** and **Away from home** (needs Tailscale). For away from home:
+### Away from home
 
-1. The phone needs Tailscale too. If none of your phones is on your Tailscale network yet, the Away view shows a code that opens the Tailscale app in the phone's store, and the account to sign in with.
-2. Sign in with the same account as this PC and turn Tailscale on (allow its VPN).
-3. Scan the Away code, or use the PC's Tailscale address. It works anywhere while the phone is connected in the Tailscale app. If your phone is already set up, **My phone is set up: show the code** skips the guide.
+With Tailscale on this PC, a switch offers **At home** and **Away from home**.
 
-Tailscale is a private network: nothing is opened to the internet.
+1. Install Tailscale on the phone. If none of your phones is on Tailscale yet, the Away view shows a code to get the app (**Scan this to get Tailscale**) and the account to sign in with.
+2. Sign in with the same account as this PC and turn Tailscale on.
+3. Scan the Away code. It works anywhere while the phone is connected in Tailscale. **My phone is set up: show the code** skips the guide.
 
-### Add Deck to your phone's home screen
+Nothing is opened to the internet.
 
-Chrome on Android only offers "Install app" for trusted pages. Deck's certificate is its own, so in Chrome open `chrome://flags`, find **Insecure origins treated as secure**, add the address shown on the page, set it to Enabled, relaunch, scan the code, and choose the menu > Install app. This is only for the app-drawer icon; the page works without it.
+### Why can't my phone reach this PC?
 
-### Don't have the Android app yet?
+Under **Your phones**, this lists read-only checks: the connection is on, the port is free, the network profile, the firewall rule, and this PC's addresses. Each says **OK**, **Needs fixing**, **Worth checking**, **Unknown** or **Note**, with a **Fix:** line where it helps. Below are the **Pairing links** for **At home** and **Away from home**, with copy buttons.
 
-If an app download is available, a QR code in this fold gets the file to your phone. You can also just use the web page.
+If the last phone runs a Deck app this Deck no longer supports, a banner asks you to update the phone app.
 
-### Who can connect
-
-Open the **Who can connect** fold.
+### Connection limits
 
 | Setting | What it does | Default |
 |---|---|---|
-| **Phones at home at a time** | No limit, 1, 2, 3 or 5. | No limit |
-| **Phones away at a time** | The same, for phones using Tailscale. | No limit |
-| **A phone at home shuts out phones away** | While a phone is connected at home, away phones cannot connect. | Off |
-| **A phone away shuts out phones at home** | The reverse. | Off |
+| **Phones at home** | How many phones may connect at once: **No limit**, 1, 2, 3 or 5. | No limit |
+| **Phones away** | The same, through Tailscale or from outside this network. | No limit |
+| **Home phone shuts out away phones** | While a phone is connected at home, away phones can't connect. | Off |
+| **Away phone shuts out home phones** | The reverse. | Off |
 
-Changes affect new connections. "Away" means via Tailscale or from outside this network.
+A phone counts once. Changes apply to new connections.
 
-### Power and uploads
+### Power commands
 
-These live in **Settings › Connections** (*Phone*).
+| Setting | What it does | Default |
+|---|---|---|
+| **Allow power commands from phones** | Lets phones shut down, restart, sleep, hibernate and sign out. Lock and Screen off always work. | On |
+| **Ask here before a phone powers this PC off** | The PC shows a notification first; choose Allow within 30 seconds or it is canceled. | Off |
 
-| Setting | What it does | Default | Recommended |
-|---|---|---|---|
-| **Allow power commands from phones** | Lets phones request shutdown, restart, sleep, hibernate and sign-out plans. Off blocks them; Lock and Screen off stay available. | On | Off if others can use your phone. |
-| **Ask here before a phone powers this PC off** | Shows a notification on the PC before a phone's shutdown, restart, sleep or hibernate runs. Choose Allow within 30 seconds; ignoring it cancels. Lock and Screen off need no approval. | Off | On, unless the PC has no screen you watch. |
-| **Largest file a phone may send** | The largest single file a phone may upload: no limit, 100 MiB, 1 GiB, 10 GiB or 100 GiB. | No limit | |
-| **From-phone folder limit** | The most the "From phone" folder may hold, with the same choices. Unfinished uploads count. | No limit | |
-
-Uploads always leave 2 GiB free on the drive.
-
----
+Turn on **Ask here before a phone powers this PC off** if someone else could pick up your phone.
 
 ## What the phone page can do
 
-When connected, the phone page shows cards for:
+The page has four tabs: **PC**, **Screen**, **Sound** and **Send**; the one you used last opens first.
 
-- **Plan**: any shutdown/sleep/restart plan running on the PC, with Cancel.
-- **Screen** (when you allowed it): see, and optionally control, the PC's screen.
-- **Now playing**: title, artist, cover, progress and previous / play-pause / next. When the player has no previous/next, the buttons jump 10 seconds instead.
-- **Sound**: the playback device chips, the master volume ("Everything") with mute, and per-app volumes (the two loudest, **All apps** shows more).
-- **Speaker and mic**: when you turned those on.
-- **PC**: Deck game mode and Clean up background (the Game profiles page's actions), the Game bar on the PC, Keep awake, Lock, Screen off, Sleep, Restart, Shut down, your CPU and GPU profile chips, quick plans (Sleep in 30 min / 1 h, Off when downloads finish, Sleep when music stops) and live temperature, memory, network and power readings.
-- **Timers**: 5, 10, 15, 25 or 60 minutes, with the running timers.
-- **Send to PC**: text or a link (**Copy on PC**, **Open on PC**), **Send files**, and **PC clipboard** to get what is on the PC's clipboard.
-- **Between phone and PC**: what has been passed back and forth, with download, open and copy buttons.
+- **Plan**: a shutdown or sleep plan running on the PC, with Cancel.
+- **Screen**: see, and if allowed control, the PC's screen.
+- **Now playing**: title, cover, progress, previous, play or pause, and next.
+- **Sound**: output devices, the master volume with mute, app volumes (**All apps** for more) and **Chat mix**.
+- **Speaker and mic**: when turned on.
+- **Voice** (in the Android app: **Sound › Voice**): [Mic and Soundboard](voice.md) from the phone. **Turn Voice on** starts it with the same checks as the PC (it says why when it can't), then **Mute**, **Stop all** and **Clean and stop**, a light that shows when you talk, the **To others** level and **Processing**. Pick an effect (starred ones first, **All effects** for the rest). Search the soundboard, filter by **Favorites**, **Short** or **Long**, tap a sound to play it and tap it again to stop just that one; **Others hear** and **You hear** set the soundboard levels. **Say it** speaks typed text (up to 500 characters) into the call and keeps nothing. On the web page, **Vibrate on taps** turns the tick off. A Deck from before this shows **Update Deck on the PC**.
+- **Chat mix**: the Game to Chat balance, next to the volumes (its program lists are set on the PC).
+- **PC**: Deck game mode, the Deck bar, Keep awake, Lock, Screen off, Sleep, CPU and GPU profiles, quick plans (**Snooze 15 min** on a running plan) and live temperature, memory, network and power. **Restart** and **Shut down** are in their own **Power** card.
+- **Deaths**: the open game's death counter with **+1 death** and **Undo**, for when the screen reader misses one.
+- **Microphones** (Sound): the PC's microphones as Mixer > Devices lists them, each with mute, level, **Boost** where the driver has one, and **Apps and games** or **Calls** to choose which one is used. A Deck from before shows **Update Deck on the PC**.
+- **Batteries**: controllers, headsets and mice with their level, lowest first.
+- **Alerts**: the PC's recent notifications.
+- **Android app only**: **Output profiles** on Sound › Mixer, **+5** on a running timer, and a **Stats** page (tap the numbers card on the PC page, **Big view**): the PC's load, temperatures, power, clocks and network as large tiles, with the screen kept on, for a second screen while you play. In the Android app's Settings, under **PC controls**: **Volume keys control the PC** (off; the phone's volume keys change **Device volume** while the app is open) and **Media controls on the lock screen** (on; the PC's player on the phone's lock screen while connected). When the PC doesn't answer, **Wake the PC** sends a wake-on-LAN packet; it needs a code made by this version of Deck and the PC set up to wake (see Wake readiness on PC to PC).
+- **Output profiles**: your saved output profiles as chips in the Sound card (they never change the microphone).
+- **Timers**: 5 to 60 minutes or any number of minutes, with running timers and **+5** to add five minutes.
+- **Send to PC**: text or a link (**Copy on PC**, **Open on PC**), files, and **PC clipboard** to get what is on the PC's clipboard right now (only when you tap it; private copies and text over 1 MB are not sent). In the Android app a **Mute voice** button joins the notification while Voice is on.
+- **Between phone and PC**: what was passed each way.
 
-Power buttons ask the phone user to confirm. Shutdown, restart and sleep plans warn on the PC first.
+Power buttons ask the phone user first, and plans warn on the PC. "Sleep in 30 min" counts on the PC's clock. Files shared to Deck from another app are copied first, so a big file needs that much free space on the phone until it is sent.
 
----
+## Transfers
 
-## Tab 2: Transfers
+- **Send to phone**: type text or a link and press **Send text**, or **Send a file**. Until a phone connects it says **Connect your phone to send text or files**.
+- **Files from phone** opens the folder for files from the phone (Downloads\From phone). Text from the phone goes to the PC's clipboard.
+- **Passed between phone and PC**: recent transfers marked **From phone** or **To phone**, with **Show in Explorer**, open, copy and **Remove from list** (the file stays).
+- **Upload limits**: **Largest file a phone may send** and **Most space phone uploads may use** (**No chosen limit**, 100 MB, 1 GB, 10 GB or 100 GB). Uploads always leave 2 GB free on the drive.
 
-### Send to your phone
+You can also send to the phone from the [Clipboard](clipboard.md) page.
 
-Type text or a link and press **Send text**, or press **Send a file** to pick a file. Both reach the connected phone. **Files from phone** opens the folder that receives files sent from the phone (Downloads\From phone). Text sent from the phone goes to the PC's clipboard.
+## Screen
 
-Until a phone is connected, a note says "Connect a phone to receive text or files."
+### Right now
 
-### Passed between phone and PC
+**Streaming now** or **Nobody is watching**, the permission, and while someone watches: **Round trip**, **Frame rate**, **Video format** and **Data use** (Mb/s).
 
-A list of recent transfers, newest first, each marked "From phone" or "To phone". Buttons: show in folder, open (links), copy (text and links), remove from list (the file itself is not deleted).
-
-You can also send the selected text or a copied file to the phone from the [Clipboard](clipboard.md) page.
-
----
-
-## Tab 3: Screen
-
-### Screen on your phone
+### Screen on phone
 
 | Setting | What it does | Default |
 |---|---|---|
-| **Screen access** | **Off**: no screen access. **View only**: the phone can watch. **View and control**: the phone can also tap, click and type on the PC. | Off |
-| **Picture size** | The largest the picture may be: **Full**, **Medium** or **Small**. Full keeps small text sharp. | Full |
-| **Frames per second** | 15, 24, 30 or 60 frames per second. | 30 |
-| **Data use (bitrate)**, under Picture and bandwidth help | **Auto** (follows your connection), a fixed limit from 0.5 to 30 Mb/s, or **Type...** for your own. | Auto |
-| **When the connection is slow** | **Keep it smooth** (keep motion, may blur) or **Keep it sharp** (keep detail, may drop frames). | Smoother |
-| **Video format**, under Picture and bandwidth help | **H.264** (less data) or **JPEG**. | H.264 |
+| **Screen access** | **Off**, **View** (watch only) or **Control** (also tap, click and type). Control asks once: "A paired phone can then click and type on this PC as you; it pauses while a game is in front." Only paired phones can connect. | Off |
+| **Picture size** | **Full**, **Medium** or **Small**. Full keeps small text sharp. | Full |
+| **Frame rate** | 15, 24, 30 or 60 fps. | |
+| **On a slow link** | What to give up first: **Smooth** (keep the frame rate, shrink the picture), **Balanced** or **Sharp** (keep the picture, drop frames). | Balanced |
+| **Advanced picture** › **Data use (bitrate)** | **Auto** or a fixed limit in Mb/s. | Auto |
+| **Advanced picture** › **Video format** | **H.264 (less data)** or **JPEG**, for every phone. A phone's own Video choice applies to that phone only. | H.264 |
 
-A chip shows "N watching" when someone is viewing. The picture is the PC's screen (DXGI capture with a fallback), sent over your network only; nothing goes through an outside server.
+The picture goes over your own network only.
 
-On the phone: tap **See the PC's screen** (or **See and control the PC**). The bar has Close, full screen, **Control** on/off, sound from the PC, keyboard, Keys, Right-click, **Controller**, **My keys**, Hold click, Fit, a monitor picker, and a settings panel for bitrate, frame rate and picture. Tap to click, hold for right-click, slide to move the pointer, two fingers to scroll or zoom (view only: pinch to zoom).
+### On the phone
 
-Safety notes:
+Tap **See the PC's screen** (or **See and control the PC**). The picture fills the screen with a small handle on the edge; tap it for the menu:
 
-- Control is off until you choose View and control **and** turn Control on in the phone.
-- **Control in games** is a phone-side setting, off by default: taps and keys pause while a game is in front unless you allow them. Some online games' anti-cheat may not like input that arrives from another device, so leave it off for those games. Deck sends the input through normal Windows input, as any remote desktop tool does; it does not inject into the game.
-- The PC's sound can be played on the phone while viewing.
+| Menu item | What it does |
+|---|---|
+| **Keyboard** | Types on the PC as you type. A keyboard or mouse connected to the phone works too. |
+| **Mouse mode** | **Trackpad** (default) or **Touch**. |
+| **Keys** | Ctrl, Alt, Shift, Win, Lock, Task Manager, Esc, Tab, Alt+Tab, arrows, F1-F24. Windows does not let a remote tool send Ctrl+Alt+Del, so **Lock** and **Task Manager** are there instead. The row also rides above the phone keyboard while it is open. |
+| **Right-click**, **Hold click** | Click modes for Touch mode and games. |
+| **Controller**, **My keys** | The on-screen game pad and your own buttons. |
+| **Quality** | **Smooth**, **Balanced**, **Sharp** or **Custom** (the bitrate, frame rate and size choices show only for Custom). Also **Pointer speed** (0.5x to 2x), **Natural scroll**, and **Lock the PC when I disconnect** (off by default). |
+| **Fill**, **Gestures** | **Fill** makes the picture cover the whole view (slide to see the rest), for a phone whose shape is not the PC's. **Gestures** shows the table below. The view turns with the phone, portrait too. |
+| **Screen** | Which monitor, when there are several. |
+| **Fit PC to this phone** | Off by default, remembered on each phone. Gives the PC the shape of your phone so there are no black bars (like Chrome Remote Desktop's "Resize desktop to fit"). Needs the virtual display (below) and Deck running as administrator; otherwise the switch says so and nothing changes. It does nothing when the phone's shape is the PC's. |
+| **Sound**, **Stats**, **Fit to screen**, **Full screen** | Switches. **Stats** shows the route, frame rate, delay, data rate, size and how long the phone takes to decode a picture. |
+| **Control**, **Disconnect** | Control is remembered (the PC must still allow it). |
+
+The gestures (the Android app has the same table, under menu › Gestures):
+
+| Gesture | What it does |
+|---|---|
+| Tap | Click |
+| Two-finger tap | Right-click |
+| Three-finger tap | Middle-click |
+| Three-finger swipe up | Keyboard |
+| Slide | Move the pointer |
+| Tap then slide, or hold then slide | Drag |
+| Two-finger slide | Scroll |
+| Pinch | Zoom |
+
+In Touch mode a tap clicks where you touch and a long press right-clicks. When the picture is zoomed in, it follows the pointer so the pointer never leaves the view. A two-finger scroll keeps going for a moment after you lift your fingers. A "Weak connection" note shows on the picture when it arrives late or pictures are dropped.
+
+Taps and keys pause while a game is in front unless **Control in games** is on in the phone's menu (off by default). Some online games' anti-cheat may dislike input from another device, so leave it off for those. Deck sends normal Windows input, like any remote desktop tool.
 
 ### Use as a controller
 
-In View and control mode, **Use as a controller (no screen)** on the phone gives you only an on-screen game pad with the lowest delay and almost no data or battery use. The PC sees a virtual Xbox 360 controller, for players 1 to 4 (several phones are several players). This needs the free ViGEmBus driver on the PC. The pad can be shown over the screen view as well. Controller parts can be moved and resized on the **Layouts** tab.
+In Control mode, **Use as a controller (no screen)** on the phone shows only a game pad, with the lowest delay and little data. The PC sees an Xbox 360 controller (players 1 to 4, one per phone). It needs the free ViGEmBus driver. Arrange its parts on the **Layouts** tab.
 
 ### Virtual display
 
-Optional. Gives the Screen view (and remote desktop) a screen to show when the monitor is unplugged or a laptop lid is closed. It uses the free, signed Virtual Display Driver (by VirtualDrivers, MIT licence). It is **not installed** until you press **Install the virtual display**.
+Optional: gives the Screen view a screen when the monitor is unplugged or the lid is closed. It uses the free, signed Virtual Display Driver and isn't installed until you press **Install the virtual display**.
 
-| Control | What it does |
-|---|---|
-| **Use it** | **Off**, **When no monitor is connected** (it turns on by itself with no real monitor, off again when one returns), or **Always**. Switching applies at once. |
-| **Uninstall** | Removes the device and driver after confirming. The Screen view then needs a real monitor. |
+- **Use it**: **Off**, **No monitor** (on only while no real monitor is connected) or **Always**. With Always, Windows treats it as a second screen, so windows can drift onto it. Automatic switching needs administrator.
+- **Uninstall** removes the device and driver.
 
-Notes: with **Always** and a real monitor connected, Windows treats the virtual display as a second screen, so windows can drift onto it. Automatic switching needs Deck's admin rights. Installation uses administrator rights and downloads the pinned driver package, verifying its checksum and signer.
+**Fit PC to this phone** (a switch in the phone's Screen menu, in the Android app and the phone page) uses it too. While the phone watches with the switch on, Deck saves the PC's display layout, gives the virtual display a size with the phone's shape (the longest side up to 2560 pixels) and makes it the only display. **The PC's real monitors go dark meanwhile**, and windows move to the virtual display. The layout comes back, exactly as it was, when you stop watching, the phone disconnects or goes to the background, you turn the switch off, Deck quits, or pictures go unanswered for 30 seconds. If Deck or the PC ended while it was changed, the next start puts it back (saved in `fit-layout.json` in Deck's data folder). Don't use it while a game is running.
 
-### Remote desktop app (RustDesk)
+### Remote desktop
 
-An alternative way to see and control the PC from a phone or another computer, using RustDesk (free, open source).
+Another way to see and control the PC, with RustDesk (free, open source).
 
-| Control | What it does |
-|---|---|
-| **Install RustDesk** | Downloads and installs it; shows progress with Cancel. |
-| **Allow remote desktop** | Master switch. Off stops RustDesk completely, also after a restart. |
-| **At home** / **Away from home** | The addresses to type into RustDesk on the other device (copy buttons). Away needs Tailscale (the row offers Get it / Sign in). |
-| **RustDesk ID** | RustDesk's own ID. |
-| **Connect by address** | Direct connection to this PC (port 21118), not through RustDesk's public servers. |
-| **Hide tray icons** | Hides the RustDesk and Tailscale tray icons; they keep working. |
-| **Set password** | At least 8 characters. Asked when you connect. Set one before you use it. |
-| **Open RustDesk** | Opens the RustDesk window. |
+1. Press **Install RustDesk**.
+2. Turn on **Allow remote desktop** (off stops RustDesk completely).
+3. **Set password** (at least 8 characters; asked when you connect).
+4. On the other device, install RustDesk and enter the **At home** or **Away from home** address (Away needs Tailscale), then the password.
 
-To connect from a phone: install RustDesk on the phone, enter the address, then the password. Away from home the phone needs Tailscale too.
+**Connect by address** connects straight to this PC (port 21118), not through RustDesk's servers. **RustDesk ID**, **Hide tray icons** and **Open RustDesk** are there too.
 
----
+## Speaker & mic
 
-## Tab 4: Speaker & mic
+### Use phone as speaker
 
-### Phone as speaker
+1. Turn on **Use phone as speaker**.
+2. On the phone, tap **Use phone as speaker** in the Speaker and mic card.
 
-Turn on **Phone as speaker**, open the phone page and tap **Phone as speaker** in its Speaker and mic card. The PC's sound plays on the phone. **PC speakers off while playing** (on the phone) mutes the PC's default output while the phone plays and brings the sound back after. Over Wi-Fi expect about a third of a second of delay. Keep the phone page open: it keeps the screen on while playing. Wi-Fi only.
+The PC's sound plays on the phone, about a third of a second late over Wi-Fi. **PC speakers off while playing** (on the phone) mutes the PC meanwhile. Keep the phone page open.
 
-### Phone as mic
+### Use phone as microphone
 
-Turn on **Phone as mic**. Windows only lists a microphone that a driver creates, and Deck has no driver of its own (a test-signed driver would break many anti-cheats), so the mic goes through **VB-CABLE**, a free virtual audio cable from VB-Audio. Its licence does not allow bundling it, so Deck does the following:
+Windows only lists microphones made by a driver, so the phone mic goes through VB-CABLE, a free virtual audio cable from VB-Audio. Deck can't include it, so:
 
-1. If VB-CABLE is installed but turned off, **Turn VB-CABLE on** enables it (needs Deck's admin rights).
-2. If it is not installed, **Get VB-CABLE** downloads VB-Audio's own package unchanged, checks it is signed by VB-Audio and opens VB-Audio's setup. Click **Install Driver**, then restart the PC once.
-3. On the phone, tap **Mic: open the secure page**, accept the certificate warning once, tap **Phone as mic** and allow the microphone. A bar moves when you talk.
-4. In Discord, the game or the call app, choose **CABLE Output** as the microphone, or turn on **Make it the default mic while the phone talks** here (your previous microphone is restored when the phone stops).
+1. Turn on **Use phone as microphone**.
+2. If VB-CABLE is installed but off, press **Turn VB-CABLE on** (needs administrator). If it isn't installed, press **Get VB-CABLE**: Deck downloads VB-Audio's own package, checks its signature and opens its setup. Click **Install Driver**, then restart the PC.
+3. On the phone, tap **Microphone: open the secure page**, accept the warning once, tap **Use phone as microphone** and allow the mic. A bar moves when you talk.
+4. In Discord, the game or the call app, choose **CABLE Output** as the microphone, or turn on **Default mic while the phone talks** here (your mic comes back when it stops).
 
-If VB-CABLE became your default speakers by mistake, Deck shows buttons to pick your real speakers again.
+While voice effects run, the phone mic goes through the same clean-up and effects as the PC mic. Deck notes what it muted or switched, so it can undo it after a crash.
 
-When the phone is playing or talking, Deck writes down what it muted or switched first, so it can put everything back after a crash.
+### If something doesn't work
 
-### If something does not work
-
-- **No sound on the phone:** tap the page once (phones mute until touched) and check the phone's volume.
-- **The PC is silent:** Windows may have switched to VB-CABLE; pick your speakers again with the buttons.
-- **The bar moves but nobody hears you:** the app is not set to CABLE Output.
-- **Echo:** use headphones on the phone or keep its volume low.
+- **No sound on the phone:** tap the phone page once (phones mute until touched) and check its volume.
+- **The PC is silent:** Windows may have switched to VB-CABLE; pick your speakers again with the buttons Deck shows.
+- **The bar moves but nobody hears you:** choose CABLE Output in the app's voice settings.
+- **Echo:** use headphones on the phone, or keep its volume low.
 - **It stops when the screen turns off:** keep the phone page open.
-- **Choppy or late:** move closer to the router or try USB tethering; about 0.1 s of delay is normal.
-- **"Not secure" every time:** Deck made a new certificate (the PC's address changed); accept it once more.
+- **Choppy or late:** move closer to the router or use USB tethering.
 
----
-
-## Tab 5: Layouts
+## Layouts
 
 ### Phone button layouts
 
-The phone's controller page has a keyboard button (the keyboard icon) with a full keyboard, a small gaming set (WASD, mouse buttons, a mouse pad, scrolling) and buttons of your own: any key or combo (such as Ctrl+Shift+Esc), mouse buttons, a trackpad area, scrolling, typed text and macros (such as `ctrl+c, wait 200, ctrl+v`). Each button can hold while touched, fire once, or stay on until pressed again.
-
-On this tab:
+The phone's controller page has a keyboard button with a full keyboard, a gaming set (WASD, mouse buttons, a mouse pad) and your own buttons: keys or combos, mouse buttons, a touchpad, scrolling, typed text, macros (`ctrl+c, wait 200, ctrl+v`) and **Run on PC** buttons. A button can hold while touched, fire once, or stay on until pressed again.
 
 | Control | What it does |
 |---|---|
-| Layout list | Each layout with its button count and the games it is tied to. |
-| **Edit** | Opens the layout on a drawing of the phone held sideways. Drag buttons to move them, drag a corner to size them, and set their keys, kind, colour, size and opacity on the side. Undo, Cancel and Save are on top; saving sends it to every connected phone. |
-| Rename (pencil) | Renames it. |
-| Copy | Copies the layout as text; paste it into **Import a layout** on another PC. |
-| Delete | Removes it from this PC and every phone, after asking. |
-| **Game** | Ties the layout to a game, by the name Deck shows. When that game comes to the front the phone shows its layout, and restores your previous layout afterwards. |
-| **Switch layout by game** | Master switch for that behaviour. On by default. |
-| **New layout** | Makes an empty layout and opens the editor. |
+| **Edit** | Opens the layout on a drawing of the phone held sideways: drag to move, drag a corner to resize, set keys, color and size. Save sends it to every phone. |
+| **Rename**, **Copy**, **Delete** | Copy puts the layout on the clipboard as text, for **Import a layout** on another PC. |
+| **Use for a game** | Shows that layout while the game is in front, then your previous one. |
+| **Switch layout by game** | Turns that on or off. On by default. |
+| **New layout**, **Start from a layout** | An empty layout, or a copy of a starter (Presenter, Media, Browser) with **Use this**. |
 | **Import a layout** | Paste text copied from another PC. |
 
-Layouts are stored on the PC and checked for shape and size when saved. If no layouts appear, open the controller page on the phone and tap the keyboard button once: the Keyboard and Gaming layouts are created.
+A **Run on PC** button runs one action from Deck's fixed list (**Does**): mute the mic or sound, switch a CPU or GPU profile, Keep awake, the Deck bar, lock, sleep or screen off. Sleep, lock and screen off follow **Allow power commands from phones**.
 
-**Keys in games.** Keys pause while a game is in front unless **Allow keys in games** is on in the phone's keyboard settings. When a game comes to the front, whatever the phone holds is released at once and a playing macro stops. The phone sends everything it holds twice a second; the PC lets go of every key if it stops hearing from the phone.
+If no layouts show, open the controller page on the phone and tap ⌨ once: the Keyboard and Gaming layouts appear.
+
+Keys pause while a game is in front unless **Allow keys in games** is on in the phone's keyboard settings. When a game comes to the front, held keys are released and a macro stops. If the PC stops hearing from the phone, it lets go of every key.
 
 ### Controller layout
 
-**Edit the layout** lets you move and resize the on-screen controller's sticks and buttons for when the phone is held sideways. Every phone shares it. **Put every part back** returns everything to the default positions.
-
----
+**Edit the layout** moves and resizes the on-screen controller's sticks and buttons; every phone shares it. **Put every part back** restores the default.
 
 ## Recommended setup
 
-- Keep **Allow phone connection** on only if you use it; turn on **Ask here before a phone powers this PC off** (Settings › Connections) if anyone else can pick up your phone.
-- Use Tailscale for away-from-home; do not forward ports on your router.
-- Screen access: **View only** is enough for checking on a download or a render. Use **View and control** deliberately and turn off **Control** on the phone when finished.
-- For gaming, leave **Control in games** off, and use the Controller mode with a dedicated layout per game.
-- For calls from the phone, install VB-CABLE, then use **Make it the default mic while the phone talks**.
+- Keep **Phone connection** on only if you use it, and turn on **Ask here before a phone powers this PC off** if others can use your phone.
+- Use Tailscale away from home; don't forward ports on your router.
+- **View** is enough to check a download. Use **Control** on purpose and turn it off when done.
+- For gaming, leave **Control in games** off and use the controller with a layout per game.
 
 ## Troubleshooting
 
-**The phone can't connect.** Make sure both are on the same network (not a guest network that isolates devices), the PC is awake, **Allow phone connection** is on, and Windows Firewall allows Deck on private networks (Deck adds a rule when it has admin rights). Try making a new code.
+**The phone can't connect.** Both on the same network (not a guest network)? PC awake? **Phone connection** on? Firewall allows Deck? Try **Why can't my phone reach this PC?**, or **Make a new code**.
 
-**The phone warns the page is not secure.** Expected: Deck's certificate is its own. Accept it once. If it asks again, the PC's address changed and Deck made a new certificate.
+**The phone warns the page isn't secure.** Expected; accept it once. If it asks again, the PC's address changed and Deck made a new certificate; the saved code still works in the browser. The Android app, once it has connected with this version, stays paired when that happens; an app paired earlier shows "This PC's security certificate changed" once, and scanning the QR code again fixes it.
 
-**The QR code does not appear.** The connection is off, or the certificate could not be made (the page says why).
+**"This PC is busy" or "Update the app".** The PC has no room for another phone session right now (the app tries again in 10 seconds), or the app is older than Deck on the PC supports (update the app).
 
-**The phone shows "Connecting to your PC" forever (away).** Tailscale must be on and signed in on both devices with the same account.
+**The Android app and battery.** With the app closed, the link stays up only while "Stay connected" is on; a PC that is off or asleep is then tried every few seconds at first and later only every few minutes, and the PC sends its state every 5 seconds instead of every 1.5. Android may stop the background link after about 6 hours; Deck says so in a notification, and a tap reconnects.
 
-**Screen is black or laggy.** Lower the bitrate or picture size, pick 30 fps, or choose Sharper/Smoother for your connection. With no monitor, install the virtual display.
+**No QR code.** The connection is off, or the certificate couldn't be made (the page says why).
 
-**Taps do nothing on the PC.** Check Screen access is **View and control**, **Control** is on in the phone, and a game is not in front (**Control in games**).
+**The phone connects only through Tailscale.** The Android app tries the home address first on every reconnect and repairs itself once it reaches the PC at home. If the Phone page says **Network set to Public**, tap **Open network settings** and set the network to Private.
 
-**Phone mic does not work.** Check VB-CABLE shows "VB-CABLE ready", the phone page shows the bar moving, and the call app uses **CABLE Output**.
+**Away, the phone never connects.** Tailscale must be on and signed in on both with the same account.
+
+**The screen is black or laggy.** Choose **Smooth** under **On a slow link**, or lower **Picture size** or **Frame rate**. With no monitor, install the virtual display.
+
+**Taps do nothing on the PC.** **Screen access** must be **Control**, Control must be on in the phone's menu, and no game may be in front (or **Control in games** on).
+
+**The phone mic doesn't work.** Check Deck shows **VB-CABLE ready**, the bar moves on the phone, and the app uses CABLE Output.
 
 ## FAQ
 
-**Is it safe?** Every request is signed with a key that never leaves your devices, each signed request works only once, the connection is encrypted, and Deck only accepts requests for this PC. Anyone who scans your code can control the things you allowed, so treat the code like a password and use **Make a new code** after sharing it.
+**Is it safe?** Every request is signed with a key that never leaves your devices and works only once, and the connection is encrypted. Anyone who scans your code can use what you allowed, so treat the code like a password and **Make a new code** after sharing it.
 
-**Does it work outside my home without Tailscale?** No. Deck deliberately does not open your router to the internet.
+**Does it work away from home without Tailscale?** No. Deck doesn't open your router to the internet.
 
-**Is it safe with anti-cheat?** The phone remote does not touch games. Input from the phone reaches the PC like a normal remote desktop tool; it pauses while a game is in front unless you allow it, and some online games may dislike input from other devices. The virtual controller appears as an ordinary Xbox 360 pad.
+**Is it safe with anti-cheat?** The remote doesn't touch games. Phone input pauses in games unless you allow it, and the controller appears as an ordinary Xbox 360 pad.
 
-**What does Deck change on my PC?** It adds a firewall rule for its port, may mute or switch your default speakers and microphone while the phone plays or talks (restored afterwards and after a crash), and can install the optional VB-CABLE, virtual display and RustDesk only when you press their buttons.
+**What does Deck change on my PC?** A firewall rule for its port, and, while the phone plays or talks, your default speakers or mic (restored afterwards, also after a crash). VB-CABLE, the virtual display and RustDesk are installed only when you press their buttons.
 
-**How many phones can connect?** As many as you allow in **Who can connect**. The default is no limit.
+**How many phones can connect?** As many as **Connection limits** allow; no limit by default.

@@ -2,186 +2,131 @@ Where to find it: Settings › About
 
 # Troubleshooting
 
-Problems by symptom, with the steps to try and links to the page that explains more. Each page also ends with its own Troubleshooting section for problems specific to it. If nothing here helps, jump to [Getting the log and a support report](#getting-the-log-and-a-support-report).
+Problems by symptom, with the first steps and a link to the page that has more. Each feature page also ends with its own Troubleshooting section.
+
+If nothing here helps, see [Getting the log and a support report](#getting-the-log-and-a-support-report).
 
 ## Deck is still starting
 
-Deck shows this message if its background part is slow to answer. It keeps trying with increasing delays and opens by itself when the connection is ready. **Try again** skips the next waiting period.
+Deck shows this while its background part is slow to answer. It keeps trying and opens on its own when ready. **Try again** skips the wait.
 
-Script errors are shown as a plain message; the full details are kept in Deck's log.
+## A setting is grayed out or says "Needs administrator"
 
-## Contents
+[This PC](this-pc.md#what-deck-controls) tells you whether Deck or your hardware is the limit. There are three causes:
 
-- [A page or setting says "not available", "Needs admin" or is greyed out](#a-page-or-setting-says-not-available-needs-admin-or-is-greyed-out)
-- [A page is missing from the sidebar](#a-page-is-missing-from-the-sidebar)
-- [The overlay is not showing, or is frozen or doubled](#the-overlay-is-not-showing-or-is-frozen-or-doubled)
-- [Fans are not controlled](#fans-are-not-controlled)
-- [GPU options are greyed out or missing](#gpu-options-are-greyed-out-or-missing)
-- [The phone cannot connect](#the-phone-cannot-connect)
-- [The game bar does not open](#the-game-bar-does-not-open)
-- [The death counter is not counting](#the-death-counter-is-not-counting)
-- [High CPU use or Deck feels heavy](#high-cpu-use-or-deck-feels-heavy)
-- [Deck will not start or cannot be opened](#deck-will-not-start-or-cannot-be-opened)
-- [After a crash or an unexpected restart](#after-a-crash-or-an-unexpected-restart)
-- [Getting the log and a support report](#getting-the-log-and-a-support-report)
-
-## A page or setting says "not available", "Needs admin" or is greyed out
-
-Work out which of three causes you have. [This PC](this-pc.md) answers it in plain words: its "What Deck can control here" list says whether your hardware or Deck is the limit.
-
-1. **Deck is not running with administrator rights.** Signs: the CPU card on Home says **Needs admin**, a hardware page shows a **One-time set up** card or a **Set up** button, drive health says "No drives could be read", Windows tweaks say "Needs Deck's admin rights". Fix: press **Set up** (one Windows prompt). If you installed with the setup this was done for you; if it keeps coming back, reinstall with the setup. Check on This PC that **Admin rights** shows Deck runs with them. See [Getting started](getting-started.md#the-one-time-set-up).
-2. **Your hardware does not offer it.** Examples: GPU profiles need a supported NVIDIA card; Highest speed needs Volta or newer and Memory speed needs Ampere or newer; fan control needs a supported fan chip; lighting needs a supported controller; power limits and the clock lock are Intel features. Choices appear only if the PC has the device. This is not a fault.
-3. **Something else is in the way.** A game in front blocks changes to Windows settings, updates, app removal and calibration ("a game is in front": leave the game and try again). Another program (Afterburner, a maker's fan or RGB tool) can be fighting Deck. A "hardware held" toast means Deck found its fan, CPU or GPU settings files edited behind its back; press **Apply them** only if you made the change ([CPU](cpu.md#faq)).
-
-Specific pages: [Windows tweaks](tweaks.md#troubleshooting), [Game profiles](gaming.md#troubleshooting) (greyed-out choices), [Drive health](drives.md#troubleshooting), [Fans](fans.md#troubleshooting), [CPU](cpu.md#troubleshooting).
+1. **Deck isn't running as administrator.** The page shows **Needs administrator**, or Home's CPU card shows **Admin**. Press **Restart as administrator** and accept the prompt. If it keeps coming back, reinstall with the setup ([Getting started](getting-started.md#why-deck-needs-administrator)).
+2. **Your hardware doesn't offer it.** For example GPU tuning needs a supported NVIDIA card, and power limits are Intel only. This is not a fault.
+3. **Something is in the way.** A game in front blocks Windows changes, updates and calibration until you leave it. Another program (Afterburner, a maker's fan or RGB tool) may be fighting Deck. After **Hardware settings were changed outside Deck**, press **Apply them** only if you made the change.
 
 ## A page is missing from the sidebar
 
-Hardware pages hide themselves when your PC has nothing Deck can use for them: CPU, GPU, Fans, Lighting, Cooler display and Sensors. Project sync only shows while it is on, unless you tick **Show Project sync** (Settings › General > Sidebar) ([Settings](settings.md#sidebar)). Without admin rights the Fans page shows only **Set up**.
+- Hardware pages hide themselves when your PC has nothing for them. Open [This PC](this-pc.md) to see what Deck found.
+- Pages you hid: **Show everything** in [Settings › Features](settings.md#features) brings them back. Project sync is shown from there too.
+- Order changed: **Reset order** in [Settings › General](settings.md#sidebar).
+- The GPU page needs an NVIDIA card. AMD and Intel graphics appear in [Sensors](sensors.md).
 
-- Open [This PC](this-pc.md) to see what Deck found.
-- Pages you hid or reordered yourself: Settings › General > Sidebar > **Reset order** puts the order back.
-- The GPU page appears only for an NVIDIA card with Deck's access; AMD and Intel graphics get [Sensors](sensors.md) but no tuning page ([GPU](gpu.md#troubleshooting)).
+## Something doesn't show over a game
 
-## The overlay is not showing, or is frozen or doubled
+Exclusive fullscreen hides every window drawn over a game. Switch the game to borderless or windowed first.
 
-There are three overlay-like things; find yours.
-
-**The in-game overlay (readings, drawn by RivaTuner)** - [Performance overlay](overlay.md#troubleshooting)
-1. Check the strip at the top of the page: the switch is on and RivaTuner is running. Use Deck's own **Open RivaTuner** button, because RivaTuner draws its window properly only when it opens it itself.
-2. Play in borderless or windowed mode. Some games (some anti-cheat protected games, some launchers) cannot be hooked by RivaTuner, and then nothing can be drawn there; the overlay's other features still work.
-3. Shown twice or frozen: NVIDIA, AMD and Xbox Game Bar overlay windows are kept out of RivaTuner's hooks, but a window that was already open keeps its old copy until it restarts. Restart the game or launcher, or the PC.
-4. "No reading" on some lines: that sensor is not provided by the PC right now. FPS and frametime empty: RivaTuner has to be measuring that game.
-5. Using Afterburner as well: turn off *Share readings with other tools* and use only one overlay.
-6. Want RivaTuner back as it was: Behaviour > RivaTuner > **Restore RivaTuner's own look**.
-
-**The controller overlay** - [Controller](controller.md#troubleshooting)
-Check the main switch, the monitor and that **Hide without a controller** is not hiding it; use borderless or windowed mode (overlays hide in exclusive fullscreen). "Waiting for a controller": connect it by USB or Bluetooth and press a button.
-
-**Music & volume pop-ups and the death counter on screen** - [Music & volume pop-ups](flyouts.md#troubleshooting), [Death counter](death-counter.md#troubleshooting)
-Exclusive fullscreen hides windows. Use borderless or windowed mode; for flyouts you can set **Over games and fullscreen** to **Overlay text** with the Performance overlay on.
+- **Performance overlay:** RivaTuner must be running; open it with **Open RivaTuner**. Some protected games can't be drawn on. See [Performance overlay](overlay.md#troubleshooting).
+- **Controller overlay:** check **Hide without a controller** and press a button on the pad ([Controller](controller.md#troubleshooting)).
+- **Deck bar:** try **Open now** with the game in front ([Deck bar](game-bar.md#troubleshooting)).
+- **Death counter on screen:** check **Show in games** ([Death counter](death-counter.md#troubleshooting)).
+- **Music & volume pop-ups:** see [Music & volume pop-ups](flyouts.md#troubleshooting).
 
 ## Fans are not controlled
 
-Page: [Fans](fans.md#troubleshooting).
+1. No Fans page: your PC has no fans Deck can control (laptops usually run their own), or Deck needs administrator.
+2. The page is read only: the banner says why, such as an unverified board (**Unverified fan control**) or an anti-cheat client like FACEIT.
+3. Nothing changed: edits wait until you press **Apply hardware changes**.
+4. A fan runs faster than its curve: a safety rule is active, for example the CPU at 85 °C.
+5. Fans went back to the BIOS: that is the safe fallback after a crash, a quit or a change made outside Deck.
+6. Graphics card fans are set in the GPU profile, not on the Fans page.
 
-1. **No Fans page, or it only shows Set up.** The PC has no fans Deck can see (laptops usually control their own), or Deck lacks admin rights. Press **Set up**, then check [This PC](this-pc.md): "Readable; control not verified" means Deck can read the chip but will not control a fan it is unsure about.
-2. **The page is read-only.** A banner gives the reason. Possible reasons: an unverified board (turn on **Allow control on this unverified board** only if you accept the risk), another user's Deck owns the hardware (quit it there), or an anti-cheat client such as FACEIT is open (Deck hands the fans back while it runs; close the client, see [Fans](fans.md#what-happens-with-anti-cheat)).
-3. **You changed a mode and nothing happened.** Edits are a draft; press **Apply** in the bar.
-4. **A fan is faster than the curve.** A safety rule is active (CPU at 85 C, the source at 90 C or no reading) or a calibration is holding that fan.
-5. **Two programs on the same chip.** Close the maker's fan software or any other tool that controls fans; two programs fight.
-6. **Fans went to the BIOS by themselves.** That is the safe fallback after a crash, a crash loop, a quit, or a "hardware held" notice. Press **Apply them** if you made the change.
-7. **Graphics card fans** are not on the Fans page; they are in the GPU profile ([GPU](gpu.md)).
+More in [Fans](fans.md#troubleshooting).
 
-## GPU options are greyed out or missing
+## GPU options are grayed out or missing
 
-Page: [GPU](gpu.md#troubleshooting).
+- The GPU page needs an NVIDIA card and its driver, and Deck running as administrator.
+- Missing controls: the card or driver doesn't offer them.
+- "GPU asleep": the card is powered down, common on laptops. It wakes when a program uses it.
+- Settings gone after a restart: choose a **GPU profile when Deck starts**. After an unexpected restart an overclock is held back (**Overclock held back**) until you apply it again.
+- Afterburner also tuning: close it or stop its startup profile.
 
-- **No GPU page:** it appears only for an NVIDIA card. Make sure Deck has admin rights and the NVIDIA driver is installed.
-- **Some controls missing in the editor:** the card or driver does not offer them (Highest speed needs Volta or newer, Memory speed needs Ampere or newer, some laptop cards have no power-limit range).
-- **"GPU asleep":** the card is powered down, common on laptops with switchable graphics. It wakes when a program uses it.
-- **Settings gone after a restart:** GPU settings reset on every restart. Choose a profile under **Apply a profile at start**. An overclocked profile is skipped after an unexpected restart ("Started at stock"); press **Apply anyway** only if you think the restart had another cause.
-- **Afterburner and Deck disagree:** Afterburner's startup profile, hotkeys or fan control override Deck. Use **Stop Afterburner from tuning...** or close Afterburner.
-- **In Gaming:** GPU profiles and *Target FPS* need an NVIDIA card; Target FPS also needs the game in front, a fresh FPS reading from RivaTuner, admin rights and no other tuning program ([Game profiles](gaming.md#troubleshooting)).
+More in [GPU](gpu.md#troubleshooting).
 
-## The phone cannot connect
+## The phone can't connect
 
-Page: [Phone](phone.md#troubleshooting).
+1. Update the phone app after updating Deck.
+2. Set the Windows network to Private. Deck's firewall rule doesn't cover Public networks.
+3. Both devices on the same network, **Phone connection** on, Deck running as administrator.
+4. Away from home: Tailscale on and signed in on both devices with the same account.
 
-1. **Updated Deck? Update the phone app too.** After Deck 3.7.5 the phone link is encrypted only and every request is signed, so the Android app must be the matching new version; older apps must update. The old browser page stops working until it is reloaded from the PC. Scan the code again (the Phone page has a "Don't have the Android app yet?" section with a code for the newest app).
-2. **Set the Windows network to Private.** Deck's firewall rule covers home and work (Private) networks only, not Public ones. If Windows calls your network **Public**, the phone cannot reach the PC: in Windows Settings > Network & internet, open your connection's properties and set the network profile to **Private**. Also avoid guest networks that isolate devices.
-3. **The basics.** Both devices on the same network, the PC awake, **Allow phone connection** on, Deck running with admin rights (it adds the firewall rule when it has them). Try **Make a new code**.
-4. **The phone warns the page is not secure.** Expected; Deck's certificate is its own. Accept it once. If it asks again, the PC's address changed and Deck made a new certificate.
-5. **The QR code does not appear.** The connection is off, or the certificate could not be made; the page says why.
-6. **"Connecting to your PC" forever (away from home).** Tailscale must be on and signed in on both devices with the same account.
-7. **Screen is black or laggy:** lower the bitrate or size, pick 30 fps; with no monitor attached, install the virtual display. **Taps do nothing:** Screen access must be **View and control**, **Control** on in the phone, and no game in front (**Control in games**). **Phone mic silent:** check "VB-CABLE ready" and that the call app uses **CABLE Output**.
+More in [Phone](phone.md#troubleshooting).
 
-## The game bar does not open
+## The death counter isn't counting
 
-Page: [Game bar](game-bar.md#troubleshooting).
+1. Check **Counting on** and **Watch for death screens**, and play in borderless or windowed mode.
+2. Count the first death by hand in a game Deck doesn't know yet.
+3. Read the status line on the counter's page for what Deck sees.
 
-1. Check **Use the game bar** is on and the game runs in borderless or windowed fullscreen, not exclusive fullscreen.
-2. Test with **Open it now** with the game in front.
-3. Controller combination: it is read only while a game is in front and the controller must be one Deck can read ([Controller](controller.md)). The chosen buttons must exist on your pad (Select and Start are Create and Options on PlayStation controllers); try a longer or shorter **Hold for**.
-4. Keyboard shortcut refused: another program owns the combination. Choose a different one.
-5. If the game minimises when the bar opens, turn off **Take the keyboard** (and then **Keep clicks off the game**).
-6. No controller or keyboard: use the tray menu, the phone, or **Open it now**.
+More in [Death counter](death-counter.md#troubleshooting).
 
-## The death counter is not counting
+## Others can't hear my mic
 
-Page: [Death counter](death-counter.md#troubleshooting).
+Open Audio › Mic and read **Others hear** and the **Setup check**: each row says what to fix. See [Mic](voice.md#setup-check).
 
-1. **Death counter** and **Watch for death screens** are on, and the game is in borderless or windowed mode.
-2. A game Deck does not know is not watched until you count a death in it (**+1 death**, the tray, or choose **Watch in > Every game**).
-3. Read the status line at the bottom of the Now tab: "Game screen unreadable" (Deck sees a black picture; use borderless windowed), "English death screens may be missed" (add English to Windows' languages), "Save not found" (count by hand for now).
-4. Wrong or double counts: History > the line's menu > **That wasn't a death**; use **Not a boss** or **Same boss as** for misread names.
-5. Not showing in the game: use borderless or windowed, check **Show the counter in games**, and **In every game** if the game is not known.
-6. Better boss names: turn on the **OCR pack**. A wordless death screen: teach it once on the Games tab.
+## Lag or stutter in games
 
-Deck does this without reading the game's memory, so it is safe with anti-cheat.
+- Network lag: Diagnostics › Network › **Lag spikes** shows when the delay rose and where on the path ([Network](network.md#lag-spikes)).
+- Stutter: open the game's session report in Diagnostics › Session reports ([Game profiles](gaming.md#session-reports)).
+- PC crashes or freezes: Diagnostics › Crashes lists what Windows recorded ([Crashes](crashes.md)).
 
 ## High CPU use or Deck feels heavy
 
-Deck is light when idle, and features cost something only while they are on. Try, in this order:
+1. Turn on **Low-spec mode** ([Settings](settings.md#performance--units)).
+2. Turn off what you don't use: **Watch for death screens**, the controller overlay, phone screen streaming.
+3. In [Sensors](sensors.md), turn on **Slower in games** and turn off **Log to file**.
+4. In [Network](network.md), connection history and data per app run only if you turned them on.
+5. Fewer folders in Local file search ([Settings](settings.md#local-file-search)).
 
-1. **Low-spec mode** (Settings › Appearance): no animations, live readings every 3 seconds ([Settings](settings.md#performance-and-units)).
-2. Turn off what you do not use: **Watch for death screens** ([Death counter](death-counter.md)) stops the screen watcher entirely; the controller overlay does nothing when off ([Controller](controller.md#faq)); screen and audio streaming on [Phone](phone.md) cost CPU while a phone is connected, so lower the picture size and fps.
-3. In [Sensors](sensors.md), turn on **Read less often during games**, and turn off **Log every sensor to a CSV file** when you are not investigating.
-4. [Network](network.md): **Connection quality** and **Data per app** run in the background only if you turned them on.
-5. [Performance overlay](overlay.md): a shorter update interval does a little more work than a longer one.
-6. [Processes](processes.md): file safety checks use disk and CPU while they run; press **Stop**.
-7. Reduce the folders in **Local file search** ([Settings](settings.md#local-file-search)); the first index build is the heavy part.
-8. In the support report, "Background workers" and "Deck memory" show whether something is stuck (see below).
+## Deck won't start or open
 
-## Deck will not start or cannot be opened
-
-1. **It may already be running.** Deck never runs two copies; starting it again just shows the first. Look for the tray icon (click the up-arrow near the clock). The **X** hides Deck rather than quitting.
-2. **Open it from the Start menu.** Hot corner not working: it needs Quick panel mode and an outer corner of the whole desktop ([Home](home.md#troubleshooting)).
-3. **It started and left again after crashes.** After three endings within ten minutes Deck stops restarting itself ([Settings](settings.md#start-again-after-a-crash)). Start it from the Start menu; it comes up in a safe state (fans on the BIOS, no overclock).
-4. **"Deck couldn't create its scheduled tasks" or admin start is off.** Reinstall with the setup (it installs over the old copy and keeps settings). Set up refuses to create the tasks for a copy in a folder a normal program could change; install to `C:\Program Files\Deck`.
-5. **Settings damaged, or "Settings could not be saved".** A damaged settings file is set aside and recovered, never silently reset, and a settings file Deck cannot read is left alone instead of being overwritten. If Deck cannot write its settings folder (read-only, full, locked by another program) a notification says **Settings could not be saved** and stays up; Deck retries every few seconds, up to once a minute, and the notification clears by itself once a save works. Keep Deck open until it does, because a change made since the last good save is only in memory. To start over: back up first, quit Deck, then move `%APPDATA%\Deck\settings.json` away. Deck starts with defaults ([Settings](settings.md#troubleshooting)).
-6. **A restore did not apply.** A restore applies at the next start; quit Deck from the tray (not just close) and open it again. "Settings need a newer version": update Deck first.
-7. **Blocked by SmartScreen when installing:** click **More info**, then **Run anyway** ([Getting started](getting-started.md#installing)).
-8. Get a support report if you can open Deck at all (below).
+1. It may already be running: look for the tray icon under the up arrow. The **X** only hides Deck.
+2. Start it from the Start menu.
+3. After three crashes in ten minutes Deck stops restarting itself. Start it by hand; it comes up safe ([Settings](settings.md#restart-after-a-crash)).
+4. "Couldn't save settings": Deck can't write its settings folder (read only, full or locked). It keeps trying; keep Deck open until the message clears.
+5. SmartScreen blocks the setup: click **More info**, then **Run anyway** ([Getting started](getting-started.md#installing)).
 
 ## After a crash or an unexpected restart
 
-What Deck does by itself, and what to check:
+Deck does this on its own:
 
-- **Fans and GPU fan** are handed back to the BIOS and driver within seconds, even if Deck was killed from Task Manager ([Fans](fans.md#what-happens-if-deck-crashes-or-quits)).
-- **Deck starts again hidden** (**Start again after a crash**). It waits for a graphics driver installer to finish first.
-- **Overclocks are held back.** After an unexpected PC restart, a CPU overclock or an overclocked GPU profile is not applied ("Started at stock"). Re-apply by hand once you are sure the PC is stable ([CPU](cpu.md#troubleshooting), [GPU](gpu.md#troubleshooting)).
-- **Deck game mode, sound and phone changes** that Deck made (power plan, muted or switched devices, the phone speaker or mic) are put back at the next start; Target FPS limits are restored from a record written before the first change ([Game profiles](gaming.md#faq), [Phone](phone.md#faq)).
-- **Windows tweaks:** the before-value is saved before each step, so Undo still works afterwards ([Windows tweaks](tweaks.md#faq)).
-- **Timers and a shutdown plan** only run while Deck runs; a plan set before a restart is dropped ([Power](power.md#troubleshooting)).
-- **Hardware held:** if a toast says Deck's hardware settings were edited outside Deck, nothing is applied until you press **Apply them**.
-- **Check the reports:** the support report's "Runs" section says how the previous run ended (quit cleanly, closed by an update, or ended without quitting) and "Problems this run" lists the warnings and errors. If Deck keeps crashing, include crash files in the report when you ask for help.
+- Fans and the GPU fan go back to the BIOS and driver within seconds ([Fans](fans.md#what-happens-if-deck-crashes-or-quits)).
+- Deck starts again hidden (**Restart after a crash**).
+- Overclocked profiles are held back until you apply them again.
+- Deck game mode, sound and phone changes are undone at the next start.
+- Windows tweaks keep their old values, so Undo still works.
+
+To see what happened, open [Crashes](crashes.md).
 
 ## Getting the log and a support report
 
 ### The support report
 
-1. Open **Settings › About** and find **Support report** (see [Settings](settings.md#support-report)).
-2. **Copy report** puts it on the clipboard to paste into a chat or an issue. **Save report** writes it to a file in Deck's data folder and shows it in Explorer.
-3. Tick **Include crash files (may contain private data)** only if asked or if Deck has crashed. Copying adds the crash text to the end with personal details blanked out; saving makes one zip.
-4. For lighting problems, answer **Add the test** when Save report offers the 15-second lights test (the lights cycle red, green and blue).
+1. Open Settings › About › **Support report** ([Settings](settings.md#support-report)).
+2. **Copy report** puts it on the clipboard; **Save report** writes a file and shows it in Explorer.
+3. Turn on **Include crash files (may contain private data)** only if asked or after a crash.
 
-The report holds Deck's version and whether it runs as admin, whether the hardware engine, PawnIO driver and NVIDIA engine run, Windows and PC details, what Deck detected, drive health, how this run and the previous one ended, background workers, problems this run, and the last 80 log lines. It leaves out file paths and drive serial numbers. Read it before posting if you are unsure ([This PC](this-pc.md#support-report)).
+The report leaves out file paths, serial numbers and secrets. Read it before posting if you're unsure.
 
 ### The log file
 
-The log is `%LOCALAPPDATA%\Deck\logs\deck.log` (2 MB per file, four older files kept). Paste that path into the File Explorer address bar. Values after words like token, password and secret are hidden, and your user name and PC name are removed from paths as lines are written. Crash evidence is in `%LOCALAPPDATA%\Deck\crashes`; it is only added to a report if you agree.
+The log is `%LOCALAPPDATA%\Deck\logs\deck.log`. Paste that path into File Explorer's address bar. Secrets, your user name and PC name are hidden.
 
-### More detail for one problem
-
-Settings › About > **Diagnostics** > **Log levels**: set the one area involved (gpu, hw, cpu, update, backup, remote, worker.supervisor, ui, memory) to **Debug**, reproduce the problem, then take the support report, and set the area back to **Normal** ([Settings](settings.md#diagnostics)).
+To log more about one problem, set that area to **Debug** in **Log detail by area**, repeat the problem, then take the report and set it back to **Normal** ([Settings](settings.md#diagnostics)).
 
 ### Where to ask
 
-Bug reports, ideas and death-screen reports go to the project's public releases repository on GitHub (`deck-releases`). Attach the support report. Security problems should be reported privately, as described in `SECURITY.md` in the repository.
-
-## Related pages
-
-- [FAQ](faq.md)
-- [Getting started](getting-started.md)
-- [Recommended setups](recommended.md)
+Report bugs on the project's public releases repository on GitHub (`deck-releases`), with the support report attached. Report security problems privately, as `SECURITY.md` in the repository describes.

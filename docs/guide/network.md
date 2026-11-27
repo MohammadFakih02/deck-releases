@@ -1,177 +1,168 @@
-Where to find it: PC status › Network
+Where to find it: Diagnostics › Network
 
 # Network
 
-The **Network** page shows what your connection is doing right now and helps you find out why it is slow or laggy. It has a live speed graph, your addresses, a speed test, a "does a download make my games lag?" test, a ping monitor, an optional record of connection quality over time, an optional count of the data each app uses, and a ping check against game servers.
+Find out why your connection lagged, test its speed and lag under load, ping game servers and see the data each app uses.
 
-Find it under **PC status > Network** in the sidebar. The page has four tabs: **Overview**, **Tests**, **Data per app** and **Game servers**.
+Five tabs: **Lag spikes** (opens first), **Connection**, **Game servers**, **Tests** and **Data per app**.
 
-![The Network page](../screenshots/network.png)
+Deck only sends ordinary pings and test transfers. It never touches a game or reads its memory. About a game's traffic it reads only how many packets Windows saw, from the same events Task Manager uses. Speeds are in Mb/s by default; **Settings › Appearance › Performance & units** switches to MB/s.
 
-> Deck only measures your connection and sends ordinary pings and test downloads. It does not touch any game, inject into any game or read any game's memory, so none of this affects anti-cheat.
+## Lag spikes
 
-Speeds are shown in megabits per second (Mb/s) by default. If you prefer megabytes per second (MB/s, where 8 megabits equal 1 megabyte), change **Network speed** under **Settings › Appearance** (Performance and units). The graph, the speed test and the per-app figures all follow that setting.
+The top card is the **Last lag spike**:
 
----
+- When, how long and in which game, for example "Today 21:14 · 4 s · ELDEN RING". A spike found when no game was in front is marked **Found by the one-minute recorder**.
+- What was measured: the delay before and at its worst ("Delay 14 ms → 180 ms"), lost pings, and "Game got no data for 0.8 s" when the game's own traffic stopped.
+- **Path**: **This PC**, **Router**, **Provider**, **Internet**, each **Fine**, **Bad** or **No data**. A chip names where trouble starts: **Starts on this PC**, **Starts at your router**, **Starts at your provider**, **Starts past your provider**, or **Game server or its route** when every ping was fine but the game got no data.
+- **At the same time**: other apps' network use around the spike (uploads first, with Windows Update and OneDrive named) and Wi-Fi events: a scan, a move to another access point, a drop, the lowest signal.
+- **Suspected**: one likely cause, such as an upload filling the line. **Not enough data** when nothing points anywhere. A suspicion is not proof.
+- **Trace now** traces the path now, not at the spike (see [Trace the path](#trace-the-path)).
 
-## Tab 1: Overview
+**Spikes · 24 h** lists every spike of the last day; pick one to show it above. **Copy report** copies the last day's moments as text, with addresses, the PC name and user folders removed.
 
-### Connection
+### Recording
 
-| Item | What it shows |
-|---|---|
-| **Download** and **Upload** | The current speed of the whole PC, updated every second. |
-| Graph | The last minute of download and upload together. The scale adjusts itself, and the unit is printed in the corner. |
-| **Local IP** | Your PC's address on your home or office network. Click it to copy. |
-| **Public IP** | The address the internet sees. It is **hidden** until you click **Reveal public IP**, so a screenshot of this page does not leak it. Revealing it makes one request to a public lookup service (ipify) and the address is then click-to-copy. |
-| **PC name** | Your computer's name on the network. |
+**Record lag** turns on Connection quality and Data per app together. When it is off, the tab shows **Start recording**.
 
-If your PC has no network connection the card is titled **Connection unavailable**.
+**Fast pings** catch the short spikes a once-a-minute check misses. They run only while recording is on and a game is in front:
+
+| Fast pings | While a game is in front | Network use |
+| --- | --- | --- |
+| **Normal** (default) | Router, your provider's first router and 1.1.1.1, 4 pings a second each | About 14 kb/s |
+| **Low** | The same, 1 ping a second each | About 4 kb/s |
+| **Off** | Only the one-minute recorder | None |
+
+A spike is a delay more than double the usual and 30 ms higher for over half a second, or two or more lost pings close together. Deck keeps each spike with 30 seconds around it (the last 200, up to a week). With Data per app on, Deck also sees when the game stopped getting data while it kept sending. Your provider's first router is found once after each network change, never during a game.
+
+Spikes also show in [session reports](gaming.md#session-reports) unless you turn off **Add connection quality to reports** there.
+
+## Connection
+
+The verdict shows how many lag spikes there were today; click it to open Lag spikes.
+
+### Traffic now
+
+- **Download** and **Upload**: the whole PC's speed now, with a one-minute graph.
+- **Local IP**: your PC's address on your network. Click to copy.
+- **Public IP**: hidden until you press **Reveal public IP**, so a screenshot doesn't leak it. Revealing makes one request to a lookup service (ipify).
+- **PC name**: your computer's network name.
 
 ### Connection quality
 
-A record of how steady your connection is, kept over days. It is **off by default**. Turn it on with the switch on the card.
+Off by default; turn on **Record history**. While Deck runs, it sends a few pings a minute to:
 
-While it is on, and only while Deck is running, Deck sends a few small pings every minute to two places:
+- **Router**: problems here are inside your home (Wi-Fi, cable, router).
+- **Internet**: 1.1.1.1. Problems here with a fine router are on your provider's side.
 
-- **Router**: your own router (the gateway). If the delay or loss shows here, the problem is inside your home network (Wi-Fi, cable, router).
-- **Internet**: 1.1.1.1, a public address. If the router looks fine but the internet line shows problems, the fault is on your provider's side.
+Choose **24 hours**, **7 days** or **30 days**. Each line shows average delay, jitter and **Probe loss** (pings without a reply). Each bar of the graph runs from the lowest to the highest delay. Deck keeps 10-minute averages for 30 days and one-minute samples for 24 hours, on your PC only.
 
-Deck keeps 10-minute averages for 30 days on your PC. Nothing is uploaded.
+Probe loss is not game packet loss: routers and servers may ignore pings on purpose.
 
-| Control | What it does |
-|---|---|
-| **24 hours / 7 days / 30 days** | The period to summarise. |
-| **Router** and **Internet** lines | Average delay, jitter (how much the delay wobbles) and the percentage of lost replies for that period. "No pings yet" until some have been recorded. |
-| Strip graph | One bar per time slice for the internet line. Bar height is the delay. A slice in which 20% or more of the replies were lost is coloured as lost, and a slice with no reply at all fills the strip. Hover a bar for numbers. |
-| **Clear history** | Deletes the saved record. Turning the switch off keeps the history; only **Clear history** removes it. |
+**Watched targets · recorded**: up to three addresses of your own (a game server, a work VPN), pinged 3 times a minute. **Add target** adds one. **Clear history** deletes the record; turning the switch off keeps it.
 
-**Recommended:** turn it on if you have intermittent drops or lag spikes you cannot reproduce on demand. Leave it on for a few days, then look at the 24-hour or 7-day view to see *when* it goes wrong. If you have no problem, leave it off.
+Turn it on when you have drops you can't reproduce. After a few days, look at when it goes wrong.
 
----
+### Trace the path
 
-## Tab 2: Tests
+Press **Trace now** on a spike, or **Trace** in **Trace the path** on Tests. It checks the path now, not at the time of a spike. IPv4 only.
+
+1. Deck sends up to three pings to each hop, for up to 30 hops (about 90 seconds).
+2. Each row shows the hop's address, **Probe loss** and min, average and max delay. **Stop** keeps the partial result.
+3. Read the note under it. "This hop may ignore pings (often normal)" is common; no result proves game packet loss.
+
+During a game a trace waits. The last five traces are kept under **Saved path trace**.
+
+## Game servers
+
+The delay from your PC to the regions a game's servers run in.
+
+- Valve games (Counter-Strike 2, Dota 2, Deadlock, Team Fortress 2): Valve's relay servers in each city.
+- Games on Amazon servers (Fortnite, Rocket League, Dead by Daylight and others): Amazon's game-ping regions.
+- **Any game on…** a network, for a game that isn't listed.
+
+These are stand-in servers per region, not your match's server, so a real match can differ a little.
+
+1. Pick a game. Installed games come first; use **Find a game** or **Show all games**.
+2. The first look tests it (about 3 seconds). **Test again** repeats it.
+3. Read each region's delay and loss. **Lowest delay** is at the top. Under 60 ms is good, under 110 ms is fair.
+
+Pin a game to keep it at the front. **Add a game…** adds one that isn't listed: name it and choose **Amazon servers (AWS)** or **Valve's network**. Only add one if you know its network. **Remove** deletes a game you added.
+
+## Tests
 
 ### Speed test
 
-Measures download, upload, ping and jitter against Cloudflare's speed servers. Press **Run speed test** (it changes to **Run again** after the first run).
+**Run speed test** measures **Download**, **Upload**, ping and **Jitter** against Cloudflare. It takes up to 18 seconds and moves as much data as your line can (several hundred MB on a fast line). **Cancel** keeps the last result.
 
-| Result | Meaning |
-|---|---|
-| **Download** | How fast data arrives. The test streams data for up to about 10 seconds. |
-| **Upload** | How fast you can send data. It uploads for up to about 8 seconds. |
-| **Ping** | The typical delay of small requests to the server, in milliseconds. Lower is better. |
-| **Jitter** | How much the delay varies from one request to the next. Lower is better; high jitter hurts calls and games more than a slightly higher ping. |
-
-The line under the title says "Uses about 100 MB of data" before the first run and "Tested <time ago>" afterwards. The test runs for a fixed time rather than a fixed amount, so a very fast connection moves more than 100 MB. **Cancel** stops the test and keeps your previous result.
-
-**For the best reading:** pause other downloads and streaming first, and plug in by cable if you can. Wi-Fi alone can explain a low result. If you are on a metered or limited connection, avoid running it often.
+For the best result, pause other downloads and use a cable. Avoid running it often on a limited data plan.
 
 ### Lag while busy
 
-Answers: "when something downloads, does my game or call start to lag?" Slow responses under load are called *bufferbloat*: your router queues too much data, so everything waits in line.
+Does a download make your games or calls lag? Too much queuing in the router is called bufferbloat.
 
-Press **Run the check**. It takes about 30 seconds and uses up to 50 MB. Deck:
-
-1. Measures the delay to the internet (and to your router) with the line quiet.
-2. Starts a download (capped at 50 MB and 12 seconds) and measures the delay again while the line is full.
-
-The result is a **grade** and a sentence, for example "Delay rose by 45 ms at 300 Mb/s":
+1. Press **Run the check**. It takes about 20 seconds and uses up to 185 MB down and 100 MB up.
+2. Deck measures the delay with the line quiet, then while 4 downloads fill it, then while 4 uploads fill it.
+3. Read the grade, the worse of the two directions.
 
 | Grade | Delay rise | Meaning |
-|---|---|---|
-| **A** | under 30 ms | No real extra lag while busy. |
-| **B** | 30 ms or more | A little extra lag. |
-| **C** | 60 ms or more | Noticeable in fast games. |
-| **D** | 150 ms or more | A big download is felt in games and calls. |
-| **F** | 300 ms or more, or more than 10% of replies lost | Very laggy while busy. |
+| --- | --- | --- |
+| A+ | Under 5 ms | No extra lag. |
+| A | Under 30 ms | No real extra lag. |
+| B | 30 ms or more | A little extra lag. |
+| C | 60 ms or more | Noticeable in fast games. |
+| D | 200 ms or more | Big transfers are felt in games and calls. |
+| F | 400 ms or more, or over 10 % of replies lost | Very laggy while busy. |
 
-The **Test details** fold shows the median delay with the line quiet and busy for the internet and the router, the worst busy reading and the percentage lost. If the grade is worse than B, Deck suggests looking for a **Smart Queue Management** (SQM) setting on your router, which is the usual cure. Deck changes no router settings. **Cancel** stops the check.
+**Line not filled** means the check moved less than half of your last speed test, so the grade may look too good. **Test details** has the numbers. From grade C, Deck suggests **Try Smart Queue on the router** (SQM), the usual cure. Deck changes no router settings.
 
-**Tip:** if the test says it could not fill the line or got no reply from the internet, try again with nothing else using the network.
+Each finished check is saved (the last 20). Type a label (for example "new router") and select two to compare. **Delete** asks **Delete for good?** first.
 
-### Ping
+### Before a test starts
 
-Watches the delay and lost replies to addresses you choose. The list starts with `1.1.1.1`, `8.8.8.8` and `discord.com`.
+Deck never starts a test or trace on its own. If a game is in front, or Deck's phone mic or voice holds the microphone, it says what the test would disturb and waits for **Run anyway** or **Cancel**. Deck can't see calls in other apps, so pause those yourself.
 
-- One round of pings runs when the page opens. After that it only keeps pinging while you press **Start**; **Stop** pauses it. Leaving the page stops it too, so Deck never pings in the background.
-- Each host shows a strip of its last 60 rounds, the latest delay, the average and the percentage lost.
-- Colour: under 40 ms is good, under 90 ms is a warning, anything else (or no reply) is bad.
-- Type a name or address into the box and press **Add host** (or Enter) to watch another one, for example your game's website or your router. The small cross removes a host.
+### Live ping
 
----
+Pings only while you watch. The list starts with 1.1.1.1, 8.8.8.8 and discord.com.
 
-## Tab 3: Data per app
+- **Start pinging** and **Stop pinging**. Leaving the page stops it.
+- Each address shows its last 60 rounds, the latest delay, the average and the loss. **No reply** means a ping timed out.
+- Type an address or name in **Add an address** and press **Add**. The cross removes one.
 
-Shows how much each program has downloaded and uploaded, so you can find what is using your data allowance or your bandwidth. It is **off by default**; turn it on with the switch on the card.
+## Data per app
 
-- Deck uses Windows' own network events (the same source Task Manager uses) and **needs administrator rights**. No driver is installed.
-- It counts only while Deck is running, so close-and-reopen gaps are not counted.
-- Totals are added up per program per day and kept on your PC for 30 days.
-- Choose **Today**, **7 days** or **30 days**. Apps are listed biggest first, each with a bar and "down / up" totals.
-- Straight after switching on it says "Counting..." until some traffic has been seen (a few minutes of normal use).
-- **Clear totals** deletes the saved counts.
+How much each program downloaded and uploaded, to find what uses your data or bandwidth. Off by default; turn it on with the card's switch. It needs administrator and installs no driver.
 
-If it shows an error instead of a list, it is almost always because Deck is not running as administrator.
+- Counts only while Deck runs, per program per day, kept 30 days on your PC.
+- Choose **Today**, **7 days** or **30 days**. Apps are listed biggest first.
+- The selected app shows **Last seen** and **Data per day**.
+- **Clear totals** deletes the counts.
 
----
-
-## Tab 4: Game servers
-
-Shows the delay from your PC to the places a game's servers run, so you can see which region is closest, or whether your ping to a region has changed.
-
-Deck measures the way the games do:
-
-- **Valve games** (Counter-Strike 2, Dota 2, Deadlock, Team Fortress 2) connect through Valve's relay servers. Deck pings every relay in each city and shows the best one, like Steam's own route choice.
-- **Games on Amazon's servers** (for example Fortnite, Rocket League, Dead by Daylight, New World, Lost Ark) are measured with Amazon's UDP game-ping servers, grouped into each game's matchmaking regions.
-- **Any game on Amazon servers** and **Any game on Valve's network** measure a whole network, for a game that is not in the list.
-
-Games whose servers cannot be measured from outside (some publishers' own networks) are not listed. A real match's ping can still differ a little from these numbers.
-
-### Using it
-
-1. Pick a game from the **Game chooser** chips. Games installed on this PC come first, then the rest. Use **Find a game** to search, or **Show all N games** to see every chip.
-2. The first look at a game tests it automatically (about 3 seconds). Press **Test again** to repeat it.
-3. Read the rows: each region with its delay, a bar and the percentage of lost replies. Four rows show at first; **Show all N** reveals the rest. **Lowest latency** and **Highest latency** are summarised above the rows. Colour: under 60 ms is good, under 110 ms a warning, otherwise bad.
-
-### Pin and add
-
-- **Pin** puts a game at the front of the list; **Unpin** takes it off.
-- **Add a game...** lets you add a game that is not listed. Type its name (or pick from your installed games) and say which network its servers are on: **Amazon servers (AWS)** or **Valve's network**. Deck cannot find this out by itself, so only add a game if you know. Games you add can be removed with **Remove**.
-
----
+**New app notice** (off by default, set in **Settings › Notifications**): after 7 days of counting, one notice when a program with no earlier traffic moves more than the size you chose in a day.
 
 ## Recommended setup
 
-- Most people can leave everything alone and use the page when something feels wrong.
-- **Gamers:** run **Lag while busy** once. If it grades C or worse, enabling SQM on your router (or pausing big downloads while you play) will help more than any PC setting. Use **Game servers** before picking a region.
-- **Laptops on Wi-Fi:** use the **Router** line of **Connection quality** to separate Wi-Fi trouble from provider trouble.
-- **Limited data plans:** turn on **Data per app** to find the app that eats your allowance, and avoid running the speed test repeatedly.
-
----
+- **Gamers:** run **Lag while busy** once. At C or worse, turn on SQM on your router or pause big downloads while you play. Use **Game servers** before picking a region. Keep **Record lag** on to see why a match lagged.
+- **Laptops on Wi-Fi:** the **Router** line of Connection quality separates Wi-Fi trouble from provider trouble.
+- **Limited data plans:** turn on **Data per app** and don't run the speed test often.
 
 ## Troubleshooting
 
-**The speed test result is lower than my plan.** Wi-Fi, a busy network and a VPN can all reduce results. Test by cable, with other downloads paused, and compare with **Run again**.
+**The speed test is lower than my plan.** Wi-Fi, a busy network or a VPN lowers results. Test by cable with other downloads paused.
 
-**The speed test fails with an error.** The page shows the error. It usually means no internet connection, or a firewall or VPN blocking Cloudflare. Try again, or turn the VPN off.
+**The speed test fails.** Usually no internet, or a firewall or VPN blocking Cloudflare.
 
-**Public IP will not reveal.** Deck needs the internet to look it up. Check your connection and try again.
+**Data per app shows an error.** It needs administrator. See [Getting started](getting-started.md#why-deck-needs-administrator). Right after you turn it on it says it is counting until some traffic is seen.
 
-**Data per app shows an error or nothing.** Counting needs Deck to run as administrator, and shows "Counting..." until traffic has been seen.
-
-**Game servers shows "No reply" for some regions.** Some networks block ICMP (ping) or UDP. Other regions of the same game still give you a useful comparison.
-
-**The ping list is empty.** Add a host with **Add host**. An address that does not exist shows "No reply".
-
----
+**Some game regions say No reply.** Some networks block pings. The other regions still compare.
 
 ## FAQ
 
-**Does this send my data anywhere?** The speed test and the lag check download from and upload to Cloudflare's test servers. The ping features send ordinary ping packets to the addresses you can see. Revealing the public IP asks a public lookup service. Everything else (history, per-app totals) stays on your PC.
+**Does this send my data anywhere?** The speed test and lag check use Cloudflare's test servers. Pings go to the addresses you see. Revealing the public IP asks a lookup service. History and totals stay on your PC.
 
-**Does Deck run these in the background?** Only **Connection quality** and **Data per app**, and only if you turned them on, and only while Deck is running. The speed test and lag check only run when you press the button; the ping monitor only while it says Live.
+**Does anything run in the background?** Only Connection quality, fast pings during games and Data per app, if you turned them on, and only while Deck runs.
 
-**Can I use these during a game?** The tests use bandwidth and add delay of their own, so run them outside matches. Deck never touches the game itself.
+**Can I run tests during a game?** Run them outside matches: they use bandwidth and add delay. A trace waits until the game leaves the front.
 
-**How do I delete what Deck recorded?** **Clear history** (Connection quality) and **Clear totals** (Data per app) delete the saved records.
+**How do I delete what Deck recorded?** **Clear history** (Connection quality) and **Clear totals** (Data per app).

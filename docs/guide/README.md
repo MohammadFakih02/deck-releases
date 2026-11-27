@@ -2,119 +2,77 @@ Where to find it: Home › Home
 
 # Deck user guide
 
-Deck is a free tray app for Windows 10 and 11 (64-bit). It is a launcher, a live dashboard, a set of desktop tools, hardware control (CPU, NVIDIA GPU, fans, lighting), an in-game overlay, a death counter, Windows tweaks with an exact undo, and a phone remote, in one program. It sits in the notification area, opens when you rest the mouse in a screen corner, and is built to stay out of your way while you game. Deck never injects into games or reads their memory.
+What every page of Deck does, what its settings mean and what to do when something doesn't work.
 
-This guide is the manual: what every page does, what every setting means, what we recommend, and what to do when something does not work.
+Deck is a free tray app for Windows 10 and 11 (64-bit): a launcher, live sensors, desktop tools, hardware control (CPU, GPU, fans, lighting), an in-game overlay, a death counter, Windows tweaks with an exact undo, and a phone remote. It never injects into games or reads their memory.
 
 ## How to use this guide
 
-- **Want a quick map?** [Find your way around](find-your-way.md) shows the areas, how to open Deck, search and Settings › Features in one minute.
-- **New to Deck?** Read [Getting started](getting-started.md) (install, first run, a 10-minute tour), then [Recommended setups](recommended.md) for the checklist that matches how you use your PC.
-- **Looking for one feature or setting?** Find its page in the contents below. Every page follows the same plan: what it is for and where it is in Deck, each tab and setting in the order Deck shows them, a recommended setup, then Troubleshooting and FAQ.
-- **Something is wrong?** Start with [Troubleshooting](troubleshooting.md), which is organised by symptom. Quick questions (safety, anti-cheat, what Deck changes, what leaves your PC) are in the [FAQ](faq.md).
-- **Words in bold** are labels exactly as Deck shows them, so you can find them on screen. "Gaming › Game profiles" means: open the **Gaming** area in the sidebar, then the **Game profiles** page. Every page starts with a "Where to find it" line.
-- **Hardware differs.** Deck runs on Intel and AMD processors, NVIDIA, AMD and Intel graphics, desktops and laptops. Each page says what a feature needs. Pages for hardware your PC does not have hide themselves; [This PC](this-pc.md) tells you what Deck found and what it can control.
+- New to Deck? Read [Getting started](getting-started.md), then [Find your way around](find-your-way.md).
+- Looking for one feature? Find its page below. The contents follow Deck's sidebar.
+- Something wrong? Start with [Troubleshooting](troubleshooting.md). Quick questions are in the [FAQ](faq.md).
+- Words in bold are labels exactly as Deck shows them. "Gaming › Game profiles" means: open **Gaming** in the sidebar, then the **Game profiles** page. Each page starts with a "Where to find it" line.
+- Pages for hardware your PC doesn't have are hidden. [This PC](this-pc.md) shows what Deck found.
+
+## Start here
+
+| Page | What it covers |
+|---|---|
+| [Getting started](getting-started.md) | Installing, why Deck needs administrator, the first run, a 10-minute tour, updates and uninstalling. |
+| [Find your way around](find-your-way.md) | The sidebar areas, opening Deck, search, hiding what you don't use. |
+| [Recommended setups](recommended.md) | Checklists for a gaming desktop, a laptop, a quiet PC, a streamer and monitoring only. |
+| [FAQ](faq.md) | Safety, anti-cheat, what Deck changes, what leaves your PC. |
+| [Troubleshooting](troubleshooting.md) | Problems by symptom, and how to get a support report. |
 
 ## Contents
 
-The contents follow the areas in Deck's sidebar.
+The areas and pages in sidebar order.
 
-### Start here
+| Area | Page | Guide page |
+|---|---|---|
+| Home | Home | [Home](home.md): tiles, Edit Home, the tray menu, Activity |
+| Gaming | Game profiles | [Game profiles](gaming.md) |
+| | Performance overlay | [Performance overlay](overlay.md) |
+| | Death counter | [Death counter](death-counter.md) |
+| | Deck bar | [Deck bar](game-bar.md) |
+| Hardware | CPU | [CPU](cpu.md) |
+| | GPU | [GPU](gpu.md) |
+| | Fans | [Fans](fans.md) |
+| Lighting | Lighting | [Lighting](lighting.md) |
+| | Cooler display | [Cooler display](lighting.md#the-cooler-display) |
+| Audio | Mixer | [Mixer](sound.md): Playback and Devices |
+| | Mic | [Mic](voice.md) |
+| | Soundboard | [Soundboard](voice.md#soundboard) |
+| Devices | Device batteries | [Device batteries](devices.md) |
+| | Controller | [Controller](controller.md) |
+| PC status | Sensors | [Sensors](sensors.md), with the [Alerts](alerts.md) tab |
+| | Processes | [Processes](processes.md) |
+| | Power use | [Power use](power-use.md) |
+| | Drive health | [Drive health](drives.md#drive-health) |
+| | This PC | [This PC](this-pc.md) |
+| Diagnostics | Session reports | [Session reports](gaming.md#session-reports-in-diagnostics) |
+| | Crashes | [Crashes](crashes.md) |
+| | Network | [Network](network.md) |
+| Windows | Arrange windows | [Arrange windows](windows.md) |
+| | Display | [Display](display.md#display) |
+| | Screen tools | [Screen tools](display.md#screen-tools) |
+| Taskbar | Taskbar | [Taskbar](taskbar.md) |
+| | Music & volume pop-ups | [Music & volume pop-ups](flyouts.md) |
+| | Clipboard | [Clipboard](clipboard.md) |
+| Clean up | Clean up | [Clean up](cleanup.md) |
+| | Disk space | [Disk space](drives.md#disk-space) |
+| | Apps | [Apps](apps.md) |
+| Startup | Startup apps | [Startup apps](startup.md#startup-apps) |
+| | Startup optimizer | [Startup optimizer](startup.md#startup-optimizer) |
+| | Windows tweaks | [Windows tweaks](tweaks.md) |
+| Power & time | Keep awake | [Keep awake](power.md#keep-awake) |
+| | Timers & breaks | [Timers & breaks](power.md#timers--breaks) |
+| | Shut down when… | [Shut down when…](power.md#shut-down-when) |
+| Connections | PC to PC | [PC to PC](pc-to-pc.md) |
+| | Phone | [Phone](phone.md) |
+| | Project sync | [Project sync](workspace-sync.md) (hidden unless it is on; Settings › Features shows it) |
+| Settings | | [Settings](settings.md) and [Launcher and search](launcher.md) |
 
-| Page | What it covers |
-|---|---|
-| [Find your way around](find-your-way.md) | The areas and what each is for, how to open Deck, search, Settings › Features and What Deck changed, in one minute. |
-| [Getting started](getting-started.md) | Installing, admin rights and why Deck needs them, the one-time set up, opening Deck, a 10-minute tour, updates and uninstalling. |
-| [Recommended setups](recommended.md) | Checklists for a desktop gamer, a laptop on battery, a quiet or work PC, a streamer, and someone who only wants monitoring. |
-| [FAQ](faq.md) | The most common questions: safety, anti-cheat, what Deck changes, what leaves your PC, hardware support, performance, backups. |
-| [Troubleshooting](troubleshooting.md) | Problems by symptom, with steps, and how to get the log and a support report. |
+## Versions
 
-### Home
-
-| Page | What it covers |
-|---|---|
-| [Home](home.md) | The Home board and its tiles, how Deck opens (hot corner, tray icon, shortcut), Quick panel versus App window, the tray menu and the sidebar. |
-
-### Gaming
-
-| Page | What it covers |
-|---|---|
-| [Game profiles](gaming.md) | Per-game profiles, Deck game mode, frame limits, closing background apps, Target FPS, session reports, energy and cost. |
-| [Performance overlay](overlay.md) | Live readings (FPS, temperatures, load, power) over your game through RivaTuner, looks, layout and keys. |
-| [Controller](controller.md) | The on-screen controller overlay, controller battery, tray icons and the live test with a stick drift check. |
-| [Death counter](death-counter.md) | The death counter: automatic and manual counting, bosses, history, the in-game counter, OBS files and teaching death screens. |
-| [Devices](devices.md) | Battery of controllers, headsets, mice and keyboards: tray icons, low-battery warnings, names and the device report. |
-| [Game bar](game-bar.md) | The panel that slides over a game with one-click controls, how to open it and how to lay it out. |
-
-### Hardware
-
-| Page | What it covers |
-|---|---|
-| [CPU](cpu.md) | CPU profiles: Windows power plans, clock caps, power limits, clock floor, overclock, plugged in versus battery. |
-| [GPU](gpu.md) | NVIDIA GPU profiles: modes, power limit, offsets, voltage curve, fan curve, Afterburner import, crash guard. |
-| [Fans](fans.md) | Motherboard fan control: BIOS, fixed, curve, mix and follow modes, quiet hours, calibration, heat guard. |
-| [Lighting](lighting.md) | Motherboard, memory and mouse lighting, effects, the game effect and OpenRGB. This page also covers the **Cooler display** page (USB LCD coolers). |
-
-### PC status
-
-| Page | What it covers |
-|---|---|
-| [Sensors](sensors.md) | Every reading, live graphs, history, frametimes, CSV logging, and the **Alerts** tab (heat alerts). More on alerts below. |
-| [Alerts](alerts.md) | Details of heat warnings, alert rules, and sending messages to your phone through ntfy or Discord. These settings sit under Sensors in the app. |
-| [Processes](processes.md) | Every running program grouped by app, ending a stuck program, and optional file safety checks. |
-| [Network](network.md) | Live speed, addresses, speed test, "lag while busy" test, ping monitor, game-server ping and data per app. |
-| [Drive health](drives.md) | Drive health (S.M.A.R.T.), the drive speed test and verified copy. This page also covers **Disk space** (in the Maintenance group): the space map, duplicates and the space plan. |
-| [This PC](this-pc.md) | Your PC's parts at a glance (with Copy specs), how it did this week, and what Deck can and cannot control on it. |
-
-### Desktop
-
-| Page | What it covers |
-|---|---|
-| [Arrange windows](windows.md) | Pinning and see-through windows, snap zones, rules and saved workspaces. |
-| [Display and screen tools](display.md) | Resolution, refresh rate, brightness and the monitor's own settings, schedules and night colour. This page also covers **Screen tools**: colour picker, text from the screen, ruler and locked files. |
-| [Sound & mic](sound.md) | Default devices, volumes, per-app outputs, microphones, output profiles and automatic switching rules. |
-| [Music & volume pop-ups](flyouts.md) | Small cards for songs, volume, microphone, lock keys, brightness and charger. |
-| [Clipboard](clipboard.md) | Clipboard history, pins, search, "change it", snippets and paste settings. |
-
-### Maintenance
-
-| Page | What it covers |
-|---|---|
-| [Clean up](cleanup.md) | Safe junk removal: caches, temporary files, crash dumps, shader caches and old installers. |
-| [Drive health and disk space](drives.md) | The **Disk space** tab: the space map, large files, duplicates and the space plan (the same page as Drive health). |
-| [Apps](apps.md) | Uninstalling, Advanced uninstall with leftovers, app updates, Windows' built-in apps and Store apps without the Store. |
-| [Startup apps and the Startup optimizer](startup.md) | What starts with Windows, the measured delay of each item, and three small start-up fixes. |
-| [Windows tweaks](tweaks.md) | A searchable control panel for Windows settings with a real "right now" state and an exact undo. |
-
-### Power & time
-
-| Page | What it covers |
-|---|---|
-| [Power: keep awake, timers and shutdown plans](power.md) | **Keep awake**, **Timers & breaks** and **Shut down when...**, the three pages of the Power & time area. |
-
-### Below the sidebar areas
-
-These are always visible under the areas (Project sync only while it is on).
-
-| Page | What it covers |
-|---|---|
-| [Launcher and search](launcher.md) | The search box at the top of Deck: apps, files, calculations, commands, and your own saved actions (quicklinks, custom commands, chained actions). |
-| [PC to PC](pc-to-pc.md) | Sending files, folders, installers, apps and your Windows setup between your own PCs, and share links. |
-| [Project sync](workspace-sync.md) | Keeping a workspace client's sessions, memory and settings the same on all your PCs (off until you turn it on). |
-| [Phone](phone.md) | The phone remote: sound, media, timers, power, shared files, screen view and control, the phone as speaker or microphone, remote desktop. |
-| [Settings](settings.md) | How Deck opens, appearance, search, backups and recovery, updates, diagnostics, where data is stored and what leaves your PC. |
-
-### Pages that cover more than one app page
-
-- [display.md](display.md) covers both **Display** and **Screen tools** (both in the Desktop area).
-- [drives.md](drives.md) covers both **Drive health** (PC status) and **Disk space** (Maintenance).
-- [lighting.md](lighting.md) covers both **Lighting** and **Cooler display** (both in the Hardware area).
-- [launcher.md](launcher.md) covers the search box, including search and saved actions.
-- [sensors.md](sensors.md) holds the heat alerts tab; [alerts.md](alerts.md) has the details of alert rules and messages out.
-- [startup.md](startup.md) covers both **Startup apps** and **Startup optimizer** (both in the Maintenance area).
-- [power.md](power.md) covers all three pages of the Power & time group.
-- [home.md](home.md) also explains opening Deck, the tray menu and the sidebar.
-
-## Keeping up with versions
-
-Pages and labels are written to match Deck's current screens. If you have an older version, update Deck first (see [Getting started](getting-started.md#updates)). Deck is not affiliated with MSI, NVIDIA, Guru3D, Microsoft or VB-Audio.
+The guide matches Deck's current screens. On an older version, update first ([Updates](getting-started.md#updates)). Deck is not affiliated with MSI, NVIDIA, Guru3D, Microsoft or VB-Audio.

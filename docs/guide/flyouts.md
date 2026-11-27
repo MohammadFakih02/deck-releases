@@ -1,128 +1,91 @@
-Where to find it: Desktop › Music & volume pop-ups
+Where to find it: Taskbar › Music & volume pop-ups
 
 # Music & volume pop-ups
 
-Music & volume pop-ups are small cards that pop up on the edge of your screen when something changes: the song, the volume, your microphone, Caps Lock, and so on. Deck can also hide Windows' own volume pop-up so you do not see two.
+Small cards that appear at the edge of the screen when the song, volume, microphone, a lock key or the charger changes.
 
-Find them under **Desktop > Music & volume pop-ups**. The tabs are **Music**, **System**, **Music apps** and **Placement**. Every flyout is **off by default**; you turn on the ones you want.
+The page has four tabs: **Music**, **System**, **Music apps** and **Placement**. Every pop-up is off until you turn it on. If Deck couldn't read the music players or what this PC supports, the tab says so and offers **Try again**.
 
-Key facts:
+Good to know:
 
-- Music & volume pop-ups never take focus. They do not steal keystrokes from a game or app.
-- They follow what Windows reports (its media controls, its volume and device notifications). Deck does not hook your keyboard, so a change from any key, app, phone or controller counts the same.
-- Several flyouts stack instead of overlapping.
-- Over a game or a fullscreen window, a flyout lets mouse clicks pass through to the game. It is drawn without the web engine there so it does not cost frames. Music & volume pop-ups are separate windows; Deck never injects into a game or reads its memory, so they are safe with anti-cheat. The one caveat is exclusive fullscreen, where no window can be drawn over the game (see [Placement](#placement-tab)).
-- Music & volume pop-ups stay out of the way during presentations and when Windows is in Do not disturb mode.
-- If another program also shows song pop-ups, a warning banner at the top of the page names it, because you would see both. Close it or turn off its pop-ups.
-
----
+- Pop-ups never take focus, so they don't steal keys from a game.
+- They follow what Windows reports, so a change from any key, app, phone or controller counts. Deck doesn't hook your keyboard.
+- Several pop-ups stack instead of overlapping.
+- Over a game, clicks pass through and the card is drawn without the web engine, so it costs no frames. In exclusive fullscreen no window can be drawn over the game (see [Placement](#placement-tab)).
+- They stay away during presentations and in Do not disturb.
+- If another program also shows song pop-ups, a banner names it.
 
 ## Music tab
 
 ### Song changes
 
-The main switch for the music card. When on, a card shows the song title, artist and cover whenever the song changes, with previous, play/pause and next buttons. The card is coloured from the cover. When you turn it on, a sample appears so you can see it.
+The main switch for song cards: title, artist and cover when the song changes, with previous, play/pause and next. The card takes its color from the cover. While a song is changing, the card never shows the old song as the new one.
 
-When the song changes, the card says the song is changing and never shows the old song as the new one; the name appears as soon as the player publishes it (some players take up to about a second and a half).
+| Setting | What it does | Default |
+|---|---|---|
+| **When you skip** | Show the card when you skip, from any key, player, phone or controller. | On |
+| **When the next song starts** | Show the card when a song ends and the next starts. | On |
+| **Show volume with music** | **Separate**, **Above**, **Below** or **One card**. One card puts a thin volume bar under the song (drag, scroll or click the speaker to mute). | Separate |
+| **Player's own volume** | A slider for the player app's level in the Windows volume mixer. Hidden if Windows can't identify the player safely. | Off |
+| **Media keys always reach the player** | Sends play, next, previous and stop straight to the player, so a window in front can't catch them. Other programs stop receiving these keys. | Off |
+| **New song stays for** | 1 to 30 seconds. | 5 s |
+| **Also for pausing and resuming** | Shows a card when playback pauses or resumes. | On |
+| **Pause or resume stays for** | 0.5 to 15 seconds. | 2.5 s |
+| **Song end tolerance** (in **Timing details**) | How close to the end a skip still counts as a finished song (1 to 12 s). Raise it if your player crossfades. | 4 s |
 
-| Setting | What it does | Default | Recommended |
-|---|---|---|---|
-| **When you skip** | Show the card when you skip (from a media key, the player, a browser, the phone or a controller). | On | On. |
-| **When the next song starts** | Show the card when a song ends and the next one starts by itself. | On | Turn off if you only want to see manual skips. |
-| **Show volume with music** | **Separate**, **Above**, **Below** or **One card**. Above and Below open both cards when either changes. One card puts a thin volume bar under the song (drag it, scroll on the card, or click the speaker to mute), and volume appears alone when nothing is playing. | Separate | One card for a tidy screen. |
-| **Player's own volume** | Adds a slider for just the music app, which is that app's level in the Windows volume mixer. The slider inside the app does not move. It is hidden if Windows cannot identify the player safely. | Off | Off unless you use it. |
-| **Media keys always reach the player** | Sends play, next, previous and stop keys directly to the music player, so a window in front (even a frozen one) cannot keep them. Other programs that use these keys no longer receive them while this is on. | Off | Off unless media keys are being caught by something else. |
-| **New song stays for** | How long the card stays (1 to 30 seconds). | 5 s | 4 to 6 s. |
-| **Also for pausing and resuming** | Shows a card when playback pauses or resumes. | On | Your preference. |
-| **Pause or resume stays for** | How long that card stays (0.5 to 15 s). Shown when the previous switch is on. | 2.5 s | |
-| **Song end tolerance** (under **Advanced**) | How close to the end of a song a skip still counts as the song finishing (1 to 12 s). Raise it if your player crossfades. | 4 s | Leave as is unless a crossfade confuses it. |
-| **Preview card** | Previews the current song, or a labelled sample if nothing is playing. | | |
-
-If both "When you skip" and "When the next song starts" are off, new songs do not show, but pausing and resuming still can. How Deck tells a skip from a song ending: by how close the song was to its end when it changed (it estimates from the player's position).
-
-Skips you make from inside Deck always count as skips.
-
----
+**Preview card** shows the current song, or a sample if nothing plays. If both "When you skip" and "When the next song starts" are off, new songs don't show.
 
 ## System tab
 
-Each system flyout has a switch, and once on, a **Stays for** time (0.5 to 15 seconds, default 2 s) and a **Show** button to preview it.
+Each system card has a switch, a **Stays for** time (0.5 to 15 s, default 2 s) and **Preview card**.
 
-| Flyout | Shows | Notes |
+| Card | Shows | Notes |
 |---|---|---|
-| **Volume** | Volume and mute changes. Drag, scroll or click it to adjust or mute. | Has the extra switch **Hide Windows' own volume pop-up**: Deck draws its card and hides Windows' popup once its own is drawn. Support depends on your Windows version; if Deck cannot show its replacement, Windows' popup stays. Off by default. |
-| **Microphone** | When the default microphone is muted or unmuted ("Muted" or "Unmuted"). | |
-| **Sound device** | When sound moves to another device. | |
-| **Lock keys** | Caps Lock, Num Lock and Scroll Lock. | |
-| **Brightness** | Changes to the built-in screen's brightness. | Greyed out with "Brightness changes aren't reported by this screen." if Windows does not report them. |
-| **Airplane mode** | When airplane mode turns on or off. | Greyed out if Windows does not report airplane mode on your PC. |
-| **Charger** | When the charger is plugged in or out. | Greyed out when Windows is not reporting a battery (most desktops). |
-
-When "Show volume with music" is not Separate, the volume flyout also appears with the music card.
-
----
+| **Volume** | Volume and mute changes. Drag, scroll or click to adjust. | **Hide Windows' own volume pop-up** (off by default): Deck's card replaces Windows' pop-up. If Deck can't show its card, Windows' pop-up stays. |
+| **Microphone** | The default mic muted or unmuted. | |
+| **Sound device** | Sound moves to another device. | |
+| **Lock keys** | Caps Lock, Num Lock, Scroll Lock. | |
+| **Brightness** | Built-in screen brightness changes. | Grayed out if the screen doesn't report them. |
+| **Airplane mode** | Airplane mode on or off. | Grayed out if Windows doesn't report it. |
+| **Charger** | Charger plugged in or out. | Grayed out without a battery (most desktops). |
 
 ## Music apps tab
 
-Choose which apps count as music. Open a music player and it appears here with a note such as "Counts as music now: <song>", "Ignored now" or "Not open". Each app has:
+Choose which players can show song cards. An open player appears here with what it does now. Each has **Auto**, **Always** or **Never**.
 
-| Choice | Meaning |
-|---|---|
-| **Auto** | Use Deck's rules. Known music apps always count. Other apps need an artist and a duration of 45 seconds or more. Launchers, chat and social apps are skipped. Browsers are a fallback. |
-| **Always** | Always count this app. |
-| **Never** | Never count it (for an app that shows videos, say). |
-
-Some apps share one Windows identity (several apps reporting as the same player). They show a small info icon: the choice applies to every app sharing that identity.
-
-A media entry that only gives a program's own name (a game launcher, for example) is ignored, so it cannot be mistaken for a song.
-
----
+- **Auto:** known music apps count; other apps need an artist and a song of 45 seconds or more. Launchers, chat and social apps are skipped; browsers are a fallback.
+- **Never** suits an app that plays videos.
+- Apps that share one Windows identity show an info icon: the choice applies to all of them.
 
 ## Placement tab
 
 | Setting | What it does | Default |
 |---|---|---|
-| **Position** | Six spots: top left, top middle, top right, bottom left, bottom middle, bottom right. Music & volume pop-ups appear on the monitor containing the window you are using. Changing it moves flyouts that are already open, and shows a sample. | Top right |
-| **Over games and fullscreen** | **Card**: shows cards that let clicks pass through to the game. **Overlay text**: shows the song as text in Deck's in-game overlay instead of a window (needs the Performance overlay turned on under Play; see [Performance overlay](overlay.md)). **Nothing**: hides flyouts while a game or fullscreen window is in front. | Card |
-| **After the pointer leaves** | How long a flyout lingers after your pointer moves away from it (0.5 to 10 s). | 1.5 s |
+| Position | Pick a spot on the screen picture: top or bottom, left, middle or right. Pop-ups appear on the monitor with the window you're using. | Top right |
+| **Over games and fullscreen** | **Card** (clicks pass to the game), **Overlay text** (the song as text in the [Performance overlay](overlay.md), which must be on) or **Nothing**. | Card |
+| **Hide after the pointer leaves** | 0.5 to 10 seconds. | 1.5 s |
 
-Details for games:
-
-- In true exclusive fullscreen, no window can be drawn over the game, so cards may be hidden. If the Performance overlay is on, the song is also shown there.
-- Overlay text is drawn by RivaTuner, which cannot draw most non-Latin text (Japanese, for example). Use Card for those songs.
-- Music & volume pop-ups stay out of the way while the player or Deck itself is in front.
-
----
+- In exclusive fullscreen, cards may be hidden; with the Performance overlay on, the song also shows there.
+- Overlay text can't draw most non-Latin text (Japanese, for example). Use Card for those songs.
 
 ## Recommended setup
 
-- Casual PC: turn on **Song changes** and **Volume**, set **Show volume with music** to **One card**, and enable **Hide Windows' own volume pop-up**.
-- Gamers: leave **Over games and fullscreen** at **Card** for borderless-windowed games, or **Overlay text** with the Performance overlay on for exclusive fullscreen; **Nothing** if you never want interruptions.
+- Everyday PC: turn on **Song changes** and **Volume**, set **Show volume with music** to **One card**, and turn on **Hide Windows' own volume pop-up**.
+- Gamers: **Card** for borderless games, **Overlay text** for exclusive fullscreen, or **Nothing**.
 - Laptops: turn on **Charger** and **Brightness**.
-- Voice chat users: turn on **Microphone** so you notice a mute change.
+- Voice chat: turn on **Microphone**.
 
 ## Troubleshooting
 
-**Nothing appears.** Check the flyout's switch is on, press its **Show** button, and look for a banner naming another program that is showing song pop-ups. For music, check the player is listed on the **Music apps** tab and is not set to **Never**.
-
-**I see two volume pop-ups.** Turn on **Hide Windows' own volume pop-up** on the System tab.
-
-**The card shows no cover or the old title for a moment.** Some players are slow to publish the new song. Deck waits for the new name and shows "changing" until it arrives.
-
-**A flyout is greyed out.** Windows does not report that thing on your PC (see the System tab table).
-
-**Media keys do nothing, or something else answers.** Turn on **Media keys always reach the player**. Be aware other programs that use these keys then stop receiving them.
-
-**Song card appears for videos.** Set that app (often a browser) to **Never** on the Music apps tab.
-
-**Nothing shows in my game.** Exclusive fullscreen hides windows. Use borderless windowed, or set **Over games and fullscreen** to **Overlay text** with the Performance overlay on.
+- **Nothing appears.** Check the switch, press **Preview card**, and look for a banner naming another program. For music, check the player on **Music apps** isn't set to **Never**.
+- **Two volume pop-ups.** Turn on **Hide Windows' own volume pop-up**.
+- **A card is grayed out.** Windows doesn't report that on your PC.
+- **Media keys reach the wrong app.** Turn on **Media keys always reach the player**.
+- **Song cards for videos.** Set that app (often a browser) to **Never**.
+- **Nothing in my game.** Use borderless windowed, or **Overlay text** with the Performance overlay on.
 
 ## FAQ
 
-**Is it safe with anti-cheat?** Yes. Music & volume pop-ups are ordinary windows that never take focus, drawn over the game by Windows. Deck does not inject into games or read their memory, and it does not hook the keyboard.
-
-**Do they cost frames?** Over a game they are drawn without the web engine and with very little work; you can also choose Nothing.
-
-**Does Deck read what I listen to?** Only what Windows' media controls report to the card, on this PC. Nothing is sent anywhere.
-
-**What does Deck change on my PC?** Nothing permanent. The only system-wide effects are the optional hiding of Windows' own volume pop-up and, if you choose it, sending media keys directly to the player. Both revert when you turn the setting off.
+- **Safe with anti-cheat?** Yes. They are ordinary windows; Deck doesn't inject into games or hook the keyboard. See the [FAQ](faq.md).
+- **Does Deck read what I listen to?** Only what Windows' media controls report, on this PC. Nothing is sent anywhere.
+- **What does it change?** Nothing permanent. Hiding Windows' pop-up and the media key option revert when you turn them off.

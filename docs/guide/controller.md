@@ -1,135 +1,116 @@
-Where to find it: Gaming › Controller
+Where to find it: Devices › Controller
 
 # Controller
 
-The Controller page shows your controller (or your keyboard and mouse) on screen over your games, tracks the battery of every controller, and has a live test view with a stick drift check.
+Show your controller (or keyboard and mouse) on screen over games, follow its battery and test its sticks and timing.
 
 Four tabs: **On screen**, **Keys**, **Battery** and **Test**.
 
-**Safety and anti-cheat.** The overlay is an ordinary click-through window that never takes focus. Controllers are read the way games read them (through SDL, with XInput as a fallback), so Deck only listens: your game still receives every button. In keyboard and mouse mode Deck uses Windows Raw Input, which is receive-only: nothing is blocked or changed, and it is registered only while that mode is on. Deck never injects into a game or reads its memory.
+Any controller Windows recognizes works, by USB or Bluetooth. Nothing needs administrator. The overlay is a click-through window that never takes focus; Deck only listens to the controller, so your game still gets every button. It needs the game in borderless or windowed mode, because exclusive fullscreen hides overlays.
 
-**Requirements.** Any controller Windows recognises, by USB or Bluetooth (PlayStation, Xbox, GameSir and other pads). Nothing needs admin rights. The overlay needs the game in **borderless** or windowed mode: overlays are hidden by exclusive fullscreen.
+## On screen
 
-## On screen tab
+The main switch is **Show the controller overlay**. The line under it says what is happening, for example **Waiting for a controller**, the controller's name and battery, **Demo input** or **Keyboard & mouse**.
 
-At the top is the main switch, **Show the controller overlay**, with a status line that tells you what is happening:
+Three chips show which part works:
 
-- "Off. Turn it on to see your controller over your games."
-- "Waiting for a controller (USB or Bluetooth)." or "Showing (controller name) · battery."
-- "Showing demo input (no controller needed)." or "Showing keyboard & mouse."
-- If Windows reports a device that isn't a controller, it says it isn't recognised as one.
+| Chip | Good | Problem |
+| --- | --- | --- |
+| **Device** | **Found** | **Not found** |
+| **Input** | **Arriving** (input in the last 5 seconds) | **None lately** |
+| **Overlay** | **Visible** | **Not visible**, or **Turned off** (with a **Show overlay** button) |
 
-The tray menu has the same switches under **Controller overlay**: **Show overlay**, **Move / resize**, **Controller**, **Keyboard & mouse**, **Demo input** and **Settings...**.
-
-A preview picture on the right shows the overlay exactly as drawn with your settings.
-
-On screen keeps Look, Position and Per game beside the preview, with Behaviour underneath it. The six Corner choices form a map of the screen's top and bottom edges.
+The preview shows the overlay as it will be drawn. In the tray menu, the **Controller** submenu (in the Gaming group) has **Show controller input**, **Move / resize**, **Controller**, **Keyboard & mouse** and **Demo input**.
 
 ### Look
 
 | Setting | What it does | Default |
-|---|---|---|
-| **Show** | **Controller**, or **Keyboard & mouse** (pick the keys in the Keys tab). | Controller |
-| **Theme** | Colours: **DS4**, **Midnight**, **DualSense**, **Gold**, **Mono**. | DS4 |
+| --- | --- | --- |
+| **Show** | **Controller**, or **Keyboard & mouse** (pick the keys on **Keys**). | Controller |
+| **Theme** | **Classic**, **Midnight**, **White**, **Gold** or **Mono**. | Classic |
 | **Style** | **Glass** lets the game show through; **Solid**; **Buttons only** hides the body. | Glass |
-| **Layout** (controller mode) | **Controller** is a full controller; **Compact** is a small strip of buttons. | Controller |
-| **Controller shape** (controller mode) | The drawing and button names: **Match my controller** follows the one connected, or force **PlayStation** or **Xbox**. | Match my controller |
-| **Size** | 50% to 300%, on top of Windows' display scaling. | 100% |
-| **Opacity** | 15% to 100%. | 88% |
-
-Size and Opacity apply while you drag the slider.
+| **Layout** | A full controller, or **Compact**, a small strip of buttons. | Full controller |
+| **Controller shape** | **Match my controller**, or always **PlayStation** or **Xbox**. | Match my controller |
+| **Size** | 50 % to 300 %, on top of Windows' display scaling. | 100 % |
+| **Opacity** | 15 % to 100 %. | 88 % |
 
 ### Position
 
-| Setting | What it does |
-|---|---|
-| **Corner** | Six anchors: top left, middle, right and bottom left, middle, right. Default bottom right with a 24 px margin. |
-| **Monitor** | **The game's monitor** (follows whatever you are playing) or a specific monitor, listed with its resolution. |
-| **Move / resize** | Drag the overlay anywhere, scroll over it to resize, right-click it (or press **Done moving**) when finished. |
+- **Corner**: six places on the top and bottom edges. Pick one on the preview. Default: bottom right.
+- **Monitor**: **The game's monitor** (follows what you play) or a fixed monitor.
+- **Move / resize**: drag the overlay, scroll over it to resize, then right-click it or press **Done moving**.
 
 ### Per game
 
-**Separate position for each game** is off by default. When on, **Move / resize** while a game is in front saves a position and size for that game only; the others keep the default. Each saved game is listed with its corner, size and program, and **Use the default** removes it. With this on, the Look section's size becomes "Size (default)".
+**Own position per game** (off by default): **Move / resize** while a game is in front saves a place and size for that game only. **Use default** removes a game's own place.
 
-### Behaviour
+### Behavior
 
 | Setting | What it does | Default |
-|---|---|---|
-| **Fade when idle** | After 6 seconds without input the overlay fades to 30%. | On |
-| **Hide without a controller** (controller mode) | Nothing on screen until a controller connects. | On |
-| **Hide from screenshots and recordings** | The overlay is invisible to recorders and screen shares. NVIDIA Instant Replay switches itself off while the overlay is showing if you choose this. | Off |
-| **Reset the overlay** | Look, position and selected keys back to how they started. Opens a confirmation. | |
+| --- | --- | --- |
+| **Fade when idle** | Fades to 30 % after 6 seconds without input. | On |
+| **Hide without a controller** | Nothing on screen until a controller connects. | On |
+| **Hide from captures** | Recorders and screen shares don't see the overlay. NVIDIA Instant Replay pauses while it shows. | Off |
+| **Reset the overlay** | Look, position and keys go back to how they started. | |
 
-### Recommended
+Streamers: leave **Hide from captures** off so viewers see your inputs.
 
-- Streamers: leave **Hide from screenshots and recordings** off so viewers see your inputs, or turn it on if you only want it for yourself (and note the Instant Replay catch).
-- Several monitors: keep **The game's monitor**.
-- Playing different games with different HUDs: turn on **Separate position for each game**.
-- Wide screens or small scale: use **Compact** and a smaller size.
-
-## Keys tab
+## Keys
 
 Keyboard and mouse mode draws the keys you choose, lit while pressed.
 
-- **Show on screen > Input:** switch between **Controller** and **Keyboard & mouse** (you can pick keys before switching).
-- **Keys to show:** a drawing of the keyboard. Click a key to show or hide it. The counter shows how many are shown ("16 of 71 shown", for example). **All keys** shows every key (function, letters, numbers, punctuation, arrows); **Starting set** returns to the 16 keys most games use (1, 2, 3, 4, Tab, Q, W, E, R, Shift, A, S, D, F, Ctrl, Space); **Clear keys** clears them.
-- **Show the mouse:** buttons, scrolling and movement beside the keys (on by default). Input is read with Windows Raw Input, which only listens.
-- The overlay's input mode is chosen in **On screen > Show**. This tab only shows the current mode, with a **Change in On screen** button.
+- Click a key on the drawing to show or hide it. The counter says how many are shown.
+- **Starting set** is the 16 keys most games use. **Movement** is W A S D, Space, Shift and Ctrl. **All keys** shows every key. **Clear keys** clears them.
+- **Show the mouse** adds the buttons, scrolling and movement (on by default).
+
+Switch the overlay's mode with **Show** on the On screen tab.
 
 ## Battery tab
 
-Every controller that reports a battery appears here, lowest first. Headsets, mice and keyboards are in the [Devices](devices.md) part of Settings.
+Every saved controller, on the same cards as [Device batteries](devices.md), with the same options. Below the cards is the **Battery % history** of the live controller with the lowest level. The time left needs 30 minutes of use and a 5 % drop; until then it says **Time left: learning**.
 
-- The first controller is shown large with its percentage (with "Charging" when plugged in), where the reading came from, and an estimate of the hours left. The estimate needs 30 minutes of use and a 5% drop while connected. **Battery history** lists past readings.
-- **Other controllers** lists the rest, each with its own reading.
-- A warning appears when a battery reaches its warning level (15% unless you changed it) and isn't charging.
+Deck reads controller batteries every two seconds without any vendor software. If the tray icons and the overlay are both off, nothing is read.
 
-Tray icons, warning levels and names are set in **Settings › Device batteries**, per device. **Settings › Games** has a link to it.
+## Test
 
-Deck reads batteries from several sources every two seconds (GameSir vendor data, PlayStation reports, Windows' gaming input, Bluetooth battery data and XInput), combines them per controller and drops a controller that stops answering. It works with GameSir, PlayStation, Xbox and other pads Windows knows, without any vendor software. If both the tray icons and the overlay are off, battery reading is off too.
+A live view that works with the overlay off. Nothing here is sent to the game.
 
-## Test tab
+- The controller's name, battery and ID, and whether Deck reads it through SDL or XInput.
+- **Left stick** and **Right stick**: position from −1.00 to 1.00. **Triggers**: 0.00 to 1.00.
+- **Buttons**: the overlay's drawing, lit live.
 
-A live view that updates several times a second, and works with the overlay off.
+**Stick drift:**
 
-- The controller's name, battery and, under **Device details**, the vendor and product ID and whether it is read through SDL or XInput.
-- **Left stick** and **Right stick:** a dot showing the position and X/Y numbers from -1.00 to 1.00 (left and up are negative).
-- **Triggers:** L2 and R2 from 0.00 (released) to 1.00 (fully pressed).
-- **Button input:** every button lights up while pressed (Cross/A, Circle/B, Square/X, Triangle/Y, D-pad, L1/LB, R1/RB, L3, R3, Share/View, Options/Menu, PS/Guide, Touchpad).
-- **Stick drift check:** rest the controller on a flat surface with the sticks untouched and press **Measure stick drift**. It measures for about five seconds and suggests a dead zone for each stick, for example "left 6%, right 4%". Use those numbers in your game's dead-zone setting. Needs a connected controller and **Demo input** off.
+1. Put the controller on a flat surface without touching the sticks.
+2. Press **Measure stick drift**.
+3. After five seconds Deck suggests a dead zone for each stick. Use it in your game's dead-zone setting.
 
-Nothing in the Test tab is sent to the game or changed.
+**Input timing:**
 
-## Phone layouts
+1. Pick **Cable** or **Wireless**.
+2. Press **Test timing** and keep a stick moving in circles for ten seconds.
+3. The result is **Steady**, **Some gaps** (a wait over 50 ms) or **Unsteady** (over 150 ms, or a dropout). One result is kept for each link.
 
-The phone as a controller, and the phone's keyboard and controller layouts, are set up on the [Phone](phone.md) page, not here.
+It never runs while a game is in front.
+
+The phone as a controller is set up on [Phone](phone.md).
 
 ## Troubleshooting
 
-**The overlay isn't showing.** Check the main switch. In controller mode, **Hide without a controller** hides everything until one connects. Check the monitor. Use borderless or windowed mode in the game.
+**The overlay isn't showing.** Check the main switch and the chips. **Hide without a controller** hides it until one connects. Use borderless or windowed mode in the game.
 
-**"Waiting for a controller".** Connect it by USB or Bluetooth and press a button. If the status says it isn't recognised as a controller, Windows sees a different kind of device.
+**Waiting for a controller.** Connect it and press a button. If it says "not recognized", Windows sees a different kind of device.
 
-**It draws the wrong controller shape.** Set **Controller shape** to PlayStation or Xbox.
+**It draws the wrong shape.** Set **Controller shape** to PlayStation or Xbox.
 
-**No battery shown.** Switch the controller on, or plug in its receiver. Some devices don't report a battery. Battery reading is on only while the overlay or the tray icons are on.
+**No battery shown.** Switch the controller on or plug in its receiver. Some controllers don't report a battery.
 
-**Time left says it needs 30 minutes.** The estimate needs 30 minutes of use and a 5% drop while connected.
-
-**The tray icon doesn't show.** Turn on **Tray icon** for the controller in Settings › Device batteries; a controller must have reported a battery.
-
-**The overlay shows in my recording / doesn't show.** Change **Hide from screenshots and recordings**.
+**The tray icon doesn't show.** Turn on **In tray** on the controller's card in Devices › Device batteries, and check **Show in** under **Tray and taskbar**.
 
 ## FAQ
 
-**Is the overlay safe with anti-cheat?** It is an ordinary window and Deck only reads the controller or keyboard (receive-only). It never injects into or reads from a game.
+**Is it safe with anti-cheat?** Yes. It is an ordinary window, and Deck only reads the controller or keyboard. It never touches the game.
 
-**Does the game still get my buttons?** Yes. Nothing is blocked or changed.
+**Does it cost frames?** Very little: up to 60 redraws a second while visible, fewer when idle, none when off.
 
-**Does it work in exclusive fullscreen?** No. Overlays hide in exclusive fullscreen; use borderless.
-
-**Does it cost frames?** It redraws at up to 60 times a second while visible, less when idle, and only a few times a second while hidden with no controller. When off it does nothing.
-
-**Can I use it for the death counter?** The controller combo for counting deaths is a separate setting in [Death counter](death-counter.md) (hold View with D-pad Down).
-
-**See also:** [Performance overlay](overlay.md), [Game bar](game-bar.md), [Death counter](death-counter.md), [Phone](phone.md).
+**Can I count deaths with the controller?** That is a [Death counter](death-counter.md) setting.

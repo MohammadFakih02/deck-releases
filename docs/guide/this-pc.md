@@ -2,116 +2,99 @@ Where to find it: PC status › This PC
 
 # This PC
 
-The **This PC** page shows your PC's parts at a glance, how the PC did over the last week, and what Deck can and cannot control on it.
+Your PC's parts at a glance, how it did this week, and what Deck can and cannot control on it.
 
-Find it under **PC status › This PC** in the sidebar. It is one page with no tabs, and nothing on it changes your PC. The support report that used to be here is now in [Settings › About](settings.md#support-report).
-
-Deck runs on very different machines: Intel or AMD processors, NVIDIA, AMD or Intel graphics, desktops, laptops and handhelds. Some features only exist on some of them. This page is where you can see why a feature is missing on yours.
-
----
+It is one page with no tabs, and nothing on it changes your PC. Check it first when a feature is missing or grayed out: it says whether your hardware or Deck is the limit. The support report is in [Settings › About](settings.md#support-report).
 
 ## Order of the page
 
-From top to bottom:
+1. **Device specifications**
+2. **This week** beside **What Deck controls**
+3. **PCIe links**
+4. **Latency test**
 
-1. **Your PC**: the spec sheet
-2. **This week**: five tiles
-3. **What Deck can control here**
+## Device specifications
 
----
-
-## Your PC
-
-One row per part, with the detail that matters underneath:
+Processor, graphics, memory and motherboard (or laptop) are tiles at the top. Each fixed drive is a tile with its free space and a bar, with a **Low** chip when less than a tenth is free. The other facts are rows in two columns:
 
 | Row | What it shows |
 |---|---|
-| **Motherboard** (or **Laptop**) | The board's maker and model; on a laptop, the maker and model of the laptop. |
+| **Motherboard** (or **Laptop**) | Maker and model. |
 | **Processor** | The CPU name. |
 | **Graphics** | Each graphics adapter with its memory, and the NVIDIA driver version when Deck can read it. |
-| **Memory** | How much memory, and the speed it runs at. If the memory runs slower than its rated speed, the row says so in amber: turn on **XMP** (Intel) or **EXPO** (AMD) in the BIOS to get the full speed. |
-| **Storage** | The total size of your fixed drives, and the free space on each, read live (a line says "Current readings"). If Deck is showing the parts list it read earlier, the line says when it was read and that free space may be out of date. |
-| **Main display** (and **Display** for each other monitor) | Its name, resolution and refresh rate. If the monitor can run at a higher refresh rate than it does now, the row says so and offers **Open Display**, where you can change it. |
-| **Windows** | The edition and version (for example Windows 11 Pro 25H2), with the build number. |
-| **BIOS** | The BIOS maker and version, with its release date. |
-| **Running for** | How long since the last restart. |
+| **Memory** | Size and speed. An amber line means it runs below its rated speed: turn on XMP (Intel) or EXPO (AMD) in the BIOS. |
+| **Storage** | Total size and the free space on each drive. If Deck shows a parts list it read earlier, the line says when. |
+| **Main display** (and **Display** for each other monitor) | Name, resolution and refresh rate. If the monitor can run faster than it does now, the row says so with **Open Display**. |
+| **Windows** | Edition, version and build. |
+| **BIOS** | Maker, version and date. |
+| **Running for** | Time since the last restart. |
 
-**Copy specs** puts the list on the clipboard as plain text, ready to paste into a forum post or a support chat.
+**Copy specs** puts the list on the clipboard as plain text, ready for a forum post or a support chat.
 
-Storage sizes are decimal (1 GB is 1,000,000,000 bytes, as drive makers count), with one decimal place, and are the same figures Disk space and Drive health show for the same drive. Windows Explorer shows binary sizes under a "GB" label, so its numbers read about 7% lower. The system drive (C:) comes first, then the other volumes by letter.
-
----
+Sizes are decimal (1 GB is 1,000,000,000 bytes, as drive makers count), the same figures as Disk space and Drive health. Windows Explorer counts in binary, so its numbers read about 7 % lower.
 
 ## This week
 
-Five tiles about the last seven days, built from what Deck has recorded. The summary refreshes once a day. Each tile has a word in its corner (**Fine**, **Check** or **Act now**) and opens the page with the details when you click it. Hover a tile to read the full sentence behind it. Peak times use your local time and show hours and minutes, without seconds.
+Five tiles about the last seven days. The summary refreshes once a day. A chip in the corner says **Fine**, **Check** or **Act now**; hover a tile for the full sentence, click it to open the details.
 
 | Tile | What it tells you | Opens |
 |---|---|---|
-| **Temperatures** | The highest CPU and GPU temperature this week. **Check** from about 95 °C on a processor and 87 °C on a graphics card, where they start to slow themselves down. | [Sensors](sensors.md) › Graphs |
-| **Drives** | Whether every drive is healthy, or which ones need attention (a drive in caution or bad health, or one that got worse this week). | [Drive health](drives.md) |
-| **Disk space** | The drive with the least free space and that space, with the day and time it was checked (a daily snapshot). **Check** when less than a tenth is free. | Disk space |
-| **Sensor alerts** | How many of your own sensor warnings went off this week. | [Sensors](sensors.md) › Alerts |
-| **Deck** | Deck's own crashes and unexpected exits (forced closes or power loss count too). | [Settings › About](settings.md#support-report) |
+| **Temperatures** | The highest CPU and GPU temperature, with its band: **Normal**, **Warm** or **Hot** (warm from 80 °C on a processor and 75 °C on a graphics card, hot from 90 °C and 85 °C, the same bands as everywhere in Deck). | [Sensors](sensors.md) |
+| **Drives** | **All healthy**, or which drives need attention (caution or bad health, or worse this week). | [Drive health](drives.md) |
+| **Disk space** | The drive with the least free space, and when it was checked. | Disk space |
+| **Alerts** | How many of your sensor alerts went off. | [Sensors](sensors.md) › Alerts |
+| **Deck** | Deck's own crashes and unexpected exits. | [Settings › About](settings.md#support-report) |
 
-Drive comparisons start after the first saved check: Deck never guesses missing history.
+Drive comparisons start after the first saved check; Deck never guesses missing history.
 
----
+## What Deck controls
 
-## What Deck can control here
-
-One list of what Deck can do on this PC, each row with a chip:
+One tile per part with a short detail and a chip. The count in the corner says how many parts work. Hover a tile for the reason and the way Deck reads and controls it (for example NVIDIA's graphics library or your laptop maker's interface).
 
 | Chip | Meaning |
 |---|---|
 | **Works** | Deck can control it. |
-| **Partly** | Some of it works; the sentence says what. |
+| **Partly** | Some of it works; the detail says what. |
 | **Read only** | Deck can read it but not change it. |
 | **Not available** | Deck does not control this on your PC. |
 | **Not checked** | Deck has not checked it yet. |
 
-**Not available** and **Not checked** use neutral grey chips; they are information, not warnings.
+**Not available** and **Not checked** are gray: information, not warnings.
 
-The rows you may see:
+The tiles you may see:
 
-- **Processor.** On Intel desktops: turbo and clock presets, and the multiplier on unlocked models. On Intel laptops: turbo and clock presets work, but power limits are often locked by the laptop. On AMD: turbo and clock presets work; AMD power limits and Curve Optimizer are not in Deck yet. Any other processor gets the presets that go through Windows' power plan.
-- **Each graphics adapter** by name. NVIDIA: clocks, power limit, fan and overlay readings work. AMD and Intel graphics (card or built-in): Deck reads temperature and load; tuning them is not in Deck yet.
-- **Handheld**, on a recognised handheld PC: Deck's pages fit the screen and work by touch, its built-in controls show on the [Controller](controller.md) page when Windows lists them as a controller, and Windows' power mode works. The maker's own power-limit and fan modes are not in Deck yet.
-- **Laptop controls**, on a laptop: whether a maker's control interface answered. Fan speed through HP's BIOS works on HP Omen and Victus models; for other makers Deck says plainly that it cannot use their controls yet.
-- **Fans**: how many fans and the fan chip. **Works** only when fan control has been checked on this board; **Partly** when Deck can read the fans but control is not yet checked on this board.
-- **Board lighting**, **RAM lighting** and **Cooler display**: whether Deck can control them.
-- **Admin rights**: whether Deck runs with administrator rights. Without them Deck can only read.
+- **Processor.** Intel desktops: turbo and clock presets, and the multiplier on unlocked models. Intel laptops: the presets work, but power limits are often locked by the laptop. AMD: the presets work; AMD power limits and Curve Optimizer are not in Deck yet. Other processors: presets through the Windows power plan.
+- **Graphics card.** NVIDIA: clocks, power limit, fan and overlay values work. AMD and Intel graphics: Deck reads temperature and load; tuning is not in Deck yet.
+- **Handheld**, on a recognized handheld PC: pages fit the screen and work by touch, built-in controls show on [Controller](controller.md) when Windows lists them as a controller, and Windows' power mode works. The maker's power-limit and fan modes are not in Deck yet.
+- **Laptop controls**, on a laptop: fan speed through HP's BIOS works on Omen and Victus. For other makers the tile says Deck can't use their controls yet.
+- **Fans**: the number of fans and the fan chip. **Works** when control has been checked on this board, **Partly** when Deck can read the fans but control is not checked yet.
+- **Board lighting**, **RAM lighting** and **Cooler display**: whether Deck found them.
+- **Administrator**: **Can change hardware** when Deck runs as administrator.
 
 ### Administrator access
 
-If the hardware rows are replaced by a card titled **Hardware controls need administrator access**, press **Enable administrator access**. Windows asks for permission once, Deck creates a start-up task and restarts itself with those rights. The installer does this for you, so you usually only see it if you launched Deck some other way. See [Getting started](getting-started.md).
+Without administrator, Deck can only read the hardware. The **Administrator** tile then shows **Restart as administrator**: Windows asks once, then Deck creates its startup task and restarts with the rights. The installer normally does this for you. See [Why Deck needs administrator](getting-started.md#why-deck-needs-administrator).
 
-Why admin rights? Reading fan speeds, CPU temperature, drive health and lighting means talking to hardware, which Windows only allows for administrators.
+## PCIe links
 
----
+The link of the graphics card and of each NVMe drive (such as "PCIe Gen4 x4"), the most it supports, and a chip: **Full speed**, **Lowered while idle**, **Below its maximum** or **Below max under load**. Cards lower their link while idle, so check again under load; some M.2 slots share lanes. The card is left out when Windows reports no link.
 
-## Recommended setup
+## Latency test
 
-- Check this page first when a feature is greyed out or missing: it says whether your hardware or Deck is the limit.
-- If **Memory** or **Main display** shows an amber line, fix it: both are free speed you already paid for.
-- Laptops and handhelds: expect **Partly** and **Not available** on the maker's own controls. This is honest information, not a fault.
-
----
+**Start test** measures, inside Deck's window, the rate the window really redraws at (**Window refresh**, with missed frames) and your mouse's report rate while you move it over the box (**Mouse reports**). It stops when you press **Stop**, leave the page or hide the window. Windows can hold a window below the display's rate when it is behind others or on battery saver. The test touches no game and installs no hook.
 
 ## Troubleshooting
 
-**The hardware rows are missing.** Deck is not running with administrator rights, or the hardware engine is still starting. Press **Enable administrator access** if it is offered, or wait a few seconds.
+**The hardware tiles are missing.** Deck is not running as administrator, or the hardware engine is still starting. Press **Restart as administrator** if it is offered, or wait a few seconds.
 
-**Memory says it runs below its rated speed, but I turned on XMP.** Some memory reports its rated speed only for the standard (JEDEC) profile. If the row shows your XMP speed, all is well; the amber line only appears when the memory runs slower than what it reports as rated.
+**Memory says it runs below its rated speed, but XMP is on.** Some memory reports its rated speed only for the standard (JEDEC) profile. If the row shows your XMP speed, all is well.
 
 **The Drives tile says "Not checked yet".** Open [Drive health](drives.md) once; the tile fills in at the next daily refresh.
 
----
-
 ## FAQ
 
-**Does the page change anything on my PC?** No. It only reads hardware information and Deck's own records.
+**Does the page change anything?** No. It only reads hardware information and Deck's own records.
 
-**Will Deck get support for my laptop's fan modes?** The "What Deck can control here" list tells you what is covered today. If your laptop shows **Not available**, a support report from [Settings › About](settings.md#support-report) is what helps to add it.
+**Will Deck support my laptop's fan modes?** The **What Deck controls** card shows what is covered today. If your laptop shows **Not available**, a support report from [Settings › About](settings.md#support-report) helps to add it.
 
-**Does Deck work with anti-cheat?** Yes. Deck never injects into games or reads their memory.
+**Is Deck itself healthy?** See [Diagnostics › Crashes](crashes.md#deck-health).
